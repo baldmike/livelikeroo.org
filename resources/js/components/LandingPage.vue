@@ -44,7 +44,7 @@
                         <!-- First image on the right side, above the article -->
                         <div class="image-container image-right"
                                 style="background-image: url('images/homeTooPic7.jpg')"></div>
-                        <h3>All About Roo</h3>
+                        <h2 class="title">All About Roo</h2>
                         <p class="description">
                             Roosevelt was rescued from Chicago Animal Care and Control in April 2015. I saw him relaxing quietly in his cage as all the other dogs were barking and jumping to get my attention. He looked so sad.  His owner surrender card said “has issues urinating.” Once outside, Roosevelt peed for a long time and it was mostly just dribbling out. His teeth were totally ground down, probably from eating rocks or trying to escape his crate. We felt so helpless and so sad for him. Immediately we tried to find him a foster, so we could get him out and get him healthy. One Tail at a Time committed to rescue him and we were able to foster.
                         </p>

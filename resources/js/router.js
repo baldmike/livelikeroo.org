@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router';
 import MainApp from './mainApp';
+import DonateComponent from './components/DonateComponent.vue'
 import Website from './views/Website.vue';
 import Navbar from './components/Navbar.vue'
 
@@ -17,6 +18,11 @@ export const router = new VueRouter({
                     title: 'Website',
                     props: {header: {colorOnScroll: 800}}
                 },
+                {
+                    path: '/donate',
+                    components: {default: DonateComponent, header: Navbar},
+                    title: 'Donate',
+                }
                
             ]
         },

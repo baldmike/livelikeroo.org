@@ -5,6 +5,7 @@
         
             <landing-page></landing-page>
             <donate-component></donate-component>
+            <events-component></events-component>
 
         </div>
     </transition>
@@ -15,6 +16,7 @@
 
     import LandingPage from '../components/LandingPage'
     import DonateComponent from '../components/DonateComponent'
+    import EventsComponent from '../components/EventsComponent'
     
     import { EventBus } from '../event-bus.js';
 
@@ -29,7 +31,8 @@
         components: {
 
             LandingPage,
-            DonateComponent
+            DonateComponent,
+            EventsComponent
         },
         computed: {
 
