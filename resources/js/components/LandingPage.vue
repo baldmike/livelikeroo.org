@@ -45,16 +45,16 @@
                         <div class="image-container image-right"
                                 style="background-image: url('images/homeTooPic7.jpg')"></div>
                         <h3>All About Roo</h3>
-                        <p>
+                        <p class="description">
                             Roosevelt was rescued from Chicago Animal Care and Control in April 2015. I saw him relaxing quietly in his cage as all the other dogs were barking and jumping to get my attention. He looked so sad.  His owner surrender card said “has issues urinating.” Once outside, Roosevelt peed for a long time and it was mostly just dribbling out. His teeth were totally ground down, probably from eating rocks or trying to escape his crate. We felt so helpless and so sad for him. Immediately we tried to find him a foster, so we could get him out and get him healthy. One Tail at a Time committed to rescue him and we were able to foster.
                         </p>
-                        <p>
+                        <p class="description">
                             Unfortunately, even after a neuter, his urinating issues were a problem. During his dental, the vet discovered that Roo had bone cancer. Our hearts were shattered. Roo lived life to the FULLEST for the next 5 months. Hotel stays, boat rides, ice cream, attending an LFL game and so much more. Live Like Roo became a way of life.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-11">
-                    <p>
+                    <p class="description">
                         Roo passed away on September 8th. It was one of the toughest days, but it was time to let go. We miss him so much and we will always have a place in our hearts for this boy that changed the way thousands of people lived. He is one in a million and we are so grateful that he was ours and that we were able to share him with all of you.
                     </p>
                 </div>

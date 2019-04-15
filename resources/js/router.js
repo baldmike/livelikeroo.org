@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 import MainApp from './mainApp';
-import ExampleComponent from './components/ExampleComponent.vue';
+import Website from './views/Website.vue';
 import Navbar from './components/Navbar.vue'
 
 export const router = new VueRouter({ 
@@ -13,8 +13,8 @@ export const router = new VueRouter({
             children: [
                 {
                     path: '',
-                    components: {default: ExampleComponent, header: Navbar},
-                    title: 'Example',
+                    components: {default: Website, header: Navbar},
+                    title: 'Website',
                     // props: {header: {colorOnScroll: 800}}
                 },
                

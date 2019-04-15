@@ -7,12 +7,14 @@ import store from './store'
 Vue.config.productionTip = false;
 
 import VueCookie from 'vue-cookie'
+import NowUIKit from './plugins/now-ui-kit';
 
 
 require('./bootstrap')
 
 Vue.use(VueRouter)
 Vue.use(VueCookie)
+Vue.use(NowUIKit);
 Vue.use(require('vue-moment'))
 
 window.Vue = require('vue')
