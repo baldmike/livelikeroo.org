@@ -1,9 +1,8 @@
 <template>  
     <div>
 
-        <div class="loader" v-if="loading"></div>
-        
         <!-- notification bar -->
+        <div class="loader" v-if="loading"></div>
 
         <router-view name="header"/>
         <router-view/>
