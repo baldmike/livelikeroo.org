@@ -15,7 +15,7 @@ export const router = new VueRouter({
                     path: '',
                     components: {default: Website, header: Navbar},
                     title: 'Website',
-                    // props: {header: {colorOnScroll: 800}}
+                    props: {header: {colorOnScroll: 800}}
                 },
                
             ]

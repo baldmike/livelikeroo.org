@@ -51,7 +51,7 @@
     },
     data() {
       return {
-        pricing5Tab: 'Expensive'
+        
       }
     }
   }
