@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router';
 import MainApp from './mainApp';
 import ExampleComponent from './components/ExampleComponent.vue';
+import Navbar from './components/Navbar.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -12,7 +13,7 @@ export const router = new VueRouter({
             children: [
                 {
                     path: '',
-                    components: {default: ExampleComponent},
+                    components: {default: ExampleComponent, header: Navbar},
                     title: 'Example',
                     // props: {header: {colorOnScroll: 800}}
                 },

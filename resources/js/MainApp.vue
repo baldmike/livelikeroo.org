@@ -25,10 +25,6 @@
                 loading: false,
             }
         },
-        components: {
-
-            
-        },
         methods: {
             init() {
                 this.$store.dispatch('getAllUsers');
