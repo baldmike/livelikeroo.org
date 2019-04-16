@@ -73,8 +73,9 @@
     },
     methods: {
       closeModal() {
-        this.$emit('update:show', false)
-        this.$emit('close')
+        // this.$emit('update:show', false)
+        // this.$emit('close')
+        this.$store.dispatch('hideModal');
       }
     },
     watch: {

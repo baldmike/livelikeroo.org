@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-4 mr-auto">
                     <card type="pricing" raised color="orange">
-                        <img src="/images/headline4.jpg">
+                        <img src="/images/headline3.jpg" style="margin-bottom: 15px;">
                         <h3>Make a</h3>
                         <h1>
                            Monthly
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-  import { Card, Button, Tabs, TabPane } from '@/components';
+  import { Card, Button, Tabs, TabPane, Parallax } from '@/components';
 
   export default {
     components: {

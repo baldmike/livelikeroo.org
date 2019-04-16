@@ -12,6 +12,7 @@
 
                 <div class="col-md-2 offset-md-8" style="position: absolute; bottom: 20%; color: #fd7e14; z-index: 4;">
                     <n-button type="primary" round block @click.native="showDnForm">Donate</n-button>
+
                 </div>
             </div>
         </div>
@@ -19,7 +20,7 @@
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
                     <h2 class="title">The Live Like Roo Foundation</h2>
-                    <h5 class="description">We are a volunteer-run, 501C3 organization who provides support and financial assistance to families whose pet faces a cancer diagnosis. Having experienced this devastation first-hand with the loss of Roosevelt, The Live Like Roo Foundation strives to be a helping hand in a difficult and sometimes confusing time. Our mission is that you and your pet will #LiveLikeRoo.</h5>
+                    <h5 class="description">We are an all-volunteer-run, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis. Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 2000 pets and their families through cancer diagnoses. Having experienced this devastation first-hand with the loss of Roosevelt, The Live Like Roo Foundation strives to be a helping hand in a difficult and sometimes confusing time. Ultimately, our mission is that you and your pet will #LiveLikeRoo.</h5>
 
                     <h5 class="description">We strive to be a real life sounding board and support system for people that need guidance and very specific help depending on the diagnosis timeline.</h5>
                 </div>
@@ -30,7 +31,7 @@
                     <div class="col-md-6">
                         <!-- First image on the left side -->
                         <div class="image-container image-left" style="background-image: url('images/rooTooPage17.jpg')">
-                            <p class="blockquote blockquote-primary">Your one-time or monthly donation helps pets worldwide #LiveLikeRoo! 
+                            <p class="blockquote blockquote-primary">Your one-time or monthly donation is tax-deductable and will go to work immediately to help pets worldwide #LiveLikeRoo! 
                                 <br>
                                 <br>
                                 <n-button type="primary" round block @click.native="showDnForm">Donate Today</n-button>
@@ -63,7 +64,7 @@
     </div>
 </template>
 <script>
-  import { Card, Button, FormGroupInput, Tabs, TabPane, Parallax } from '@/components';
+  import { Card, Button, FormGroupInput, Tabs, TabPane, Parallax, Modal } from '@/components';
 
   import { EventBus } from '../event-bus.js';
 
@@ -75,6 +76,7 @@
       Tabs,
       TabPane,
       Parallax,
+      Modal,
       [Button.name]: Button,
       [FormGroupInput.name]: FormGroupInput
     },
@@ -84,7 +86,7 @@
           firstName: '',
           email: '',
           message: ''
-        }
+        },
       }
     },
     methods: {

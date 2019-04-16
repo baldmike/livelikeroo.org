@@ -25,7 +25,10 @@ export default new Vuex.Store({
             user: user ? user : null,
             oneTime: true,
             monthly: false,
-            users: []
+            users: [],
+            modals: {
+                dnForm: false,
+            }
         }
     },
     getters: { 
@@ -55,10 +58,12 @@ export default new Vuex.Store({
         setOneTime(state) {
             state.oneTime = true;
             state.monthly = false;
+            state.modals.dnForm = true;
         },
         setMonthly(state) {
             state.oneTime = false;
             state.monthly = true;
+            state.modals.dnForm = true;
         },
         logout(state) {
             state.token = null;
@@ -67,6 +72,9 @@ export default new Vuex.Store({
             Vue.cookie.delete('token');
             Vue.cookie.delete('user');
         },
+        hideModal(state) {
+            state.modals.dnForm = false;
+        }
     },
     actions: {
         // actions are dispatched in component, they commit mutations
@@ -97,6 +105,9 @@ export default new Vuex.Store({
             .catch(error => {
                 console.log("API call error: " + error);
             });
+        },
+        hideModal(context) {
+            context.commit('hideModal');
         },
 
 

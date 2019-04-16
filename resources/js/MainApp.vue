@@ -1,12 +1,26 @@
 <template>  
-    <div>
+    <div class="container-fluid">
 
-        <!-- notification bar -->
+        <!-- add notification bar -->
+        
         <div class="loader" v-if="loading"></div>
 
         <router-view name="header"/>
         <router-view/>
         <router-view name="footer"/>
+
+        <!-- MODALS -->
+        <modal :show.sync="this.$store.state.modals.dnForm" headerClasses="justify-content-center">
+            <h4 slot="header" class="title title-up">Modal title</h4>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
+            the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large
+            language ocean. A small river named Duden flows by their place and supplies it with the necessary
+            regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your
+            mouth.</p>
+            <template slot="footer">
+                <n-button type="danger" @click.native="hideModal">Close</n-button>
+            </template>
+        </modal>
 
     </div>
 
@@ -17,6 +31,7 @@
     import { EventBus } from './event-bus.js'
 
     import { mapGetters, mapActions } from 'vuex';
+    import { Card, Button, FormGroupInput, Tabs, TabPane, Parallax, Modal } from '@/components';
 
     export default {
         name: "mainApp",
@@ -24,6 +39,10 @@
             return {
                 loading: false,
             }
+        },
+        components: {
+            Modal,
+            [Button.name]: Button,
         },
         methods: {
             init() {
@@ -35,6 +54,9 @@
             },
             endLoading() {
                 this.loading = false;
+            },
+            hideModal() {
+                this.$store.dispatch('hideModal');
             }
         },
         computed: mapGetters(['isAuthenticated', 'isMonthly', 'isOneTime']),
@@ -51,7 +73,10 @@
             // if (window.auth.check()) {
             //     this.$router.push('dashboard');
             // }
-
+            EventBus.$on('showDnForm', () => {
+                console.log("[MainApp] --> showDnForm - EventBus");
+                this.$store.dispatch('setOneTime');
+            })
         }
     }
 

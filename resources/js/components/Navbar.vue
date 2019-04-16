@@ -13,13 +13,17 @@
                         placement="bottom"
                         width="120"
                         trigger="hover">
-                    <div class="popover-body">#LiveLikeRoo!</div>
+                    <div class="popover-body">Click here to bring you Home!</div>
                 </el-popover>
         </template>
         <template slot="navbar-menu">
             <li class="nav-item">
                 <router-link class="nav-link" to="/donate"><i class="now-ui-icons business_money-coins roo"
                 aria-hidden="true"></i><p>Donate</p></router-link>
+            </li>
+            <li class="nav-item">
+                <router-link class="nav-link" to="/care_packages"><i class="now-ui-icons shopping_box roo"
+                aria-hidden="true"></i><p>Care Packages</p></router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link" to="/assistance"><i class="now-ui-icons ui-2_favourite-28 roo"

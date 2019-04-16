@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router';
 import MainApp from './mainApp';
 import DonateComponent from './components/DonateComponent.vue'
+import EventsComponent from './components/EventsComponent.vue'
 import Website from './views/Website.vue';
 import Navbar from './components/Navbar.vue'
 
@@ -22,6 +23,11 @@ export const router = new VueRouter({
                     path: '/donate',
                     components: {default: DonateComponent, header: Navbar},
                     title: 'Donate',
+                },
+                {
+                    path: '/events',
+                    components: {default: EventsComponent, header: Navbar},
+                    title: 'Events'
                 }
                
             ]
