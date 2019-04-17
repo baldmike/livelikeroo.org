@@ -55,7 +55,8 @@
             Modal,
             [Button.name]: Button,
             DonationForm,
-            Notifications
+            Notifications,
+            CarePackage
         },
         methods: {
             init() {

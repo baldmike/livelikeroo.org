@@ -31,7 +31,7 @@ export default new Vuex.Store({
                 cpForm: false,
             },
             alerts: {
-                info: true,
+                info: false,
             },
             loading: false
         }
