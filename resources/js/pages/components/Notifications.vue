@@ -1,10 +1,7 @@
 <template>
-    <div class="section section-notifications" id="notifications">
-        <div class="space"></div>
-        <div class="container">
-            <h4>Notifications</h4>
-        </div>
-        <div class="alert alert-success" role="alert">
+    <div id="notifications" >
+        
+        <div class="alert alert-success" role="alert" v-if="this.$store.state.alerts.success">
             <div class="container">
                 <div class="alert-icon">
                     <i class="now-ui-icons ui-2_like"></i>
@@ -17,7 +14,7 @@
                 </button>
             </div>
         </div>
-        <div class="alert alert-info" role="alert">
+        <div class="alert alert-info" role="alert" v-if="this.$store.state.alerts.info">
             <div class="container">
                 <div class="alert-icon">
                     <i class="now-ui-icons travel_info"></i>
@@ -30,7 +27,7 @@
                 </button>
             </div>
         </div>
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning" role="alert" v-if="this.$store.state.alerts.warning">
             <div class="container">
                 <div class="alert-icon">
                     <i class="now-ui-icons ui-1_bell-53"></i>
@@ -43,7 +40,7 @@
                 </button>
             </div>
         </div>
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert" v-if="this.$store.state.alerts.danger">
             <div class="container">
                 <div class="alert-icon">
                     <i class="now-ui-icons objects_support-17"></i>

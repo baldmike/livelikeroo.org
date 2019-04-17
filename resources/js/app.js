@@ -20,6 +20,7 @@ Vue.use(require('vue-moment'))
 window.Vue = require('vue')
 window.auth = new Auth();
 
+Vue.component('fg-input', require('./components/Inputs/formGroupInput.vue'))
 Vue.component('main-app', require('./mainApp.vue'))
 Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('partner-component', require('./components/PartnerComponent.vue'))

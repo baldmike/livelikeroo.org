@@ -23490,6 +23490,13 @@ img {
           animation: spin 2s linear infinite;
 }
 
+.notes {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  z-index: 10;
+}
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

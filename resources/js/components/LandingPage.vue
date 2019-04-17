@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper landing-page">
+    <div class="wrapper landing-page" style="z-index: 10;">
         <div class="page-header header-filter">
             <parallax class="page-header-image"
                  style="background-image: url('images/banner1.jpg')">

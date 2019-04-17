@@ -28,7 +28,11 @@ export default new Vuex.Store({
             users: [],
             modals: {
                 dnForm: false,
-            }
+            },
+            alerts: {
+                info: true,
+            },
+            loading: false
         }
     },
     getters: { 
@@ -74,6 +78,12 @@ export default new Vuex.Store({
         },
         hideModal(state) {
             state.modals.dnForm = false;
+        },
+        startLoading(state) {
+            state.loading = true;
+        },
+        endLoading(state) {
+            state.loading = false;
         }
     },
     actions: {
@@ -109,8 +119,12 @@ export default new Vuex.Store({
         hideModal(context) {
             context.commit('hideModal');
         },
-
-
+        startLoading(context) {
+            context.commit('startLoading');
+        },
+        endLoading(context) {
+            context.commit('endLoading');
+        },
         logout( { commit }) {
         
             axios.post("/api/logout").then((userData) => {        

@@ -2,7 +2,7 @@
     
     <transition name="fade">
         <div>
-        
+
             <landing-page></landing-page>
             <donate-component></donate-component>
             <events-component></events-component>
@@ -18,6 +18,7 @@
     import DonateComponent from '../components/DonateComponent'
     import EventsComponent from '../components/EventsComponent'
     
+    
     import { EventBus } from '../event-bus.js';
 
     export default {
@@ -32,7 +33,7 @@
 
             LandingPage,
             DonateComponent,
-            EventsComponent
+            EventsComponent,
         },
         computed: {
 

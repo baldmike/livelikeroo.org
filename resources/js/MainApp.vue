@@ -1,22 +1,19 @@
 <template>  
+    
     <div class="container-fluid">
 
-        <!-- add notification bar -->
-        
-        <div class="loader" v-if="loading"></div>
-
+        <div class="loader" v-if="this.$store.state.loading"></div>
+        <notifications style="position: absolute; top: 45%; z-index: 100;"></notifications>
         <router-view name="header"/>
         <router-view/>
         <router-view name="footer"/>
 
         <!-- MODALS -->
         <modal :show.sync="this.$store.state.modals.dnForm" headerClasses="justify-content-center">
-            <h4 slot="header" class="title title-up">Modal title</h4>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-            the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large
-            language ocean. A small river named Duden flows by their place and supplies it with the necessary
-            regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your
-            mouth.</p>
+            <h4 slot="header" class="title title-up"></h4>
+            
+            <donation-form></donation-form>
+
             <template slot="footer">
                 <n-button type="danger" @click.native="hideModal">Close</n-button>
             </template>
@@ -32,6 +29,9 @@
 
     import { mapGetters, mapActions } from 'vuex';
     import { Card, Button, FormGroupInput, Tabs, TabPane, Parallax, Modal } from '@/components';
+    
+    import Notifications from './pages/components/Notifications'
+    import DonationForm from './components/DonationForm.vue'
 
     export default {
         name: "mainApp",
@@ -43,6 +43,8 @@
         components: {
             Modal,
             [Button.name]: Button,
+            DonationForm,
+            Notifications
         },
         methods: {
             init() {
@@ -76,6 +78,21 @@
             EventBus.$on('showDnForm', () => {
                 console.log("[MainApp] --> showDnForm - EventBus");
                 this.$store.dispatch('setOneTime');
+            })
+
+            EventBus.$on('dnFormSubmit', () => {
+                console.log("[MainApp] --> dnFormSubmit - EventBus");
+                this.$store.dispatch('hideModal');
+            })
+
+            EventBus.$on('startLoading', () => {
+                console.log("[MainApp] --> startLoading - EventBus");
+                this.$store.dispatch('startLoading');
+            })
+
+            EventBus.$on('endLoading', () => {
+                console.log("[MainApp] --> endLoading - EventBus");
+                this.$store.dispatch('endLoading');
             })
         }
     }
