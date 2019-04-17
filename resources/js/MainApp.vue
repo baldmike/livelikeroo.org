@@ -19,6 +19,16 @@
             </template>
         </modal>
 
+        <modal :show.sync="this.$store.state.modals.cpForm" headerClasses="justify-content-center">
+            <h4 slot="header" class="title title-up"></h4>
+            
+            <care-package></care-package>
+
+            <template slot="footer">
+                <n-button type="danger" @click.native="hideModal">Close</n-button>
+            </template>
+        </modal>
+
     </div>
 
 </template>
@@ -32,6 +42,7 @@
     
     import Notifications from './pages/components/Notifications'
     import DonationForm from './components/DonationForm.vue'
+    import CarePackage from './components/CarePackageForm.vue'
 
     export default {
         name: "mainApp",
@@ -93,6 +104,16 @@
             EventBus.$on('endLoading', () => {
                 console.log("[MainApp] --> endLoading - EventBus");
                 this.$store.dispatch('endLoading');
+            })
+
+            EventBus.$on('showCpForm', () => {
+                console.log("[MainApp] --> showCpForm - EventBus");
+                this.$store.dispatch('showCpForm');
+            })
+
+            EventBus.$on('hideCpForm', () => {
+                console.log("[MainApp] --> showCpForm - EventBus");
+                this.$store.dispatch('hideCpForm');
             })
         }
     }

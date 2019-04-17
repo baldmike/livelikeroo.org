@@ -28,6 +28,7 @@ export default new Vuex.Store({
             users: [],
             modals: {
                 dnForm: false,
+                cpForm: false,
             },
             alerts: {
                 info: true,
@@ -76,8 +77,12 @@ export default new Vuex.Store({
             Vue.cookie.delete('token');
             Vue.cookie.delete('user');
         },
+        showCpForm(state) {
+            state.modals.cPForm = true;
+        },
         hideModal(state) {
             state.modals.dnForm = false;
+            state.modals.cPForm = false;
         },
         startLoading(state) {
             state.loading = true;
@@ -118,6 +123,9 @@ export default new Vuex.Store({
         },
         hideModal(context) {
             context.commit('hideModal');
+        },
+        showCpForm(context) {
+            context.commit('showCpForm');
         },
         startLoading(context) {
             context.commit('startLoading');
