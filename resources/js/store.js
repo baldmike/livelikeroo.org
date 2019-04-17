@@ -78,11 +78,11 @@ export default new Vuex.Store({
             Vue.cookie.delete('user');
         },
         showCpForm(state) {
-            state.modals.cPForm = true;
+            state.modals.cpForm = true;
         },
         hideModal(state) {
             state.modals.dnForm = false;
-            state.modals.cPForm = false;
+            state.modals.cpForm = false;
         },
         startLoading(state) {
             state.loading = true;

@@ -112,9 +112,9 @@
                 this.$store.dispatch('showCpForm');
             })
 
-            EventBus.$on('hideCpForm', () => {
+            EventBus.$on('hideModal', () => {
                 console.log("[MainApp] --> showCpForm - EventBus");
-                this.$store.dispatch('hideCpForm');
+                this.$store.dispatch('hideModal');
             })
         }
     }
