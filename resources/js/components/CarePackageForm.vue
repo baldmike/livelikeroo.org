@@ -133,7 +133,7 @@
             <div class="sent" v-if="sent">This Form Has been submitted.</div>
             <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
                 <button type="submit" 
-                style="background-color: #fd7e14; border: none;" >Request a Care Package</b-button>
+                style="background-color: #fd7e14; border: none;" >Request a Care Package</button>
             </div>
 
             <div style="text-align: center; margin: 2rem;">
@@ -320,33 +320,6 @@
 <style lang="scss" scoped>
     
     
-    .cancel {
-        margin: 0 auto;
-        background-color: white;
-        color: #fd7e14;
-        width: 100%;
-    }
-
-    .cancel:hover {
-        background-color: red;
-        color: white;
-    }
-
-    .close-button {
-
-        color: white;
-        font-size: 2rem;
-        border-radius: 50%;
-        background-color: #fd7e14;
-        width: 34px;
-        height: 34px;
-        line-height: 2rem;
-        text-align: center;
-        margin: 10px;
-    }
-
-    .close-button:hover {
-        cursor: pointer;
-    }
+   
 </style>
 

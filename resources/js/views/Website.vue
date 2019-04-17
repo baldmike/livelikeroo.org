@@ -6,6 +6,7 @@
             <landing-page></landing-page>
             <donate-component></donate-component>
             <care-package></care-package>
+            <assistance-component></assistance-component>
             <events-component></events-component>
 
         </div>
@@ -19,6 +20,7 @@
     import DonateComponent from '../components/DonateComponent'
     import EventsComponent from '../components/EventsComponent'
     import CarePackage from '../components/CarePackageComponent'
+    import AssistanceComponent from '../components/AssistanceComponent'
     
     import { EventBus } from '../event-bus.js';
 
@@ -35,7 +37,8 @@
             LandingPage,
             DonateComponent,
             EventsComponent,
-            CarePackage
+            CarePackage,
+            AssistanceComponent
         },
         computed: {
 

@@ -22,7 +22,7 @@
                 aria-hidden="true"></i><p>Donate</p></router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/care_packages"><i class="now-ui-icons shopping_box roo"
+                <router-link class="nav-link" to="/care_package"><i class="now-ui-icons shopping_box roo"
                 aria-hidden="true"></i><p>Care Packages</p></router-link>
             </li>
             <li class="nav-item">

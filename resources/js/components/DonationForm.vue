@@ -11,7 +11,6 @@
             <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>
             <h3 class="center" v-if="isOneTime">ONE TIME DONATION</h3>
             
-        
             <div class="row">
                 <div class="col-md-12">
                     <p>Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please choose an amount and select one time or monthly donation. Thank You!</p>
