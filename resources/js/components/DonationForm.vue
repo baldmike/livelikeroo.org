@@ -40,8 +40,8 @@
             </div>
 
             <div class="row center">
-                <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" type="primary">One Time</n-button></div>
-                <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary">Monthly</n-button></div>
+                <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" block type="primary">One Time</n-button></div>
+                <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary" block>Monthly</n-button></div>
             </div>
 
 
@@ -53,8 +53,8 @@
             </div>  
 
             <div class="row center" id="donationType">
-                <div class="col-md-6"><n-button type="primary" @click.prevent.native="personalDonation">Personal</n-button></div>
-                <div class="col-md-6"><n-button type="primary" @click.prevent.native="memoryDonation">In Memory Of</n-button></div>
+                <div class="col-md-6"><n-button type="primary" @click.prevent.native="personalDonation" block>Personal</n-button></div>
+                <div class="col-md-6"><n-button type="primary" @click.prevent.native="memoryDonation" block>In Memory Of</n-button></div>
             </div>
 
             <div class="form-group" id="inMemoryGroup" v-if="form.inMemory" label="In Memory Of">
@@ -161,7 +161,7 @@
             <input type="hidden" name="_token" :value="csrf">
 
             <div class="form-group">
-                <div class="col-md-8 offset-md-2 center"><n-button v-if="isOneTime" type="submit" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }}</n-button></div>
+                <div class="col-md-8 offset-md-2 center"><n-button v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }}</n-button></div>
                 <div class="col-md-8 offset-md-2 center"><n-button v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}</n-button></div>
                 <div class="col-md-12 center"><img src="/images/llr_logo.png"></div>
             </div>

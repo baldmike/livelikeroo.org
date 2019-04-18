@@ -4,10 +4,13 @@
         <div>
 
             <landing-page/>
+            <div class="separator-line separator-primary"></div>
             <donate-component/>
+            <div class="separator-line separator-primary"></div>
             <care-package/>
-            
+            <div class="separator-line separator-primary"></div>
             <assistance-component/>
+            <div class="separator-line separator-primary"></div>
             <events-component/>
 
         </div>
@@ -65,4 +68,5 @@
 </script>
 
 <style lang="scss">
+    @import "../../sass/now-ui-kit/variables";
 </style>

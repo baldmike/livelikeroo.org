@@ -1,12 +1,12 @@
 <template>
  <!--     *********    PRICING 3     *********      -->
-    <div class="pricing-3 section-image" style="background-image: url('images/unsplash-pugina-blanket.jpg')" id="pricing-3">
+    <div class="pricing-3 section-image" style="background-image: url('images/unsplash-pugina-blanket.jpg'); min-height: 100%;" id="pricing-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
                     <h2 class="title">Donate to Live Like Roo</h2>
                     <h4 class="description">We have helped over 2000 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donation is tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
-                    <div class="section-space"></div>
+                    <!-- <div class="section-space"></div> -->
                 </div>
             </div>
             <div class="row">

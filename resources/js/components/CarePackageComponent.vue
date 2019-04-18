@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-8 ml-auto mr-auto text-center">
                         <h2 class="title">Care Packages</h2>
-                        <h4 class="description">Our Roo Cancer Care Packages include some of Roo’s favorite items-including a blanket (which has become a favorite of the packages), a gift card for McDonald’s, toys, treats, and a tennis ball. We have found that people and animals that receive these packages have their spirits lifted during one of the most difficult times of their lives. Though they are labor-intensive, we know they are the most important thing that we do because of the emotion behind each and every one. We love to see the animals living like Roo.</h4>
+                        
                     </div>
                 </div>
                 <div class="row">
@@ -18,9 +18,15 @@
                                 </div>
                                 <div class="description">
                                     <h4 class="info-title">Request a Care Package</h4>
-                                    <p>Please note that due to extremely high demand and very limited resources, we must ask for a donation of at least $10 in order to be able to continue to send care packages. If you're unable to afford this, we can still help.</p>
+                                    <h4 class="description">Our Roo Cancer Care Packages include some of Roo’s favorite items-including a blanket (which has become a favorite of the packages), a gift card for McDonald’s, toys, treats, and a tennis ball. We have found that people and animals that receive these packages have their spirits lifted during one of the most difficult times of their lives. Though they are labor-intensive, we know they are the most important thing that we do because of the emotion behind each and every one. We love to see the animals living like Roo.</h4>
 
+                                    <div class="section-space"></div>
+                                    
                                     <n-button @click.prevent.native="showCpForm" type="primary" block>Request a Care Package</n-button>
+                                    
+                                    <div class="section-space"></div>
+
+                                    <p>Please note that due to extremely high demand and very limited resources, we must ask for a donation of at least $10 in order to be able to continue to send care packages. If you're unable to afford this, we can still help.</p>
                                 </div>
 
                                 <div class="section-space"></div>

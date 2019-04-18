@@ -7,22 +7,20 @@
                 <div class="col-md-4 text-center">
                     <div class="section-space"></div>
                     <div class="section-space"></div>
+                    <div class="section-space"></div>
+                    <div class="section-space"></div>
+                    <div class="section-space"></div>
                     <h2 class="title">Financial Assistance</h2>
                     <h4 class="description">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you both emotionally and financially. Please fill out the grant form below, and we will email you the details of the review process.</h4>
                     <div class="section-space"></div>
                 </div>
 
 
-                <div class="col-md-4 offset-md-4">
+                <div class="col-md-3 offset-md-5">
                     <div class="section-space"></div>
-                    
-                    <div class="info info-hover">
-                        <div class="icon icon-primary icon-circle">
-                            <i class="now-ui-icons ui-2_favourite-28"></i>
-                        </div>
-                        <h4 class="info-title">Request Assistance</h4>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia praesentium, debitis dolorum delectus perspiciatis, ab adipisci maiores blanditiis, laboriosam optio hic error temporibus. Libero, nihil nisi officiis provident quod asperiores.</p>
-                    </div>
+                    <div class="section-space"></div>
+                    <div class="section-space"></div>
+                    <n-button @click.prevent.native="showFnForm" type="primary" block>Request Financial Assistance</n-button>
                 </div>
             </div>
 
