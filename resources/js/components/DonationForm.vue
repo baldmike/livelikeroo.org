@@ -4,8 +4,8 @@
 
         <form id="donation-form" @submit.prevent="pay()" @reset="resetForm()">
 
-            <img v-if="isOneTime" src="/images/headline3.jpg" fluid>
-            <img v-if="isMonthly" src="/images/headline2.jpg" fluid>
+            <img v-if="isOneTime" src="/images/headline2.jpg" fluid>
+            <img v-if="isMonthly" src="/images/headline3.jpg" fluid>
 
             <!-- DONATION AMOUNT -->
             <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>

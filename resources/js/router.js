@@ -37,7 +37,7 @@ export const router = new VueRouter({
                     path: '/care_package',
                     components: {default: CarePackageComponent, header: Navbar},
                     title: 'CarePackage',
-                    props: {header: {colorOnScroll: 300}}
+                    // props: {header: {colorOnScroll: 300}}
                 },
                 {
                     path: '/assistance',
