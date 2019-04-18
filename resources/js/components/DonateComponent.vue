@@ -21,7 +21,7 @@
                         <n-button type="primary" round>Select</n-button>
                     </card>
                 </div>
-                <div class="col-md-4 offset-md-4">
+                <div class="col-md-4 ml-auto mr-auto">
                     <card type="pricing" raised color="orange">
                         <img src="/images/headline3.jpg" style="margin-bottom: 15px;">
                         <h3>Make a</h3>

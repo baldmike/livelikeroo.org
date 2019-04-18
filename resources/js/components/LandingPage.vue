@@ -55,6 +55,8 @@
                     </div>
                 </div>
                 <div class="col-md-11">
+                    <br>
+                    <br>
                     <p class="description">
                         Roo passed away on September 8th. It was one of the toughest days, but it was time to let go. We miss him so much and we will always have a place in our hearts for this boy that changed the way thousands of people lived. He is one in a million and we are so grateful that he was ours and that we were able to share him with all of you.
                     </p>
