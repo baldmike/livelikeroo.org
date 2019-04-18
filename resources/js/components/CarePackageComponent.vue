@@ -16,23 +16,15 @@
                                 <div class="icon icon-white">
                                     <i class="now-ui-icons emoticons_satisfied"></i>
                                 </div>
-                                <!-- <div class="description">
+                                <div class="description">
                                     <h4 class="info-title">Request a Care Package</h4>
                                     <p>Please note that due to extremely high demand and very limited resources, we must ask for a donation of at least $10 in order to be able to continue to send care packages. If you're unable to afford this, we can still help.</p>
 
-                                    <n-button @click.prevent.native="showCpForm" type="primary">Request a Care Package</n-button>
-                                </div> -->
+                                    <n-button @click.prevent.native="showCpForm" type="primary" block>Request a Care Package</n-button>
+                                </div>
 
                                 <div class="section-space"></div>
-                                
-                                <div class="info info-hover">
-                                    <div class="icon icon-primary icon-circle" @click.prevent.native="showCpForm">
-                                        <i class="now-ui-icons shopping_box"></i>
-                                    </div>
-                                    <h4 class="info-title">Request a Care Package</h4>
-                                    <p class="description">Please note that due to extremely high demand and very limited resources, we must ask for a donation of at least $10 in order to be able to continue to send care packages. If you're unable to afford this, we can still help.</p>
-                                </div>
-                            <!-- </div> -->
+                              
                             </template>
                         </card>
                     </div>

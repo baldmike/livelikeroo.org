@@ -8,10 +8,11 @@
                 <div class="col-md-3 offset-md-1" style="position: absolute; bottom: 40%; text-align: right;">
                     <h4 class="description">"To know that even one life has breathed easier because you lived here. This is to have succeeded."</h4>
                     <small>Ralph Waldo Emerson</small>
+                    <small>Ralph Waldo Emerson</small><small>Ralph Waldo Emerson</small><small>Ralph Waldo Emerson</small>
                 </div>
 
                 <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
-                    <n-button type="primary" round block @click.native="showDnForm">Donate</n-button>
+                    <n-button type="primary" block @click.native="showDnForm">Donate</n-button>
                 </div>
             </div>
 
