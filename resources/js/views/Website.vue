@@ -3,11 +3,12 @@
     <transition name="fade">
         <div>
 
-            <landing-page></landing-page>
-            <donate-component></donate-component>
-            <care-package></care-package>
-            <assistance-component></assistance-component>
-            <events-component></events-component>
+            <landing-page/>
+            <donate-component/>
+            <care-package/>
+            <events-component/>
+            <assistance-component/>
+            
 
         </div>
     </transition>

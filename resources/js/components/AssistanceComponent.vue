@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-6 ml-auto mr-auto text-center">
+            <div class="col-md-8 ml-auto mr-auto text-center">
                 <h2 class="title">Financial Assistance</h2>
-                <h4 class="description">We have helped over 2000 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donations are tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
+                <h4 class="description">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you both emotionally and financially. Please fill out the grant form below, and we will email you the details of the review process.</h4>
                 <div class="section-space"></div>
             </div>
         </div>
@@ -17,7 +17,7 @@
                         </div> -->
                         <div class="description">
                             <h4>Need Some Help?</h4>
-                            <p>Your designer will come back to you with an initial set of ideas.</p>
+                            <p>Fill out the Assistance Request Form below, and we will email you once your application has been reviewed.</p>
 
                             <n-button @click.prevent.native="showCpForm" type="primary">Request Assistance</n-button>
                         </div>
