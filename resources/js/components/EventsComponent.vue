@@ -5,7 +5,7 @@
             <div class="features-8 section-image" style="background-image: url('images/AsianTimesSq.jpeg')">
                 <div class="col-md-4 ml-auto mr-auto text-center">
                     <h1 class="title">EVENTS</h1>
-                    <h4 class="description" style="background-color: black; color: white; opacity: .7">Whether you're a dog lover looking for more of your kind, or just someone who likes a good, sometimes weird, time - our events always put the sing in fundraising! Click on an event and you'll be taken to that FaceBook page, where you can get more information, register/sign up or buy tickets. Come play with us!</h4>
+                    <h4 class="description" style="background-color: black; color: white; opacity: .7">Whether you're a dog lover looking for more of our kind, or just someone who likes a good, sometimes weird, time - our events always put the sing in fundraising! Click on an event and you'll be taken to that FaceBook page, where you can get more information, register/sign up or buy tickets. Come play with us!</h4>
                 </div>
                 <div class="container">
                     <div class="row">

@@ -92,6 +92,16 @@
                 this.$store.dispatch('setOneTime');
             })
 
+            EventBus.$on('setOneTime', () => {
+                console.log("[MainApp] --> showDnForm - EventBus");
+                this.$store.dispatch('setOneTime');
+            })
+
+            EventBus.$on('setMonthly', () => {
+                console.log("[MainApp] --> showDnForm - EventBus");
+                this.$store.dispatch('setMonthly');
+            })
+
             EventBus.$on('dnFormSubmit', () => {
                 console.log("[MainApp] --> dnFormSubmit - EventBus");
                 this.$store.dispatch('hideModal');

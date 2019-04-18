@@ -61,6 +61,7 @@ export default new Vuex.Store({
             state.users = payload.data;
         },
         setOneTime(state) {
+            console.log("setting that one time");
             state.oneTime = true;
             state.monthly = false;
             state.modals.dnForm = true;

@@ -14,7 +14,7 @@
                         <card type="background" raised color="transparent" style="background-image: url('images/unsplash-brindle-beach-leio-mclaren.jpg')">
                             <template slot="info">
                                 <div class="icon icon-white">
-                                    <i class="now-ui-icons business_bulb-63"></i>
+                                    <i class="now-ui-icons emoticons_satisfied"></i>
                                 </div>
                                 <div class="description">
                                     <h4 class="info-title">Request a Care Package</h4>
@@ -42,6 +42,7 @@
     export default {
         name: 'Assistance',
         components: {
+            Card,
             [Button.name]: Button,
             [FormGroupInput.name]: FormGroupInput,
             Modal
@@ -52,10 +53,6 @@
             }
         },
         computed: {},
-        components: {
-            Card,
-            [Button.name]: Button,
-        },
         methods: {
             init() {
                 console.log("[Assistance Comp -- init method");

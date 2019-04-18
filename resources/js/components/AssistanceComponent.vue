@@ -1,42 +1,51 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 ml-auto mr-auto text-center">
-                <h2 class="title">Financial Assistance</h2>
-                <h4 class="description">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you both emotionally and financially. Please fill out the grant form below, and we will email you the details of the review process.</h4>
-                <div class="section-space"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Photo by Jamie Street on Unsplash -->
-                <card type="background" raised color="transparent" style="background-image: url('images/unsplash-dog-stick.jpg')">
-                    <template slot="info">
-                        <!-- <div class="icon icon-white">
-                            <i class="now-ui-icons business_bulb-63"></i>
-                        </div> -->
-                        <div class="description">
-                            <h4>Need Some Help?</h4>
-                            <p>Fill out the Assistance Request Form below, and we will email you once your application has been reviewed.</p>
+<transition name="fade">
 
-                            <n-button @click.prevent.native="showCpForm" type="primary">Request Assistance</n-button>
+    <div class="pricing-3 section-image" style="background-image: url('images/unsplash-dog-stick.jpg'); height: 100vh;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="section-space"></div>
+                    <div class="section-space"></div>
+                    <h2 class="title">Financial Assistance</h2>
+                    <h4 class="description">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you both emotionally and financially. Please fill out the grant form below, and we will email you the details of the review process.</h4>
+                    <div class="section-space"></div>
+                </div>
+
+
+                <div class="col-md-4 offset-md-4">
+                    <div class="section-space"></div>
+                    
+                    <div class="info info-hover">
+                        <div class="icon icon-primary icon-circle">
+                            <i class="now-ui-icons ui-2_favourite-28"></i>
                         </div>
-                    </template>
-                </card>
+                        <h4 class="info-title">Request Assistance</h4>
+                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia praesentium, debitis dolorum delectus perspiciatis, ab adipisci maiores blanditiis, laboriosam optio hic error temporibus. Libero, nihil nisi officiis provident quod asperiores.</p>
+                    </div>
+                </div>
             </div>
+
+            
+
+           <!-- <n-button @click.prevent.native="showCpForm" type="primary">Request Assistance</n-button> -->
         </div>
     </div>
+</transition>
 </template>
 
 <script>
   import { Card, Button, Tabs, TabPane, Parallax } from '@/components';
+  
+  import { EventBus } from '../event-bus.js';
 
   export default {
     components: {
       Card,
       Tabs,
       TabPane,
-      [Button.name]: Button
+      [Button.name]: Button,
+      Parallax
     },
     data() {
       return {

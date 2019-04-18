@@ -6,9 +6,9 @@
             <landing-page/>
             <donate-component/>
             <care-package/>
-            <events-component/>
-            <assistance-component/>
             
+            <assistance-component/>
+            <events-component/>
 
         </div>
     </transition>
@@ -19,10 +19,11 @@
 
     import LandingPage from '../components/LandingPage'
     import DonateComponent from '../components/DonateComponent'
-    import EventsComponent from '../components/EventsComponent'
+    
     import CarePackage from '../components/CarePackageComponent'
     import AssistanceComponent from '../components/AssistanceComponent'
-    
+    import EventsComponent from '../components/EventsComponent'
+
     import { EventBus } from '../event-bus.js';
 
     export default {

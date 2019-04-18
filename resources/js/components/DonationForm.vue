@@ -16,20 +16,20 @@
                     <p>Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please choose an amount and select one time or monthly donation. Thank You!</p>
                 </div>
                 <hr>
-                <div class="col-md-3"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary"><i class="fa fa-heart"></i>  $10</n-button></div>
-                <div class="col-md-3"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary"><i class="fa fa-heart"></i> $25</n-button></div>
-                <div class="col-md-3"><n-button @click.prevent.native="donate($event,'50')"   outline round type="primary"><i class="fa fa-heart"></i> $50</n-button></div>
-                <div class="col-md-3"><n-button @click.prevent.native="donate($event,'100')" outline round type="primary"><i class="fa fa-heart"></i>$100</n-button></div>
+                <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary"><i class="fa fa-heart"></i>  $10</n-button></div>
+                <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary"><i class="fa fa-heart"></i> $25</n-button></div>
+                <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'50')"   outline round type="primary"><i class="fa fa-heart"></i> $50</n-button></div>
+                <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'100')" outline round type="primary"><i class="fa fa-heart"></i>$100</n-button></div>
             </div>
 
             <div class="row">
-                <div class="col-md-6 offset-md-3">
+                <div class="col-md-6">
                     <p>Or Enter an amount:</p>
                 </div>
             </div>
             
             <div class="row">
-                <div class="col-md-4 offset-md-4" style="font-size: 2rem; text-align: center !important;">
+                <div class="col-md-4 ml-auto mr-auto" style="font-size: 2rem; text-align: center !important;">
                     <fg-input 
                     id="amount"
                     v-on:input="clearButtons"
@@ -40,8 +40,8 @@
             </div>
 
             <div class="row center">
-                <div class="col-md-6"><n-button @click.prevent.native="toggleOneTime" type="primary">One Time</n-button></div>
-                <div class="col-md-6"><n-button @click.prevent.native="toggleMonthly" type="primary">Monthly</n-button></div>
+                <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" type="primary">One Time</n-button></div>
+                <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary">Monthly</n-button></div>
             </div>
 
 

@@ -3,9 +3,9 @@
     <div class="pricing-3 section-image" style="background-image: url('images/unsplash-pugina-blanket.jpg')" id="pricing-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-5 text-center">
+                <div class="col-md-5">
                     <h2 class="title">Donate to Live Like Roo</h2>
-                    <h4 class="description">We have helped over 2000 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donations are tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
+                    <h4 class="description">We have helped over 2000 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donation is tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
                     <div class="section-space"></div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                            One Time
                         </h1>
                         <h3>Donation</h3>
-                        <n-button type="primary" round>Select</n-button>
+                        <n-button @click.prevent.native="oneTime" type="primary" round>Select</n-button>
                     </card>
                 </div>
                 <div class="col-md-4 ml-auto mr-auto">
@@ -29,7 +29,7 @@
                            Monthly
                         </h1>
                         <h3>Donation</h3>
-                        <n-button type="neutral" round>Select</n-button>
+                        <n-button @click.native="monthly" type="neutral" round>Select</n-button>
 
                     </card>
                 </div>
@@ -41,6 +41,7 @@
 
 <script>
   import { Card, Button, Tabs, TabPane, Parallax } from '@/components';
+  import { EventBus } from '../event-bus.js';
 
   export default {
     components: {
@@ -53,6 +54,17 @@
       return {
         
       }
+    },
+    methods: {
+        oneTime() {
+            console.log("[DonateComponent] - ONE TIME")
+            EventBus.$emit('setOneTime');
+        },
+
+        monthly() {
+            console.log("[DonateComponent] - MONTHLY")
+            EventBus.$emit('setMonthly');
+        }
     }
   }
 </script>
