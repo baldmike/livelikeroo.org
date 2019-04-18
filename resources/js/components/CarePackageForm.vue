@@ -1,5 +1,5 @@
 <template>
-    <div v-if="show" class="form-bkgd">
+    <div v-if="show">
         
         <div class="close-button" @click="hide"><i class="fa fa-times"></i></div>
 

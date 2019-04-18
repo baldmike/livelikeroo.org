@@ -6,6 +6,10 @@ import CarePackageComponent from './components/CarePackageComponent.vue'
 import AssistanceComponent from './components/AssistanceComponent.vue'
 import Website from './views/Website.vue';
 import Navbar from './components/Navbar.vue'
+import Footer from './components/FooterComponent.vue'
+import FaqComponent from './components/FaqComponent.vue'
+import PrivacyComponent from './components/PrivacyComponent.vue'
+import ContactComponent from './components/ContactComponent.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -17,32 +21,48 @@ export const router = new VueRouter({
             children: [
                 {
                     path: '',
-                    components: {default: Website, header: Navbar},
+                    components: {default: Website, header: Navbar, footer: Footer},
                     title: 'Website',
                     props: {header: {colorOnScroll: 700}}
                 },
                 {
                     path: '/donate',
-                    components: {default: DonateComponent, header: Navbar},
+                    components: {default: DonateComponent, header: Navbar, footer: Footer},
                     title: 'Donate',
                     props: {header: {colorOnScroll: 800}}
                 },
                 {
                     path: '/events',
-                    components: {default: EventsComponent, header: Navbar},
+                    components: {default: EventsComponent, header: Navbar, footer: Footer},
                     title: 'Events',
                     props: {header: {colorOnScroll: 800}}
                 },
                 {
                     path: '/care_package',
-                    components: {default: CarePackageComponent, header: Navbar},
+                    components: {default: CarePackageComponent, header: Navbar, footer: Footer},
                     title: 'CarePackage',
                     // props: {header: {colorOnScroll: 300}}
                 },
                 {
                     path: '/assistance',
-                    components: {default: AssistanceComponent, header: Navbar},
+                    components: {default: AssistanceComponent, header: Navbar, footer: Footer},
                     title: 'Assistance',
+                    props: {header: {colorOnScroll: 800}}
+                },
+                {
+                    path: '/faq',
+                    components: {default: FaqComponent, header: Navbar, footer: Footer},
+                    title: 'Faq',
+                },
+                {
+                    path: '/privacy',
+                    components: {default: PrivacyComponent, header: Navbar, footer: Footer},
+                    title: 'Privacy',   
+                },
+                {
+                    path: '/contact',
+                    components: {default: ContactComponent, header: Navbar, footer: Footer},
+                    title: 'Contact',   
                     props: {header: {colorOnScroll: 800}}
                 }
                
