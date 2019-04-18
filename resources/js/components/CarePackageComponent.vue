@@ -26,7 +26,7 @@
                                 <div class="section-space"></div>
                                 
                                 <div class="info info-hover">
-                                    <div class="icon icon-primary icon-circle">
+                                    <div class="icon icon-primary icon-circle" @click.prevent.native="showCpForm">
                                         <i class="now-ui-icons shopping_box"></i>
                                     </div>
                                     <h4 class="info-title">Request a Care Package</h4>

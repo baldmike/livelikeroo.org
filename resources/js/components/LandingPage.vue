@@ -10,10 +10,14 @@
                     <small>Ralph Waldo Emerson</small>
                 </div>
 
-                <div class="col-md-2 offset-md-8" style="position: absolute; bottom: 20%; color: #fd7e14; z-index: 4;">
+                <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
                     <n-button type="primary" round block @click.native="showDnForm">Donate</n-button>
-
                 </div>
+            </div>
+
+            <div class="row">
+                <h1 style="color: #fd7e14; position: absolute; bottom: 30px; left: 20vw; font-size: 10vw;">#LiveLikeRoo</h1>
+
             </div>
         </div>
         <div class="container">
