@@ -8,13 +8,15 @@
                 <br>
                 <h2 class="text-center">LOGIN</h2>
 
+                <!-- TO DO - ADDON ICONS -->
                 <fg-input id="email"
                         type="email"
                         v-model="form.email"
                         :state="!$v.form.email.$invalid"
                         addon-left-icon="now-ui-icons users_circle-08"
                         placeholder="Email" />
-    
+
+                <!-- TO DO - ADDON ICONS -->
                 <fg-input id="password"
                         type="password"
                         v-model="form.password" 
@@ -36,7 +38,7 @@
 import { mapActions, mapGetters } from "vuex";
 import { validationMixin } from "vuelidate";
 import { required, minLength, email } from "vuelidate/lib/validators";
-import { Button, FormGroupInput } from '@/components';
+import { Button, FormGroupInput, Card } from '@/components';
 
 import { EventBus } from '../event-bus.js';
 
@@ -53,8 +55,8 @@ export default {
     },
     components: {
         [Button.name]: Button,
-        [FormGroupInput.name]: FormGroupInput
-
+        [FormGroupInput.name]: FormGroupInput,
+        Card
     },
     mixins: [
       validationMixin
@@ -73,6 +75,8 @@ export default {
     },
     methods: {
       login() {
+        console.log('[LoginComponent] - login');
+
         const formData = {
           email: this.form.email,
           password: this.form.password,
@@ -87,7 +91,7 @@ export default {
             auth.setAuthToken(data.token)
             auth.login(data.token, data.user.email);
             
-            console.log("YOU DID IT! " + data.message);
+            this.$store.dispatch('hideModal');
 
             this.$router.push({path: 'dashboard'});
         })

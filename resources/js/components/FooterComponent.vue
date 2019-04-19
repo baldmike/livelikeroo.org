@@ -15,8 +15,18 @@
                         <router-link to="contact">CONTACT</router-link>
                     </li>
                     <li>
-                        <router-link to="/">
+                        <router-link to="/" v-if='!isAuthenticated'>
                             <span v-on:click="showLogin">LOGIN</span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="dashboard" v-if="isAuthenticated">
+                            <span v-on:click="dashboard">DASHBOARD</span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/" v-if="isAuthenticated">
+                            <span v-on:click="logout">LOGOUT</span>
                         </router-link>
                     </li>
                 </ul>
@@ -32,12 +42,13 @@
 
 <script>
 
-  import { EventBus } from '../event-bus.js';
+    import { mapActions, mapGetters } from "vuex";
+    import { EventBus } from '../event-bus.js';
 
-  export default {
-    props: {
-      backgroundColor: String,
-      type: String
+    export default {
+        props: {
+        backgroundColor: String,
+        type: String
     },
     data(){
         return {
@@ -48,9 +59,15 @@
         showLogin(){
             console.log('LOGIN ATTEMPTED');
             EventBus.$emit('showLogin');
+        },
+        logout(){
+            console.log('[FooterComponent] - logout');
+            EventBus.$emit('logout');
         }
     },
-  }
+    computed: mapGetters(['isAuthenticated', 'isMonthly', 'isOneTime']),
+    }
 </script>
+
 <style>
 </style>

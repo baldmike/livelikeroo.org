@@ -19,7 +19,6 @@
             </template>
         </modal>
 
-
         <modal :show.sync="this.$store.state.modals.cpForm" headerClasses="justify-content-center">
             <h4 slot="header" class="title title-up"></h4>
             
@@ -106,12 +105,12 @@
             })
 
             EventBus.$on('setOneTime', () => {
-                console.log("[MainApp] --> showDnForm - EventBus");
+                console.log("[MainApp] --> setOneTime - EventBus");
                 this.$store.dispatch('setOneTime');
             })
 
             EventBus.$on('setMonthly', () => {
-                console.log("[MainApp] --> showDnForm - EventBus");
+                console.log("[MainApp] --> setMonthly - EventBus");
                 this.$store.dispatch('setMonthly');
             })
 
@@ -136,14 +135,21 @@
             })
 
             EventBus.$on('showLogin', () => {
-                console.log("[MainApp] --> showCpForm - EventBus");
+                console.log("[MainApp] --> showLogin - EventBus");
                 this.$store.dispatch('showLogin');
             })
 
             EventBus.$on('hideModal', () => {
-                console.log("[MainApp] --> showCpForm - EventBus");
+                console.log("[MainApp] --> hideModal - EventBus");
                 this.$store.dispatch('hideModal');
             })
+
+            EventBus.$on('logout', () => {
+                console.log("[MainApp] --> LOGOUT - EventBus");
+                this.$store.dispatch('logout');
+            })
+
+
         }
     }
 
