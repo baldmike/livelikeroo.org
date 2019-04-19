@@ -12,12 +12,14 @@
                         type="email"
                         v-model="form.email"
                         :state="!$v.form.email.$invalid"
+                        addon-left-icon="now-ui-icons users_circle-08"
                         placeholder="Email" />
     
                 <fg-input id="password"
                         type="password"
                         v-model="form.password" 
                         :state="!$v.form.password.$invalid"
+                        addon-left-icon="now-ui-icons users_circle-08"
                         placeholder="Password"/>
         
                 <n-button type="primary" block @click.prevent.native="login" :disabled="$v.form.$invalid">

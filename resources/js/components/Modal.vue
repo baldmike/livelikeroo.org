@@ -30,9 +30,9 @@
                             <slot></slot>
                         </div>
 
-                        <div class="modal-footer" :class="footerClasses">
+                        <!-- <div class="modal-footer" :class="footerClasses">
                             <slot name="footer"></slot>
-                        </div>
+                        </div> -->
                     </slot>
                 </div>
             </div>
