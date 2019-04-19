@@ -12,16 +12,16 @@
                         type="email"
                         v-model="form.email"
                         :state="!$v.form.email.$invalid"
-                        placeholder="Enter email" />
+                        placeholder="Email" />
     
                 <fg-input id="password"
                         type="password"
                         v-model="form.password" 
                         :state="!$v.form.password.$invalid"
-                        placeholder="Enter email"/>
+                        placeholder="Password"/>
         
                 <n-button type="primary" block @click.prevent.native="login" :disabled="$v.form.$invalid">
-                    Login
+                    LOGIN
                 </n-button>
             </card>
         </div>
