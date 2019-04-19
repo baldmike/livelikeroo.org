@@ -8,7 +8,6 @@
                         <card type="contact" raised header-classes="text-center" style="margin-top: 100px;">
                             <h4 slot="header" class="card-title">Contact Us</h4>
 
-
                             <div class="row">
                                 <div class="col-md-6 pr-2">
                                     <label>First Name</label>

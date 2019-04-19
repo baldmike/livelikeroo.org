@@ -17245,12 +17245,12 @@ fieldset[disabled] .btn-link.active {
 
 .input-group.input-group-focus .input-group-prepend .input-group-text,
 .form-group.input-group-focus .input-group-prepend .input-group-text {
-  border-left: 1px solid #f96332;
+  border-left: 1px solid #fd7e14;
 }
 
 .input-group.input-group-focus .input-group-append .input-group-text,
 .form-group.input-group-focus .input-group-append .input-group-text {
-  border-right: 1px solid #f96332;
+  border-right: 1px solid #fd7e14;
 }
 
 .input-group.input-group-focus.no-border .input-group-prepend .input-group-text,
@@ -21373,7 +21373,7 @@ img {
   top: 36%;
   left: 44%;
   font-size: 65px;
-  color: #f96332;
+  color: #fd7e14;
   padding: 1px;
 }
 

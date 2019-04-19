@@ -29,6 +29,7 @@ export default new Vuex.Store({
             modals: {
                 dnForm: false,
                 cpForm: false,
+                login: false
             },
             alerts: {
                 info: false,
@@ -81,9 +82,13 @@ export default new Vuex.Store({
         showCpForm(state) {
             state.modals.cpForm = true;
         },
+        showLogin(state) {
+            state.modals.login = true;
+        },
         hideModal(state) {
             state.modals.dnForm = false;
             state.modals.cpForm = false;
+            state.modals.login = false;
         },
         startLoading(state) {
             state.loading = true;
@@ -105,14 +110,18 @@ export default new Vuex.Store({
                 context.commit('setUser', user)
             })
         },
-
         setOneTime(context) {
             context.commit('setOneTime');
         },
         setMonthly(context) {
             context.commit('setMonthly');
         },
-
+        showCpForm(context) {
+            context.commit('showCpForm');
+        },
+        showLogin(context) {
+            context.commit('showLogin');
+        },
         getAllUsers(context) {
             axios.call("get", "/api/users").then(({ data }) => {
                 // console.log("[API call to users]: " + JSON.stringify(data));
@@ -124,9 +133,6 @@ export default new Vuex.Store({
         },
         hideModal(context) {
             context.commit('hideModal');
-        },
-        showCpForm(context) {
-            context.commit('showCpForm');
         },
         startLoading(context) {
             context.commit('startLoading');

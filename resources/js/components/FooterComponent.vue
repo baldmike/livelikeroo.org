@@ -15,7 +15,9 @@
                         <router-link to="contact">CONTACT</router-link>
                     </li>
                     <li>
-                        <router-link to="login">LOGIN</router-link>
+                        <router-link to="/">
+                            <span v-on:click="showLogin">LOGIN</span>
+                        </router-link>
                     </li>
                 </ul>
             </nav>
@@ -26,17 +28,27 @@
         </div>
     </footer>
 </template>
+
 <script>
+
+  import { EventBus } from '../event-bus.js';
+
   export default {
     props: {
       backgroundColor: String,
       type: String
     },
     data(){
-      return {
-        year: new Date().getFullYear()
-      }
-    }
+        return {
+            year: new Date().getFullYear()
+        }
+    },
+    methods: {
+        showLogin(){
+            console.log('LOGIN ATTEMPTED');
+            EventBus.$emit('showLogin');
+        }
+    },
   }
 </script>
 <style>

@@ -19,10 +19,21 @@
             </template>
         </modal>
 
+
         <modal :show.sync="this.$store.state.modals.cpForm" headerClasses="justify-content-center">
             <h4 slot="header" class="title title-up"></h4>
             
             <care-package></care-package>
+
+            <template slot="footer">
+                <n-button type="danger" @click.native="hideModal">Close</n-button>
+            </template>
+        </modal>
+
+        <modal :show.sync="this.$store.state.modals.login" headerClasses="justify-content-center">
+            <h4 slot="header" class="title title-up"></h4>
+            
+            <login/>
 
             <template slot="footer">
                 <n-button type="danger" @click.native="hideModal">Close</n-button>
@@ -43,6 +54,7 @@
     import Notifications from './pages/components/Notifications'
     import DonationForm from './components/DonationForm.vue'
     import CarePackage from './components/CarePackageForm.vue'
+    import Login from './components/LoginComponent.vue'
 
     export default {
         name: "mainApp",
@@ -56,7 +68,8 @@
             [Button.name]: Button,
             DonationForm,
             Notifications,
-            CarePackage
+            CarePackage,
+            Login
         },
         methods: {
             init() {
@@ -120,6 +133,11 @@
             EventBus.$on('showCpForm', () => {
                 console.log("[MainApp] --> showCpForm - EventBus");
                 this.$store.dispatch('showCpForm');
+            })
+
+            EventBus.$on('showLogin', () => {
+                console.log("[MainApp] --> showCpForm - EventBus");
+                this.$store.dispatch('showLogin');
             })
 
             EventBus.$on('hideModal', () => {
