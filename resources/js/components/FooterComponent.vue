@@ -20,8 +20,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link to="dashboard" v-if="isAuthenticated">
-                            <span v-on:click="dashboard">DASHBOARD</span>
+                        <router-link to="dashboard" v-if="isAuthenticated">DASHBOARD
                         </router-link>
                     </li>
                     <li>

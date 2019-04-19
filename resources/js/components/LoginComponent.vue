@@ -9,10 +9,10 @@
                 <h2 class="text-center">LOGIN</h2>
 
                 <!-- TO DO - ADDON ICONS -->
-                <fg-input id="email"
+                <fg-input id="emailLogin"
                         type="email"
-                        v-model="form.email"
-                        :state="!$v.form.email.$invalid"
+                        v-model="form.emailLogin"
+                        :state="!$v.form.emailLogin.$invalid"
                         addon-left-icon="now-ui-icons users_circle-08"
                         placeholder="Email" />
 
@@ -48,7 +48,7 @@ export default {
       return {
         
         form: {
-          email: "",
+          emailLogin: "",
           password: "",
         }
       }
@@ -67,7 +67,7 @@ export default {
           required,
           minLength: minLength(8)
         },
-        email: {
+        emailLogin: {
           required,
           email
         }
@@ -78,7 +78,7 @@ export default {
         console.log('[LoginComponent] - login');
 
         const formData = {
-          email: this.form.email,
+          email: this.form.emailLogin,
           password: this.form.password,
         };
 

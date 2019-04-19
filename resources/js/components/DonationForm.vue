@@ -100,17 +100,17 @@
 
 
             <fg-input 
-                    id="firstName"
+                    id="firstNameDnForm"
                     class="input-lg"
                     placeholder="First Name"
-                    v-model="form.firstName">
+                    v-model="form.firstNameDnForm">
             </fg-input>
 
             <fg-input
-                    id="lastName"
+                    id="lastNameDnform"
                     class="input-lg"
                     placeholder="Last Name"
-                    v-model="form.lastName">
+                    v-model="form.lastNameDnForm">
             </fg-input>
 
             <fg-input
@@ -189,8 +189,8 @@
                     email: '',
                     password: '',
                     repeatPassword: '',
-                    firstName: '',
-                    lastName: '',
+                    firstNameDnForm: '',
+                    lastNameDnForm: '',
 
                     name_on_card: '',
                     personal: true,
@@ -474,12 +474,12 @@
                 this.form.amount = '10';
                 this.form.email = '';
                 this.form.name_on_card = '';
-                this.form.firstName = '';
-                this.form.lastName = '';
+                this.form.firstNameDnForm = '';
+                this.form.lastNameDnForm = '';
                 this.form.password = '';
                 this.form.repeatPassword = '';
-                this.form.firstName = '';
-                this.form.lastName = '';
+                this.form.firstNameDnForm = '';
+                this.form.lastNameDnForm = '';
 
                 this.form.personal = true;
                 this.form.inHonor = false;
