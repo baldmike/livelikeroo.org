@@ -6,7 +6,10 @@
                     <img v-lazy="'images/llr_logo.png'" alt="Live Like Roo Logo">
                 </div>
                 <br>
+                <div class="error" v-if="errors">Invalid Credentials. Please try again.</div>
+                <br>
                 <h2 class="text-center">LOGIN</h2>
+                
 
                 <!-- TO DO - ADDON ICONS -->
                 <fg-input id="emailLogin"
@@ -50,7 +53,8 @@ export default {
         form: {
           emailLogin: "",
           password: "",
-        }
+        },
+        loginError: false,
       }
     },
     components: {
@@ -84,6 +88,7 @@ export default {
 
         console.log("[LoginComponent] - LOGIN - FORM DATA SET");
 
+        let self = this;
         axios.post("/api/login", formData).then(({data}) => {
             console.log("login api hit: " + data.user)
             this.$cookie.set('token', data.token)
@@ -96,6 +101,7 @@ export default {
             this.$router.push({path: 'dashboard'});
         })
         .catch(function (error) {
+          self.loginError = true;
           
           console.log("[LoginComponent] - api/login call: " + error);
         
@@ -106,10 +112,25 @@ export default {
         console.log("[LoginComponent]->register")
       }
     },
-    computed: mapGetters(['isAuthenticated']),
+    computed: {
+        errors() {
+            return this.loginError;
+        },
+    ...mapGetters(['isAuthenticated']),
+    },
     mounted() {
       
     }
 }
-
 </script>
+
+<style>
+    .error {
+        width: 100%;
+        background: red;
+        text-align: center;
+        color: white;
+        border: 1px solid black;
+        
+    }
+</style>

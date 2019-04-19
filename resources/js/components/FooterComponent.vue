@@ -15,7 +15,7 @@
                         <router-link to="contact">CONTACT</router-link>
                     </li>
                     <li>
-                        <router-link to="/" v-if='!isAuthenticated'>
+                        <router-link to="" v-if='!isAuthenticated'>
                             <span v-on:click="showLogin">LOGIN</span>
                         </router-link>
                     </li>
