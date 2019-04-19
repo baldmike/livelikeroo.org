@@ -1,18 +1,109 @@
 <template>
-    <h1>hey now</h1>
+    <div class="container">
+        <div class="col-md-5 ml-auto mr-auto">
+            <card type="login" plain>
+                <div slot="header" class="logo-container">
+                    <img v-lazy="'images/llr_logo.png'" alt="Live Like Roo Logo">
+                </div>
+                <br>
+                <h2 class="text-center">LOGIN</h2>
+
+                <fg-input id="email"
+                        type="email"
+                        v-model="form.email"
+                        :state="!$v.form.email.$invalid"
+                        placeholder="Enter email" />
+    
+                <fg-input id="password"
+                        type="password"
+                        v-model="form.password" 
+                        :state="!$v.form.password.$invalid"
+                        placeholder="Enter email"/>
+        
+                <n-button type="primary" block @click.prevent.native="login" :disabled="$v.form.$invalid">
+                    Login
+                </n-button>
+            </card>
+        </div>
+    </div>
 </template>
+
+
 <script>
-  import { Card, Button, FormGroupInput } from '@/components';
-  
-  export default {
-    name: 'login-page',
-    bodyClass: 'login-page',
+
+import { mapActions, mapGetters } from "vuex";
+import { validationMixin } from "vuelidate";
+import { required, minLength, email } from "vuelidate/lib/validators";
+import { Button, FormGroupInput } from '@/components';
+
+import { EventBus } from '../event-bus.js';
+
+export default {
+    name: "login",
+    data() {
+      return {
+        
+        form: {
+          email: "",
+          password: "",
+        }
+      }
+    },
     components: {
-      Card,
-      [Button.name]: Button,
-      [FormGroupInput.name]: FormGroupInput
+        [Button.name]: Button,
+        [FormGroupInput.name]: FormGroupInput
+
+    },
+    mixins: [
+      validationMixin
+    ],
+    validations: {
+      form: {
+        password: {
+          required,
+          minLength: minLength(8)
+        },
+        email: {
+          required,
+          email
+        }
+      }
+    },
+    methods: {
+      login() {
+        const formData = {
+          email: this.form.email,
+          password: this.form.password,
+        };
+
+        console.log("[LoginComponent] - LOGIN - FORM DATA SET");
+
+        axios.post("/api/login", formData).then(({data}) => {
+            console.log("login api hit: " + data.user)
+            this.$cookie.set('token', data.token)
+            this.$cookie.set('user', data.user.email)
+            auth.setAuthToken(data.token)
+            auth.login(data.token, data.user.email);
+            
+            console.log("YOU DID IT! " + data.message);
+
+            this.$router.push({path: 'dashboard'});
+        })
+        .catch(function (error) {
+          
+          console.log("[LoginComponent] - api/login call: " + error);
+        
+        });
+        
+      },
+      register() {
+        console.log("[LoginComponent]->register")
+      }
+    },
+    computed: mapGetters(['isAuthenticated']),
+    mounted() {
+      
     }
-  }
+}
+
 </script>
-<style>
-</style>

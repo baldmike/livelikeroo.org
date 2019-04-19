@@ -30,7 +30,7 @@
             </template>
         </modal>
 
-        <modal :show.sync="this.$store.state.modals.login" headerClasses="justify-content-center">
+        <modal :show.sync="this.$store.state.modals.login" modal-classes="modal-mini" headerClasses="justify-content-center" class="modal-default">
             <h4 slot="header" class="title title-up"></h4>
             
             <login/>
