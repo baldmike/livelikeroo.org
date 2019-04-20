@@ -1,7 +1,7 @@
 <template>
         <div class="row">
             <div class="col-md-12">
-                <h1>Dashboard Component you see</h1>
+                <h1>{{ message }}</h1>
                 <h1>Dashboard Component you see</h1>
                 <h1>Dashboard Component you see</h1>
                 <h1>Dashboard Component you see</h1>

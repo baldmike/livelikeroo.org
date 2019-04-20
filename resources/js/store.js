@@ -33,8 +33,13 @@ export default new Vuex.Store({
             },
             alerts: {
                 info: false,
+                success: false,
+                warning: false,
+                danger: false,
             },
-            loading: false
+            loading: false,
+            message: ''
+            
         }
     },
     getters: { 
@@ -72,12 +77,17 @@ export default new Vuex.Store({
             state.monthly = true;
             state.modals.dnForm = true;
         },
-        logout(state) {
-            state.token = null;
-            state.user = null;
-            state.isAuthenticated = false;
-            Vue.cookie.delete('token');
-            Vue.cookie.delete('user');
+        notify(state, payload) {
+            console.log(payload);
+            state.message = payload.message;
+            state.alerts[payload.type] = true;
+        },
+        clearNotifications(state) {
+            for (var key in state.alerts) {
+                if (state.alerts.hasOwnProperty(key)) {
+                  state.alerts[key] = false;
+                }
+            }
         },
         showCpForm(state) {
             state.modals.cpForm = true;
@@ -95,7 +105,14 @@ export default new Vuex.Store({
         },
         endLoading(state) {
             state.loading = false;
-        }
+        },
+        logout(state) {
+            state.token = null;
+            state.user = null;
+            state.isAuthenticated = false;
+            Vue.cookie.delete('token');
+            Vue.cookie.delete('user');
+        },
     },
     actions: {
         // actions are dispatched in component, they commit mutations
@@ -140,6 +157,12 @@ export default new Vuex.Store({
         endLoading(context) {
             context.commit('endLoading');
         },
+        notify(context, payload) {
+            context.commit('notify', payload);
+        },
+        loginSuccess(context) {
+            context.commit('notify');
+        },
         logout( { commit }) {
         
             axios.post("/api/logout").then((userData) => {        
@@ -149,6 +172,9 @@ export default new Vuex.Store({
                 router.push({ path: '/' });
             })
         },
+        clearNotifications(context) {
+            context.commit('clearNotifications');
+        }
     }
 
 })

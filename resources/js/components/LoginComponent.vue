@@ -97,13 +97,21 @@ export default {
             auth.login(data.token, data.user.email);
             
             this.$store.dispatch('hideModal');
-
             this.$router.push({path: 'dashboard'});
         })
         .catch(function (error) {
-          self.loginError = true;
-          
-          console.log("[LoginComponent] - api/login call: " + error);
+            // self.loginError = true;
+
+            let payload = {
+                message: "Invalid Credentials, please try again.",
+                type: 'danger',
+            }
+
+            self.$store.dispatch('notify', payload);
+
+            setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
+
+            console.log("[LoginComponent] - api/login call: " + error);
         
         });
         

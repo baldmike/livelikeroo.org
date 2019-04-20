@@ -3,7 +3,7 @@
     <div class="container-fluid">
 
         <div class="loader" v-if="this.$store.state.loading"></div>
-        <notifications style="position: absolute; top: 45%; z-index: 100;"></notifications>
+        <notifications style="position: fixed; bottom: 0; z-index: 100;"></notifications>
         <router-view name="header"/>
         <router-view/>
         <router-view name="footer"/>
