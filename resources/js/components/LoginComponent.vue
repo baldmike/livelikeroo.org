@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <div class="col-md-5 ml-auto mr-auto">
+        <div class="col-md-8 ml-auto mr-auto">
             <card type="login" plain>
                 <div slot="header" class="logo-container">
-                    <img v-lazy="'images/llr_logo.png'" alt="Live Like Roo Logo">
+                    <img v-lazy="'images/llr_logo.png'" alt="Live Like Roo Logo" class="col-md-6 offset-md-3">
                 </div>
                 <br>
                 <div class="error" v-if="errors">Invalid Credentials. Please try again.</div>
@@ -16,7 +16,6 @@
                         type="email"
                         v-model="form.emailLogin"
                         :state="!$v.form.emailLogin.$invalid"
-                        addon-left-icon="now-ui-icons users_circle-08"
                         placeholder="Email" />
 
                 <!-- TO DO - ADDON ICONS -->
@@ -24,7 +23,6 @@
                         type="password"
                         v-model="form.password" 
                         :state="!$v.form.password.$invalid"
-                        addon-left-icon="now-ui-icons users_circle-08"
                         placeholder="Password"/>
         
                 <n-button type="primary" block @click.prevent.native="login" :disabled="$v.form.$invalid">
@@ -85,10 +83,13 @@ export default {
                 password: this.form.password,
             };
 
+            this.$store.dispatch('startLoading');
+
             console.log("[LoginComponent] - LOGIN - FORM DATA SET");
 
             let self = this;
             axios.post("/api/login", formData).then(({data}) => {
+
                 console.log("login api hit: " + data.user)
                 this.$cookie.set('token', data.token)
                 this.$cookie.set('user', data.user.email)
@@ -97,6 +98,7 @@ export default {
                 
                 this.$store.dispatch('hideModal');
                 this.$router.push({path: 'dashboard'});
+                this.$store.dispatch('endLoading');
             })
             .catch(function (error) {
                 // self.loginError = true;

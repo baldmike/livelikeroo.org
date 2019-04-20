@@ -1,145 +1,146 @@
 <template>
+
     <div v-if="show">
-        
-        <div class="close-button" @click="hide"><i class="fa fa-times"></i></div>
-
-        <div class="form-group" @submit="onSubmit" @reset="onReset" v-if="show" >
-            <div class="section-box">
-                <img src="/images/headline1.jpg" fluid>
-                <h3 class="form-headline">CARE PACKAGES!</h3>
-                <p style="text-align: center;">Our Roo Cancer Care Packages include some of Roo’s favorite items, and are each made by hand by our volunteers.</p>
+    
+        <form id="carePackageForm" @submit.prevent="onSubmit" @reset="resetForm()">
+            <img src="/images/headline4.jpg" fluid>
+            
+            <h3 class="center">CARE PACKAGES!</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="text-align: center;">Our Roo Cancer Care Packages include some of Roo’s favorite items, and are each made by hand by our volunteers.</p>
+                </div>
             </div>
+            
 
-            <div class="section-box">
+            
                 <h3 class="form-headline">TELL US ABOUT YOUR PET</h3>
 
                 <hr>
 
-               <div class="form-group" id="petNameGroup" label="Pet Name:" label-for="petName">
-                    <fg-input
-                    id="petName"
-                    type="text"
-                    v-model="form.petName"
-                    required>
-                    </fg-input>
-               </div>
-
-                <div class="form-group" id="aboutGroup" label="Tell us everything!" label-for="about">
-                    <textarea
-                        id="about"
-                        rows="6"
-                        v-model="form.about"
-                        required
-                        placeholder="Tell us their favorite activities, toys, food, and what makes them special. We want to hear all about them!" />
-                </div>
-                
-                <div class="form-group" id="imageGroup" label="Send us a Picture of Your Pet" label-for="image">
-                    <input class="file-form"
-                        id="image"
-                        accept="image/*"
-                        v-model="form.image"
-                        placeholder="Choose a file..."
-                        drop-placeholder="Drop file here..."
-                        @change="onFileChange"/>
-                    <!-- <col>   #### </col>  -->
-                    <div cols="6" offset="3" style="margin-top: 1rem;">
-                        <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
-                    </div>
-                </div>
+            <div class="form-group" id="petNameGroup" label="Pet Name:" label-for="petName">
+                <fg-input
+                id="petName"
+                type="text"
+                v-model="form.petName"
+                required>
+                </fg-input>
             </div>
 
-            <div class="section-box">
-                <h3 class="form-headline">MEDICAL INFORMATION</h3>
-                <hr>
-
-                <div class="form-group" id="diagnosisGroup" label="Medical diagnosis" label-for="diagnosis">
-                    <textarea
-                        rows="6"
-                        id="diagnosis"
-                        v-model="form.diagnosis"
-                        required/>
+            <div class="form-group" id="aboutGroup" label="Tell us everything!" label-for="about">
+                <textarea
+                    id="about"
+                    rows="6"
+                    v-model="form.about"
+                    required
+                    placeholder="Tell us their favorite activities, toys, food, and what makes them special. We want to hear all about them!" />
+            </div>
+            
+            <div class="form-group" id="imageGroup" label="Send us a Picture of Your Pet" label-for="image">
+                <input class="file-form"
+                    id="image"
+                    accept="image/*"
+                    v-model="form.image"
+                    placeholder="Choose a file..."
+                    drop-placeholder="Drop file here..."
+                    @change="onFileChange"/>
+                <!-- <col>   #### </col>  -->
+                <div cols="6" offset="3" style="margin-top: 1rem;">
+                    <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
                 </div>
             </div>
+        </form>
 
-            <div class="section-box">
-                <h3 class="form-headline">YOUR INFORMATION</h3>
-                <hr>
-                <div class="form-group" id="firstNameGroup" label="Your First Name:" label-for="firstName">
-                    <fg-input
-                    id="firstName"
-                    type="text"
-                    v-model="form.firstName"
+        <div class="section-box">
+            <h3 class="form-headline">MEDICAL INFORMATION</h3>
+            <hr>
+
+            <div class="form-group" id="diagnosisGroup" label="Medical diagnosis" label-for="diagnosis">
+                <textarea
+                    rows="6"
+                    id="diagnosis"
+                    v-model="form.diagnosis"
                     required/>
-                </div>
+            </div>
+        </div>
 
-                <div class="form-group" id="lastNameGroup" label="Your Last Name:" label-for="lastName">
-                    <fg-input
-                    id="lastName"
-                    type="text"
-                    v-model="form.lastName"
+        <div class="section-box">
+            <h3 class="form-headline">YOUR INFORMATION</h3>
+            <hr>
+            <div class="form-group" id="firstNameGroup" label="Your First Name:" label-for="firstName">
+                <fg-input
+                id="firstName"
+                type="text"
+                v-model="form.firstName"
+                required/>
+            </div>
+
+            <div class="form-group" id="lastNameGroup" label="Your Last Name:" label-for="lastName">
+                <fg-input
+                id="lastName"
+                type="text"
+                v-model="form.lastName"
+                required/>
+            </div>
+
+            <div class="form-group" id="exampleInputGroup1" label="Email Address:" label-for="email">
+                <fg-input
+                    id="email"
+                    type="email"
+                    v-model="form.email"
                     required/>
-                </div>
+            </div>
 
-                <div class="form-group" id="exampleInputGroup1" label="Email Address:" label-for="email">
-                    <fg-input
-                        id="email"
-                        type="email"
-                        v-model="form.email"
-                        required/>
-                </div>
+            <div class="form-group" id="address1Group" label="Address 1" label-for="address1">
+                <fg-input
+                id="address1"
+                type="text"
+                v-model="form.address1"
+                required/>
+            </div>
 
-                <div class="form-group" id="address1Group" label="Address 1" label-for="address1">
-                    <fg-input
-                    id="address1"
+            <div class="form-group" id="address2Group" label="Address 2" label-for="address2">
+                <fg-input
+                id="address2"
+                type="text"
+                v-model="form.address2"
+                />
+            </div>
+
+            <div class="form-group" id="cityGroup" label="City" label-for="city">
+                <fg-input
+                    id="city"
                     type="text"
-                    v-model="form.address1"
+                    v-model="form.city"
                     required/>
-                </div>
+            </div>
 
-                <div class="form-group" id="address2Group" label="Address 2" label-for="address2">
-                    <fg-input
-                    id="address2"
+            
+            <div class="form-group" id="stateGroup" label="State" label-for="state">
+                <select id="state" 
+                    :options="states" 
+                    required
+                    v-model="form.state" />
+            </div>
+
+            <div class="form-group" id="zipGroup" label="Zip" label-for="zip">
+                <fg-input
+                    id="zip"
                     type="text"
-                    v-model="form.address2"
-                    />
-                </div>
-
-                <div class="form-group" id="cityGroup" label="City" label-for="city">
-                    <fg-input
-                        id="city"
-                        type="text"
-                        v-model="form.city"
-                        required/>
-                </div>
-
-                
-                <div class="form-group" id="stateGroup" label="State" label-for="state">
-                    <select id="state" 
-                        :options="states" 
-                        required
-                        v-model="form.state" />
-                </div>
-
-                <div class="form-group" id="zipGroup" label="Zip" label-for="zip">
-                    <fg-input
-                        id="zip"
-                        type="text"
-                        v-model="form.zip"
-                        required/>
-                </div>
+                    v-model="form.zip"
+                    required/>
             </div>
-        
-
-            <div class="sent" v-if="sent">This Form Has been submitted.</div>
-            <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
-                <button type="submit" 
-                style="background-color: #fd7e14; border: none;" >Request a Care Package</button>
-            </div>
-
-            <div style="text-align: center; margin: 2rem;">
-                <img src="/images/llr_logo.png">
-            </div>
+        </div>
     
+
+        <div class="sent" v-if="sent">This Form Has been submitted.</div>
+        <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
+            <button type="submit" 
+            style="background-color: #fd7e14; border: none;" >Request a Care Package</button>
+        </div>
+
+        <div style="text-align: center; margin: 2rem;">
+            <img src="/images/llr_logo.png">
         </div>
     </div>
 </template>

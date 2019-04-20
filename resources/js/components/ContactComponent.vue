@@ -117,34 +117,27 @@
                 fd.append('email', this.form.emailContact);
                 fd.append('message', this.form.messageContact);
 
-                // const formData = {
-                //     first_name: this.form.firstNameContact,
-                //     last_name: this.form.lastNameContact,
-                //     email: this.form.emailContact,
-                //     message: this.form.messageContact
-                // };
-
                 this.$store.dispatch('startLoading');
 
                 let self = this;
                 axios.post("/api/contact", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
                     
                     this.$store.dispatch('endLoading');
-                    // this.$router.push({path: 'dashboard'});
+                    this.$router.push({path: 'donate'});
 
                     let payload = {
-                        message: "Your message has been sent!",
+                        message: "Your message has been sent, thank you for reaching out!",
                         type: 'success',
                     }
 
                     this.$store.dispatch('notify', payload);
 
-                    setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
+                    setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 5000);
                 })
                 .catch(function (error) {
 
                     let payload = {
-                        message: "There was an error sending your message.",
+                        message: "There was an error sending your message, please try again.",
                         type: 'danger',
                     };
 

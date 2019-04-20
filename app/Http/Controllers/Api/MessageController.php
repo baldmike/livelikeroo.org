@@ -57,8 +57,6 @@ class MessageController extends Controller
         };
 
         return response()->json(null, Response::HTTP_NOT_FOUND);
-
-        
         
     }
 
