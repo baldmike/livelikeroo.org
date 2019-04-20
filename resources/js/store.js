@@ -162,9 +162,13 @@ export default new Vuex.Store({
         logout( { commit }) {
         
             axios.post("/api/logout").then((userData) => {        
-                
-                commit('logout');
+                let payload = {
+                    type: "success",
+                    message: "You have successfully logged out."
+                }
 
+                commit('logout');
+                commit('notify', payload);
                 router.push({ path: '/' });
             })
         },

@@ -62,6 +62,16 @@
         logout(){
             console.log('[FooterComponent] - logout');
             EventBus.$emit('logout');
+
+            // let payload = {
+            //     message: "You have successfully logged out.",
+            //     type: 'info',
+            // }
+
+            // this.$store.dispatch('notify', payload);
+            let self = this;
+
+            setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
         }
     },
     computed: mapGetters(['isAuthenticated', 'isMonthly', 'isOneTime']),

@@ -1,146 +1,154 @@
 <template>
-
-    <div v-if="show">
     
-        <form id="carePackageForm" @submit.prevent="onSubmit" @reset="resetForm()">
-            <img src="/images/headline4.jpg" fluid>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/images/headline4.jpg" fluid>
             
-            <h3 class="center">CARE PACKAGES!</h3>
-            <div class="row">
-                <div class="col-md-12">
-                    <p style="text-align: center;">Our Roo Cancer Care Packages include some of Roo’s favorite items, and are each made by hand by our volunteers.</p>
+                <h3 class="center">CARE PACKAGES!</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p style="text-align: center;">Our Roo Cancer Care Packages include some of Roo’s favorite items, and are each made by hand by our volunteers.</p>
+                    </div>
+                </div>
+            
+                <h3 class="center">TELL US ABOUT YOUR PET</h3>
+                
+
+                <div class="form-group" id="petNameGroup">
+                    <label>Pet Name</label>
+                    <fg-input
+                            id="petName"
+                            type="text"
+                            v-model="form.petName"
+                            placeholder="Pet's Name"
+                            required/>
+                </div>
+
+                <div class="form-group" id="aboutGroup">
+                    <label>Tell us about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
+                    <textarea
+                            id="about"
+                            rows="6"
+                            v-model="form.about"
+                            class="form-control"
+                            required/>
+                </div>
+    
+                <div class="form-group" id="diagnosisGroup">
+                    <label>Medical diagnosis</label>
+                    <textarea
+                            rows="6"
+                            id="diagnosis"
+                            class="form-control" 
+                            v-model="form.diagnosis"
+                            required/>
+                </div>
+
+
+
+
+
+                <h3 class="center">YOUR INFORMATION</h3>                
+                <div class="form-group" id="firstNameGroup">
+                    <label>First Name</label>
+                    <fg-input
+                            id="firstName"
+                            type="text"
+                            v-model="form.firstNameCp"
+                            placeholder="First Name"
+                            required/>
+                </div>
+
+                <div class="form-group" id="lastNameGroup">
+                    <label for="lastName">Last Name</label>
+                    <fg-input
+                            id="lastName"
+                            type="text"
+                            v-model="form.lastName"
+                            placeholder="Last Name"
+                            required/>
+                </div>
+
+                <div class="form-group" id="exampleInputGroup1">
+                    <label for="email">Email</label>
+                    <fg-input
+                            id="email"
+                            type="email"
+                            v-model="form.email"
+                            placeholder="Email"
+                            required/>
+                </div>
+
+                <div class="form-group" id="address1Group">
+                    <label for="address1">Street Address</label>
+                    <fg-input
+                            id="address1"
+                            type="text"
+                            v-model="form.address1"
+                            placeholder="Street Address"
+                            required/>
+                </div>
+
+                <div class="form-group" id="address1Group">
+                    <label for="address2">Street Address 2</label>
+                    <fg-input
+                            id="address2"
+                            type="text"
+                            v-model="form.address2"
+                            placeholder="Street Address 2"/>
+                </div>
+
+                <div class="form-group" id="cityGroup">
+                    <label for="city">City</label>
+                    <fg-input
+                            id="city"
+                            type="text"
+                            v-model="form.address1"
+                            placeholder="City"
+                            required/>
+                </div>
+
+                <el-select class="select-danger"
+                            placeholder="Single Select"
+                            v-model="form.state">
+                    <el-option v-for="option in states"
+                            class="select-danger"
+                            :value="option.value"
+                            :label="option.label"
+                            :key="option.label">
+                    </el-option>
+                </el-select>
+                
+                <!-- <div class="form-group" id="stateGroup">
+                    <label for="state">State</label>
+                    <select id="state" 
+                            :options="states" 
+                            required
+                            class="form-control"
+                            v-model="form.state" />
+                </div> -->
+
+                <div class="form-group" id="zipGroup" label="Zip" label-for="zip">
+                    <fg-input
+                        id="zip"
+                        type="text"
+                        v-model="form.zip"
+                        required/>
+                </div>
+  
+    
+
+                <div class="sent" v-if="sent">This Form Has been submitted.</div>
+                <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
+                    <button type="submit" 
+                    style="background-color: #fd7e14; border: none;" >Request a Care Package</button>
+                </div>
+
+                <div style="text-align: center; margin: 2rem;">
+                    <img src="/images/llr_logo.png">
                 </div>
             </div>
-            
-
-            
-                <h3 class="form-headline">TELL US ABOUT YOUR PET</h3>
-
-                <hr>
-
-            <div class="form-group" id="petNameGroup" label="Pet Name:" label-for="petName">
-                <fg-input
-                id="petName"
-                type="text"
-                v-model="form.petName"
-                required>
-                </fg-input>
-            </div>
-
-            <div class="form-group" id="aboutGroup" label="Tell us everything!" label-for="about">
-                <textarea
-                    id="about"
-                    rows="6"
-                    v-model="form.about"
-                    required
-                    placeholder="Tell us their favorite activities, toys, food, and what makes them special. We want to hear all about them!" />
-            </div>
-            
-            <div class="form-group" id="imageGroup" label="Send us a Picture of Your Pet" label-for="image">
-                <input class="file-form"
-                    id="image"
-                    accept="image/*"
-                    v-model="form.image"
-                    placeholder="Choose a file..."
-                    drop-placeholder="Drop file here..."
-                    @change="onFileChange"/>
-                <!-- <col>   #### </col>  -->
-                <div cols="6" offset="3" style="margin-top: 1rem;">
-                    <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
-                </div>
-            </div>
-        </form>
-
-        <div class="section-box">
-            <h3 class="form-headline">MEDICAL INFORMATION</h3>
-            <hr>
-
-            <div class="form-group" id="diagnosisGroup" label="Medical diagnosis" label-for="diagnosis">
-                <textarea
-                    rows="6"
-                    id="diagnosis"
-                    v-model="form.diagnosis"
-                    required/>
-            </div>
-        </div>
-
-        <div class="section-box">
-            <h3 class="form-headline">YOUR INFORMATION</h3>
-            <hr>
-            <div class="form-group" id="firstNameGroup" label="Your First Name:" label-for="firstName">
-                <fg-input
-                id="firstName"
-                type="text"
-                v-model="form.firstName"
-                required/>
-            </div>
-
-            <div class="form-group" id="lastNameGroup" label="Your Last Name:" label-for="lastName">
-                <fg-input
-                id="lastName"
-                type="text"
-                v-model="form.lastName"
-                required/>
-            </div>
-
-            <div class="form-group" id="exampleInputGroup1" label="Email Address:" label-for="email">
-                <fg-input
-                    id="email"
-                    type="email"
-                    v-model="form.email"
-                    required/>
-            </div>
-
-            <div class="form-group" id="address1Group" label="Address 1" label-for="address1">
-                <fg-input
-                id="address1"
-                type="text"
-                v-model="form.address1"
-                required/>
-            </div>
-
-            <div class="form-group" id="address2Group" label="Address 2" label-for="address2">
-                <fg-input
-                id="address2"
-                type="text"
-                v-model="form.address2"
-                />
-            </div>
-
-            <div class="form-group" id="cityGroup" label="City" label-for="city">
-                <fg-input
-                    id="city"
-                    type="text"
-                    v-model="form.city"
-                    required/>
-            </div>
-
-            
-            <div class="form-group" id="stateGroup" label="State" label-for="state">
-                <select id="state" 
-                    :options="states" 
-                    required
-                    v-model="form.state" />
-            </div>
-
-            <div class="form-group" id="zipGroup" label="Zip" label-for="zip">
-                <fg-input
-                    id="zip"
-                    type="text"
-                    v-model="form.zip"
-                    required/>
-            </div>
-        </div>
-    
-
-        <div class="sent" v-if="sent">This Form Has been submitted.</div>
-        <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
-            <button type="submit" 
-            style="background-color: #fd7e14; border: none;" >Request a Care Package</button>
-        </div>
-
-        <div style="text-align: center; margin: 2rem;">
-            <img src="/images/llr_logo.png">
         </div>
     </div>
 </template>
@@ -148,6 +156,7 @@
 <script>
 
     import { Button, FormGroupInput, Tabs, TabPane, Parallax } from '@/components';
+    import {Select, Option} from 'element-ui'
     import { validationMixin } from "vuelidate";
     import { helpers, required, minLength, email, between } from "vuelidate/lib/validators";
     export default {
@@ -181,8 +190,9 @@
         },
          components: {
             [Button.name]: Button,
-            [FormGroupInput.name]: FormGroupInput
-
+            [FormGroupInput.name]: FormGroupInput,
+            [Select.name]: Select,
+            [Option.name]: Option
         },
 
         mixins: [
@@ -313,7 +323,9 @@
 </script>
 
 <style lang="scss" scoped>
-    
+    .center {
+        text-align: center;
+    }
     
    
 </style>
