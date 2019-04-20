@@ -257,13 +257,7 @@
 
                 axios.post("/api/care_pkgs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
                     this.$emit('cpFormSubmit');
-                    this.$notify({
-                        group: 'notifications',
-                        title: 'Success',
-                        text: 'Your care package request has been submitted, thank you.',
-                        duration: '10000',
-                        width: '100%',
-                    });
+                    
 
                     this.sent = true;
                     this.$emit('endLoading');

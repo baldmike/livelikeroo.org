@@ -37,7 +37,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Your message</label>
-                                <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                                <textarea 
+                                        v-model="form.messageContact" 
+                                        class="form-control" 
+                                        id="messageContact" 
+                                        rows="6"/>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -46,7 +50,7 @@
                                     </n-checkbox>
                                 </div>
                                 <div class="col-md-6">
-                                    <n-button type="primary" round class="pull-right">Send Message</n-button>
+                                    <n-button type="primary" round class="pull-right" @click.prevent.native="sendMessage">Send Message</n-button>
                                 </div>
                             </div>
 
@@ -96,26 +100,46 @@
             return {
                 form: {
                     firstNameContact: '',
-                    lastNameContact: ''
+                    lastNameContact: '',
+                    emailContact: '',
+                    messageContact: ''
                 },
             }
         },
         methods: {
             sendMessage() {
                 console.log('[contactComponent] - send message');
-                const formData = {
-                    firstNameContact: this.form.firstNameContact,
-                    lastNameContact: this.form.lastNameContact,
-                    email: this.form.emailLogin,
-                };
+
+                let fd = new FormData();
+
+                fd.append('first_name', this.form.firstNameContact);
+                fd.append('last_name', this.form.lastNameContact);
+                fd.append('email', this.form.emailContact);
+                fd.append('message', this.form.messageContact);
+
+                // const formData = {
+                //     first_name: this.form.firstNameContact,
+                //     last_name: this.form.lastNameContact,
+                //     email: this.form.emailContact,
+                //     message: this.form.messageContact
+                // };
 
                 this.$store.dispatch('startLoading');
 
                 let self = this;
-                axios.post("/api/contact", formData).then(({data}) => {
+                axios.post("/api/contact", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
                     
                     this.$store.dispatch('endLoading');
                     // this.$router.push({path: 'dashboard'});
+
+                    let payload = {
+                        message: "Your message has been sent!",
+                        type: 'success',
+                    }
+
+                    this.$store.dispatch('notify', payload);
+
+                    setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
                 })
                 .catch(function (error) {
 

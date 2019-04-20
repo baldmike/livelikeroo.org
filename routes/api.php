@@ -20,6 +20,7 @@ Route::post('/logout', 'Api\AuthController@logout');
 // forms
 Route::resource('finreqs', 'Api\FinreqsController');
 Route::resource('care_pkgs', 'Api\CarePackageController');
+Route::resource('contact', 'Api\MessageController');
 
 // donations 
 Route::post('/make_donation', 'Api\DonationController@oneTime');

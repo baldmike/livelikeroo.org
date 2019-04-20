@@ -43,6 +43,4 @@ class UsersController extends Controller
 
         return UserResource::collection(User::orderBy('last_name', 'asc')->get());
     }
-
-
 }
