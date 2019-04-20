@@ -67,7 +67,6 @@ export default new Vuex.Store({
             state.users = payload.data;
         },
         setOneTime(state) {
-            console.log("setting that one time");
             state.oneTime = true;
             state.monthly = false;
             state.modals.dnForm = true;
@@ -159,9 +158,6 @@ export default new Vuex.Store({
         },
         notify(context, payload) {
             context.commit('notify', payload);
-        },
-        loginSuccess(context) {
-            context.commit('notify');
         },
         logout( { commit }) {
         

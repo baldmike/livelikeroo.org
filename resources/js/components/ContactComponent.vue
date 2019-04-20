@@ -11,19 +11,29 @@
                             <div class="row">
                                 <div class="col-md-6 pr-2">
                                     <label>First Name</label>
-                                    <fg-input placeholder="First Name">
-                                    </fg-input>
+                                    <fg-input
+                                        type="text"
+                                        v-model="form.firstNameContact"
+                                        :state="!$v.form.firstNameContact.$invalid"
+                                        placeholder="First Name"/>
+                                        
                                 </div>
                                 <div class="col-md-6 pl-2">
                                     <label>Last Name</label>
-                                    <fg-input placeholder="Last Name">
-                                    </fg-input>
+                                    <fg-input
+                                        type="text"
+                                        v-model="form.lastNameContact"
+                                        :state="!$v.form.lastNameContact.$invalid"
+                                        placeholder="Last Name"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Email address</label>
-                                <fg-input placeholder="Email">
-                                </fg-input>
+                                <fg-input
+                                        type="text"
+                                        v-model="form.emailContact"
+                                        :state="!$v.form.emailContact.$invalid"
+                                        placeholder="Email"/>
                             </div>
                             <div class="form-group">
                                 <label>Your message</label>
@@ -49,142 +59,81 @@
 </template>
 
 <script>
-  import { Card, Button, InfoSection, FormGroupInput, Checkbox } from '@/components';
-  import { Carousel, CarouselItem } from 'element-ui'
-  export default {
-    components: {
-      Card,
-      InfoSection,
-      [Button.name]: Button,
-      [Checkbox.name]: Checkbox,
-      [FormGroupInput.name]: FormGroupInput,
-      [Carousel.name]: Carousel,
-      [CarouselItem.name]: CarouselItem,
-    },
-    data() {
-      return {
-        options: {
-          styles: [{
-            "featureType": "water",
-            "elementType": "geometry",
-            "stylers": [{
-              "color": "#e9e9e9"
-            }, {
-              "lightness": 17
-            }]
-          }, {
-            "featureType": "landscape",
-            "elementType": "geometry",
-            "stylers": [{
-              "color": "#f5f5f5"
-            }, {
-              "lightness": 20
-            }]
-          }, {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
-            "stylers": [{
-              "color": "#ffffff"
-            }, {
-              "lightness": 17
-            }]
-          }, {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-              "color": "#ffffff"
-            }, {
-              "lightness": 29
-            }, {
-              "weight": 0.2
-            }]
-          }, {
-            "featureType": "road.arterial",
-            "elementType": "geometry",
-            "stylers": [{
-              "color": "#ffffff"
-            }, {
-              "lightness": 18
-            }]
-          }, {
-            "featureType": "road.local",
-            "elementType": "geometry",
-            "stylers": [{
-              "color": "#ffffff"
-            }, {
-              "lightness": 16
-            }]
-          }, {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [{
-              "color": "#f5f5f5"
-            }, {
-              "lightness": 21
-            }]
-          }, {
-            "featureType": "poi.park",
-            "elementType": "geometry",
-            "stylers": [{
-              "color": "#dedede"
-            }, {
-              "lightness": 21
-            }]
-          }, {
-            "elementType": "labels.text.stroke",
-            "stylers": [{
-              "visibility": "on"
-            }, {
-              "color": "#ffffff"
-            }, {
-              "lightness": 16
-            }]
-          }, {
-            "elementType": "labels.text.fill",
-            "stylers": [{
-              "saturation": 36
-            }, {
-              "color": "#333333"
-            }, {
-              "lightness": 40
-            }]
-          }, {
-            "elementType": "labels.icon",
-            "stylers": [{
-              "visibility": "off"
-            }]
-          }, {
-            "featureType": "transit",
-            "elementType": "geometry",
-            "stylers": [{
-              "color": "#f2f2f2"
-            }, {
-              "lightness": 19
-            }]
-          }, {
-            "featureType": "administrative",
-            "elementType": "geometry.fill",
-            "stylers": [{
-              "color": "#fefefe"
-            }, {
-              "lightness": 20
-            }]
-          }, {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-              "color": "#fefefe"
-            }, {
-              "lightness": 17
-            }, {
-              "weight": 1.2
-            }]
-          }]
+    import { Card, Button, InfoSection, FormGroupInput, Checkbox } from '@/components';
+    import { Carousel, CarouselItem } from 'element-ui'
+    import { validationMixin } from "vuelidate";
+    import { required, minLength, email } from "vuelidate/lib/validators";
+    
+    export default {
 
+        components: {
+            Card,
+            InfoSection,
+            [Button.name]: Button,
+            [Checkbox.name]: Checkbox,
+            [FormGroupInput.name]: FormGroupInput,
+            [Carousel.name]: Carousel,
+            [CarouselItem.name]: CarouselItem,
+        },
+        mixins: [
+            validationMixin
+        ],
+        validations: {
+            form: {
+                firstNameContact: {
+                    required,
+                },
+                lastNameContact: {
+                    required,
+                },
+                emailContact: {
+                    required,
+                    email
+                }
+            }
+        },
+        data() {
+            return {
+                form: {
+                    firstNameContact: '',
+                    lastNameContact: ''
+                },
+            }
+        },
+        methods: {
+            sendMessage() {
+                console.log('[contactComponent] - send message');
+                const formData = {
+                    firstNameContact: this.form.firstNameContact,
+                    lastNameContact: this.form.lastNameContact,
+                    email: this.form.emailLogin,
+                };
+
+                this.$store.dispatch('startLoading');
+
+                let self = this;
+                axios.post("/api/contact", formData).then(({data}) => {
+                    
+                    this.$store.dispatch('endLoading');
+                    // this.$router.push({path: 'dashboard'});
+                })
+                .catch(function (error) {
+
+                    let payload = {
+                        message: "There was an error sending your message.",
+                        type: 'danger',
+                    };
+
+                    self.$store.dispatch('notify', payload);
+
+                    setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
+
+                    console.log("[ContactComponent] - api/contact call: " + error);
+                
+                });
+            }
         }
-      }
     }
-  }
 </script>
 
 <style>
