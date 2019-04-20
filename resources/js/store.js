@@ -169,6 +169,8 @@ export default new Vuex.Store({
 
                 commit('logout');
                 commit('notify', payload);
+
+                
                 router.push({ path: '/' });
             })
         },

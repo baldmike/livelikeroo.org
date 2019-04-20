@@ -38,9 +38,7 @@
                 <n-button type="danger" @click.native="hideModal">Close</n-button>
             </template>
         </modal>
-
     </div>
-
 </template>
 
 <script>   

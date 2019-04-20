@@ -87,13 +87,16 @@ export default {
 
             console.log("[LoginComponent] - LOGIN - FORM DATA SET");
 
+            // to access this inside .catch
             let self = this;
+
             axios.post("/api/login", formData).then(({data}) => {
 
-                console.log("login api hit: " + data.user)
-                this.$cookie.set('token', data.token)
-                this.$cookie.set('user', data.user.email)
-                auth.setAuthToken(data.token)
+                console.log("login api hit: " + data.user);
+                this.$cookie.set('token', data.token);
+                this.$cookie.set('user', data.user.email);
+
+                auth.setAuthToken(data.token);
                 auth.login(data.token, data.user.email);
                 
                 this.$store.dispatch('hideModal');
@@ -101,13 +104,13 @@ export default {
                 this.$store.dispatch('endLoading');
             })
             .catch(function (error) {
-                // self.loginError = true;
 
                 let payload = {
                     message: "Invalid Credentials, please try again.",
                     type: 'danger',
                 }
 
+                self.$store.dispatch('endLoading');
                 self.$store.dispatch('notify', payload);
 
                 setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);

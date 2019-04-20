@@ -4,7 +4,7 @@
             :color-on-scroll="colorOnScroll"
             menu-classes="ml-auto">
         <template slot-scope="{toggle, isToggled}">
-                <router-link v-popover:popover1 class="navbar-brand" to="/">
+                <router-link v-popover:popover1 class="navbar-brand" to="/" style="border: none;">
                     <img src="/images/llr_logo.png" alt="LLR Logo" id="navLogo" width="70">
                 </router-link>
                 <el-popover

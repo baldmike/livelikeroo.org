@@ -39,18 +39,27 @@
                                 <label>Your message</label>
                                 <textarea 
                                         v-model="form.messageContact" 
+                                        required
                                         class="form-control" 
-                                        id="messageContact" 
+                                        :state="!$v.form.messageContact.$invalid"
                                         rows="6"/>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <n-checkbox>
+                                    <n-checkbox
+                                        v-model="robot"
+                                        required>
                                         I'm not a robot
                                     </n-checkbox>
                                 </div>
                                 <div class="col-md-6">
-                                    <n-button type="primary" round class="pull-right" @click.prevent.native="sendMessage">Send Message</n-button>
+                                    <n-button 
+                                        type="primary" 
+                                        round 
+                                        class="pull-right"
+                                        :disabled="$v.$invalid || !robot"
+                                        @click.prevent.native="sendMessage">
+                                        Send Message</n-button>
                                 </div>
                             </div>
 
@@ -93,6 +102,9 @@
                 emailContact: {
                     required,
                     email
+                },
+                messageContact: {
+                    required
                 }
             }
         },
@@ -104,6 +116,7 @@
                     emailContact: '',
                     messageContact: ''
                 },
+                robot: false
             }
         },
         methods: {
@@ -141,6 +154,7 @@
                         type: 'danger',
                     };
 
+                    this.$store.dispatch('endLoading');
                     self.$store.dispatch('notify', payload);
 
                     setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
@@ -148,8 +162,8 @@
                     console.log("[ContactComponent] - api/contact call: " + error);
                 
                 });
-            }
-        }
+            },
+        },
     }
 </script>
 
