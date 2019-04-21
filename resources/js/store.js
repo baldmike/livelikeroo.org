@@ -176,6 +176,30 @@ export default new Vuex.Store({
         },
         clearNotifications(context) {
             context.commit('clearNotifications');
+        },
+        cpFormSuccess(context) {
+            context.commit('endLoading');
+
+            let payload = {
+                type: "success",
+                message: "Your Care Package Request has been submitted and will be processed shortly! Please consider a one-time donation to help others #LiveLikeRoo!"
+            }
+
+            context.commit('notify', payload);
+
+            router.push({ path: 'donate' });
+        },
+        cpFormError(context) {
+            context.commit('endloading');
+            context.commit('hideModal');
+
+            let payload = {
+                type: "danger",
+                message: "There was an error processing your request. Please click the orange button above, check the form and try again. If the problem persists, Bald Mike will fix it."
+            }
+
+            context.commit('notify', payload);
+
         }
     }
 

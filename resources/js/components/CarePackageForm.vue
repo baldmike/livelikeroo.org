@@ -311,24 +311,25 @@
                 fd.append('zip', this.form.zip);
                 fd.append('pet_name', this.form.petName);
                 fd.append('about', this.form.about);
-                fd.append('image', this.form.image);
+                // fd.append('image', this.form.image);
                 fd.append('diagnosis', this.form.diagnosis);
 
-                this.$emit('cpFormSubmit');
-                this.$emit('startLoading');
+                // let self = this;
+
+                this.$store.dispatch('startLoading');
                 
 
-
                 axios.post("/api/care_pkgs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
-                    this.$emit('cpFormSubmit');
-                    
+                    this.$store.dispatch('hideModal');
+                    let self = this;
 
-                    this.sent = true;
-                    this.$emit('endLoading');
+                    this.$store.dispatch('cpFormSuccess')
                     
                     console.log("Care Pkg Modal Component -- store - DATA: " + data.toString());
                     }).catch((error) => {
                         console.log(error);
+                        
+                        this.$store.dispatch('cpFormError')
                     })
             },
             onReset(evt) {
