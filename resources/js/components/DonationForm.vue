@@ -34,14 +34,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-10 offset-md-1">
-                        <h3 class="center">Or Enter an amount:</h3>
+                    <div class="col-md-6">
+                        <h4 class="amount">Or enter amount:</h4>
                     </div>
-                </div>
                 
-                <div class="row">
-                    <div class="col-md-8 ml-auto mr-auto" style="font-size: 2rem; text-align: center !important;">
-                        <fg-input 
+                    <div class="col-md-6" style="font-size: 1.5rem;">
+                        <fg-input
+                        class="amount"
                         id="amount"
                         v-on:input="clearButtons"
                         type="number"
@@ -524,6 +523,13 @@
     
     .center {
         text-align: center;
+    }
+
+    .amount {
+        line-height: 1rem;
+        text-align: center;
+        margin: 1rem 0;
+        padding: 0;
     }
   
     .form-box {

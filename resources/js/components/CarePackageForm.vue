@@ -316,22 +316,17 @@
                 fd.append('zip', this.form.zip);
                 fd.append('pet_name', this.form.petName);
                 fd.append('about', this.form.about);
-                // fd.append('image', this.form.image);
                 fd.append('diagnosis', this.form.diagnosis);
-
-                // let self = this;
 
                 this.$store.dispatch('cpFormSubmit');
                 
-
-                axios.post("/api/care_pkg", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                axios.post("/api/care_pkgs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
                     this.$store.dispatch('cpFormSuccess')
-                    let self = this;                    
-                    // console.log("Care Pkg Modal Component -- store - DATA: " + data.toString());
-                    }).catch((error) => {
+
+                }).catch((error) => {
                         this.$store.dispatch('cpFormError')
-                    })
+                })
             },
             onReset(evt) {
                 evt.preventDefault()
@@ -344,12 +339,9 @@
                 this.form.city = ''
                 this.form.state = ''
                 this.form.zip = ''
-                this.form.phone = ''
                 this.form.petName = ''
                 this.form.about = '' 
                 this.form.diagnosis = ''
-                this.form.image = ''
-                this.form.url = ''
 
                 /* reset/clear native browser form validation state */
                 this.show = false
