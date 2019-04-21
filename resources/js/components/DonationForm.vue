@@ -313,24 +313,13 @@
 
                     // append hidden input to FormData object
                     fd.append('stripeToken', result.token.id);
-                    
-                    EventBus.$emit('startLoading');
-                    EventBus.$emit('dnFormSubmit');
 
                     if(this.isOneTime) {
 
                         // send to our server to process onetime payment
                         axios.post("/api/make_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
-                            // this.$notify({
-                            //     group: 'notifications',
-                            //     title: 'THANK YOU!',
-                            //     text: 'For your donation, ' + this.form.name_on_card + '! Account information has been sent to ' + this.form.email,
-                            //     duration: '10000',
-                            //     width: '100%'
-                            // });
-
-                            EventBus.$emit('endLoading');
+                            this.$store.dispatch('dnFormSuccess');
 
                             console.log("[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
                             console.log("TOKEN: " + result.token.id);
@@ -340,15 +329,7 @@
                         }).catch((error) => {
                             console.log(error.response.data.message);
 
-                            EventBus.$emit('endLoading');
-
-                            this.$notify({
-                                group: 'notifications',
-                                title: 'Card Error',
-                                text: "We're sorry, there was a problem processing your donation. Please contact the card issuer for more information.",
-                                duration: '20000',
-                                width: '100%',
-                            });
+                            this.$store.dispatch('endLoading');
 
                         })
 
@@ -370,15 +351,7 @@
                         }).catch((error) => {
                             console.log(error.response.data.message);
 
-                            this.$emit('endLoading');
-
-                            // this.$notify({
-                            //     group: 'notifications',
-                            //     title: 'Card Error',
-                            //     text: "We're sorry, there was a problem processing your donation. Please contact the card issuer for more information.",
-                            //     duration: '40000',
-                            //     width: '100%',
-                            // });
+                            this.$store.dispatch('endLoading')
 
                         })
                     }

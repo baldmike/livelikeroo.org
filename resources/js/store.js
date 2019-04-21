@@ -116,6 +116,15 @@ export default new Vuex.Store({
     actions: {
         // actions are dispatched in component, they commit mutations
 
+        getAllUsers(context) {
+            axios.call("get", "/api/users").then(({ data }) => {
+                // console.log("[API call to users]: " + JSON.stringify(data));
+                context.commit('setUsers', data);
+            })
+            .catch(error => {
+                console.log("API call error: " + error);
+            });
+        },
         setLoginCred(context, payload) {
             context.commit('setLoginCred', payload)
         },
@@ -126,44 +135,39 @@ export default new Vuex.Store({
                 context.commit('setUser', user)
             })
         },
+
         setOneTime(context) {
             context.commit('setOneTime');
         },
         setMonthly(context) {
             context.commit('setMonthly');
         },
-        showCpForm(context) {
-            context.commit('showCpForm');
-        },
+
+        
         showLogin(context) {
             context.commit('showLogin');
         },
-        getAllUsers(context) {
-            axios.call("get", "/api/users").then(({ data }) => {
-                // console.log("[API call to users]: " + JSON.stringify(data));
-                context.commit('setUsers', data);
-            })
-            .catch(error => {
-                console.log("API call error: " + error);
-            });
-        },
+        
         hideModal(context) {
             context.commit('hideModal');
         },
+
         startLoading(context) {
             context.commit('startLoading');
         },
         endLoading(context) {
             context.commit('endLoading');
         },
+
         notify(context, payload) {
             context.commit('notify', payload);
         },
+
         logout( { commit }) {
         
             axios.post("/api/logout").then((userData) => {        
                 let payload = {
-                    type: "success",
+                    type: "info",
                     message: "You have successfully logged out."
                 }
 
@@ -176,6 +180,9 @@ export default new Vuex.Store({
         },
         clearNotifications(context) {
             context.commit('clearNotifications');
+        },
+        showCpForm(context) {
+            context.commit('showCpForm');
         },
         cpFormSuccess(context) {
             context.commit('endLoading');
@@ -200,7 +207,25 @@ export default new Vuex.Store({
 
             context.commit('notify', payload);
 
+        },
+        dnFormSuccess(context) {
+            context.commit('hideModal');
+            context.commit('endLoading');
+
+            let payload = {
+                type: "success",
+                message: "Thank you! Your generous donation is how we're able to help so many #LiveLikeROo!"
+            }
+
+            context.commit('notify', payload);
+
+            router.push({ path: '/' });
+        },
+        dnFormSubmit(context) {
+            context.commit('hideModal');
+            context.commit('startLoading');
         }
+
     }
 
 })
