@@ -8,163 +8,180 @@
             <img v-if="isMonthly" src="/images/headline3.jpg" fluid>
 
             <!-- DONATION AMOUNT -->
+            <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" block type="primary">One Time</n-button></div>
+                    <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary" block>Monthly</n-button></div>
+                </div>
             <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>
             <h3 class="center" v-if="isOneTime">ONE TIME DONATION</h3>
             
             <div class="row">
                 <div class="col-md-12">
-                    <p>Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please choose an amount and select one time or monthly donation. Thank You!</p>
+                    <h5 style="text-align: center;">Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please choose an amount and select one time or monthly donation. Thank You!</h5>
                 </div>
                 <hr>
-                <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary"><i class="fa fa-heart"></i>  $10</n-button></div>
-                <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary"><i class="fa fa-heart"></i> $25</n-button></div>
-                <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'50')"   outline round type="primary"><i class="fa fa-heart"></i> $50</n-button></div>
-                <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'100')" outline round type="primary"><i class="fa fa-heart"></i>$100</n-button></div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <p>Or Enter an amount:</p>
+            <div class="form-box">
+                <div class="row">
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary"><i class="fa fa-heart"></i>  $10</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary"><i class="fa fa-heart"></i> $25</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'50')"   outline round type="primary"><i class="fa fa-heart"></i> $50</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'100')" outline round type="primary"><i class="fa fa-heart"></i>$100</n-button></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="center">Or Enter an amount:</h3>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto" style="font-size: 2rem; text-align: center !important;">
+                        <fg-input 
+                        id="amount"
+                        v-on:input="clearButtons"
+                        type="number"
+                        v-model="form.amount"
+                        required/>
+                    </div>
                 </div>
             </div>
+
+            <div class="form-box">
+                <!-- DONATION TYPE == IN HONOR/MEMORY -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="center">DONATION TYPE: {{ donationType }}</h3>
+                        <h5 style="text-align: center;">Choose whether this is a personal donation, or to be made in memory of a loved one.</h5>
+                    </div>
+                </div>  
+
+                <div class="row center" id="donationType">
+                    <div class="col-md-6"><n-button type="primary" @click.prevent.native="personalDonation" block>Personal</n-button></div>
+                    <div class="col-md-6"><n-button type="primary" @click.prevent.native="memoryDonation" block>In Memory Of</n-button></div>
+                </div>
             
-            <div class="row">
-                <div class="col-md-4 ml-auto mr-auto" style="font-size: 2rem; text-align: center !important;">
-                    <fg-input 
-                    id="amount"
-                    v-on:input="clearButtons"
-                    type="number"
-                    v-model="form.amount"
+
+                <div class="form-group" id="inMemoryGroup" v-if="form.inMemory" label="In Memory Of">
+                    <label>In Memory Of</label>
+                    <fg-input id="honoreeName"
+                    placeholder="Honoree"
+                    type="text"
+                    v-model="form.honoreeName"
                     required/>
                 </div>
-            </div>
-
-            <div class="row center">
-                <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" block type="primary">One Time</n-button></div>
-                <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary" block>Monthly</n-button></div>
-            </div>
 
 
-            <!-- DONATION TYPE == IN HONOR/MEMORY -->
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="center">DONATION TYPE</h3>
+                <div class="form-group" id="recipientInfoGroup" v-if="!isPersonal">
+                    <h5 class="center">Would you like us to notify someone?</h5>
                 </div>
-            </div>  
 
-            <div class="row center" id="donationType">
-                <div class="col-md-6"><n-button type="primary" @click.prevent.native="personalDonation" block>Personal</n-button></div>
-                <div class="col-md-6"><n-button type="primary" @click.prevent.native="memoryDonation" block>In Memory Of</n-button></div>
-            </div>
+                <div class="form-group" id="recipientGroup" v-if="!isPersonal" label="Recipient Name">
+                    <label for="recipientNameDnForm">Recipient's Name</label>
+                    <fg-input 
+                        id="recipientNameDnForm"
+                        placeholder="Recipient's Name"
+                        type="text"
+                        v-model="form.recipientName"/>
+                </div>
 
-            <div class="form-group" id="inMemoryGroup" v-if="form.inMemory" label="In Memory Of">
-                <label>In Memory Of</label>
-                <fg-input id="honoreeName"
-                placeholder="Honoree"
-                type="text"
-                v-model="form.honoreeName"
-                required/>
-            </div>
+                <!-- IF EMAIL -->
+                <div class="form-group" id="recipientEmailGroup" v-if="!isPersonal" label="Recipient Email">
+                    <label for="recipientEmailDnForm">Recipient's Email</label>
+                    <fg-input 
+                        id="recipientEmailDnForm"
+                        placeholder="Recipient's Email"
+                        type="email"
+                        v-model="form.recipientEmail"/>
+                </div>
 
-
-            <div class="form-group" id="recipientInfoGroup" v-if="!isPersonal">
-                <div>Would you like us to notify someone?</div>
-            </div>
-
-            <div class="form-group" id="recipientGroup" v-if="!isPersonal" label="Recipient Name">
-                <fg-input 
-                    id="recipientName"
-                    placeholder="Recipient's Name"
-                    type="text"
-                    v-model="form.recipientName"/>
-            </div>
-
-            <!-- IF EMAIL -->
-            <div class="form-group" id="recipientEmailGroup" v-if="!isPersonal" label="Recipient Email">
-                <fg-input 
-                    id="recipientEmail"
-                    placeholder="Recipient's Email"
-                    type="email"
-                    v-model="form.recipientEmail"/>
-            </div>
-
-            <div class="form-group" id="recipientMessageGroup" label="Message for recipient" v-if="!isPersonal">
-                    <label>Message: </label>
-                    <textarea name="message" class="form-control" id="recipientMessage" rows="6" v-model="form.recipientMessage"></textarea>
+                <div class="form-group" id="recipientMessageGroup" label="Message for recipient" v-if="!isPersonal">
+                        <label>Message: </label>
+                        <textarea name="message" class="form-control" id="recipientMessage" rows="6" v-model="form.recipientMessage"></textarea>
+                </div>
             </div>
                     
-            <h3 class="form-headline">YOUR INFORMATION</h3>
+            <div class="form-box">
+                <h3 class="center">YOUR INFORMATION</h3>
 
-            <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you. With your email and password, you'll be able to log in and view, update or cancel your donation at any time.</div>
+                <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you. With your email and password, you'll be able to log in and view, update or cancel your donation at any time.</div>
+                
+                <label for="firstNameDnForm">First Name</label>
+                <fg-input 
+                        id="firstNameDnForm"
+                        class="input-lg"
+                        placeholder="First Name"
+                        v-model="form.firstNameDnForm">
+                </fg-input>
+
+                <label for="lastNameDnForm">Last Name</label>
+                <fg-input
+                        id="lastNameDnform"
+                        class="input-lg"
+                        placeholder="Last Name"
+                        v-model="form.lastNameDnForm">
+                </fg-input>
+
+                <label for="emailDnForm">Email</label>
+                <fg-input
+                        id="emailDnForm"
+                        class="input-lg"
+                        placeholder="Email"
+                        v-model="form.email">
+                </fg-input>
+
+                <div id="passwordLoginGroup" v-if="isMonthly">
             
-
-
-            <fg-input 
-                    id="firstNameDnForm"
-                    class="input-lg"
-                    placeholder="First Name"
-                    v-model="form.firstNameDnForm">
-            </fg-input>
-
-            <fg-input
-                    id="lastNameDnform"
-                    class="input-lg"
-                    placeholder="Last Name"
-                    v-model="form.lastNameDnForm">
-            </fg-input>
-
-            <fg-input
-                    id="Email"
-                    class="input-lg"
-                    placeholder="Email"
-                    v-model="form.email">
-            </fg-input>
-
-
-            <div id="passwordLoginGroup" label="Password" label-for="password" v-if="isMonthly">
-                <fg-input 
-                id="password"
-                type="password"
-                placeholder="Password"
-                v-model="form.password" 
-                required />
+                    <label for="passwordDnForm">Password</label>
+                    <fg-input 
+                    id="passwordDnForm"
+                    type="password"
+                    placeholder="Password"
+                    v-model="form.password" 
+                    required />
+                
+                    <fg-input 
+                    id="repeatPassword"
+                    type="password"
+                    v-model="form.repeatPassword"
+                    :state="!$v.form.repeatPassword.$invalid"/>
+                </div>
             </div>
 
-            <div id="repeatPasswordGroup" label="Repeat Password" label-for="repeatPassword" v-if="isMonthly">
-                <fg-input 
-                id="repeatPassword"
-                type="password"
-                v-model="form.repeatPassword"
-                :state="!$v.form.repeatPassword.$invalid"/>
+            <div class="form-box">
+                <!-- CC/DONOR INFORMTION -->
+                <h3 class="center">PAYMENT INFORMATION</h3>
+
+                <div class="form-group" id="nameOnCardGroup">
+                    <label for="card-element">Name on Card</label>
+                    <fg-input 
+                        placeholder="Name on Card"
+                        id="name_on_card"
+                        type="text"
+                        v-model="form.name_on_card"
+                        required/>
+                </div>
+
+                <!-- use Stripe's card element -->
+                <div class="form-group" id="nameOnCardGroup">
+                    <label for="card-element">Card Information</label>
+                    <card-element></card-element>
+                </div>
+
+                <!-- CSRF Field -->
+                <input type="hidden" name="_token" :value="csrf">
+
+                <br>
+
+                <div class="form-group">
+                    <div class="col-md-12 center"><n-button v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }}</n-button></div>
+                    <div class="col-md-12 center"><n-button v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}</n-button></div>
+                </div>
             </div>
-            
-            <!-- CC/DONOR INFORMTION -->
-            <h3 class="form-headline">PAYMENT INFORMATION</h3>
-            <hr>
 
-            <div class="form-group" id="nameOnCardGroup" label-for="name_on_card">
-                <fg-input 
+            <div class="col-md-12 center"><img src="/images/llr_logo.png"></div>
 
-                    placeholder="Name on Card"
-                    id="name_on_card"
-                    type="text"
-                    v-model="form.name_on_card"
-                    required/>
-            </div>
-
-            <!-- use Stripe's card element -->
-            <div class="form-group" id="nameOnCardGroup" label="Card Information:" label-for="card-element">
-                <card-element></card-element>
-            </div>
-
-            <!-- CSRF Field -->
-            <input type="hidden" name="_token" :value="csrf">
-
-            <div class="form-group">
-                <div class="col-md-8 offset-md-2 center"><n-button v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }}</n-button></div>
-                <div class="col-md-8 offset-md-2 center"><n-button v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}</n-button></div>
-                <div class="col-md-12 center"><img src="/images/llr_logo.png"></div>
-            </div>
         </form>
     </div>
 </template>
@@ -261,8 +278,12 @@
             isPersonal() {
                 return this.form.personal;
             },
-            isInHonor() {
-                return this.form.inHonor;
+            donationType() {
+                if (this.isPersonal) {
+                    return "Personal"
+                }
+
+                return "Memorial"
             },
             isInMemory() {
                 return this.form.inMemory;
@@ -445,12 +466,12 @@
                 this.hundred = false;
 
                 this.form.amount = '10';
-                this.form.email = '';
+                this.form.emailDnForm = '';
                 this.form.name_on_card = '';
                 this.form.firstNameDnForm = '';
                 this.form.lastNameDnForm = '';
-                this.form.password = '';
-                this.form.repeatPassword = '';
+                this.form.passwordDnForm = '';
+                this.form.repeatPasswordDnForm = '';
                 this.form.firstNameDnForm = '';
                 this.form.lastNameDnForm = '';
 
@@ -503,95 +524,15 @@
 
 <style lang="scss" scoped>
     
-
-    .button-group {
-        text-align: center;
-        margin: 0 auto;
-    }
-
-    
-
-    .donate-amount-button {
-        height: 2.5rem;
-        width: 4rem;
-        margin: 1rem auto;
-        border: 1px solid #fd7e14;
-        border-radius: 5px;
-        background-color: white;
-        color: #fd7e14;
-    }
-
-    .donate-amount-button:focus {
-        outline: 0;
-    }
-
-    .donate-amount-button:hover {
-        background-color: #fd7e14;
-        color: white;
-    }
-
-    .orange {
-        background-color: #fd7e14;
-        color: white;
-    }
-
-    .orange:focus {outline:0;}
-
-    .modal-content header {
-        background-color: green;
-    }
-
-    .modal-dialog {
-        background-color: red !important;
-    }
-
-    #amount {
-        text-align: center;
-        width: 100px;
-        margin: 0 auto;
-    }
-
-    .cancel {
-        margin: 0 auto;
-        background-color: white;
-        color: #fd7e14;
-        width: 100%;
-    }
-
-    .cancel:hover {
-        background-color: red;
-        color: white;
-    }
-
-    .close-button {
-        color: white;
-        font-size: 2rem;
-        border-radius: 50%;
-        background-color: #fd7e14;
-        width: 34px;
-        height: 34px;
-        line-height: 2rem;
-        text-align: center;
-        margin: 10px;
-    }
-
-    .close-button:hover {
-        cursor: pointer;
-    }
-
-    .white {
-        background-color: white;
-        border: 1px solid #fd7e14;
-        color: #fd7e14;
-    }
-
-    .form-control input {
-        text-align: center !important;
-    }
-
     .center {
         text-align: center;
     }
-
+  
+    .form-box {
+        border: 1px solid orange;
+        border-radius: 6px;
+        margin: 1rem;
+        padding: 1rem;
+    }
     
 </style>
