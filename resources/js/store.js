@@ -214,7 +214,7 @@ export default new Vuex.Store({
 
             let payload = {
                 type: "success",
-                message: "Thank you! Your generous donation is how we're able to help so many #LiveLikeROo!"
+                message: "Thank you! Your donation has been received! We're only able to help so many #LiveLikeRoo! because of YOU -- Thank you!"
             }
 
             context.commit('notify', payload);

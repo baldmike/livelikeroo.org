@@ -3,26 +3,27 @@
     <div v-if="show">
 
         <form id="donation-form" @submit.prevent="pay()" @reset="resetForm()">
-
+            
             <img v-if="isOneTime" src="/images/headline2.jpg" fluid>
             <img v-if="isMonthly" src="/images/headline3.jpg" fluid>
-
-            <!-- DONATION AMOUNT -->
-            <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" block type="primary">One Time</n-button></div>
-                    <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary" block>Monthly</n-button></div>
-                </div>
-            <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>
-            <h3 class="center" v-if="isOneTime">ONE TIME DONATION</h3>
             
-            <div class="row">
-                <div class="col-md-12">
-                    <h5 style="text-align: center;">Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please choose an amount and select one time or monthly donation. Thank You!</h5>
-                </div>
-                <hr>
-            </div>
-
             <div class="form-box">
+
+                <!-- DONATION AMOUNT -->
+                <div class="row">
+                        <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" block type="primary">One Time</n-button></div>
+                        <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary" block>Monthly</n-button></div>
+                    </div>
+                <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>
+                <h3 class="center" v-if="isOneTime">ONE TIME DONATION</h3>
+                
+                
+                <div class="col-md-12">
+                    <h5 style="text-align: center;">Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please select one time or monthly donation with the buttons above, and choose your amount below. Thank You!</h5>
+                </div>
+
+
+            
                 <div class="row">
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary"><i class="fa fa-heart"></i>  $10</n-button></div>
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary"><i class="fa fa-heart"></i> $25</n-button></div>
@@ -31,7 +32,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-10 offset-md-1">
                         <h3 class="center">Or Enter an amount:</h3>
                     </div>
                 </div>
@@ -221,12 +222,8 @@
                     recipientMessage: 'Message to recipient'
                 },
                 show: true,
-                isShow: false,
-                
+                isShow: false,                
                 loading: false,
-
-                states: ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",  "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"],
-                
                 
                 csrf: document.head.querySelector('meta[name="csrf-token"]').content,
             }
@@ -304,7 +301,8 @@
         },
         methods: {
             pay() {
-                console.log("PAY METHOD");
+                this.$store.dispatch('dnFormSubmit');
+
                 // createToken returns a Promise which resolves in a result object with
                 // either a token or an error key.
                 // See https://stripe.com/docs/api#tokens for the token object.
@@ -494,8 +492,6 @@
 
             toggleMonthly(e) {
                 e.preventDefault();
-
-                this.isShow = true;
 
                 this.form.password = '';
                 this.form.password = '';
