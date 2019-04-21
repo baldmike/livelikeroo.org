@@ -4,6 +4,9 @@
 
         <form id="donation-form" @submit.prevent="pay()" @reset="resetForm()">
             
+            <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>
+            <h3 class="center" v-if="isOneTime">ONE TIME DONATION</h3>
+
             <img v-if="isOneTime" src="/images/headline2.jpg" fluid>
             <img v-if="isMonthly" src="/images/headline3.jpg" fluid>
             
@@ -14,12 +17,11 @@
                         <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" block type="primary">One Time</n-button></div>
                         <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary" block>Monthly</n-button></div>
                     </div>
-                <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>
-                <h3 class="center" v-if="isOneTime">ONE TIME DONATION</h3>
+                
                 
                 
                 <div class="col-md-12">
-                    <h5 style="text-align: center;">Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please select one time or monthly donation with the buttons above, and choose your amount below. Thank You!</h5>
+                    <h5 class="center">Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please select one time or monthly donation with the buttons above, and choose your amount below. Thank You!</h5>
                 </div>
 
 
@@ -525,7 +527,7 @@
     }
   
     .form-box {
-        border: 1px solid orange;
+        border: 1px solid #fd7e14;
         border-radius: 6px;
         margin: 1rem;
         padding: 1rem;

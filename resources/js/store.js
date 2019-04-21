@@ -184,6 +184,10 @@ export default new Vuex.Store({
         showCpForm(context) {
             context.commit('showCpForm');
         },
+        cpFormSubmit(context) {
+            context.commit('hideModal');
+            context.commit('startLoading');
+        },
         cpFormSuccess(context) {
             context.commit('endLoading');
 
@@ -198,7 +202,6 @@ export default new Vuex.Store({
         },
         cpFormError(context) {
             context.commit('endloading');
-            context.commit('hideModal');
 
             let payload = {
                 type: "danger",
@@ -209,7 +212,6 @@ export default new Vuex.Store({
 
         },
         dnFormSuccess(context) {
-            context.commit('hideModal');
             context.commit('endLoading');
 
             let payload = {

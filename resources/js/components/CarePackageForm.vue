@@ -7,137 +7,142 @@
                 <h3 class="center">CARE PACKAGES!</h3>
                 <img src="/images/headline4.jpg" fluid>
                 
-                <div class="row">
+
+                <div class="form-box">
+
                     <div class="col-md-12">
-                        <p style="text-align: center;">Our Roo Cancer Care Packages include some of Roo’s favorite items, and are each made by hand by our volunteers.</p>
+                        <h3 class="center">TELL US ABOUT YOUR PET</h3>
+                        <h5 class="center text">Our Roo Cancer Care Packages include some of Roo’s favorite items, and are each made by hand by our volunteers. Get started by telling us about your your buddy!</h5>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pet Name</label>
+                        <fg-input
+                                type="text"
+                                :state="!$v.form.petName.$invalid"
+                                v-model="form.petName"
+                                placeholder="Pet's Name"
+                                required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tell us about a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
+                        <textarea
+                                rows="6"
+                                class="form-control"
+                                :state="!$v.form.about.$invalid"
+                                v-model="form.about"
+                                required/>
+                    </div>
+        
+                    <div class="form-group">
+                        <label>Medical diagnosis</label>
+                        <textarea
+                                rows="6"
+                                class="form-control"
+                                :state="!$v.form.diagnosis.$invalid"
+                                v-model="form.diagnosis"
+                                required/>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Pet Name</label>
-                    <fg-input
-                            type="text"
-                            :state="!$v.form.petName.$invalid"
-                            v-model="form.petName"
-                            placeholder="Pet's Name"
-                            required/>
-                </div>
+                <div class="form-box">
+                    <h3 class="center">TELL US ABOUT YOURSELF!</h3>               
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <fg-input
+                                type="text"
+                                :state="!$v.form.firstName.$invalid"
+                                v-model="form.firstName"
+                                placeholder="First Name"
+                                required/>
+                    </div>
 
-                <div class="form-group">
-                    <label>Tell us about a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
-                    <textarea
-                            rows="6"
-                            class="form-control"
-                            :state="!$v.form.about.$invalid"
-                            v-model="form.about"
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <fg-input
+                                type="text"
+                                :state="!$v.form.lastName.$invalid"
+                                v-model="form.lastName"
+                                placeholder="Last Name"
+                                required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <fg-input
+                                type="email"
+                                :state="!$v.form.email.$invalid"
+                                v-model="form.email"
+                                placeholder="Email"
+                                required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address1">Street Address</label>
+                        <fg-input
+                                type="text"
+                                :state="!$v.form.address1.$invalid"
+                                v-model="form.address1"
+                                placeholder="Street Address"
+                                required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form.address2">Street Address 2</label>
+                        <fg-input
+                                type="text"
+                                v-model="form.address2"
+                                placeholder="Street Address 2"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>City</label>
+                        <fg-input
+                                type="text"
+                                :state="!$v.form.city.$invalid"
+                                v-model="form.city"
+                                placeholder="City"
+                                required/>
+                    </div>
+
+                    <!-- <el-select class="select-danger"
+                                placeholder="Single Select"
+                                v-model="form.state">
+                        <el-option v-for="option in states"
+                                class="select-danger"
+                                :value="option.value"
+                                :label="option.label"
+                                :key="option.value">
+                        </el-option>
+                    </el-select> -->
+                    
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select placeholder="State" 
+                                required
+                                :options="states"
+                                class="form-control select-primary"
+                                v-model="form.state">
+                                <option v-for="state in states" :key="state.value" :value="state.value">
+                                {{ state.label }}
+                                </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Zip Code</label>
+                        <fg-input
+                            type="text"
+                            :state="!$v.form.zip.$invalid"
+                            v-model="form.zip"
+                            placeholder="Zip Code"
                             required/>
-                </div>
+                    </div>
     
-                <div class="form-group">
-                    <label>Medical diagnosis</label>
-                    <textarea
-                            rows="6"
-                            class="form-control"
-                            :state="!$v.form.diagnosis.$invalid"
-                            v-model="form.diagnosis"
-                            required/>
-                </div>
+                    <div class="sent" v-if="sent">This Form Has been submitted.</div>
 
-
-                <h3 class="center">Tell us a little bit about yourself!</h3>                
-                <div class="form-group">
-                    <label>First Name</label>
-                    <fg-input
-                            type="text"
-                            :state="!$v.form.firstName.$invalid"
-                            v-model="form.firstName"
-                            placeholder="First Name"
-                            required/>
                 </div>
-
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <fg-input
-                            type="text"
-                            :state="!$v.form.lastName.$invalid"
-                            v-model="form.lastName"
-                            placeholder="Last Name"
-                            required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <fg-input
-                            type="email"
-                            :state="!$v.form.email.$invalid"
-                            v-model="form.email"
-                            placeholder="Email"
-                            required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="address1">Street Address</label>
-                    <fg-input
-                            type="text"
-                            :state="!$v.form.address1.$invalid"
-                            v-model="form.address1"
-                            placeholder="Street Address"
-                            required/>
-                </div>
-
-                <div class="form-group">
-                    <label for="form.address2">Street Address 2</label>
-                    <fg-input
-                            type="text"
-                            v-model="form.address2"
-                            placeholder="Street Address 2"/>
-                </div>
-
-                <div class="form-group">
-                    <label>City</label>
-                    <fg-input
-                            type="text"
-                            :state="!$v.form.city.$invalid"
-                            v-model="form.city"
-                            placeholder="City"
-                            required/>
-                </div>
-
-                <!-- <el-select class="select-danger"
-                            placeholder="Single Select"
-                            v-model="form.state">
-                    <el-option v-for="option in states"
-                            class="select-danger"
-                            :value="option.value"
-                            :label="option.label"
-                            :key="option.value">
-                    </el-option>
-                </el-select> -->
-                
-                <div class="form-group">
-                    <label for="state">State</label>
-                    <select placeholder="State" 
-                            required
-                            :options="states"
-                            class="form-control select-primary"
-                            v-model="form.state">
-                            <option v-for="state in states" :key="state.value" :value="state.value">
-                            {{ state.label }}
-                            </option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Zip Code</label>
-                    <fg-input
-                        type="text"
-                        :state="!$v.form.zip.$invalid"
-                        v-model="form.zip"
-                        placeholder="Zip Code"
-                        required/>
-                </div>
-  
-                <div class="sent" v-if="sent">This Form Has been submitted.</div>
 
                 <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
                     <n-button 
@@ -316,19 +321,15 @@
 
                 // let self = this;
 
-                this.$store.dispatch('startLoading');
+                this.$store.dispatch('cpFormSubmit');
                 
 
-                axios.post("/api/care_pkgs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
-                    this.$store.dispatch('hideModal');
-                    let self = this;
+                axios.post("/api/care_pkg", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
                     this.$store.dispatch('cpFormSuccess')
-                    
-                    console.log("Care Pkg Modal Component -- store - DATA: " + data.toString());
+                    let self = this;                    
+                    // console.log("Care Pkg Modal Component -- store - DATA: " + data.toString());
                     }).catch((error) => {
-                        console.log(error);
-                        
                         this.$store.dispatch('cpFormError')
                     })
             },
@@ -379,6 +380,17 @@
 <style lang="scss" scoped>
     .center {
         text-align: center;
+    }
+
+    .text {
+        color: darkgrey;
+    }
+  
+    .form-box {
+        border: 1px solid #fd7e14;
+        border-radius: 6px;
+        margin: 1rem;
+        padding: 1rem;
     }
     
    
