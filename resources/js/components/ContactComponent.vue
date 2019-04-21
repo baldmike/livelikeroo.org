@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 ml-auto mr-auto">
-                        <card type="contact" raised header-classes="text-center" style="margin-top: 100px;">
+                        <card type="contact" raised header-classes="text-center" style="margin-top: 100px; background-color: #666666;">
                             <h4 slot="header" class="card-title">Contact Us</h4>
 
                             <div class="row">
@@ -13,8 +13,8 @@
                                     <label>First Name</label>
                                     <fg-input
                                         type="text"
-                                        v-model="form.firstNameContact"
-                                        :state="!$v.form.firstNameContact.$invalid"
+                                        v-model="form.firstName"
+                                        :state="!$v.form.firstName.$invalid"
                                         placeholder="First Name"/>
                                         
                                 </div>
@@ -22,26 +22,26 @@
                                     <label>Last Name</label>
                                     <fg-input
                                         type="text"
-                                        v-model="form.lastNameContact"
-                                        :state="!$v.form.lastNameContact.$invalid"
+                                        v-model="form.lastName"
+                                        :state="!$v.form.lastName.$invalid"
                                         placeholder="Last Name"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Email address</label>
                                 <fg-input
-                                        type="text"
-                                        v-model="form.emailContact"
-                                        :state="!$v.form.emailContact.$invalid"
-                                        placeholder="Email"/>
+                                        type="email"
+                                        v-model="form.email"
+                                        :state="!$v.form.email.$invalid"
+                                        placeholder="Email Address"/>
                             </div>
                             <div class="form-group">
                                 <label>Your message</label>
                                 <textarea 
-                                        v-model="form.messageContact" 
+                                        v-model="form.message" 
                                         required
                                         class="form-control" 
-                                        :state="!$v.form.messageContact.$invalid"
+                                        :state="!$v.form.message.$invalid"
                                         rows="6"/>
                             </div>
                             <div class="row">
@@ -57,7 +57,7 @@
                                         type="primary" 
                                         round 
                                         class="pull-right"
-                                        :disabled="$v.$invalid || !robot"
+                                        :disabled="$v.form.$invalid || !robot"
                                         @click.prevent.native="sendMessage">
                                         Send Message</n-button>
                                 </div>
@@ -93,17 +93,17 @@
         ],
         validations: {
             form: {
-                firstNameContact: {
+                firstName: {
                     required,
                 },
-                lastNameContact: {
+                lastName: {
                     required,
                 },
-                emailContact: {
+                email: {
                     required,
                     email
                 },
-                messageContact: {
+                message: {
                     required
                 }
             }
@@ -111,10 +111,10 @@
         data() {
             return {
                 form: {
-                    firstNameContact: '',
-                    lastNameContact: '',
-                    emailContact: '',
-                    messageContact: ''
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    message: ''
                 },
                 robot: false
             }
@@ -125,10 +125,10 @@
 
                 let fd = new FormData();
 
-                fd.append('first_name', this.form.firstNameContact);
-                fd.append('last_name', this.form.lastNameContact);
-                fd.append('email', this.form.emailContact);
-                fd.append('message', this.form.messageContact);
+                fd.append('first_name', this.form.firstName);
+                fd.append('last_name', this.form.lastName);
+                fd.append('email', this.form.email);
+                fd.append('message', this.form.message);
 
                 this.$store.dispatch('startLoading');
 
@@ -157,7 +157,7 @@
                     this.$store.dispatch('endLoading');
                     self.$store.dispatch('notify', payload);
 
-                    setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
+                    setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 5000);
 
                     console.log("[ContactComponent] - api/contact call: " + error);
                 

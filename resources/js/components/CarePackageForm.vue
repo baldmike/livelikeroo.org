@@ -2,153 +2,157 @@
     
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <img src="/images/headline4.jpg" fluid>
-            
+            <form>
+
                 <h3 class="center">CARE PACKAGES!</h3>
+                <img src="/images/headline4.jpg" fluid>
+                
                 <div class="row">
                     <div class="col-md-12">
                         <p style="text-align: center;">Our Roo Cancer Care Packages include some of Roo’s favorite items, and are each made by hand by our volunteers.</p>
                     </div>
                 </div>
-            
-                <h3 class="center">TELL US ABOUT YOUR PET</h3>
-                
 
-                <div class="form-group" id="petNameGroup">
+                <div class="form-group">
                     <label>Pet Name</label>
                     <fg-input
-                            id="petName"
                             type="text"
+                            :state="!$v.form.petName.$invalid"
                             v-model="form.petName"
                             placeholder="Pet's Name"
                             required/>
                 </div>
 
-                <div class="form-group" id="aboutGroup">
-                    <label>Tell us about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
+                <div class="form-group">
+                    <label>Tell us about a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                     <textarea
-                            id="about"
                             rows="6"
-                            v-model="form.about"
                             class="form-control"
+                            :state="!$v.form.about.$invalid"
+                            v-model="form.about"
                             required/>
                 </div>
     
-                <div class="form-group" id="diagnosisGroup">
+                <div class="form-group">
                     <label>Medical diagnosis</label>
                     <textarea
                             rows="6"
-                            id="diagnosis"
-                            class="form-control" 
+                            class="form-control"
+                            :state="!$v.form.diagnosis.$invalid"
                             v-model="form.diagnosis"
                             required/>
                 </div>
 
 
-
-
-
-                <h3 class="center">YOUR INFORMATION</h3>                
-                <div class="form-group" id="firstNameGroup">
+                <h3 class="center">Tell us a little bit about yourself!</h3>                
+                <div class="form-group">
                     <label>First Name</label>
                     <fg-input
-                            id="firstName"
                             type="text"
-                            v-model="form.firstNameCp"
+                            :state="!$v.form.firstName.$invalid"
+                            v-model="form.firstName"
                             placeholder="First Name"
                             required/>
                 </div>
 
-                <div class="form-group" id="lastNameGroup">
+                <div class="form-group">
                     <label for="lastName">Last Name</label>
                     <fg-input
-                            id="lastName"
                             type="text"
+                            :state="!$v.form.lastName.$invalid"
                             v-model="form.lastName"
                             placeholder="Last Name"
                             required/>
                 </div>
 
-                <div class="form-group" id="exampleInputGroup1">
+                <div class="form-group">
                     <label for="email">Email</label>
                     <fg-input
-                            id="email"
                             type="email"
+                            :state="!$v.form.email.$invalid"
                             v-model="form.email"
                             placeholder="Email"
                             required/>
                 </div>
 
-                <div class="form-group" id="address1Group">
+                <div class="form-group">
                     <label for="address1">Street Address</label>
                     <fg-input
-                            id="address1"
                             type="text"
+                            :state="!$v.form.address1.$invalid"
                             v-model="form.address1"
                             placeholder="Street Address"
                             required/>
                 </div>
 
-                <div class="form-group" id="address1Group">
-                    <label for="address2">Street Address 2</label>
+                <div class="form-group">
+                    <label for="form.address2">Street Address 2</label>
                     <fg-input
-                            id="address2"
                             type="text"
                             v-model="form.address2"
                             placeholder="Street Address 2"/>
                 </div>
 
-                <div class="form-group" id="cityGroup">
-                    <label for="city">City</label>
+                <div class="form-group">
+                    <label>City</label>
                     <fg-input
-                            id="city"
                             type="text"
-                            v-model="form.address1"
+                            :state="!$v.form.city.$invalid"
+                            v-model="form.city"
                             placeholder="City"
                             required/>
                 </div>
 
-                <el-select class="select-danger"
+                <!-- <el-select class="select-danger"
                             placeholder="Single Select"
                             v-model="form.state">
                     <el-option v-for="option in states"
                             class="select-danger"
                             :value="option.value"
                             :label="option.label"
-                            :key="option.label">
+                            :key="option.value">
                     </el-option>
-                </el-select>
+                </el-select> -->
                 
-                <!-- <div class="form-group" id="stateGroup">
+                <div class="form-group">
                     <label for="state">State</label>
-                    <select id="state" 
-                            :options="states" 
+                    <select placeholder="State" 
                             required
-                            class="form-control"
-                            v-model="form.state" />
-                </div> -->
+                            :options="states"
+                            class="form-control select-primary"
+                            v-model="form.state">
+                            <option v-for="state in states" :key="state.value" :value="state.value">
+                            {{ state.label }}
+                            </option>
+                    </select>
+                </div>
 
-                <div class="form-group" id="zipGroup" label="Zip" label-for="zip">
+                <div class="form-group">
+                    <label>Zip Code</label>
                     <fg-input
-                        id="zip"
                         type="text"
+                        :state="!$v.form.zip.$invalid"
                         v-model="form.zip"
+                        placeholder="Zip Code"
                         required/>
                 </div>
   
-    
-
                 <div class="sent" v-if="sent">This Form Has been submitted.</div>
+
                 <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
-                    <button type="submit" 
-                    style="background-color: #fd7e14; border: none;" >Request a Care Package</button>
+                    <n-button 
+                        type="primary" 
+                        round 
+                        :disabled="$v.form.$invalid"
+                        @click.prevent.native="requestCarePackage">
+                        Request A Care Package
+                    </n-button>
                 </div>
 
                 <div style="text-align: center; margin: 2rem;">
                     <img src="/images/llr_logo.png">
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </template>
@@ -172,7 +176,7 @@
                     address1: '',
                     address2: '',
                     city: '',
-                    state: null,
+                    state: '',
                     zip: '',
                     petName: '',
                     about: '',
@@ -182,8 +186,60 @@
                 },
                 sent: false,
 
-                states: ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",  "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"],
-
+                // states: ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",  "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"],
+                states: [
+                    {value: "AK", label: "AK"},
+                    {value: "AL", label: "AL"},
+                    {value: "AR", label: "AR"},
+                    {value: "AZ", label: "AZ"},
+                    {value: "CA", label: "CA"},
+                    {value: "CO", label: "CO"},
+                    {value: "CT", label: "CT"},
+                    {value: "DC", label: "DC"},
+                    {value: "DE", label: "DE"},
+                    {value: "FL", label: "FL"},
+                    {value: "GA", label: "GA"},
+                    {value: "HI", label: "HI"},
+                    {value: "IA", label: "IA"},
+                    {value: "ID", label: "ID"},
+                    {value: "IL", label: "IL"},
+                    {value: "IN", label: "IN"},
+                    {value: "KS", label: "KS"},
+                    {value: "KY", label: "KY"},
+                    {value: "LA", label: "LA"},
+                    {value: "MA", label: "MA"},
+                    {value: "MD", label: "MD"},
+                    {value: "ME", label: "ME"},
+                    {value: "MI", label: "MI"},
+                    {value: "MN", label: "MN"},
+                    {value: "MO", label: "MO"},
+                    {value: "MS", label: "MS"},
+                    {value: "MT", label: "MT"},
+                    {value: "NC", label: "NC"},
+                    {value: "ND", label: "ND"},
+                    {value: "NE", label: "NE"},
+                    {value: "NH", label: "NH"},
+                    {value: "NJ", label: "NJ"},
+                    {value: "NM", label: "NM"},
+                    {value: "NV", label: "NV"},
+                    {value: "NY", label: "NY"},
+                    {value: "OH", label: "OH"},
+                    {value: "OK", label: "OK"},
+                    {value: "OR", label: "OR"},
+                    {value: "PA", label: "PA"},
+                    {value: "RI", label: "RI"},
+                    {value: "SC", label: "SC"},
+                    {value: "SD", label: "SD"},
+                    {value: "TN", label: "TN"},
+                    {value: "TX", label: "TX"},
+                    {value: "UT", label: "UT"},
+                    {value: "VA", label: "VA"},
+                    {value: "VT", label: "VT"},
+                    {value: "WA", label: "WA"},
+                    {value: "WI", label: "WI"},
+                    {value: "WV", label: "WV"},
+                    {value: "WY", label: "WY"},
+                ],
                 species: [ 'Dog', 'Cat', 'Rabbit', 'Bird', 'Other' ],
                 show: true
             }
@@ -230,9 +286,7 @@
                 petName: {
                     required
                 },
-                species: {
-                    required
-                },
+
                 about: {
                     required
                 },
@@ -243,8 +297,7 @@
         },
 
         methods: {
-            onSubmit(evt) {
-                evt.preventDefault()
+            requestCarePackage() {
 
                 let fd = new FormData();
 
