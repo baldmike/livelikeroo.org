@@ -29,6 +29,16 @@
             </template>
         </modal>
 
+        <modal :show.sync="this.$store.state.modals.fnForm" headerClasses="justify-content-center">
+            <h4 slot="header" class="title title-up"></h4>
+            
+            <assistance-form></assistance-form>
+
+            <template slot="footer">
+                <n-button type="danger" @click.native="hideModal">Close</n-button>
+            </template>
+        </modal>
+
         <modal :show.sync="this.$store.state.modals.login" modal-classes="modal-mini" headerClasses="justify-content-center" class="modal-default">
             <h4 slot="header" class="title title-up"></h4>
             
@@ -38,6 +48,7 @@
                 <n-button type="danger" @click.native="hideModal">Close</n-button>
             </template>
         </modal>
+
     </div>
 </template>
 
@@ -51,6 +62,7 @@
     import Notifications from './pages/components/Notifications'
     import DonationForm from './components/DonationForm.vue'
     import CarePackage from './components/CarePackageForm.vue'
+    import AssistanceForm from './components/AssistanceForm.vue'
     import Login from './components/LoginComponent.vue'
 
     export default {
@@ -66,6 +78,7 @@
             DonationForm,
             Notifications,
             CarePackage,
+            AssistanceForm,
             Login
         },
         methods: {
@@ -73,12 +86,7 @@
                 this.$store.dispatch('getAllUsers');
                 console.log("[MainApp] - init method");
             },
-            startLoading() {
-                this.loading = true;
-            },
-            endLoading() {
-                this.loading = false;
-            },
+            
             hideModal() {
                 this.$store.dispatch('hideModal');
             }
@@ -102,6 +110,17 @@
                 this.$store.dispatch('setOneTime');
             })
 
+            EventBus.$on('showFnForm', () => {
+                console.log("[MainApp] --> showFnForm - EventBus");
+                this.$store.dispatch('showFnForm');
+            })
+
+            EventBus.$on('showCpForm', () => {
+                console.log("[MainApp] --> showCpForm - EventBus");
+                this.$store.dispatch('showCpForm');
+            })
+
+
             EventBus.$on('setOneTime', () => {
                 console.log("[MainApp] --> setOneTime - EventBus");
                 this.$store.dispatch('setOneTime');
@@ -112,8 +131,19 @@
                 this.$store.dispatch('setMonthly');
             })
 
+            
             EventBus.$on('dnFormSubmit', () => {
                 console.log("[MainApp] --> dnFormSubmit - EventBus");
+                this.$store.dispatch('hideModal');
+            })
+
+            EventBus.$on('showLogin', () => {
+                console.log("[MainApp] --> showLogin - EventBus");
+                this.$store.dispatch('showLogin');
+            })
+
+            EventBus.$on('hideModal', () => {
+                console.log("[MainApp] --> hideModal - EventBus");
                 this.$store.dispatch('hideModal');
             })
 
@@ -125,21 +155,6 @@
             EventBus.$on('endLoading', () => {
                 console.log("[MainApp] --> endLoading - EventBus");
                 this.$store.dispatch('endLoading');
-            })
-
-            EventBus.$on('showCpForm', () => {
-                console.log("[MainApp] --> showCpForm - EventBus");
-                this.$store.dispatch('showCpForm');
-            })
-
-            EventBus.$on('showLogin', () => {
-                console.log("[MainApp] --> showLogin - EventBus");
-                this.$store.dispatch('showLogin');
-            })
-
-            EventBus.$on('hideModal', () => {
-                console.log("[MainApp] --> hideModal - EventBus");
-                this.$store.dispatch('hideModal');
             })
 
             EventBus.$on('logout', () => {

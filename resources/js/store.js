@@ -29,6 +29,7 @@ export default new Vuex.Store({
             modals: {
                 dnForm: false,
                 cpForm: false,
+                fnForm: false,
                 login: false
             },
             alerts: {
@@ -91,6 +92,11 @@ export default new Vuex.Store({
         showCpForm(state) {
             state.modals.cpForm = true;
         },
+        showFnForm(state) {
+            state.modals.fnForm = true;
+        },
+
+
         showLogin(state) {
             state.modals.login = true;
         },
@@ -184,6 +190,22 @@ export default new Vuex.Store({
         showCpForm(context) {
             context.commit('showCpForm');
         },
+        fnFormSubmit(context) {
+            context.commit('hideModal');
+            context.commit('startLoading');
+        },
+        fnFormSuccess(context) {
+            context.commit('endLoading');
+
+            let payload = {
+                type: "success",
+                message: "Your Financial Assistance Request has been submitted - we'll handle it from here. Hug your buddy, and we'll be in touch very soon. #LiveLikeRoo"
+            }
+
+            context.commit('notify', payload);
+
+            router.push({ path: 'events' });
+        },
         cpFormSubmit(context) {
             context.commit('hideModal');
             context.commit('startLoading');
@@ -201,7 +223,7 @@ export default new Vuex.Store({
             router.push({ path: 'donate' });
         },
         cpFormError(context) {
-            context.commit('endloading');
+            context.commit('endLoading');
 
             let payload = {
                 type: "danger",
@@ -226,6 +248,9 @@ export default new Vuex.Store({
         dnFormSubmit(context) {
             context.commit('hideModal');
             context.commit('startLoading');
+        },
+        showFnForm(context) {
+            context.commit('showFnForm');
         }
 
     }

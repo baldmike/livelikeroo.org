@@ -49,6 +49,11 @@
       return {
         
       }
+    },
+    methods: {
+      showFnForm() {
+        EventBus.$emit('showFnForm');
+      }
     }
   }
 </script>

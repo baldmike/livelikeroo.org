@@ -83,6 +83,7 @@ export default {
                 password: this.form.password,
             };
 
+            this.$store.dispatch('hideModal');
             this.$store.dispatch('startLoading');
 
             console.log("[LoginComponent] - LOGIN - FORM DATA SET");
@@ -95,13 +96,15 @@ export default {
                 console.log("login api hit: " + data.user);
                 this.$cookie.set('token', data.token);
                 this.$cookie.set('user', data.user.email);
+                
+                this.$store.dispatch('endLoading');
 
                 auth.setAuthToken(data.token);
                 auth.login(data.token, data.user.email);
                 
-                this.$store.dispatch('hideModal');
+                
                 this.$router.push({path: 'dashboard'});
-                this.$store.dispatch('endLoading');
+                
             })
             .catch(function (error) {
 
