@@ -355,12 +355,6 @@
                     this.show = true
                 })
             },
-            onFileChange(e) {
-                const file = e.target.files[0];
-                this.form.url = URL.createObjectURL(file);
-
-                this.form.image = file;
-            },
         }
 
         

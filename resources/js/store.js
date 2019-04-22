@@ -104,6 +104,7 @@ export default new Vuex.Store({
             state.modals.dnForm = false;
             state.modals.cpForm = false;
             state.modals.login = false;
+            state.modals.fnForm = false;
         },
         startLoading(state) {
             state.loading = true;
