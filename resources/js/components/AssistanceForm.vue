@@ -19,7 +19,7 @@
                                 id="firstNameFnForm"
                                 type="text"
                                 v-model="form.firstName"
-                                :state="!$v.form.firstName.$invalid"
+                                :state="!$v.form.firstName.required"
                                 placeholder="First Name"
                                 required/>
 
@@ -36,7 +36,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group success" id="emailGroupFnForm" :class="{ 'has-danger': !$v.form.email.required }">
+                    <div class="form-group" id="emailGroupFnForm" :class="{ 'has-danger': !$v.form.email.required }">
                         <label for="emailFnForm">Email</label>
                         <fg-input
                                 id="emailFnForm"
@@ -47,7 +47,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group success" id="address1GroupFnForm" :class="{ 'has-danger': !$v.form.address1.required }">
+                    <div class="form-group" id="address1GroupFnForm" :class="{ 'has-danger': !$v.form.address1.required }">
                         <label for="address1FnForm">Address 1</label>
                         <fg-input
                                 id="address1FnForm"
@@ -57,7 +57,7 @@
                                 placeholder="Address 1"
                                 required/>
                     </div>
-                    <div class="form-group has-success" id="address2GroupFnForm">
+                    <div class="form-group" id="address2GroupFnForm">
                         <label for="address2FnForm">Address 2</label>
                         <fg-input
                                 id="address2FnForm"
@@ -67,7 +67,7 @@
                     </div>
 
                     
-                    <div class="form-group has-success" id="cityGroupFnForm" :class="{ 'has-danger': !$v.form.city.required }">
+                    <div class="form-group" id="cityGroupFnForm" :class="{ 'has-danger': !$v.form.city.required }">
                         <label for="cityFnForm">City</label>
                         <fg-input
                                 id="cityFnForm"
@@ -79,7 +79,7 @@
                     </div>
 
                     
-                    <div class="form-group has-success" id="stateGroupFnForm" :class="{ 'has-danger': !$v.form.state.required }">
+                    <div class="form-group" id="stateGroupFnForm" :class="{ 'has-danger': !$v.form.state.required }">
                         <label for="stateFnForm">State</label>
                         <select 
                                 id="stateFnForm"
@@ -93,7 +93,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group has-success" id="zipGroupFnForm" :class="{ 'has-danger': !$v.form.zip.required || !$v.form.zip.between }">
+                    <div class="form-group" id="zipGroupFnForm" :class="{ 'has-danger': !$v.form.zip.required || !$v.form.zip.between }">
                         <label for="zipFnForm">Zip Code</label>
                         <fg-input
                             id="zipFnForm"
@@ -115,7 +115,7 @@
                         <h3 class="center">YOUR PET'S INFORMATION</h3>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': !$v.form.petName.required }">
+                    <div class="form-group" :class="{ 'has-danger': !$v.form.petName.required }">
                         <label>Pet Name</label>
                         <fg-input
                                 type="text"
@@ -125,7 +125,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': !$v.form.species.required }">
+                    <div class="form-group" :class="{ 'has-danger': !$v.form.species.required }">
                         <label>Species</label>
                         <fg-input
                                 type="text"
@@ -135,7 +135,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <label>Breed</label>
                         <fg-input
                                 type="text"
@@ -143,7 +143,7 @@
                                 placeholder="Breed"/>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': !$v.form.age.required }">
+                    <div class="form-group" :class="{ 'has-danger': !$v.form.age.required }">
                         <label for="ageFnForm">Age</label>
                         <fg-input
                                 id="ageFnForm"
@@ -153,7 +153,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': !$v.form.gender.required }">
+                    <div class="form-group" :class="{ 'has-danger': !$v.form.gender.required }">
                         <label for="gender">Gender</label>
                         <select 
                                 required
@@ -168,7 +168,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': !$v.form.altered.required }">
+                    <div class="form-group" :class="{ 'has-danger': !$v.form.altered.required }">
                         <label for="altered">Altered</label>
                         <select 
                                 required
@@ -183,7 +183,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <label>Tell us about a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                         <textarea
                                 rows="6"
@@ -193,7 +193,7 @@
                     </div>
 
                     <!-- image input -->
-                    <!-- <div class="form-group has-success">
+                    <!-- <div class="form-group form-group">
                         <input
                                 type="image"
                                 accept="image/*"
@@ -211,7 +211,7 @@
 
                     <h3 class="form-headline">PET'S MEDICAL INFORMATION</h3>
 
-                    <div class="form-group has-success" id="diagnosisGroup">
+                    <div class="form-group" id="diagnosisGroup">
                         <label for="diagnosis">Medical Diagosis, if known</label>
                         <fg-input
                             id="diagnosis"
@@ -220,7 +220,7 @@
                             placeholder="Diagnosis" />
                     </div>
 
-                    <div class="form-group has-success" id="diagnosisDateGroup">
+                    <div class="form-group" id="diagnosisDateGroup">
                         <label for="diagnosisDate">Diagnosis Date, if known</label>
                         <fg-input
                             id="diagnosisDate"
@@ -228,7 +228,7 @@
                             v-model="form.diagnosisDate"
                             placeholder="Diagnosis Date" />
                     </div>
-                    <div class="form-group has-success" :class="{ 'has-danger': !$v.form.previousDiagnosis.required }">
+                    <div class="form-group" :class="{ 'has-danger': !$v.form.previousDiagnosis.required }">
                         <label for="previousDiagnosis">Has your pet previously been diagnosed with cancer?</label>
                         <select 
                                 required
@@ -243,7 +243,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group has-success" id="primaryVetFirstNameGroup" :class="{ 'has-danger': !$v.form.primaryVetFirstName.required }">
+                    <div class="form-group" id="primaryVetFirstNameGroup" :class="{ 'has-danger': !$v.form.primaryVetFirstName.required }">
                         <label for="primaryVetFirstName">Vet First Name</label>
                         <fg-input
                         id="primaryVetFirstName"
@@ -252,7 +252,7 @@
                         required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryVetLastNameGroup" :class="{ 'has-danger': !$v.form.primaryVetLastName.required }">
+                    <div class="form-group" id="primaryVetLastNameGroup" :class="{ 'has-danger': !$v.form.primaryVetLastName.required }">
                         <label for="primaryVetLastName">Vet Last Name</label>
                         <fg-input
                         id="primaryVetLastName"
@@ -261,7 +261,7 @@
                         required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryClinicGroup" :class="{ 'has-danger': !$v.form.primaryClinicName.required }">
+                    <div class="form-group" id="primaryClinicGroup" :class="{ 'has-danger': !$v.form.primaryClinicName.required }">
                         <label for="primaryClinicName">Vet Clinic/Hospital Name</label>
                         <fg-input
                         id="primaryClinicName"
@@ -270,7 +270,7 @@
                         required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryClinicPhoneGroup" :class="{ 'has-danger': !$v.form.primaryClinicPhone.required }">
+                    <div class="form-group" id="primaryClinicPhoneGroup" :class="{ 'has-danger': !$v.form.primaryClinicPhone.required }">
                         <label for="primaryClinicPhone">Clinic Phone Number</label>
                         <fg-input
                         id="primaryClinicPhone"
@@ -279,7 +279,7 @@
                         required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryClinicEmailGroup">
+                    <div class="form-group" id="primaryClinicEmailGroup">
                         <label for="primaryClinicEmail">Clinic Email</label>
                         <fg-input
                         id="primaryClinicEmail"
@@ -291,7 +291,7 @@
 
                     <label>Are you seeking the care of any specialist (i.e. oncologist), or any other medical provider?</label>
 
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <textarea
                             rows="6"
                             class="form-control"
@@ -301,7 +301,7 @@
 
                     <br><br>
 
-                    <div class="form-group has-success" id="otherHelpGroup">
+                    <div class="form-group" id="otherHelpGroup">
                         <label for="otherHelp">Please list any other organizations you have contacted for assistance or separate fundraising you have done.</label>
                         <textarea
                             id="otherHelp"
@@ -328,22 +328,16 @@
                             type="primary" 
                             round 
                             class="pull-right"
-                            :disabled="$v.form.$invalid || !robot"
+                            :disabled="$v.form.required || !robot"
                             @click.prevent.native="onSubmit">
                             Request Financial Assistance</n-button>
                     </div>
                 </div>
 
                 <div class="sent" v-if="sent">This form has been submitted</div>
-                
-                <!-- <div  style="text-align: center; margin-top: 2rem;">
-                    <n-button @click.prevent.native="onSubmit"
-                            style="background-color: #fd7e14; border: none;" >
-                            Submit Application</n-button>
-                </div> -->
 
                 <div style="text-align: center; margin: 2rem;">
-                    <img src="/images/llr_logo.png"></img>
+                    <img src="/images/llr_logo.png">
                 </div>
                 
             </form>
