@@ -10,7 +10,7 @@
                     <div class="section-space"></div>
                     <div class="section-space"></div>
                     <div class="section-space"></div>
-                    <h2 class="title">Financial Assistance</h2>
+                    <h2 class="title">Need some help?</h2>
                     <h4 class="description">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you both emotionally and financially. Please fill out the grant form below, and we will email you the details of the review process.</h4>
                     <div class="section-space"></div>
                 </div>

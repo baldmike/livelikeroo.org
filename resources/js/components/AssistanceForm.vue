@@ -10,7 +10,8 @@
                 <br>
                 <div class="form-box">
                     <h3 class="center">YOUR INFORMATION</h3>
-                    
+                    <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
+
                     <div class="form-group" :class="{ 'has-danger': !$v.form.firstName.required }" id="firstNameGroup">
                         
                         <label for="firstNameFnForm">First Name</label>
@@ -92,13 +93,13 @@
                         </select>
                     </div>
 
-                    <div class="form-group has-success" id="zipGroupFnForm" :class="{ 'has-danger': !$v.form.zip.required }">
+                    <div class="form-group has-success" id="zipGroupFnForm" :class="{ 'has-danger': !$v.form.zip.required || !$v.form.zip.between }">
                         <label for="zipFnForm">Zip Code</label>
                         <fg-input
                             id="zipFnForm"
                             type="text"
                             v-model="form.zip"
-                            :state="!$v.form.zip.$invalid"
+                            :state="!$v.form.zip.between"
                             placeholder="Zip Code"
                             required/>
                     </div>
