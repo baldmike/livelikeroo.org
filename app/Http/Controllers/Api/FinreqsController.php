@@ -54,7 +54,6 @@ class FinreqsController extends Controller
             $Finreq->city = request('city');
             $Finreq->state = request('state');
             $Finreq->zip = request('zip');
-            $Finreq->phone = request('phone');
             $Finreq->pet_name = request('pet_name');
             $Finreq->species = request('species');
             $Finreq->breed = request('breed');
@@ -64,6 +63,7 @@ class FinreqsController extends Controller
             $Finreq->about = request('about');
             $Finreq->diagnosis = request('diagnosis');
             $Finreq->diagnosis_date = request('diagnosis_date');
+            $Finreq->previous_diagnosis = request('previous_diagnosis');
             $Finreq->vet_first_name = request('vet_first_name');
             $Finreq->vet_last_name = request('vet_last_name');
             $Finreq->primary_clinic_name = request('primary_clinic_name');

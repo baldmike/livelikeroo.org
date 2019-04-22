@@ -23,7 +23,6 @@ class CreateFinreqsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zip');
-            $table->string('phone');
             $table->string('pet_name');
             $table->string('species');
             $table->string('breed')->nullable()->default(null);

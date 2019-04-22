@@ -34,7 +34,6 @@ class FinreqRequest extends FormRequest
             'city' => 'required',
             'state' => 'required',
             'zip' => 'required',
-            'phone' => 'required',
             'pet_name' => 'required',
             'species' => 'required',
             'age' => 'required',

@@ -95,8 +95,12 @@
                     </div>
                 </div>
 
-                <div class="form-box">
 
+
+
+                        <!-- PET INFORMATION -->
+
+                <div class="form-box">
                     <div class="col-md-12">
                         <h3 class="center">YOUR PET'S INFORMATION</h3>
                     </div>
@@ -142,6 +146,36 @@
                             <!-- GENDER AND ALTERED RADIO BUTTONS -->
 
                     <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select 
+                                required
+                                :options="gender"
+                                class="form-control select-primary"
+                                v-model="form.gender">
+                                <option value=null disabled>Select Gender</option>
+
+                                <option v-for="gen in gender" :key="gen.value" :value="gen.value">
+                                {{ gen.label }}
+                                </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="altered">Altered</label>
+                        <select 
+                                required
+                                :options="alteredYON"
+                                class="form-control select-primary"
+                                v-model="form.altered">
+                                <option value=null disabled>Spayed/Neutered</option>
+
+                                <option v-for="selection in alteredYON" :key="selection.value" :value="selection.value">
+                                {{ selection.label }}
+                                </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label>Tell us about a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                         <textarea
                                 rows="6"
@@ -153,11 +187,10 @@
                     </div>
 
                     <!-- image input -->
-                    <div class="form-group">
-                        <fg-input
+                    <!-- <div class="form-group">
+                        <input
                                 type="image"
                                 accept="image/*"
-                                
                                 placeholder="Choose a file..."
                                 drop-placeholder="Drop file here..."
                                 @change="onFileChange"/>
@@ -165,7 +198,7 @@
                         <div class="col-md-6">
                             <img v-if="url" :src="url" width="200" alt="uploaded image">
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="form-box">
@@ -189,17 +222,19 @@
                             v-model="form.diagnosisDate"
                             placeholder="Diagnosis Date" />
                     </div>
+                    <div class="form-group">
+                        <label for="previousDiagnosis">Has your pet previously been diagnosed with cancer?</label>
+                        <select 
+                                required
+                                :options="prevDiagYON"
+                                class="form-control select-primary"
+                                v-model="form.previousDiagnosis">
+                                <option value=null disabled>Please Select</option>
 
-                    <label for="previousDiagnosis">Has your pet previously been diagnosed with cancer?</label>
-                    
-                    <div class="col-md-6 ml-auto mr-auto form-group" id="previousDiagnosisGroup">
-                        
-                        <n-radio
-                            label="true"
-                            v-model="form.previousDiagnosis">Yes</n-radio>
-                        <n-radio
-                            label="false"
-                            v-model="form.previousDiagnosis">No</n-radio>
+                                <option v-for="response in prevDiagYON" :key="response.value" :value="response.value">
+                                {{ response.label }}
+                                </option>
+                        </select>
                     </div>
 
                     <div class="form-group" id="primaryVetFirstNameGroup">
@@ -250,21 +285,12 @@
 
                     <label>Are you seeking the care of any specialist (i.e. oncologist), or any other medical provider?</label>
                     <div class="col-md-6 ml-auto mr-auto form-group" id="specialistGroup">
-                        
-                        <n-radio
-                            label="true"
-                        
-                            v-model="form.specialist">Yes</n-radio>
-                        <n-radio
-                            label="false"
-                        
-                            v-model="form.specialist">No</n-radio>
                     </div>
                     <div class="form-group">
                         <textarea
                             rows="6"
                             class="form-control"
-                            v-model="form.specialistDetails"
+                            v-model="form.specialist"
                             placeholder="If yes, please provide any details you can in this space. This can include holistic care and alternative therapies." />
                     </div>
 
@@ -284,13 +310,32 @@
                 
                 <br><br>
 
+                <div class="row">
+                    <div class="col-md-6">
+                        <n-checkbox
+                            v-model="robot"
+                            required>
+                            I'm not a robot
+                        </n-checkbox>
+                    </div>
+                    <div class="col-md-6">
+                        <n-button 
+                            type="primary" 
+                            round 
+                            class="pull-right"
+                            
+                            @click.prevent.native="onSubmit">
+                            Send Message</n-button>
+                    </div>
+                </div>
+
                 <div class="sent" v-if="sent">This form has been submitted</div>
                 
-                <div  style="text-align: center; margin-top: 2rem;">
+                <!-- <div  style="text-align: center; margin-top: 2rem;">
                     <n-button @click.prevent.native="onSubmit"
                             style="background-color: #fd7e14; border: none;" >
                             Submit Application</n-button>
-                </div>
+                </div> -->
 
                 <div style="text-align: center; margin: 2rem;">
                     <img src="/images/llr_logo.png"></img>
@@ -306,7 +351,7 @@
     import { validationMixin } from "vuelidate";
     import { helpers, required, minLength, maxLength, email, between, sameAs } from "vuelidate/lib/validators";
     import {Select, Option} from 'element-ui'
-    import { Button, FormGroupInput, Tabs, TabPane, Radio } from '@/components';
+    import { Button, FormGroupInput, Tabs, TabPane, Radio, Checkbox } from '@/components';
     
     import { EventBus } from '../event-bus.js';
     const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/)
@@ -324,32 +369,33 @@
                     address1: '',
                     address2: '',
                     city: '',
-                    state: null,
+                    state: "IL",
                     zip: '',
                     phone: '',
                     petName: '',
                     species: '',
                     breed: '',
                     age: '',
-                    gender: '',
+                    gender: null,
                     altered: '',
                     about: '',
                     image: null,
                     diagnosis: '',
                     diagnosisDate: null,
-                    previousDiagnosis: false,
+                    previousDiagnosis: null,
                     primaryVetFirstName: '',
                     primaryVetLastName: '',
                     primaryClinicName: '',
                     primaryClinicPhone: '',
                     primaryClinicFax: '',
                     primaryClinicEmail: '',
-                    specialist: false,
+                    specialist: '',
                     specialistDetails: '',
                     otherHelp: '',
                     verify: false,
                 },
                 url: null,
+                robot: false,
 
                 states: [
                     {value: "AK", label: "AK"},
@@ -404,6 +450,20 @@
                     {value: "WV", label: "WV"},
                     {value: "WY", label: "WY"},
                 ],
+                prevDiagYON: [
+                    {value: "Yes", label: "Yes, previously diagnosed"},
+                    {value: "No", label: "No, never diagnosed previously"}
+                ],
+                alteredYON: [
+                    {value: "1", label: "Yes, my pet is spayed/neutered"},
+                    {value: "0", label: "No, my pet is not spayed/neutered"}
+                ],
+
+                gender: [
+                    // {value: null, label: "Select Gender"},
+                    {value: "M", label: "Male"},
+                    {value: "F", label: "Female"}
+                ],
 
                 species: [ 'Dog', 'Cat', 'Rabbit', 'Bird', 'Other' ],
                 show: true,
@@ -415,7 +475,8 @@
             [FormGroupInput.name]: FormGroupInput,
             [Select.name]: Select,
             [Option.name]: Option,
-            [Radio.name]: Radio
+            [Radio.name]: Radio,
+            [Checkbox.name]: Checkbox
         },
         mixins: [
             validationMixin
@@ -448,9 +509,6 @@
                 zip: {
                     required,
                     between: between(10000, 99999)
-                },
-                phone: {
-                    phone
                 },
                 petName: {
                     required
