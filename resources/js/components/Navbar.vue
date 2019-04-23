@@ -33,10 +33,10 @@
                 <router-link class="nav-link" to="/events"><i class="now-ui-icons ui-1_calendar-60 roo"
                 aria-hidden="true"></i><p>Events</p></router-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <router-link class="nav-link" to="/shop"><i class="now-ui-icons shopping_basket roo"
                 aria-hidden="true"></i><p>Shop</p></router-link>
-            </li>
+            </li> -->
             
             <drop-down tag="li" title="programs" class="nav-item">
                 <nav-link class="dropdown-item" to="/booker">

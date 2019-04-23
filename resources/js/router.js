@@ -14,6 +14,7 @@ import DashboardComponent from './components/DashboardComponent.vue'
 import BookerComponent from './components/BookerComponent.vue'
 import CappyComponent from './components/CappyComponent.vue'
 import MaggieComponent from './components/MaggieComponent.vue'
+import SerenityComponent from './components/SerenityComponent.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -73,7 +74,6 @@ export const router = new VueRouter({
                     path: '/booker',
                     components: {default: BookerComponent, header: Navbar, footer: Footer},
                     title: 'Booker',
-                    props: {header: {colorOnScroll: 800}}
                 },
                 {
                     path: '/cappy',
@@ -84,6 +84,11 @@ export const router = new VueRouter({
                     path: '/maggie',
                     components: {default: MaggieComponent, header: Navbar, footer: Footer},
                     title: 'Maggie',
+                },
+                {
+                    path: '/serenity',
+                    components: {default: SerenityComponent, header: Navbar, footer: Footer},
+                    title: 'Serenity',
                 },
                 {
                     path: '/dashboard',
