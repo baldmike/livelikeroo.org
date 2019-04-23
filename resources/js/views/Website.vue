@@ -31,9 +31,8 @@
             
             <team-component />
 
-            <br><br><br><br>
             <div class="separator-line separator-primary"></div>
-            <br><br><br><br>
+            <br><br><br><br><br><br>
             
             <partner-component />
 
