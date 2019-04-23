@@ -4,12 +4,12 @@
         <div class="section-image" style="background-image: url('images/unsplash-alaska-dog-jf-brou.jpg'); height: 100vh;">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5 ml-auto mr-auto">
-                        <card type="contact" raised header-classes="text-center" style="margin-top: 100px; ">
+                    <div class="col-md-5 ml-auto mr-auto contact-box">
+                        <card type="contact" raised header-classes="text-center">
                             <h4 slot="header" class="card-title">Contact Us</h4>
 
                             <div class="row">
-                                <div class="form-group col-md-6 pr-2 has-success" :class="{ 'has-danger': !$v.form.firstName.required }">
+                                <div class="form-group col-md-6 pr-2 has-success" :class="{ 'has-danger': $v.form.firstName.$invalid }">
                                     <label>First Name</label>
                                     <fg-input
                                         type="text"
@@ -27,6 +27,9 @@
                                         placeholder="Last Name"/>
                                 </div>
                             </div>
+                            
+                            <br>
+
                             <div class="form-group has-success" :class="{ 'has-danger': $v.form.email.$invalid }">
                                 <label>Email address</label>
                                 <fg-input
@@ -36,6 +39,8 @@
                                         placeholder="Email Address"
                                         required/>
                             </div>
+
+                            <div class="section-space"></div>
                             <div class="form-group has-success" :class="{ 'has-danger': !$v.form.message.required }">
                                 <label>Your message</label>
                                 <textarea 
@@ -169,4 +174,9 @@
 </script>
 
 <style>
+    .contact-box {
+        position: fixed;
+        top: 200;
+        width: 500;
+    }
 </style>

@@ -141,7 +141,7 @@
                     </fg-input>
                 </div>
 
-                <div class="form-group has-success" :class="{ 'has-danger': $v.form.firstName.$invalid }">
+                <div class="form-group has-success" :class="{ 'has-danger': $v.form.lastName.$invalid }">
                     <label for="lastNameDnForm">Last Name</label>
                     <fg-input
                             id="lastNameDnform"
