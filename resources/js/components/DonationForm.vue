@@ -38,7 +38,7 @@
                         <h4 class="amount">Or Enter An Amount:</h4>
                     </div>
                 
-                    <div class="col-md-12 center" style="font-size: 1.5rem;">
+                    <div class="col-md-6 offset-md-3" style="font-size: 1.5rem;">
                         <fg-input
                         style="text-align: center !important;"
                         class="amount"
@@ -111,24 +111,12 @@
                 </div>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
 
                 <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you. With your email and password, you'll be able to log in and view, update or cancel your donation at any time.</div>
 
+                <br><br>
                 <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
                 
                 <div class="form-group has-success" :class="{ 'has-danger': !$v.form.firstName.required }">
@@ -136,7 +124,7 @@
                     <fg-input 
                             id="firstNameDnForm"
                             class="input-lg"
-                            placeholder="First Name"
+                            placeholder="First Name "
                             v-model="form.firstName"
                             :state="!$v.form.firstName.required">
                     </fg-input>

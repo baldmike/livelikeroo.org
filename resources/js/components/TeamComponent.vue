@@ -220,10 +220,10 @@
                                     <h4 class="card-title">Dawn Mueller</h4>
                                     <h6 class="category">Graphic Designer</h6>
                                     <p class="card-description textOnWhite">
-                                        Aside from having incredible fashion sense and sporting the most spectacular hairstyles, Dawn has always had a soft spot for big dogs. After moving to Chicago 22 years ago, the first dog she </p>
+                                        Aside from having incredible fashion sense and sporting the most spectacular hairstyles, Dawn has always had a soft spot for big dogs. After moving to</p>
                                         <n-button type="primary" @click.prevent.native="sarahBio">...Read Full Bio</n-button>
 
-                                        <p style="display: none;">adopted was Mousse, a Labrador Retriever from the Anti Cruelty Society. She volunteered there for a bit but found that, as an introvert, she was not well-suited to work the adoption floor. It wasn’t until several years later when she adopted Daryl Blu, who was saved during a CRISP shift at CACC, that she started really getting introduced to the Chicago rescue community. She learned about Live Like Roo and went to a couple blanket tying events and, when asked to help with some graphics, finally found her place in the rescue community.
+                                        <p style="display: none;">Chicago 22 years ago, the first dog she adopted was Mousse, a Labrador Retriever from the Anti Cruelty Society. She volunteered there for a bit but found that, as an introvert, she was not well-suited to work the adoption floor. It wasn’t until several years later when she adopted Daryl Blu, who was saved during a CRISP shift at CACC, that she started really getting introduced to the Chicago rescue community. She learned about Live Like Roo and went to a couple blanket tying events and, when asked to help with some graphics, finally found her place in the rescue community.
                                         When not pounding away at the computer, she’s posting pictures of Daryl on Instagram, running a half marathon, or dodging tourists on the bike path.
                                     </p>
                                 </div>

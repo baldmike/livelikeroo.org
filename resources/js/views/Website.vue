@@ -4,35 +4,16 @@
         <div>
 
             <landing-page/>
-
-            <div class="separator-line separator-primary"></div>
-            <br><br><br><br>
-            
+    
             <donate-component/>
-            
-            <br><br><br><br><br><br>
-            <div class="separator-line separator-primary"></div>
-            
-            <care-package/>
-            
-            <div class="separator-line separator-primary"></div>
-            <br><br><br><br>
-            
+            <care-package/>        
             <assistance-component/>
-            
-            <br><br><br><br>
-            <div class="separator-line separator-primary"></div>
-            <br><br><br><br>
-            
-            <events-component />
-
-            <br><br><br><br><br><br>
-            <div class="separator-line separator-primary"></div>
-            
             <team-component />
-
+            <events-component />
+            
+            <br><br>
             <div class="separator-line separator-primary"></div>
-            <br><br><br><br><br><br>
+            <br><br>
             
             <partner-component />
 
