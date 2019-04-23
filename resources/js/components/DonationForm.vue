@@ -27,10 +27,10 @@
 
             
                 <div class="row">
-                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary"><i class="fa fa-heart"></i>  $10</n-button></div>
-                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary"><i class="fa fa-heart"></i> $25</n-button></div>
-                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'50')"   outline round type="primary"><i class="fa fa-heart"></i> $50</n-button></div>
-                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'100')" outline round type="primary"><i class="fa fa-heart"></i>$100</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary" :class="{ red: isTen }"><i class="fa fa-heart"></i>  $10</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary" :class="{ red: isTwentyFive }"><i class="fa fa-heart"></i> $25</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'50')"   outline round type="primary" :class="{ red: isFifty }"><i class="fa fa-heart"></i> $50</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'100')" outline round type="primary" :class="{ red: isHundred }"><i class="fa fa-heart"></i>$100</n-button></div>
                 </div>
 
                 <div class="row">
@@ -81,10 +81,11 @@
 
 
                 <div class="form-group" id="recipientInfoGroup" v-if="!isPersonal">
-                    <h5 class="center">Would you like us to notify someone?</h5>
+                    <n-button v-if="!notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
+                    <n-button v-if="notify" type="primary" @click.prevent.native="toggleNotify" block>Shh! Don't tell anyone!</n-button>
                 </div>
 
-                <div class="form-group" id="recipientGroup" v-if="!isPersonal" label="Recipient Name">
+                <div class="form-group" id="recipientGroup" v-if="!isPersonal && isNotify" label="Recipient Name">
                     <label for="recipientNameDnForm">Recipient's Name</label>
                     <fg-input 
                         id="recipientNameDnForm"
@@ -94,7 +95,7 @@
                 </div>
 
                 <!-- IF EMAIL -->
-                <div class="form-group" id="recipientEmailGroup" v-if="!isPersonal" label="Recipient Email">
+                <div class="form-group" id="recipientEmailGroup" v-if="!isPersonal && isNotify" label="Recipient Email">
                     <label for="recipientEmailDnForm">Recipient's Email</label>
                     <fg-input 
                         id="recipientEmailDnForm"
@@ -103,71 +104,97 @@
                         v-model="form.recipientEmail"/>
                 </div>
 
-                <div class="form-group" id="recipientMessageGroup" label="Message for recipient" v-if="!isPersonal">
+                <div class="form-group" id="recipientMessageGroup" label="Message for recipient" v-if="!isPersonal && isNotify">
                         <label>Message: </label>
                         <textarea name="message" class="form-control" id="recipientMessage" rows="6" v-model="form.recipientMessage"></textarea>
                 </div>
             </div>
-                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
 
                 <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you. With your email and password, you'll be able to log in and view, update or cancel your donation at any time.</div>
+
+                <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
                 
-                <label for="firstNameDnForm">First Name</label>
-                <fg-input 
-                        id="firstNameDnForm"
-                        class="input-lg"
-                        placeholder="First Name"
-                        v-model="form.firstNameDnForm">
-                </fg-input>
+                <div class="form-group has-success" :class="{ 'has-danger': !$v.form.firstName.required }">
+                    <label for="firstNameDnForm">First Name</label>
+                    <fg-input 
+                            id="firstNameDnForm"
+                            class="input-lg"
+                            placeholder="First Name"
+                            v-model="form.firstName"
+                            :state="!$v.form.firstName.required">
+                    </fg-input>
+                </div>
 
-                <label for="lastNameDnForm">Last Name</label>
-                <fg-input
-                        id="lastNameDnform"
-                        class="input-lg"
-                        placeholder="Last Name"
-                        v-model="form.lastNameDnForm">
-                </fg-input>
+                <div class="form-group has-success" :class="{ 'has-danger': $v.form.firstName.$invalid }">
+                    <label for="lastNameDnForm">Last Name</label>
+                    <fg-input
+                            id="lastNameDnform"
+                            class="input-lg"
+                            placeholder="Last Name"
+                            v-model="form.lastName"
+                            :state="!$v.form.lastName.$invalid">
+                    </fg-input>
+                </div>
 
-                <label for="emailDnForm">Email</label>
-                <fg-input
-                        id="emailDnForm"
-                        class="input-lg"
-                        placeholder="Email"
-                        v-model="form.email">
-                </fg-input>
+                <div class="form-group has-success" :class="{ 'has-danger': $v.form.email.$invalid }">
+                    <label for="emailDnForm">Email</label>
+                    <fg-input
+                            id="emailDnForm"
+                            class="input-lg"
+                            placeholder="Email"
+                            v-model="form.email"
+                            :state="!$v.form.email.$invalid">
+                    </fg-input>
+                </div>
 
                 <div id="passwordLoginGroup" v-if="isMonthly">
-            
-                    <label for="passwordDnForm">Password</label>
-                    <fg-input 
-                    id="passwordDnForm"
-                    type="password"
-                    placeholder="Password"
-                    v-model="form.password" 
-                    required />
-                
-                    <fg-input 
-                    id="repeatPassword"
-                    type="password"
-                    v-model="form.repeatPassword"
-                    :state="!$v.form.repeatPassword.$invalid"/>
+                    
+                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.password.$invalid }">
+                        <label for="passwordDnForm">Password</label>
+                        <fg-input id="passwordDnForm"
+                                type="password"
+                                placeholder="Password"
+                                v-model="form.password" 
+                                required 
+                                :state="!$v.form.password.$invalid"/>
+                    
+                        <fg-input id="repeatPassword"
+                                type="password"
+                                v-model="form.repeatPassword"
+                                :state="!$v.form.repeatPassword.$invalid"
+                                required/>
+                    </div>
                 </div>
             </div>
-
             <div class="form-box">
                 <!-- CC/DONOR INFORMTION -->
                 <h3 class="center">PAYMENT INFORMATION</h3>
 
-                <div class="form-group" id="nameOnCardGroup">
+                <div class="form-group has-success" :class="{ 'has-danger': $v.form.name_on_card.$invalid }">
                     <label for="card-element">Name on Card</label>
                     <fg-input 
                         placeholder="Name on Card"
                         id="name_on_card"
                         type="text"
                         v-model="form.name_on_card"
-                        required/>
+                        required
+                        :state="!$v.form.name_on_card.$invalid"/>
                 </div>
 
                 <!-- use Stripe's card element -->
@@ -209,13 +236,16 @@
             return {
 
                 form: {
-                    amount: '10',
+                    amount: 10,
                     email: '',
                     password: '',
                     repeatPassword: '',
-                    firstNameDnForm: '',
-                    lastNameDnForm: '',
-
+                    firstName: '',
+                    lastName: '',
+                    ten: false,
+                    twentyFive: false,
+                    fifty: true,
+                    hundred: false,
                     name_on_card: '',
                     personal: true,
                     inHonor: false,
@@ -228,6 +258,7 @@
                     recipientMessage: 'Message to recipient'
                 },
                 show: true,
+                notify: false,
                 isShow: false,                
                 loading: false,
                 
@@ -240,10 +271,10 @@
         validations: {
 
             form: {
-                amount: {
+                firstName: {
                     required
                 },
-                name_on_card: {
+                lastName: {
                     required
                 },
                 email: {
@@ -256,7 +287,14 @@
                 },
                 repeatPassword: {
                     sameAsPassword: sameAs('password')
+                },
+                amount: {
+                    required
+                },
+                name_on_card: {
+                    required
                 }
+                
             }
         },
         components: {
@@ -267,16 +305,16 @@
         },
         computed: {
             isTen() {
-                return !!(this.form.amount === '10');
+                return !!(this.form.amount = 10);
             },
             isTwentyFive() {
-                return !!(this.form.amount === '25');
+                return !!(this.form.amount = 25);
             },
             isFifty() {
-                return !!(this.form.amount == '50');
+                return !!(this.form.amount = 50);
             },
             isHundred() {
-                return !!(this.form.amount === '100');
+                return !!(this.form.amount = 100);
             },
             isPersonal() {
                 return this.form.personal;
@@ -297,6 +335,9 @@
             isOneTime() {
                 return this.$store.state.oneTime;
             },
+            isNotify() {
+                return this.notify;
+            }
             // isEmail() {
             //     return this.form.sendEmail;
             // },
@@ -382,11 +423,27 @@
                     }
                 })
             },
+            toggleNotify() {
+                this.notify = !this.notify;
+            },
 
             donate(event, amt) {
                 
-                this.donateClear();
+                // this.donateClear();
+                console.log("THE AMT IS---------->  " + amt);
                 this.form.amount = amt;
+
+                // if (this.form.amount = 10) {
+                //     this.form.ten = true;
+                // } else if (this.form.amount = 25) {
+                //     this.form.twentyFive = true;
+                // } else if(this.form.amount = 50) {
+                //     this.form.fifty = true;
+                // } else if (this.form.amount = 100) {
+                //     this.form.hundred = true;
+                // } else {
+                //     this.form.amount = amt;
+                // }
 
                 console.log(this.amount);
             }, 
@@ -542,6 +599,10 @@
         border-radius: 6px;
         margin: 1rem;
         padding: 1rem;
+    }
+
+    .red {
+        color: red;
     }
     
 </style>
