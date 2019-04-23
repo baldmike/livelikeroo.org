@@ -31,7 +31,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Sarah Lauch</h4>
                                     <h6 class="category">Founder</h6>
-                                    <p class="card-description" style="color: grey !important;">
+                                    <p class="card-description textOnWhite">
                                         Sarah grew up in Pennsylvania with tons of pets, including pot-bellied pigs. When she moved to Chicago, she volunteered at an open-admission shelter</p>
                                         <p>...Read Full Bio</p>
                                         
@@ -69,7 +69,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Laura Krill</h4>
                                     <h6 class="category">VP/Medical Case Manager</h6>
-                                    <p class="card-description">
+                                    <p class="card-description textOnWhite">
                                         Laura can’t remember a time when animals weren’t a part of her life and she wouldn’t have it any other way. Her little family currently consists of </p>
                                         <p>...Read Full Bio</p>
                                         
@@ -103,7 +103,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Nicole Cadwell</h4>
                                     <h6 class="category">City Event Director</h6>
-                                    <p class="card-description">
+                                    <p class="card-description textOnWhite">
                                         Nicole, a Chicago native who works in Remote Operations for the BIG Ten Network, grew up with rescue dogs and cats. After graduating from college
                                         </p>
 
@@ -141,7 +141,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Kathy Lesinski</h4>
                                     <h6 class="category">City Event Planner</h6>
-                                    <p class="card-description">
+                                    <p class="card-description textOnWhite">
                                         Kathy has loved dogs her entire life. Although she did not get her first rescue dog, Aria, until she was 14, her childhood in Warsaw Poland was spent bringing </p>
                                         <p>...Read Full Bio</p>
 
@@ -179,7 +179,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Sara DePasquale</h4>
                                     <h6 class="category">Run Like Roo Director</h6>
-                                    <p class="card-description">
+                                    <p class="card-description textOnWhite">
                                         One of Sara’s first words was “doggie”. Coincidence? We think not. Sara has always had a passion for pups, especially the “Bully Breeds”. Her hunk, Rocco </p>
                                         <p>...Read Full Bio</p>
 
@@ -219,7 +219,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Dawn Mueller</h4>
                                     <h6 class="category">Graphic Designer</h6>
-                                    <p class="card-description">
+                                    <p class="card-description textOnWhite">
                                         Aside from having incredible fashion sense and sporting the most spectacular hairstyles, Dawn has always had a soft spot for big dogs. After moving to Chicago 22 years ago, the first dog she </p>
                                         <p>...Read Full Bio</p>
 
@@ -256,7 +256,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Lindsay Griffith</h4>
                                     <h6 class="category">Advisory Board Director</h6>
-                                    <p class="card-description">
+                                    <p class="card-description textOnWhite">
                                         
                                     After a lifetime of crossing the street just to pet other people’s dogs, Lindsay finally got her own dog, Low, in 2011.  He’d been at a municipal, high-kill shelter </p>
                                         <p>...Read Full Bio</p>
@@ -298,3 +298,9 @@
     }
   }
 </script>
+
+<style>
+    .textOnWhite {
+        color: #333333 !important;
+    }
+</style>
