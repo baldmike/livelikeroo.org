@@ -47,7 +47,12 @@
                         v-model="form.amount"
                         required/>
                     </div>
+
+                    <h3 class="ml-auto mr-auto" v-if="isMonthly">MONTHLY DONATION</h3>
+                    <h3 class="ml-auto mr-auto" v-if="isOneTime">ONE TIME DONATION</h3>
                 </div>
+
+                
             </div>
 
             <div class="form-box">

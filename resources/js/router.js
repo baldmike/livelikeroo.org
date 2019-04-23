@@ -11,6 +11,8 @@ import FaqComponent from './components/FaqComponent.vue'
 import PrivacyComponent from './components/PrivacyComponent.vue'
 import ContactComponent from './components/ContactComponent.vue'
 import DashboardComponent from './components/DashboardComponent.vue'
+import BookerComponent from './components/BookerComponent.vue'
+import ProgramsComponent from './components/ProgramsComponent.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -65,6 +67,12 @@ export const router = new VueRouter({
                     components: {default: ContactComponent, header: Navbar, footer: Footer},
                     title: 'Contact',   
                     props: {header: {colorOnScroll: 800}}
+                },
+                {
+                    path: '/booker',
+                    components: {default: BookerComponent, header: Navbar, footer: Footer},
+                    title: 'BookerFund',
+                    // props: {header: {colorOnScroll: 800}}
                 },
                 {
                     path: '/dashboard',

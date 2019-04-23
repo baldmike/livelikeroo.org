@@ -39,19 +39,16 @@
             </li>
             
             <drop-down tag="li" title="programs" class="nav-item">
-                <nav-link class="dropdown-item" to="/sections#headers">
+                <nav-link class="dropdown-item" to="/booker">
                     <i class="now-ui-icons emoticons_satisfied" style="color: red;"></i> Booker Fund
                 </nav-link>
-                <nav-link class="dropdown-item" to="/sections#features">
-                    <i class="now-ui-icons emoticons_satisfied" style="color: orange;"></i> CRISP
-                </nav-link>
-                <nav-link class="dropdown-item" to="/sections#blogs">
+                <nav-link class="dropdown-item" to="/cappy">
                     <i class="now-ui-icons emoticons_satisfied" style="color: green;"></i> Cappy's Fund
                 </nav-link>
-                <nav-link class="dropdown-item" to="/sections#teams">
+                <nav-link class="dropdown-item" to="/maggie">
                     <i class="now-ui-icons emoticons_satisfied" style="color: blue;"></i> Maggie's Mission
                 </nav-link>
-                <nav-link class="dropdown-item" to="/sections#teams">
+                <nav-link class="dropdown-item" to="/serenity">
                     <i class="now-ui-icons emoticons_satisfied" style="color: violet;"></i> Serenity's Wish
                 </nav-link>
             </drop-down>
