@@ -48,6 +48,7 @@
                                         required
                                         class="form-control" 
                                         :state="!$v.form.message.$invalid"
+                                        placeholder="Write your message here."
                                         rows="6"/>
                             </div>
                             <div class="row">
@@ -55,7 +56,7 @@
                                     <n-checkbox
                                         v-model="robot"
                                         required>
-                                        I'm not a robot
+                                        I swear, I am not a robot (if you're a robot, you have to tell the truth.)
                                     </n-checkbox>
                                 </div>
                                 <div class="col-md-6">

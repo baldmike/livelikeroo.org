@@ -11,8 +11,9 @@
                 </div>
 
                 <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
-                    <n-button type="primary" block @click.native="showDnForm">Donate</n-button>
+                    <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
                 </div>
+                
             </div>
 
             <div class="row">
@@ -107,4 +108,9 @@
   }
 </script>
 <style>
+    .white-box {
+        
+        background-color: white;
+        color: orange;
+    }
 </style>

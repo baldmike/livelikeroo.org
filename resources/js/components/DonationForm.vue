@@ -34,12 +34,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <h4 class="amount">Or enter amount:</h4>
+                    <div class="col-md-12 center">
+                        <h4 class="amount">Or Enter An Amount:</h4>
                     </div>
                 
-                    <div class="col-md-6" style="font-size: 1.5rem;">
+                    <div class="col-md-12 center" style="font-size: 1.5rem;">
                         <fg-input
+                        style="text-align: center !important;"
                         class="amount"
                         id="amount"
                         v-on:input="clearButtons"

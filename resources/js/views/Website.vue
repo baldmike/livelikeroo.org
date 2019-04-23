@@ -26,6 +26,11 @@
             
             <events-component />
 
+            <br><br><br><br><br><br>
+            <div class="separator-line separator-primary"></div>
+            
+            <team-component />
+
             <br><br><br><br>
             <div class="separator-line separator-primary"></div>
             <br><br><br><br>
@@ -46,6 +51,7 @@
     import AssistanceComponent from '../components/AssistanceComponent'
     import EventsComponent from '../components/EventsComponent'
     import PartnerComponent from '../components/PartnerComponent'
+    import TeamComponent from '../components/TeamComponent'
 
     import { EventBus } from '../event-bus.js';
 
@@ -64,7 +70,8 @@
             EventsComponent,
             CarePackage,
             AssistanceComponent,
-            PartnerComponent
+            PartnerComponent,
+            TeamComponent
         },
         computed: {
 
