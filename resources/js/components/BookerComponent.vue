@@ -13,7 +13,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 offset-md-2">
-                    <h3 class="card-title" style="background-color: #fd7e14; color: white; opacity: .8; text-align: center;">Hot dude helps hospice dogs heal happily at home.</h3>
+                    <h3 class="card-title" style="background-color: #fd7e14; color: white; opacity: .8; text-align: center;">Hot dude hustles to help hospice dogs heal happily at his home.</h3>
                 </div>
             </div>
             <div class="row">
