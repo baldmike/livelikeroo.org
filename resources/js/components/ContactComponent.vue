@@ -5,11 +5,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 ml-auto mr-auto">
-                        <card type="contact" raised header-classes="text-center" style="margin-top: 100px; background-color: #666666;">
+                        <card type="contact" raised header-classes="text-center" style="margin-top: 100px; ">
                             <h4 slot="header" class="card-title">Contact Us</h4>
 
                             <div class="row">
-                                <div class="col-md-6 pr-2">
+                                <div class="form-group col-md-6 pr-2 has-success" :class="{ 'has-danger': !$v.form.firstName.required }">
                                     <label>First Name</label>
                                     <fg-input
                                         type="text"
@@ -18,7 +18,7 @@
                                         placeholder="First Name"/>
                                         
                                 </div>
-                                <div class="col-md-6 pl-2">
+                                <div class="form-group col-md-6 pr-2 has-success" :class="{ 'has-danger': !$v.form.lastName.required }">
                                     <label>Last Name</label>
                                     <fg-input
                                         type="text"
@@ -27,15 +27,16 @@
                                         placeholder="Last Name"/>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group has-success" :class="{ 'has-danger': $v.form.email.$invalid }">
                                 <label>Email address</label>
                                 <fg-input
                                         type="email"
                                         v-model="form.email"
                                         :state="!$v.form.email.$invalid"
-                                        placeholder="Email Address"/>
+                                        placeholder="Email Address"
+                                        required/>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group has-success" :class="{ 'has-danger': !$v.form.message.required }">
                                 <label>Your message</label>
                                 <textarea 
                                         v-model="form.message" 

@@ -12,20 +12,20 @@
                     <h3 class="center">YOUR INFORMATION</h3>
                     <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.firstName.required }" id="firstNameGroup">
+                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.firstName.$invalid }" id="firstNameGroup">
                         
                         <label for="firstNameFnForm">First Name</label>
                         <fg-input
                                 id="firstNameFnForm"
                                 type="text"
                                 v-model="form.firstName"
-                                :state="!$v.form.firstName.required"
+                                :state="!$v.form.firstName.$invalid"
                                 placeholder="First Name"
                                 required/>
 
                     </div>
 
-                    <div class="form-group" id="lastNameGroup" :class="{ 'has-danger': !$v.form.lastName.required }">
+                    <div class="form-group has-success" id="lastNameGroup" :class="{ 'has-danger': $v.form.lastName.$invalid }">
                         <label for="lastNameFnForm">Last Name</label>
                         <fg-input
                                 id="lastNameFnForm"
@@ -36,7 +36,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group" id="emailGroupFnForm" :class="{ 'has-danger': !$v.form.email.required }">
+                    <div class="form-group has-success" id="emailGroupFnForm" :class="{ 'has-danger': $v.form.email.$invalid }">
                         <label for="emailFnForm">Email</label>
                         <fg-input
                                 id="emailFnForm"
@@ -47,7 +47,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group" id="address1GroupFnForm" :class="{ 'has-danger': !$v.form.address1.required }">
+                    <div class="form-group has-success" id="address1GroupFnForm" :class="{ 'has-danger': $v.form.address1.$invalid }">
                         <label for="address1FnForm">Address 1</label>
                         <fg-input
                                 id="address1FnForm"
@@ -67,7 +67,7 @@
                     </div>
 
                     
-                    <div class="form-group" id="cityGroupFnForm" :class="{ 'has-danger': !$v.form.city.required }">
+                    <div class="form-group" id="cityGroupFnForm" :class="{ 'has-danger': $v.form.city.$invalid }">
                         <label for="cityFnForm">City</label>
                         <fg-input
                                 id="cityFnForm"
@@ -79,7 +79,7 @@
                     </div>
 
                     
-                    <div class="form-group" id="stateGroupFnForm" :class="{ 'has-danger': !$v.form.state.required }">
+                    <div class="form-group" id="stateGroupFnForm" :class="{ 'has-danger': $v.form.state.$invalid }">
                         <label for="stateFnForm">State</label>
                         <select 
                                 id="stateFnForm"
@@ -93,13 +93,13 @@
                         </select>
                     </div>
 
-                    <div class="form-group" id="zipGroupFnForm" :class="{ 'has-danger': !$v.form.zip.required || !$v.form.zip.between }">
+                    <div class="form-group" id="zipGroupFnForm" :class="{ 'has-danger': !$v.form.zip.required || $v.form.zip.$invalid }">
                         <label for="zipFnForm">Zip Code</label>
                         <fg-input
                             id="zipFnForm"
                             type="text"
                             v-model="form.zip"
-                            :state="!$v.form.zip.between"
+                            :state="!$v.form.zip.$invalid"
                             placeholder="Zip Code"
                             required/>
                     </div>
@@ -115,7 +115,7 @@
                         <h3 class="center">YOUR PET'S INFORMATION</h3>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.petName.required }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.petName.$invalid }">
                         <label>Pet Name</label>
                         <fg-input
                                 type="text"
@@ -125,7 +125,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.species.required }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.species.$invalid }">
                         <label>Species</label>
                         <fg-input
                                 type="text"
@@ -143,7 +143,7 @@
                                 placeholder="Breed"/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.age.required }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.age.$invalid }">
                         <label for="ageFnForm">Age</label>
                         <fg-input
                                 id="ageFnForm"
@@ -153,7 +153,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.gender.required }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.gender.$invalid }">
                         <label for="gender">Gender</label>
                         <select 
                                 required
@@ -168,17 +168,23 @@
                         </select>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.altered.required }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.altered.$invalid }">
                         <label for="altered">Altered</label>
                         <select 
                                 required
                                 :options="alteredYON"
                                 class="form-control select-primary"
                                 v-model="form.altered">
-                                <option value=null disabled>Spayed/Neutered</option>
+                                <option 
+                                        value=null 
+                                        disabled>
+                                        Spayed/Neutered
+                                </option>
 
-                                <option v-for="selection in alteredYON" :key="selection.value" :value="selection.value">
-                                {{ selection.label }}
+                                <option 
+                                        v-for="selection in alteredYON" 
+                                        :key="selection.value" :value="selection.value">
+                                        {{ selection.label }}
                                 </option>
                         </select>
                     </div>

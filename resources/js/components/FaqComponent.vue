@@ -23,7 +23,7 @@
                     <hr>
 
                     <div class="fa-q"><span class="faq-highlight">Q</span> How can I help?</div>
-                    <div class="faq-answer"><span class="faq-highlight">A</span>  <router-link class="r-link" to="donate"> Donate! </router-link>. You can also help by visiting our <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"> Amazone Wish List. </a> We also always need blankets tied and handmade cards for our care packages! For more information, please <router-link class="r-link" to="contact"> contact us.</router-link></div>
+                    <div class="faq-answer"><span class="faq-highlight">A</span>  <router-link class="r-link" to="donate"> Donate! </router-link>. You can also help by visiting our <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"> Amazon Wish List. </a> We also always need blankets tied and handmade cards for our care packages! For more information, please <router-link class="r-link" to="contact"> contact us.</router-link></div>
 
 
                     <hr>

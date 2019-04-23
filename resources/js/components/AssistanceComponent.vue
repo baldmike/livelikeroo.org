@@ -4,22 +4,22 @@
     <div class="pricing-3 section-image" style="background-image: url('images/unsplash-dog-stick.jpg'); height: 100vh;">
         <div class="container">
             <div class="row">
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="icon icon-white" style="text-align: center;">
+                        <h3 class="info-title">Financial Assistance</h3>
+                    </div>
+              </div>
+                                
+                
+            </div>
+            <div class="row">
                 <div class="col-md-4 text-center">
-                    <div class="section-space"></div>
-                    <div class="section-space"></div>
-                    <div class="section-space"></div>
-                    <div class="section-space"></div>
-                    <div class="section-space"></div>
-                    <h2 class="title">Need some help?</h2>
+                    <h2 class="title" style="margin-top: 200px;">Need some help?</h2>
                     <h4 class="description">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you both emotionally and financially. Please fill out the grant form below, and we will email you the details of the review process.</h4>
-                    <div class="section-space"></div>
                 </div>
 
 
                 <div class="col-md-3 offset-md-5">
-                    <div class="section-space"></div>
-                    <div class="section-space"></div>
-                    <div class="section-space"></div>
                     <n-button @click.prevent.native="showFnForm" type="primary" block>Request Financial Assistance</n-button>
                 </div>
             </div>

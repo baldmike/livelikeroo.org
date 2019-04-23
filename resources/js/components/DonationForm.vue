@@ -48,8 +48,8 @@
                         required/>
                     </div>
 
-                    <h3 class="ml-auto mr-auto" v-if="isMonthly">MONTHLY DONATION</h3>
-                    <h3 class="ml-auto mr-auto" v-if="isOneTime">ONE TIME DONATION</h3>
+                    <h4 class="ml-auto mr-auto" v-if="isMonthly">MONTHLY DONATION OF ${{ form.amount }}.00</h4>
+                    <h4 class="ml-auto mr-auto" v-if="isOneTime">ONE TIME DONATION OF ${{ form.amount }}.00</h4>
                 </div>
 
                 
