@@ -12,7 +12,7 @@ import PrivacyComponent from './components/PrivacyComponent.vue'
 import ContactComponent from './components/ContactComponent.vue'
 import DashboardComponent from './components/DashboardComponent.vue'
 import BookerComponent from './components/BookerComponent.vue'
-import ProgramsComponent from './components/ProgramsComponent.vue'
+import CappyComponent from './components/CappyComponent.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -72,6 +72,12 @@ export const router = new VueRouter({
                     path: '/booker',
                     components: {default: BookerComponent, header: Navbar, footer: Footer},
                     title: 'BookerFund',
+                    // props: {header: {colorOnScroll: 800}}
+                },
+                {
+                    path: '/cappy',
+                    components: {default: CappyComponent, header: Navbar, footer: Footer},
+                    title: 'CappyFund',
                     // props: {header: {colorOnScroll: 800}}
                 },
                 {
