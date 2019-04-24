@@ -23,20 +23,6 @@
                                 placeholder="Pet's Name"
                                 required/>
                     </div>
-                    
-                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="image">
-                        <b-form-file
-                            id="image"
-                            accept="image/*"
-                            v-model="form.image"
-                            placeholder="Choose a file..."
-                            drop-placeholder="Drop file here..."
-                            @change="onFileChange"/>
-
-                        <b-col cols="6" offset="3" style="margin-top: 1rem;">
-                            <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
-                        </b-col>
-                    </b-form-group>
 
                     <div class="form-group" :class="{ 'has-danger': !$v.form.about.required }">
                         <label>Tell us about a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
@@ -58,6 +44,21 @@
                                 v-model="form.diagnosis"
                                 required/>
                     </div>
+
+                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="image">
+                        <b-form-file
+                            id="image"
+                            accept="image/*"
+                            v-model="form.image"
+                            placeholder="Choose a file..."
+                            drop-placeholder="Drop file here..."
+                            @change="onFileChange"/>
+
+                        <b-col cols="6" offset="3" style="margin-top: 1rem;">
+                            <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
+                        </b-col>
+                    </b-form-group>
+                    
                 </div>
 
                 <div class="form-box">
