@@ -24,6 +24,7 @@
         * {
             margin:0;
             padding:0;
+            font-size: .7rem;
         }
         * { font-family: "Raleway", sans-serif; }
 
