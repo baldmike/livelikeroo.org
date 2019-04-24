@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Donation extends Model
 {
     // /**
-    //  * Get the user that owns the donation.
+    //  * The attributes that are mass assignable.
+    //  *
+    //  * @var array
     //  */
-    // public function user()
-    // {
-    //     return $this->belongsTo('App\User');
-    // }
+    // protected $fillable = [
+    //     'first_name', 'last_name', 'email', 'address_1'
+    // ];
 }

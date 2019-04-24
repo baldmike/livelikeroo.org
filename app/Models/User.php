@@ -12,13 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, Billable;
 
-    /**
-     * Get the comments for the blog post.
-     */
-    public function donations()
-    {
-        return $this->hasMany('App\Donation');
-    }
+    // /**
+    //  * 
+    //  */
+    // public function donations()
+    // {
+    //     return $this->hasMany('App\Donation');
+    // }
 
     /**
      * The attributes that are mass assignable.

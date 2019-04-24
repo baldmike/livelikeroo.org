@@ -56,7 +56,7 @@
                                     <n-checkbox
                                         v-model="robot"
                                         required>
-                                        I swear, I am not a robot (if you're a robot, you have to tell the truth.)
+                                        I am not a robot!
                                     </n-checkbox>
                                 </div>
                                 <div class="col-md-6">
@@ -176,8 +176,8 @@
 
 <style>
     .contact-box {
-        position: fixed;
-        top: 200;
-        width: 500;
+        position: relative;
+        top: 100;
+        width: 300;
     }
 </style>

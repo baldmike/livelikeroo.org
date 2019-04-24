@@ -154,7 +154,7 @@
 
                 <div id="passwordLoginGroup" v-if="isMonthly">
                     
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.password.$invalid }">
+                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.repeatPassword.$invalid }">
                         <label for="passwordDnForm">Password</label>
                         <fg-input id="passwordDnForm"
                                 type="password"
@@ -163,8 +163,10 @@
                                 required 
                                 :state="!$v.form.password.$invalid"/>
                     
+                        <label for="passwordDnForm">Password</label>
                         <fg-input id="repeatPassword"
                                 type="password"
+                                placeholder="Repeat Password"
                                 v-model="form.repeatPassword"
                                 :state="!$v.form.repeatPassword.$invalid"
                                 required/>
@@ -198,8 +200,8 @@
                 <br>
 
                 <div class="form-group">
-                    <div class="col-md-12 center"><n-button v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }}</n-button></div>
-                    <div class="col-md-12 center"><n-button v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}</n-button></div>
+                    <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }}</n-button></div>
+                    <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}</n-button></div>
                 </div>
             </div>
 
@@ -227,8 +229,8 @@
                 form: {
                     amount: 10,
                     email: '',
-                    password: '',
-                    repeatPassword: '',
+                    password: 'password',
+                    repeatPassword: 'password',
                     firstName: '',
                     lastName: '',
                     ten: false,
@@ -383,7 +385,7 @@
                         
                         }).catch((error) => {
                             console.log(error.response.data.message);
-
+                            
                             this.$store.dispatch('endLoading');
 
                         })
@@ -393,15 +395,8 @@
                             console.log("MONTHLY CALL MADE");
                             console.log(data);
 
-                            // this.$notify({
-                            //     group: 'notifications',
-                            //     title: 'THANK YOU, ' +  this.form.firstName + '!',
-                            //     text: 'Account information has been sent to ' + this.form.email + '.',
-                            //     duration: '30000',
-                            //     width: '100%',
-                            // });
-
-                            this.$emit('endLoading');
+                            this.$store.dispatch('endLoading');
+                            this.$store.dispatch('dnFormSuccess');
 
                         }).catch((error) => {
                             console.log(error.response.data.message);
@@ -418,21 +413,9 @@
 
             donate(event, amt) {
                 
-                // this.donateClear();
+                this.donateClear();
                 console.log("THE AMT IS---------->  " + amt);
                 this.form.amount = amt;
-
-                // if (this.form.amount = 10) {
-                //     this.form.ten = true;
-                // } else if (this.form.amount = 25) {
-                //     this.form.twentyFive = true;
-                // } else if(this.form.amount = 50) {
-                //     this.form.fifty = true;
-                // } else if (this.form.amount = 100) {
-                //     this.form.hundred = true;
-                // } else {
-                //     this.form.amount = amt;
-                // }
 
                 console.log(this.amount);
             }, 

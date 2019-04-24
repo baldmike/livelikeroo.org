@@ -2,39 +2,22 @@
 
 @section('headline')
     <p>
-        Thank you for your monthly donation of ${{ $donation->amount }}.00, {{ $donation->name_on_card }}! 
+        Thank you for your donation of ${{ $donation->amount }}.00, {{ $user->first_name }}! 
     </p>
 @stop
 
 @section('content')
+    <p>Hello, {{ $user->first_name }},</p>
+    <br>
     <p>
-        Your support of The Live Like Roo Foundation
+        Thank you for your donation! Your support of The Live Like Roo Foundation is how we're able to help as many pets as we do.
     </p>
-
-    <p>
-        is how we're able to help as many pets as we do, 
-    </p>
-    
-    <p>
-        and allows that many more pets to #LiveLikeRoo!
-    </p> 
     
 @stop
 
 @section('monthly')
     <p>
-        Your monthly donations will automatically be charged on this day each month, 
-    </p>
-    
-    <p>
-        and will continue until you cancel.
-    </p>
-
-    <p>
-        You may log in and view your account from the "login" link at the bottom of our website,
-    </p> 
-    <p>
-        using your email and the password you created.
+        Your monthly donations will automatically be charged on this day each month, and will continue until you cancel. You may log in and view your account from the "login" link at the bottom of our website, using your email and the password you created.
     </p>
 @stop
 
