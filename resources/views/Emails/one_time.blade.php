@@ -7,17 +7,10 @@
 @stop
 
 @section('content')
+    <p>Hello, {{ $donation->name_on_card }},</p>
     <p>
-        Your support of The Live Like Roo Foundation
+        Thank you for your donation! Your support of The Live Like Roo Foundation is how we're able to help as many pets as we do.
     </p>
-
-    <p>
-        is how we're able to help as many pets as we do, 
-    </p>
-    
-    <p>
-        and allows that many more pets to #LiveLikeRoo!
-    </p> 
     
 @stop
 

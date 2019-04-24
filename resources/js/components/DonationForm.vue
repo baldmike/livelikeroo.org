@@ -385,7 +385,7 @@
                         
                         }).catch((error) => {
                             console.log(error.response.data.message);
-
+                            
                             this.$store.dispatch('endLoading');
 
                         })
@@ -395,15 +395,8 @@
                             console.log("MONTHLY CALL MADE");
                             console.log(data);
 
-                            // this.$notify({
-                            //     group: 'notifications',
-                            //     title: 'THANK YOU, ' +  this.form.firstName + '!',
-                            //     text: 'Account information has been sent to ' + this.form.email + '.',
-                            //     duration: '30000',
-                            //     width: '100%',
-                            // });
-
-                            this.$emit('endLoading');
+                            this.$store.dispatch('endLoading');
+                            this.$store.dispatch('dnFormSuccess');
 
                         }).catch((error) => {
                             console.log(error.response.data.message);
@@ -420,21 +413,9 @@
 
             donate(event, amt) {
                 
-                // this.donateClear();
+                this.donateClear();
                 console.log("THE AMT IS---------->  " + amt);
                 this.form.amount = amt;
-
-                // if (this.form.amount = 10) {
-                //     this.form.ten = true;
-                // } else if (this.form.amount = 25) {
-                //     this.form.twentyFive = true;
-                // } else if(this.form.amount = 50) {
-                //     this.form.fifty = true;
-                // } else if (this.form.amount = 100) {
-                //     this.form.hundred = true;
-                // } else {
-                //     this.form.amount = amt;
-                // }
 
                 console.log(this.amount);
             }, 
