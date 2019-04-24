@@ -1,8 +1,11 @@
 import Vue from 'vue'
+import BootstrapVue from 'bootstrap-vue'
 import VueRouter from 'vue-router'
 import { router } from './router'
 import Auth from './auth.js';
 import store from './store'
+
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false;
 
@@ -12,6 +15,7 @@ import NowUIKit from './plugins/now-ui-kit';
 
 require('./bootstrap')
 
+Vue.use(BootstrapVue)
 Vue.use(VueRouter)
 Vue.use(VueCookie)
 Vue.use(NowUIKit);

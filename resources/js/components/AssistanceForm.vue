@@ -125,6 +125,20 @@
                                 required/>
                     </div>
 
+                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="image">
+                        <b-form-file
+                            id="image"
+                            accept="image/*"
+                            v-model="form.image"
+                            placeholder="Choose a file..."
+                            drop-placeholder="Drop file here..."
+                            @change="onFileChange"/>
+
+                        <b-col cols="6" offset="3" style="margin-top: 1rem;">
+                            <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
+                        </b-col>
+                    </b-form-group>
+
                     <div class="form-group" :class="{ 'has-danger': $v.form.species.$invalid }">
                         <label>Species</label>
                         <fg-input
@@ -217,7 +231,7 @@
 
                     <h3 class="form-headline">PET'S MEDICAL INFORMATION</h3>
 
-                    <div class="form-group" id="diagnosisGroup">
+                    <div class="form-group has-success" id="diagnosisGroup">
                         <label for="diagnosis">Medical Diagosis, if known</label>
                         <fg-input
                             id="diagnosis"
@@ -226,7 +240,7 @@
                             placeholder="Diagnosis" />
                     </div>
 
-                    <div class="form-group" id="diagnosisDateGroup">
+                    <div class="form-group has-success" id="diagnosisDateGroup">
                         <label for="diagnosisDate">Diagnosis Date, if known</label>
                         <fg-input
                             id="diagnosisDate"
@@ -234,6 +248,7 @@
                             v-model="form.diagnosisDate"
                             placeholder="Diagnosis Date" />
                     </div>
+
                     <div class="form-group" :class="{ 'has-danger': !$v.form.previousDiagnosis.required }">
                         <label for="previousDiagnosis">Has your pet previously been diagnosed with cancer?</label>
                         <select 
