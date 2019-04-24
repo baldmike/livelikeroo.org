@@ -1,12 +1,14 @@
 @extends('layouts.email')
 
 @section('headline')
-    <p>
-        Hello {{ $fin_req->first_name }}, 
-    </p>
+    <h3>Financial Assistance Request Received</h3>
 @stop
 
 @section('content')
+
+    <p>
+        Hello {{ $fin_req->first_name }}, 
+    </p>
     <p>
         Thank you for applying to Live Like Roo Foundation. We have received your application for financial assistance for {{ $fin_req->pet_name }}, and are currently reviewing it. We understand how difficult it is to receive a cancer diagnosis for your beloved pet, and we hope to be able to support you both emotionally and financially. Grants are awarded to qualified applicants one time monthly. Please follow the requirements below, for grant consideration. 
     </p>

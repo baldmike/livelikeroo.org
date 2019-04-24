@@ -24,7 +24,7 @@
         * {
             margin:0;
             padding:0;
-            font-size: .7rem;
+            font-size: .9rem;
         }
         * { font-family: "Raleway", sans-serif; }
 
@@ -43,7 +43,7 @@
         }
 
         .banner {
-            border: 20px solid #fd7e14;
+            border: 10px solid #fd7e14;
             text-align: center;
             padding: 20px;
             background-color: #fd7e14;
@@ -51,6 +51,7 @@
 
         .email-body {
             border: 1px solid black;
+            padding: 10px;
             font-size: 1.2rem;
             background-color: white;
         }
