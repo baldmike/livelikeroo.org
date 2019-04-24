@@ -61,6 +61,7 @@ class Message extends Resource
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
             Text::make('Message')
+                ->hideFromIndex()
                 ->sortable()
                 ->rules('required')
         ];
