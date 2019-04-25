@@ -242,11 +242,10 @@
                     inHonor: false,
                     inMemory: false,
                     honoreeName: 'Honoree',
-                    // sendSnail: false,
-                    // sendEmail: false,
                     recipientName: 'Recipient Name',
                     recipientEmail: 'recipient@example.com',
-                    recipientMessage: 'Message to recipient'
+                    recipientMessage: 'Message to recipient',
+                    fund: 'roo'
                 },
                 show: true,
                 notify: false,
