@@ -50,10 +50,12 @@ class CarePackage extends Resource
 
             Text::make('First Name')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Last Name')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Email')
