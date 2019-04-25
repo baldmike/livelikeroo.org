@@ -32,7 +32,7 @@ class CarePackage extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'about', 'diagnosis', 'image', 
+        'id', 'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'about', 'diagnosis', 'image', 
     ];
 
     /**
@@ -44,9 +44,9 @@ class CarePackage extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
 
-            // Gravatar::make(),
+            DateTime::make('Created At')
+                ->sortable(),
 
             Text::make('First Name')
                 ->sortable()
@@ -91,11 +91,9 @@ class CarePackage extends Resource
             Text::make('Pet Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
-
-            DateTime::make('Created At')
-                ->sortable(),
                 
             Image::make('Image')->disk('local')
+                ->hideFromIndex()
                 ->maxWidth(50),
         ];
     }
