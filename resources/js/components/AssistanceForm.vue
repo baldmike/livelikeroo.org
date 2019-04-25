@@ -585,7 +585,6 @@
                 fd.append('vet_last_name', this.form.primaryVetLastName);
                 fd.append('primary_clinic_name', this.form.primaryClinicName);
                 fd.append('primary_clinic_phone', this.form.primaryClinicPhone);
-                fd.append('primary_clinic_fax', this.form.primaryClinicFax);
                 fd.append('primary_clinic_email', this.form.primaryClinicEmail);
                 fd.append('specialist', this.form.specialist);
                 fd.append('other_help', this.form.otherHelp);

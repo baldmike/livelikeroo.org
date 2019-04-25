@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-use App\Models\Finreq;
+use App\Models\FinReq;
 
 class FinReqReceivedEmail extends Mailable
 {
@@ -16,7 +16,7 @@ class FinReqReceivedEmail extends Mailable
     /**
      * The donation instance.
      *
-     * @var Finreq
+     * @var FinReq
      */
     public $fin_req;
 
@@ -25,7 +25,7 @@ class FinReqReceivedEmail extends Mailable
      *
      * @return void
      */
-    public function __construct(Finreq $fin_req)
+    public function __construct(FinReq $fin_req)
     {
         $this->fin_req = $fin_req;
     }
