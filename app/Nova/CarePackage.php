@@ -70,7 +70,7 @@ class CarePackage extends Resource
             Text::make('Address 2')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('city')
                 ->sortable()

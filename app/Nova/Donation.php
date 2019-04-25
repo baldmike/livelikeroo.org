@@ -4,6 +4,9 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Donation extends Resource
@@ -28,7 +31,7 @@ class Donation extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'amount', 'name_on_card', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg',
     ];
 
     /**
@@ -40,7 +43,16 @@ class Donation extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
+            DateTime::make('Created At')
+                ->sortable(),
+
+            Currency::make('Amount')
+                ->sortable(),
+
+            Text::make('Name On Card')
+                ->sortable()
+                ->rules('required', 'max:255'),
+            
         ];
     }
 
