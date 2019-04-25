@@ -58,7 +58,7 @@
                             <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
                         </b-col>
                     </b-form-group>
-                    
+
                 </div>
 
                 <div class="form-box">
@@ -156,11 +156,11 @@
 
                 <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
                     <n-button 
-                        type="primary" 
-                        round 
-                        :disabled="$v.form.$invalid"
-                        @click.prevent.native="requestCarePackage">
-                        Request A Care Package
+                            type="primary" 
+                            round 
+                            :disabled="$v.form.$invalid"
+                            @click.prevent.native="requestCarePackage">
+                            Request A Care Package
                     </n-button>
                 </div>
 
@@ -201,7 +201,6 @@
                 },
                 sent: false,
 
-                // states: ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",  "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"],
                 states: [
                     {value: "AK", label: "AK"},
                     {value: "AL", label: "AL"},
@@ -326,6 +325,7 @@
                 fd.append('pet_name', this.form.petName);
                 fd.append('about', this.form.about);
                 fd.append('diagnosis', this.form.diagnosis);
+                fd.append('image', this.form.image);
 
                 this.$store.dispatch('cpFormSubmit');
                 

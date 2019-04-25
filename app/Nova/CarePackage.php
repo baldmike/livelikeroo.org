@@ -5,6 +5,8 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 
@@ -44,7 +46,7 @@ class CarePackage extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make(),
+            // Gravatar::make(),
 
             Text::make('First Name')
                 ->sortable()
@@ -62,22 +64,27 @@ class CarePackage extends Resource
 
             Text::make('Address 1')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Address 2')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('city')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('state')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('zip')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
             
             
@@ -85,7 +92,11 @@ class CarePackage extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            
+            DateTime::make('Created At')
+                ->sortable(),
+                
+            Image::make('Image')->disk('local')
+                ->maxWidth(50),
         ];
     }
 
