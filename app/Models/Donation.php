@@ -12,6 +12,6 @@ class Donation extends Model
      * @var array
      */
     protected $fillable = [
-        'amount', 'name_on_card', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
+        'amount', 'first_name', 'last_name', 'name_on_card', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
     ];
 }

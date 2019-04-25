@@ -31,7 +31,7 @@ class Donation extends Resource
      * @var array
      */
     public static $search = [
-        'amount', 'name_on_card', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
+        'amount', 'first_name', 'last_name', 'name_on_card', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
     ];
 
     /**
@@ -52,7 +52,10 @@ class Donation extends Resource
             Text::make('Name On Card')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            
+
+            Text::make('First Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
         ];
     }
 
