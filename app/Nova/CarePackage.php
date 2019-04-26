@@ -93,6 +93,11 @@ class CarePackage extends Resource
             Text::make('Pet Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+
+            Text::make('About')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules('required', 'max:255'),
                 
             Image::make('Image')->disk('local')
                 ->hideFromIndex()

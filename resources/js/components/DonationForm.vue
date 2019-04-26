@@ -222,7 +222,7 @@
                 <br>
 
                 <div class="form-group">
-                    <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }}</n-button></div>
+                    <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation <span v-if="isInMemory">In Memory of {{ form.honoreeName }} </span> of ${{ form.amount }}</n-button></div>
                     <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}</n-button></div>
                 </div>
             </div>
@@ -261,7 +261,6 @@
                     hundred: false,
                     name_on_card: '',
                     personal: true,
-                    inHonor: false,
                     inMemory: false,
                     honoreeName: 'Honoree',
                     recipientName: 'Recipient Name',
@@ -468,7 +467,6 @@
                 this.form.isEmail = false;
                 this.form.isSnail = false;
                 this.form.personal = true;
-                this.form.inHonor = false;
                 this.form.inMemory = false;
             },
 
@@ -476,7 +474,6 @@
                 e.preventDefault();
                 console.log("[IN MEMORY DONATION SELECTED]");
                 this.form.personal = false;
-                this.form.inHonor = false;
                 this.form.inMemory = true;
 
                 this.form.honoreeName = '';
@@ -489,7 +486,6 @@
                 e.preventDefault();
                 console.log("[IN HONOR DONATION SELECTED]");
                 this.form.personal = false;
-                this.form.inHonor = true;
                 this.form.inMemory = false;
 
                 this.form.honoreeName = '';
@@ -530,7 +526,6 @@
                 this.form.lastNameDnForm = '';
 
                 this.form.personal = true;
-                this.form.inHonor = false;
                 this.form.inMemory = false;
                 this.form.honoreeName = 'honoree';
                 this.form.recipientName = 'Recipient Name';
