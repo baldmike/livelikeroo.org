@@ -111,6 +111,12 @@
                 </div>
             </div>
 
+
+
+                    <!-- YOUR INFORMATION  -->
+
+
+
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
 
@@ -126,6 +132,7 @@
                             class="input-lg"
                             placeholder="First Name "
                             v-model="form.firstName"
+                            required
                             :state="!$v.form.firstName.required">
                     </fg-input>
                 </div>
@@ -137,6 +144,7 @@
                             class="input-lg"
                             placeholder="Last Name"
                             v-model="form.lastName"
+                            required
                             :state="!$v.form.lastName.$invalid">
                     </fg-input>
                 </div>
@@ -152,9 +160,16 @@
                     </fg-input>
                 </div>
 
+                
+
+                <!-- if monthly -->
+
+                <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password below. Your email and password will allow you to log in, view and edit your account from the website.</div>
+
+
                 <div id="passwordLoginGroup" v-if="isMonthly">
                     
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.repeatPassword.$invalid }">
+                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.password.$invalid }">
                         <label for="passwordDnForm">Password</label>
                         <fg-input id="passwordDnForm"
                                 type="password"
@@ -162,8 +177,9 @@
                                 v-model="form.password" 
                                 required 
                                 :state="!$v.form.password.$invalid"/>
-                    
-                        <label for="passwordDnForm">Password</label>
+                    </div>
+                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.repeatPassword.$invalid }">    
+                        <label for="passwordDnForm">Repeat Password</label>
                         <fg-input id="repeatPassword"
                                 type="password"
                                 placeholder="Repeat Password"
@@ -173,6 +189,12 @@
                     </div>
                 </div>
             </div>
+
+
+
+                        <!--  PAYMENT INFO  -->
+
+                        
             <div class="form-box">
                 <!-- CC/DONOR INFORMTION -->
                 <h3 class="center">PAYMENT INFORMATION</h3>

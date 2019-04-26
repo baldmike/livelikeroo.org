@@ -12,6 +12,9 @@ use App\Http\Requests\oneTimeDonationRequest;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
 
+use Illuminate\Support\Str;
+
+
 use App\Models\Donation;
 use App\Models\User;
 
@@ -30,6 +33,26 @@ class DonationController extends Controller
     public function oneTime(oneTimeDonationRequest $request)
     {
         $validated = $request->validated();
+
+        // find or create the user
+        $user = User::where('email', $request->email)->first();
+                
+        // if user doens't exist, make a user with the role 'donor'
+        if (!$user)
+        {
+            Log::debug("[DonationController] --> creating user");
+
+            $uuid = Str::uuid()->toString();
+            
+
+            $user = User::create([
+                'first_name' => $request->firstName,
+                'last_name' => $request->lastName,
+                'email' => $request->email,
+                'password' => $uuid,
+                'role' => 'donor',
+            ]);
+        }
 
         if($validated) {
             try {
@@ -64,6 +87,8 @@ class DonationController extends Controller
                 $D = New Donation();
                 $D->amount = request('amount');
                 $D->name_on_card = request('name_on_card');
+                $D->first_name = request('firstName');
+                $D->last_name = request('lastName');
                 $D->email = request('email');
                 $D->donation_type = $donationType;
                 $D->honoree = request('honoreeName');
@@ -82,8 +107,8 @@ class DonationController extends Controller
             } catch (card_declined $e) {
                 // handle exception 
                 Log::debug($e);
-
-                return $e;
+            
+                return response()->json(null, Response::HTTP_BAD_REQUEST);
             }
         }
 
@@ -102,6 +127,13 @@ class DonationController extends Controller
 
         // find or create the user
         $user = User::where('email', $request->email)->first();
+
+        if($user->role = 'donor')
+        {
+            $user->role = "monthly_donor";
+            $user-save();
+        }
+        
                 
         // if user doens't exist, make a user with the role 'monthly_donor'
         if (!$user)
@@ -145,6 +177,8 @@ class DonationController extends Controller
                 $D = New Donation();
                 $D->amount = request('amount');
                 $D->name_on_card = request('name_on_card');
+                $D->first_name = request('first_name');
+                $D->last_name = request('last_name');
                 $D->email = request('email');
                 $D->donation_type = $donationType;
                 $D->frequency = 'monthly';

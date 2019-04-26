@@ -31,7 +31,7 @@ class Donation extends Resource
      * @var array
      */
     public static $search = [
-        'amount', 'first_name', 'last_name', 'name_on_card', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
+        'amount', 'name_on_card', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
     ];
 
     /**
