@@ -9,6 +9,8 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Select;
+
 
 use Illuminate\Http\Request;
 
@@ -94,7 +96,13 @@ class FinReq extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Species')
+            Select::make('Species')->options([
+                'dog' => 'Dog', 
+                'cat' => 'Cat', 
+                'rabbit' => 'Rabbit', 
+                'bird' => 'Bird', 
+                'other' => 'Other'
+            ])
                 ->sortable()
                 ->hideFromIndex(),
             
