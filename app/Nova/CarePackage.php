@@ -24,7 +24,7 @@ class CarePackage extends Resource
      *
      * @var string
      */
-    public static $title = 'email';
+    public static $title = 'CarePackage';
 
     /**
      * The columns that should be searched.
