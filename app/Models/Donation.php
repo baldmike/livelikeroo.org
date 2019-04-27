@@ -12,6 +12,10 @@ class Donation extends Model
      * @var array
      */
     protected $fillable = [
-        'amount', 'name_on_card', 'first_name', 'last_name', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
+        'amount', 'name_on_card', 'first_name', 'last_name', 'email', 'in_memory', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
+    ];
+
+    protected $casts = [
+        'in_memory' => 'boolean'
     ];
 }

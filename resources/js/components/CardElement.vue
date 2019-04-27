@@ -53,11 +53,11 @@
             },
 
             change(event) {
-                // if (event.error) {
-                //   this.errorMessage = event.error.message;
-                // } else {
-                //   this.errorMessage = ''
-                // }
+                if (event.error) {
+                  this.errorMessage = event.error.message;
+                } else {
+                  this.errorMessage = 'There is an Error'
+                }
 
                 this.errorMessage = event.error ? event.error.message : ''
             }

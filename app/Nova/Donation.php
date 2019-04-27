@@ -6,6 +6,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Select;
@@ -32,7 +33,7 @@ class Donation extends Resource
      * @var array
      */
     public static $search = [
-        'amount', 'name_on_card', 'first_name', 'last_name', 'email','donation_type', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
+        'id', 'amount', 'name_on_card', 'first_name', 'last_name', 'email', 'in_memory', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
     ];
 
     /**
@@ -44,13 +45,23 @@ class Donation extends Resource
     public function fields(Request $request)
     {
         return [
+            ID::make()->sortable()
+                ->hideFromIndex(),
+            
             DateTime::make('Created At')
                 ->sortable(),
 
             Currency::make('Amount')->format('$%.2n')
                 ->sortable(),
 
-            Select::make('fund')
+            Select::make('Frequency')
+                ->options([
+                    'one-time' => 'One-Time',
+                    'monthly' => 'Monthly'
+                ])
+                ->sortable(),
+
+            Select::make('Fund')
                 ->options([
                     'roo' => 'Roo',
                     'booker' => 'Booker',
@@ -78,39 +89,29 @@ class Donation extends Resource
                 ->hideFromIndex()
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->creationRules('unique:users,email'),
+                // ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Text::make('donation_type')
+            Boolean::make('In Memory')
                 ->hideFromIndex()
                 ->sortable(),
 
-            Select::make('frequency')
-                ->options([
-                    'one-time' => 'One-Time',
-                    'monthly' => 'Monthly'
-                ])
-                ->sortable(),
-
-            Text::make('honoree')
+            Text::make('Honoree')
                 ->hideFromIndex()
                 ->sortable(),
 
-            Text::make('recipient_name')
+            Text::make('Recipient Name')
                 ->hideFromIndex()
                 ->sortable(),
 
-            Text::make('recipient_email')
+            Text::make('Recipient Email')
                 ->hideFromIndex()
                 ->sortable(),
 
-            Text::make('recipient_msg')
+            Text::make('Recipient Msg')
                 ->hideFromIndex()
                 ->sortable(),                
         ];  
-
-
-
     }
 
     /**

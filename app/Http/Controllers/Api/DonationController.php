@@ -69,20 +69,6 @@ class DonationController extends Controller
                     ],
                 ]);
 
-                if(($request->personal) === 'true'){
-                    $donationType = 'personal';
-                };
-
-                if(($request->inHonor) === 'true'){
-                    $donationType = 'honor';
-                };
-
-                if(($request->inMemory) === 'true'){
-                    $donationType = 'memory';
-                };
-
-                Log::debug("[DONATION CONTROLLER] --> donation type: " . $donationType);
-
                 // instantiate a new Donation
                 $D = New Donation();
                 $D->amount = request('amount');
@@ -90,7 +76,7 @@ class DonationController extends Controller
                 $D->first_name = request('firstName');
                 $D->last_name = request('lastName');
                 $D->email = request('email');
-                $D->donation_type = $donationType;
+                $D->in_memory = request('inMemory');
                 $D->honoree = request('honoreeName');
                 $D->frequency = 'one-time';
                 $D->recipient_name = request('recipientName');
@@ -104,11 +90,13 @@ class DonationController extends Controller
 
                 return response()->json(null, Response::HTTP_CREATED);
 
-            } catch (card_declined $e) {
+            } catch (CardErrorException $e) {
                 // handle exception 
                 Log::debug($e);
+
+                return back()->withErrors('Error! ' . $e->getMessage());
             
-                return response()->json(null, Response::HTTP_BAD_REQUEST);
+                // return response()->json(null, Response::HTTP_BAD_REQUEST);
             }
         }
 
@@ -161,26 +149,13 @@ class DonationController extends Controller
 
                 Log::debug("MONTHLY VALIDATED - SUBCRIBED");
                 
-                // instantiate a new Donation
-                if($request->personal == true){
-                    $donationType = 'personal';
-                };
-
-                if($request->inHonor == true){
-                    $donationType = 'honor';
-                };
-
-                if($request->inMemory == true){
-                    $donationType = 'memory';
-                };
-                
                 $D = New Donation();
                 $D->amount = request('amount');
                 $D->name_on_card = request('name_on_card');
                 $D->first_name = request('first_name');
                 $D->last_name = request('last_name');
                 $D->email = request('email');
-                $D->donation_type = $donationType;
+                $D->in_memory = request('inMemory');
                 $D->frequency = 'monthly';
                 $D->honoree = request('honoreeName');
                 $D->recipient_name = request('recipientName');
@@ -195,7 +170,7 @@ class DonationController extends Controller
                 return response()->json(null, Response::HTTP_CREATED);
                 
                 } catch (CardErrorException $e) {
-                // save info to database for failed
+                
                 return back()->withErrors('Error! ' . $e->getMessage());
             }
         }
