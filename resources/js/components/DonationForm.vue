@@ -96,7 +96,7 @@
                 </div>
 
                 <!-- IF EMAIL -->
-                <div class="form-group" id="recipientEmailGroup" v-if="isMonthly && isNotify" label="Recipient Email">
+                <div class="form-group" id="recipientEmailGroup" v-if="form.inMemory && isNotify" label="Recipient Email">
                     <label for="recipientEmailDnForm">Recipient's Email</label>
                     <fg-input 
                         id="recipientEmailDnForm"
@@ -384,12 +384,14 @@
                         // send to our server to process onetime payment
                         axios.post("/api/make_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
+                            this.resetForm();
+                            console.log("----------->[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
                             this.$store.dispatch('dnFormSuccess');
 
                             console.log("[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
                             console.log("TOKEN: " + result.token.id);
 
-                            this.resetForm();
+                            
                         
                         }).catch((error) => {
                             console.log(error.response.data.message);
@@ -400,9 +402,8 @@
 
                     } else if(this.isMonthly) {
                         axios.post("/api/monthly_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
-                            console.log("MONTHLY CALL MADE");
-                            console.log(data);
 
+                            this.resetForm();
                             this.$store.dispatch('endLoading');
                             this.$store.dispatch('dnFormSuccess');
 
@@ -471,14 +472,12 @@
                 this.hundred = false;
 
                 this.form.amount = '10';
-                this.form.emailDnForm = '';
                 this.form.name_on_card = '';
-                this.form.firstNameDnForm = '';
-                this.form.lastNameDnForm = '';
-                this.form.passwordDnForm = '';
-                this.form.repeatPasswordDnForm = '';
-                this.form.firstNameDnForm = '';
-                this.form.lastNameDnForm = '';
+                this.form.firstName = '';
+                this.form.lastName = '';
+                this.form.email = '';
+                this.form.password = 'password';
+                this.form.repeatPassword = 'password';
 
                 this.form.inMemory = false;
                 this.form.honoreeName = 'honoree';
@@ -494,16 +493,14 @@
                 });
             },
 
-            toggleMonthly(e) {
-                e.preventDefault();
+            toggleMonthly() {
 
                 this.form.password = '';
                 this.form.password = '';
                 this.$store.dispatch('setMonthly');
             },
 
-            toggleOneTime(e) {
-                e.preventDefault();
+            toggleOneTime() {
 
                 this.form.password = 'password';
                 this.form.repeatPassword = 'password';
