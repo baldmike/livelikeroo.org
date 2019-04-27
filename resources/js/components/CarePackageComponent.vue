@@ -24,7 +24,7 @@
                                     
                                     <div class="section-space"></div>
 
-                                    <p>Please note that due to extremely high demand and very limited resources, we must ask for a donation of at least $10 in order to be able to continue to send care packages. If you're unable to afford this, we can still help.</p>
+                                    <p>Please note that due to extremely high demand and very limited resources, we ask for a donation of at least $10 in order to be able to continue to send care packages. If you're unable to afford this, we can still help.</p>
                                 </div>
 
                                 <div class="section-space"></div>
