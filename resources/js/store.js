@@ -40,7 +40,7 @@ export default new Vuex.Store({
             },
             loading: false,
             message: '',
-            fund: ''
+            fund: 'roo'
             
         }
     },
@@ -71,12 +71,10 @@ export default new Vuex.Store({
         setOneTime(state) {
             state.oneTime = true;
             state.monthly = false;
-            state.modals.dnForm = true;
         },
         setMonthly(state) {
             state.oneTime = false;
             state.monthly = true;
-            state.modals.dnForm = true;
         },
         notify(state, payload) {
             console.log(payload);
@@ -277,9 +275,13 @@ export default new Vuex.Store({
             context.commit('notify', payload);
         },
         showDnForm(context, payload) {
-            context.commit('setFund', payload);
-
-            console.log("DN FORMY FORM FORM");
+            context.commit('setFund', payload.fund);
+            
+            if (payload.freq === 'oneTime') {
+                context.commit('setOneTime')
+            } else if (payload.freq === 'monthly') {
+                context.commit('setMonthly')
+            }
 
             context.commit('showDnForm');
         }

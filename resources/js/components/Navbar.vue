@@ -43,7 +43,7 @@
                     <i class="now-ui-icons emoticons_satisfied" style="color: #fd7e14;"></i> Booker Fund
                 </nav-link>
                 <nav-link class="dropdown-item" to="/cappy">
-                    <i class="now-ui-icons emoticons_satisfied" style="color: #384666;"></i> Cappy's Fund
+                    <i class="now-ui-icons emoticons_satisfied" style="color: #384666;"></i> The Cappy Fund
                 </nav-link>
                 <nav-link class="dropdown-item" to="/maggie">
                     <i class="now-ui-icons emoticons_satisfied" style="color: green;"></i> Maggie's Mission

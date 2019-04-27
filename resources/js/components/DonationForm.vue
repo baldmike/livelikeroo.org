@@ -6,7 +6,7 @@
             
             <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>
             <h3 class="center" v-if="isOneTime">ONE TIME DONATION</h3>
-            <h3 class="center" v-if="isBooker">To The Booker Fund</h3>
+            <h3 class="center">TO {{ getFund }}</h3>
 
             <img v-if="isOneTime" src="/images/headline2.jpg" fluid>
             <img v-if="isMonthly" src="/images/headline3.jpg" fluid>
@@ -222,14 +222,12 @@
                 <div class="form-group">
                     <div class="col-md-12 center">
                         <n-button :disabled="$v.form.$invalid"        v-if="isOneTime" type="primary"      @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }} 
-                            <span v-if="form.inMemory"> In Memory of {{ form.honoreeName }} </span>
-                            <span v-if="isBooker">to The Booker Fund</span>
+                            <span v-if="form.inMemory"> In Memory of {{ form.honoreeName }} </span> to {{ getFund }}
                         </n-button>
                     </div>
                     <div class="col-md-12 center">
                         <n-button :disabled="$v.form.$invalid" v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}
-                            <span v-if="form.inMemory">In Memory of {{ form.honoreeName }} </span>
-                            <span v-if="isBooker">to The Booker Fund</span>
+                            <span v-if="form.inMemory">In Memory of {{ form.honoreeName }} </span> to {{ getFund }}
                         </n-button>
                     </div>
                 </div>
@@ -352,14 +350,20 @@
                 return this.notify;
             },
             getFund() {
-                return this.$store.state.fund;
-            },
-            isBooker() {
-                if (this.$store.state.fund === 'booker') {
-                    return true;
+                let selectedFund = this.$store.state.fund;
+
+                if (selectedFund === 'cappy') {
+                    return 'THE CAPPY FUND';
+                } else if (selectedFund === 'booker') {
+                    return 'THE BOOKER FUND';
+                } else if (selectedFund === 'maggie') {
+                    return 'MAGGIE\'S MISSION';
+                } else if (selectedFund === 'serenity') {
+                    return 'SERENITY\'S WISH';
+                } else {
+                    return 'LIVE LIKE ROO'
                 }
-                
-            }
+            },
         },
         methods: {
             pay() {

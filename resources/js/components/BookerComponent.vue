@@ -28,8 +28,7 @@
                         </h3>
                         <n-button @click.prevent.native="showDnForm" type="primary" size="lg" block round>DONATE</n-button>    
                     </div>
-                    
-                </div> 
+                </div>
 
                 <div class="col-md-3 offset-md-3">
                     <h5 class="card-title booker-tile add-opacity">The Booker Fund allows us to spoil hospice dogs with a cancer diagnosis. This Fund, an arm of the Live Like Roo Foundation, pays for hotel rooms, wagons, dog beds and anything a dog needs in the final days or months. We have sent many dogs and their owners to hotel stays to forget about cancer for awhile and we have found that it TRULY helps them. This Fund is named for a dude named Booker, who takes in hospice dogs and gives them the best life!</h5>
@@ -55,11 +54,13 @@
       [Button.name]: Button
     },
     methods: {
-      showDnForm() {
-          console.log('showDnForm---------------------------')
-        // EventBus.$emit('showDnForm');
-        this.$store.dispatch('showDnForm', 'booker');
-      }
+        showDnForm() {
+            let payload = {
+                fund: 'booker',
+                freq: 'oneTime'
+            }
+            this.$store.dispatch('showDnForm', payload);
+        }
     }
   }
 </script>

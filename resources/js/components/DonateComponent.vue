@@ -58,7 +58,11 @@
     methods: {
         oneTime() {
             console.log("[DonateComponent] - ONE TIME")
-            EventBus.$emit('setOneTime');
+            let payload = {
+                fund: 'roo',
+                freq: 'oneTime'
+            }
+            this.$store.dispatch('showDnForm', payload)
         },
 
         monthly() {

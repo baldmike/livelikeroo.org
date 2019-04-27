@@ -10,10 +10,20 @@
                     <small>Ralph Waldo Emerson</small>
                 </div>
 
-                <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
+                <!-- <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
+                    
                     <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
+                </div> -->
+                <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4">
+                    <div class="donate-box">
+                        <h3 style="color: #384666">
+                            <p>DONATE</p> 
+                            <p>TO</p> 
+                            <p>LIVE LIKE ROO</p>
+                        </h3>
+                        <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>DONATE</n-button>    
+                    </div>
                 </div>
-                
             </div>
 
             <div class="row">
@@ -101,8 +111,14 @@
     },
     methods: {
         showDnForm() {
-            console.log("[HomeComponent] - showDnForm")
-            EventBus.$emit('showDnForm');
+            console.log("[HomeComponent] - showDnForm");
+            
+            let payload = {
+                fund: 'roo',
+                freq: 'oneTime'
+            };
+
+            this.$store.dispatch('showDnForm', payload);
         },
     }
   }
@@ -116,5 +132,13 @@
 
     .textOnWhite {
         color: #333333 !important;
+    }
+
+    .donate-box {
+        padding: 30px;
+        text-align: center;
+        background-color: white;
+        color: #fd7e14;
+        position: absolute; top: 40%
     }
 </style>
