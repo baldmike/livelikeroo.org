@@ -39,7 +39,8 @@ export default new Vuex.Store({
                 danger: false,
             },
             loading: false,
-            message: ''
+            message: '',
+            fund: ''
             
         }
     },
@@ -89,14 +90,17 @@ export default new Vuex.Store({
                 }
             }
         },
+
+        // MODAL show and tell
         showCpForm(state) {
             state.modals.cpForm = true;
         },
         showFnForm(state) {
             state.modals.fnForm = true;
         },
-
-
+        showDnForm(state) {
+            state.modals.dnForm = true;
+        },
         showLogin(state) {
             state.modals.login = true;
         },
@@ -106,12 +110,16 @@ export default new Vuex.Store({
             state.modals.login = false;
             state.modals.fnForm = false;
         },
+
+        // start and stop loader gif
         startLoading(state) {
             state.loading = true;
         },
         endLoading(state) {
             state.loading = false;
         },
+
+
         logout(state) {
             state.token = null;
             state.user = null;
@@ -119,7 +127,12 @@ export default new Vuex.Store({
             Vue.cookie.delete('token');
             Vue.cookie.delete('user');
         },
+        setFund(state, payload) {
+            state.fund = payload;
+        }
     },
+
+
     actions: {
         // actions are dispatched in component, they commit mutations
 
@@ -262,6 +275,13 @@ export default new Vuex.Store({
             }
 
             context.commit('notify', payload);
+        },
+        showDnForm(context, payload) {
+            context.commit('setFund', payload);
+
+            console.log("DN FORMY FORM FORM");
+
+            context.commit('showDnForm');
         }
     }
 })
