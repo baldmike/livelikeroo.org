@@ -25,6 +25,7 @@ class monthlyDonationRequest extends FormRequest
     {
         return [
             'amount' => 'required',
+            'fund' => 'required|string|max:50',
             'email' => 'required|email',
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',

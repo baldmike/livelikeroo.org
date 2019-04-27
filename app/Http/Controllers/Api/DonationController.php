@@ -163,9 +163,8 @@ class DonationController extends Controller
                 $D->recipient_msg = request('recipientMessage');
                 $D->save();
 
-                
+                // change to $request->email
                 Mail::to('baldmike312@gmail.com')->send(new MonthlyDonation($D, $user));
-                // Mail::to($request->email)->send(new OneTimeDonation($D));
 
                 return response()->json(null, Response::HTTP_CREATED);
                 
