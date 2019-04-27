@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
+use App\Nova\Metrics\Donations;
+use App\Nova\Metrics\AssistanceRequests;
+use App\Nova\Metrics\CarePackageRequests;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -43,7 +46,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         Gate::define('viewNova', function ($user) {
             return in_array($user->email, [
-                //
+                // 'sarah@livelikeroo.org',
             ]);
         });
     }
@@ -56,7 +59,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            // new Help,
+            new Donations, new CarePackageRequests, new AssistanceRequests
         ];
     }
 

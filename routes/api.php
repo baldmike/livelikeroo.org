@@ -18,7 +18,7 @@ Route::post('/register', 'Api\AuthController@register');
 Route::post('/logout', 'Api\AuthController@logout');   
 
 // forms
-Route::resource('finreqs', 'Api\FinreqsController');
+Route::resource('fin_reqs', 'Api\FinReqsController');
 Route::resource('care_pkgs', 'Api\CarePackageController');
 Route::resource('contact', 'Api\MessageController');
 

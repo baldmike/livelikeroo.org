@@ -44,7 +44,6 @@ class Message extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make(),
 
             Text::make('First Name')
                 ->sortable()

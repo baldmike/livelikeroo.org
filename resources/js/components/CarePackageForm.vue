@@ -44,6 +44,21 @@
                                 v-model="form.diagnosis"
                                 required/>
                     </div>
+
+                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="image">
+                        <b-form-file
+                            id="image"
+                            accept="image/*"
+                            v-model="form.image"
+                            placeholder="Choose a file..."
+                            drop-placeholder="Drop file here..."
+                            @change="onFileChange"/>
+
+                        <b-col cols="6" offset="3" style="margin-top: 1rem;">
+                            <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
+                        </b-col>
+                    </b-form-group>
+
                 </div>
 
                 <div class="form-box">
@@ -141,11 +156,11 @@
 
                 <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
                     <n-button 
-                        type="primary" 
-                        round 
-                        :disabled="$v.form.$invalid"
-                        @click.prevent.native="requestCarePackage">
-                        Request A Care Package
+                            type="primary" 
+                            round 
+                            :disabled="$v.form.$invalid"
+                            @click.prevent.native="requestCarePackage">
+                            Request A Care Package
                     </n-button>
                 </div>
 
@@ -186,7 +201,6 @@
                 },
                 sent: false,
 
-                // states: ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC",  "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"],
                 states: [
                     {value: "AK", label: "AK"},
                     {value: "AL", label: "AL"},
@@ -311,6 +325,7 @@
                 fd.append('pet_name', this.form.petName);
                 fd.append('about', this.form.about);
                 fd.append('diagnosis', this.form.diagnosis);
+                fd.append('image', this.form.image);
 
                 this.$store.dispatch('cpFormSubmit');
                 
@@ -350,6 +365,13 @@
                 this.$nextTick(() => {
                     this.show = true
                 })
+            },
+
+            onFileChange(e) {
+                const file = e.target.files[0];
+                this.form.url = URL.createObjectURL(file);
+
+                this.form.image = file;
             },
         }
 

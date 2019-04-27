@@ -252,8 +252,16 @@ export default new Vuex.Store({
         },
         showFnForm(context) {
             context.commit('showFnForm');
+        },
+        cardSubmitError(context) {
+            context.commit('endLoading');
+
+            let payload = {
+                type: "danger",
+                message: "There was an error with your card. Please open the form and try again - the form is as you left it. If the problem persists, contact the card issuer."
+            }
+
+            context.commit('notify', payload);
         }
-
     }
-
 })

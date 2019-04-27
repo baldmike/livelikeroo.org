@@ -5,6 +5,8 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 
@@ -22,7 +24,7 @@ class CarePackage extends Resource
      *
      * @var string
      */
-    public static $title = 'email';
+    public static $title = 'CarePackage';
 
     /**
      * The columns that should be searched.
@@ -30,7 +32,7 @@ class CarePackage extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'about', 'diagnosis', 'image', 
+        'id', 'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'about', 'diagnosis', 'image', 
     ];
 
     /**
@@ -42,16 +44,18 @@ class CarePackage extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
 
-            Gravatar::make(),
+            DateTime::make('Created At')
+                ->sortable(),
 
             Text::make('First Name')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Last Name')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Email')
@@ -62,22 +66,27 @@ class CarePackage extends Resource
 
             Text::make('Address 1')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Address 2')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->hideFromIndex()
+                ->rules('max:255'),
 
             Text::make('city')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('state')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('zip')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
             
             
@@ -85,7 +94,14 @@ class CarePackage extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            
+            Text::make('About')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules('required', 'max:255'),
+                
+            Image::make('Image')->disk('local')
+                ->hideFromIndex()
+                ->maxWidth(50),
         ];
     }
 

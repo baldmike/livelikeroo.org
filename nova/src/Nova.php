@@ -120,7 +120,7 @@ class Nova
      */
     public static function name()
     {
-        return config('nova.name', 'Nova Site');
+        return config('nova.name', 'Live Like Roo');
     }
 
     /**

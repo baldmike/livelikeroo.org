@@ -61,13 +61,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3 class="center">DONATION TYPE: {{ donationType }}</h3>
-                        <h5 style="text-align: center;">Choose whether this is a personal donation, or to be made in memory of a loved one.</h5>
+                        <h5 style="text-align: center;">Choose whether this donation is to be made in memory of a loved one.</h5>
                     </div>
                 </div>  
 
                 <div class="row center" id="donationType">
-                    <div class="col-md-6"><n-button type="primary" @click.prevent.native="personalDonation" block>Personal</n-button></div>
-                    <div class="col-md-6"><n-button type="primary" @click.prevent.native="memoryDonation" block>In Memory Of</n-button></div>
+                    <div class="col-md-6"><n-button type="primary" @click.prevent.native="isPersonal" block>Personal</n-button></div>
+                    <div class="col-md-6"><n-button type="primary" @click.prevent.native="isMemorial" block>In Memory Of</n-button></div>
                 </div>
             
 
@@ -81,12 +81,12 @@
                 </div>
 
 
-                <div class="form-group" id="recipientInfoGroup" v-if="!isPersonal">
+                <div class="form-group" id="recipientInfoGroup" v-if="form.inMemory">
                     <n-button v-if="!notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
                     <n-button v-if="notify" type="primary" @click.prevent.native="toggleNotify" block>Shh! Don't tell anyone!</n-button>
                 </div>
 
-                <div class="form-group" id="recipientGroup" v-if="!isPersonal && isNotify" label="Recipient Name">
+                <div class="form-group" id="recipientGroup" v-if="form.inMemory && isNotify" label="Recipient Name">
                     <label for="recipientNameDnForm">Recipient's Name</label>
                     <fg-input 
                         id="recipientNameDnForm"
@@ -96,7 +96,7 @@
                 </div>
 
                 <!-- IF EMAIL -->
-                <div class="form-group" id="recipientEmailGroup" v-if="!isPersonal && isNotify" label="Recipient Email">
+                <div class="form-group" id="recipientEmailGroup" v-if="form.inMemory && isNotify" label="Recipient Email">
                     <label for="recipientEmailDnForm">Recipient's Email</label>
                     <fg-input 
                         id="recipientEmailDnForm"
@@ -105,11 +105,17 @@
                         v-model="form.recipientEmail"/>
                 </div>
 
-                <div class="form-group" id="recipientMessageGroup" label="Message for recipient" v-if="!isPersonal && isNotify">
+                <div class="form-group" id="recipientMessageGroup" label="Message for recipient" v-if="form.inMemory && isNotify">
                         <label>Message: </label>
                         <textarea name="message" class="form-control" id="recipientMessage" rows="6" v-model="form.recipientMessage"></textarea>
                 </div>
             </div>
+
+
+
+                    <!-- YOUR INFORMATION  -->
+
+
 
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
@@ -126,6 +132,7 @@
                             class="input-lg"
                             placeholder="First Name "
                             v-model="form.firstName"
+                            required
                             :state="!$v.form.firstName.required">
                     </fg-input>
                 </div>
@@ -137,6 +144,7 @@
                             class="input-lg"
                             placeholder="Last Name"
                             v-model="form.lastName"
+                            required
                             :state="!$v.form.lastName.$invalid">
                     </fg-input>
                 </div>
@@ -152,9 +160,16 @@
                     </fg-input>
                 </div>
 
+                
+
+                <!-- if monthly -->
+
+                <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password below. Your email and password will allow you to log in, view and edit your account from the website.</div>
+
+
                 <div id="passwordLoginGroup" v-if="isMonthly">
                     
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.repeatPassword.$invalid }">
+                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.password.$invalid }">
                         <label for="passwordDnForm">Password</label>
                         <fg-input id="passwordDnForm"
                                 type="password"
@@ -162,8 +177,9 @@
                                 v-model="form.password" 
                                 required 
                                 :state="!$v.form.password.$invalid"/>
-                    
-                        <label for="passwordDnForm">Password</label>
+                    </div>
+                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.repeatPassword.$invalid }">    
+                        <label for="passwordDnForm">Repeat Password</label>
                         <fg-input id="repeatPassword"
                                 type="password"
                                 placeholder="Repeat Password"
@@ -173,6 +189,9 @@
                     </div>
                 </div>
             </div>
+
+                        <!--  PAYMENT INFO  -->
+                        
             <div class="form-box">
                 <!-- CC/DONOR INFORMTION -->
                 <h3 class="center">PAYMENT INFORMATION</h3>
@@ -189,9 +208,9 @@
                 </div>
 
                 <!-- use Stripe's card element -->
-                <div class="form-group" id="nameOnCardGroup">
+                <div class="form-group" :class="{ 'has-danger': $v.form.$invalid }" id="nameOnCardGroup">
                     <label for="card-element">Card Information</label>
-                    <card-element></card-element>
+                    <card-element required></card-element>
                 </div>
 
                 <!-- CSRF Field -->
@@ -200,8 +219,8 @@
                 <br>
 
                 <div class="form-group">
-                    <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }}</n-button></div>
-                    <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}</n-button></div>
+                    <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isOneTime" type="primary" @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }} <span v-if="form.inMemory"> In Memory of {{ form.honoreeName }} </span></n-button></div>
+                    <div class="col-md-12 center"><n-button :disabled="$v.form.$invalid" v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation <span v-if="form.inMemory">In Memory of {{ form.honoreeName }} </span> of ${{ form.amount }}</n-button></div>
                 </div>
             </div>
 
@@ -227,7 +246,7 @@
             return {
 
                 form: {
-                    amount: 10,
+                    amount: 25,
                     email: '',
                     password: 'password',
                     repeatPassword: 'password',
@@ -238,15 +257,12 @@
                     fifty: true,
                     hundred: false,
                     name_on_card: '',
-                    personal: true,
-                    inHonor: false,
-                    inMemory: false,
+                    inMemory: 0,
                     honoreeName: 'Honoree',
-                    // sendSnail: false,
-                    // sendEmail: false,
                     recipientName: 'Recipient Name',
                     recipientEmail: 'recipient@example.com',
-                    recipientMessage: 'Message to recipient'
+                    recipientMessage: 'Message to recipient',
+                    fund: 'roo'
                 },
                 show: true,
                 notify: false,
@@ -307,18 +323,12 @@
             isHundred() {
                 return !!(this.form.amount = 100);
             },
-            isPersonal() {
-                return this.form.personal;
-            },
             donationType() {
-                if (this.isPersonal) {
-                    return "Personal"
+                if (this.form.inMemory) {
+                    return 'Memorial'
                 }
 
-                return "Memorial"
-            },
-            isInMemory() {
-                return this.form.inMemory;
+                return 'Personal'
             },
             isMonthly() {
                 return this.$store.state.monthly;
@@ -329,13 +339,6 @@
             isNotify() {
                 return this.notify;
             }
-            // isEmail() {
-            //     return this.form.sendEmail;
-            // },
-            // isSnail() {
-            //     return this.form.sendSnail;
-            // }
-
         },
         methods: {
             pay() {
@@ -350,6 +353,11 @@
                     name: this.name_on_card,
                 }
                 createToken(options).then(result => {
+
+                    if(result.error) {
+                        this.$store.dispatch('cardSubmitError');
+                    }
+                    
                     console.log({result});
                     // create hidden input with stripe token to complete transaction
                     let hiddenInput = document.createElement('input');
@@ -376,12 +384,14 @@
                         // send to our server to process onetime payment
                         axios.post("/api/make_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
+                            this.resetForm();
+                            console.log("----------->[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
                             this.$store.dispatch('dnFormSuccess');
 
                             console.log("[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
                             console.log("TOKEN: " + result.token.id);
 
-                            this.resetForm();
+                            
                         
                         }).catch((error) => {
                             console.log(error.response.data.message);
@@ -392,9 +402,8 @@
 
                     } else if(this.isMonthly) {
                         axios.post("/api/monthly_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
-                            console.log("MONTHLY CALL MADE");
-                            console.log(data);
 
+                            this.resetForm();
                             this.$store.dispatch('endLoading');
                             this.$store.dispatch('dnFormSuccess');
 
@@ -435,60 +444,24 @@
                 this.hundred=false;
             },
 
-            personalDonation(e) {
-                e.preventDefault();
-                console.log("[PERSONAL DONATION SELECTED]");
-
+            isPersonal() {
+                
                 this.form.honoreeName = 'honoree';
                 this.form.recipientName = 'Recipient Name';
                 this.form.recipientEmail = 'recipient@example.com';
                 this.form.recipientMessage = 'Message to recipient';
-                
-                this.form.isEmail = false;
-                this.form.isSnail = false;
-                this.form.personal = true;
-                this.form.inHonor = false;
-                this.form.inMemory = false;
+            
+                this.form.inMemory = 0;
             },
 
-            memoryDonation(e) {
-                e.preventDefault();
-                console.log("[IN MEMORY DONATION SELECTED]");
-                this.form.personal = false;
-                this.form.inHonor = false;
-                this.form.inMemory = true;
+            isMemorial() {
 
                 this.form.honoreeName = '';
                 this.form.recipientName = '';
                 this.form.recipientEmail = '';
                 this.form.recipientMessage = '';
-            },
-
-            honorDonation(e) {
-                e.preventDefault();
-                console.log("[IN HONOR DONATION SELECTED]");
-                this.form.personal = false;
-                this.form.inHonor = true;
-                this.form.inMemory = false;
-
-                this.form.honoreeName = '';
-                this.form.recipientName = '';
-                this.form.recipientEmail = '';
-                this.form.recipientMessage = '';
-            },
-
-            sendEmail(e) {
-                e.preventDefault();
-
-                this.form.sendEmail = true;
-                this.form.sendSnail = false;
-            },
-
-            sendSnail(e) {
-                e.preventDefault();
-
-                this.form.sendEmail = false;
-                this.form.sendSnail = true;
+            
+                this.form.inMemory = 1;
             },
 
             resetForm() {
@@ -499,23 +472,18 @@
                 this.hundred = false;
 
                 this.form.amount = '10';
-                this.form.emailDnForm = '';
                 this.form.name_on_card = '';
-                this.form.firstNameDnForm = '';
-                this.form.lastNameDnForm = '';
-                this.form.passwordDnForm = '';
-                this.form.repeatPasswordDnForm = '';
-                this.form.firstNameDnForm = '';
-                this.form.lastNameDnForm = '';
+                this.form.firstName = '';
+                this.form.lastName = '';
+                this.form.email = '';
+                this.form.password = 'password';
+                this.form.repeatPassword = 'password';
 
-                this.form.personal = true;
-                this.form.inHonor = false;
                 this.form.inMemory = false;
                 this.form.honoreeName = 'honoree';
                 this.form.recipientName = 'Recipient Name';
                 this.form.recipientEmail = 'recipient@example.com';
                 this.form.recipientMessage = 'Message to recipient';
-                
                 
                 /* reset/clear native browser form validation state */
                 this.show = false;
@@ -525,16 +493,14 @@
                 });
             },
 
-            toggleMonthly(e) {
-                e.preventDefault();
+            toggleMonthly() {
 
                 this.form.password = '';
                 this.form.password = '';
                 this.$store.dispatch('setMonthly');
             },
 
-            toggleOneTime(e) {
-                e.preventDefault();
+            toggleOneTime() {
 
                 this.form.password = 'password';
                 this.form.repeatPassword = 'password';

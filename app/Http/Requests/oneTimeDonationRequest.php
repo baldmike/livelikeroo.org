@@ -31,7 +31,6 @@ class oneTimeDonationRequest extends FormRequest
             'email' => 'required',
             'name_on_card' => 'required',
             'stripeToken' => 'required',
-            
         ];
     }
 }
