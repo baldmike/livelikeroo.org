@@ -30,7 +30,7 @@ class FinReq extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'email';
 
     /**
      * The columns that should be searched.
@@ -38,7 +38,7 @@ class FinReq extends Resource
      * @var array
      */
     public static $search = [
-        'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'breed', 'age', 'gender', 'altered', 'about', 'image', 'diagnosis', 'diagnosis_date', 'previous_diagnosis', 'vet_first_name', 'vet_last_name', 'primary_clinic_name', 'primary_clinic_phone', 'primary_clinic_email', 'primary_clinic_city', 'primary_clinic_state', 'primary_clinic_zip', 'specialist', 'other_help' 
+        'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'breed', 'age', 'gender', 'altered', 'about', 'image', 'diagnosis', 'diagnosis_date', 'previous_diagnosis', 'vet_first_name', 'vet_last_name', 'primary_clinic_name', 'primary_clinic_phone', 'primary_clinic_email', 'specialist', 'other_help' 
     ];
 
     /**

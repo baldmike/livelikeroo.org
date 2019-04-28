@@ -3,13 +3,23 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Currency;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Select;
+
+use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Panel;
+
+use App\Nova\Filters\selectedFund;
+use App\Nova\Metrics\DonationsTotal;
+use App\Nova\Metrics\DonationsRoo;
+use App\Nova\Metrics\DonationsBooker;
+
+
+
 
 class Donation extends Resource
 {
@@ -33,7 +43,7 @@ class Donation extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'amount', 'name_on_card', 'first_name', 'last_name', 'email', 'in_memory', 'frequency', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
+        'id', 'amount', 'name_on_card', 'first_name', 'last_name', 'email', 'honoree', 'recipient_name', 'recipient_email', 'recipient_msg', 'fund'
     ];
 
     /**
@@ -45,36 +55,24 @@ class Donation extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable()
-                ->hideFromIndex(),
-            
-            DateTime::make('Created At')
-                ->sortable(),
 
-            Currency::make('Amount')->format('$%.2n')
-                ->sortable(),
+            new Panel('Donation Information', $this->donationFields()),
 
-            Select::make('Frequency')
-                ->options([
-                    'one-time' => 'One-Time',
-                    'monthly' => 'Monthly'
-                ])
-                ->sortable(),
+            new Panel('Donor', $this->donorFields()),
 
-            Select::make('Fund')
-                ->options([
-                    'roo' => 'Roo',
-                    'booker' => 'Booker',
-                    'maggie' => 'Maggie',
-                    'cappy' => 'Cappy',
-                    'serenity' => 'Serenity'
-                ])
-                ->sortable(),
-        
-            Text::make('Name On Card')
-                ->sortable()
-                ->rules('required', 'max:255'),
+            new Panel('Memorial Information', $this->memorialFields()),
 
+        ];  
+    }
+
+    /**
+     * Get the donor fields for the resource.
+     *
+     * @return array
+     */
+    protected function donorFields()
+    {
+        return [
             Text::make('First Name')
                 ->hideFromIndex()
                 ->sortable()
@@ -91,9 +89,60 @@ class Donation extends Resource
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email'),
                 // ->updateRules('unique:users,email,{{resourceId}}'),
+        ];
+    }
+    /**
+     * Get the donation-specific fields for the resource.
+     *
+     * @return array
+     */
+    protected function donationFields()
+    {
+        return [
+            ID::make()->sortable()
+                ->hideFromIndex(),
+            
+            Select::make('Fund')
+                ->options([
+                    'roo' => 'Roo',
+                    'booker' => 'Booker',
+                    'maggie' => 'Maggie',
+                    'cappy' => 'Cappy',
+                    'serenity' => 'Serenity'
+                ])
+                ->sortable(),
+                
+            DateTime::make('Created At')
+                ->sortable(),
 
+            Text::make('Name On Card')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Currency::make('Amount')->format('$%.2n')
+                ->sortable(),
+
+            Select::make('Frequency')
+                ->options([
+                    'one-time' => 'One-Time',
+                    'monthly' => 'Monthly'
+                ])
+                ->sortable(),
+        ];
+    }
+
+    /**
+     * Get the in Memory Of fields for the resource.
+     *
+     * @return array
+     */
+    protected function memorialFields()
+    {
+        return[
             Boolean::make('In Memory')
                 ->hideFromIndex()
+                ->trueValue('1')
+                ->falseValue('0')
                 ->sortable(),
 
             Text::make('Honoree')
@@ -110,8 +159,8 @@ class Donation extends Resource
 
             Text::make('Recipient Msg')
                 ->hideFromIndex()
-                ->sortable(),                
-        ];  
+                ->sortable()
+        ];
     }
 
     /**
@@ -122,7 +171,11 @@ class Donation extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new DonationsTotal,
+            new DonationsRoo,
+            new DonationsBooker
+        ];
     }
 
     /**
@@ -133,7 +186,9 @@ class Donation extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new selectedFund
+        ];
     }
 
     /**

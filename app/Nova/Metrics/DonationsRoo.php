@@ -7,7 +7,7 @@ use Laravel\Nova\Metrics\Value;
 
 use App\Models\Donation;
 
-class Donations extends Value
+class DonationsRoo extends Value
 {
     /**
      * Calculate the value of the metric.
@@ -17,7 +17,7 @@ class Donations extends Value
      */
     public function calculate(Request $request)
     {
-        return $this->sum($request, Donation::class, 'amount')->currency('$');
+        return $this->sum($request, Donation::where('fund', 'roo'), 'amount')->currency('$');
     }
 
     /**
@@ -55,6 +55,6 @@ class Donations extends Value
      */
     public function uriKey()
     {
-        return 'donations';
+        return 'donationsRoo';
     }
 }
