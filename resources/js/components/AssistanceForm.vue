@@ -253,6 +253,7 @@
                                 id="primaryVetFirstName"
                                 type="text"
                                 v-model="form.primaryVetFirstName"
+                                placeholder="Primary Vet First Name"
                                 required />
                     </div>
 
@@ -262,6 +263,7 @@
                                 id="primaryVetLastName"
                                 type="text"
                                 v-model="form.primaryVetLastName"
+                                placeholder="Primary Vet Last Name"
                                 required />
                     </div>
 
@@ -271,6 +273,7 @@
                                 id="primaryClinicName"
                                 type="text"
                                 v-model="form.primaryClinicName"
+                                placeholder="Primary Clinic Name"
                                 required />
                     </div>
 
@@ -280,6 +283,7 @@
                                 id="primaryClinicPhone"
                                 type="tel"
                                 v-model="form.primaryClinicPhone"
+                                placeholder="Primary Clinic Phone"
                                 required />
                     </div>
 
@@ -288,7 +292,8 @@
                         <fg-input
                                 id="primaryClinicEmail"
                                 type="email"
-                                v-model="form.primaryClinicEmail"/>
+                                v-model="form.primaryClinicEmail"
+                                placeholder="Primary Clinic Email" />
                     </div>
 
                     <br><br>
