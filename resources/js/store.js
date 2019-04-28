@@ -33,15 +33,6 @@ export default new Vuex.Store({
                 login: false,
                 bios: false
             },
-            bio: {
-                sarah: false,
-                laura: false,
-                sara: false,
-                dawn: false,
-                kathy: false,
-                nicole: false,
-                lindsay: false
-            },
             alerts: {
                 info: false,
                 success: false,
@@ -140,25 +131,13 @@ export default new Vuex.Store({
         setFund(state, payload) {
             state.fund = payload;
         },
-        showBio(state, payload) {
-            state.bio[payload] = true;
-            state.modals.bios = true;
-        }
     },
 
 
     actions: {
         // actions are dispatched in component, they commit mutations
 
-        getAllUsers(context) {
-            axios.call("get", "/api/users").then(({ data }) => {
-                // console.log("[API call to users]: " + JSON.stringify(data));
-                context.commit('setUsers', data);
-            })
-            .catch(error => {
-                console.log("API call error: " + error);
-            });
-        },
+        // login/passport/oauth actions
         setLoginCred(context, payload) {
             context.commit('setLoginCred', payload)
         },
@@ -170,14 +149,40 @@ export default new Vuex.Store({
             })
         },
 
+        getAllUsers(context) {
+            axios.call("get", "/api/users").then(({ data }) => {
+                // console.log("[API call to users]: " + JSON.stringify(data));
+                context.commit('setUsers', data);
+            })
+            .catch(error => {
+                console.log("API call error: " + error);
+            });
+        },
+
+
         setOneTime(context) {
             context.commit('setOneTime');
         },
         setMonthly(context) {
             context.commit('setMonthly');
         },
+        showCpForm(context) {
+            context.commit('showCpForm');
+        },
+        showFnForm(context) {
+            context.commit('showFnForm');
+        },
+        showDnForm(context, payload) {
+            context.commit('setFund', payload.fund);
+            
+            if (payload.freq === 'oneTime') {
+                context.commit('setOneTime')
+            } else if (payload.freq === 'monthly') {
+                context.commit('setMonthly')
+            }
 
-        
+            context.commit('showDnForm');
+        },
         showLogin(context) {
             context.commit('showLogin');
         },
@@ -186,6 +191,7 @@ export default new Vuex.Store({
             context.commit('hideModal');
         },
 
+        // LOADER
         startLoading(context) {
             context.commit('startLoading');
         },
@@ -207,16 +213,12 @@ export default new Vuex.Store({
 
                 commit('logout');
                 commit('notify', payload);
-
                 
                 router.push({ path: '/' });
             })
         },
         clearNotifications(context) {
             context.commit('clearNotifications');
-        },
-        showCpForm(context) {
-            context.commit('showCpForm');
         },
         fnFormSubmit(context) {
             context.commit('hideModal');
@@ -261,6 +263,10 @@ export default new Vuex.Store({
             context.commit('notify', payload);
 
         },
+        dnFormSubmit(context) {
+            context.commit('hideModal');
+            context.commit('startLoading');
+        },
         dnFormSuccess(context) {
             context.commit('endLoading');
 
@@ -273,13 +279,7 @@ export default new Vuex.Store({
 
             router.push({ path: '/' });
         },
-        dnFormSubmit(context) {
-            context.commit('hideModal');
-            context.commit('startLoading');
-        },
-        showFnForm(context) {
-            context.commit('showFnForm');
-        },
+        
         cardSubmitError(context) {
             context.commit('endLoading');
 
@@ -290,22 +290,5 @@ export default new Vuex.Store({
 
             context.commit('notify', payload);
         },
-        showDnForm(context, payload) {
-            context.commit('setFund', payload.fund);
-            
-            if (payload.freq === 'oneTime') {
-                context.commit('setOneTime')
-            } else if (payload.freq === 'monthly') {
-                context.commit('setMonthly')
-            }
-
-            context.commit('showDnForm');
-        },
-        showBio(context) {
-            let payload = {
-                name: 'sara'
-            }
-            context.commit(('showBio', payload.name));
-        }
     }
 })

@@ -150,7 +150,7 @@
                                         Kathy has loved dogs her entire life. Although she did not get her first rescue dog, Aria, until she was 14, her childhood in Warsaw Poland was spent bringing 
                                     </p>
 
-                                    <p style="display: none;">
+                                    <p v-if="kathy">
                                         home stray dogs and trying to help as many as she could. Kathy has been volunteering with local rescues and fostering dogs in Chicago since 2006.  She and her only foster fail, Bill the Peanut, love being part of the Chicago rescue community. Kathy is thrilled she gets to utilize her love of event planning and fundraising to help the Live Like Roo Foundation.
 
                                         Kathy works full time at a local university and recently finished a master’s degree in public administration. In her spare time she enjoys hanging with dogs, yoga, biking, a nice glass of rose, and quality Bravo programming.

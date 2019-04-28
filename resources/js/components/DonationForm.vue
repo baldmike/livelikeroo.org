@@ -83,7 +83,7 @@
 
                 <div class="form-group" id="recipientInfoGroup" v-if="form.inMemory">
                     <n-button v-if="!notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
-                    <n-button v-if="notify" type="primary" @click.prevent.native="toggleNotify" block>Shh! Don't tell anyone!</n-button>
+                    <n-button v-if="notify" type="primary" @click.prevent.native="toggleNotify" block>Don't notify anyone</n-button>
                 </div>
 
                 <div class="form-group" id="recipientGroup" v-if="form.inMemory && isNotify" label="Recipient Name">

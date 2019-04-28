@@ -8,9 +8,15 @@
 
             <div class="row">
                 <div class="col-md-3 offset-md-9" style="position: relative; top: 100px;">
-                    <h5 class="card-title" style="background-color: #3d3293; color: white; opacity: .9; padding: 20px; text-align: center; font-size; 1.4rem;">Serenity's Wish is a grant based fund, available to Live Like Roo applicants. Serenity's Wish is intended to assist pet parents through end of life care and decision making, for their pets. This assistance will be limited to hospice consults, palliative care, and humane euthanasia and cremation."</h5>
+                    <h5 class="card-title" style="background-color: #3d3293; color: white; opacity: .9; padding: 20px; text-align: center; font-size; 1.4rem;">
+                        Serenity's Wish is a grant based fund, available to Live Like Roo applicants. Serenity's Wish is intended to assist pet parents through end of life care and decision making, for their pets. This assistance will be limited to hospice consults, palliative care, and humane euthanasia and cremation.
+                    </h5>
 
-                    <h5 class="card-title" style="background-color: #3d3293; color: white; opacity: .9; padding: 20px; text-align: center; font-size; 1.4rem;">"To inquire about assistance from Serenity's Wish, please complete an application for financial assistance at www.livelikeroo.org, then email roofinancials@gmail.com with Serenity's Wish, and your pet's name, in the subject line </h5>
+                    <h5 class="card-title" style="background-color: #3d3293; color: white; opacity: .9; padding: 20px; text-align: center; font-size; 1.4rem;">
+                        To inquire about assistance from Serenity's Wish, please click the button below and fill out the Financial Assistance form.
+
+                    <n-button @click.prevent.native="showFnForm" type="primary" size="lg" block round>DONATE</n-button> 
+                    </h5>
                 </div>
             </div>
             
@@ -29,6 +35,11 @@
       Badge,
       InfoSection,
       [Button.name]: Button
+    },
+    methods: {
+        showFnForm() {
+            this.$store.dispatch('showFnForm');
+        }
     }
   }
 </script>
