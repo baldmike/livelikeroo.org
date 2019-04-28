@@ -30,7 +30,17 @@ export default new Vuex.Store({
                 dnForm: false,
                 cpForm: false,
                 fnForm: false,
-                login: false
+                login: false,
+                bios: false
+            },
+            bio: {
+                sarah: false,
+                laura: false,
+                sara: false,
+                dawn: false,
+                kathy: false,
+                nicole: false,
+                lindsay: false
             },
             alerts: {
                 info: false,
@@ -40,7 +50,8 @@ export default new Vuex.Store({
             },
             loading: false,
             message: '',
-            fund: 'roo'
+            fund: 'roo',
+            
             
         }
     },
@@ -107,6 +118,7 @@ export default new Vuex.Store({
             state.modals.cpForm = false;
             state.modals.login = false;
             state.modals.fnForm = false;
+            state.modals.bios = false;
         },
 
         // start and stop loader gif
@@ -127,6 +139,10 @@ export default new Vuex.Store({
         },
         setFund(state, payload) {
             state.fund = payload;
+        },
+        showBio(state, payload) {
+            state.bio[payload] = true;
+            state.modals.bios = true;
         }
     },
 
@@ -284,6 +300,12 @@ export default new Vuex.Store({
             }
 
             context.commit('showDnForm');
+        },
+        showBio(context) {
+            let payload = {
+                name: 'sara'
+            }
+            context.commit(('showBio', payload.name));
         }
     }
 })

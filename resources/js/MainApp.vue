@@ -39,6 +39,16 @@
             </template>
         </modal>
 
+        <modal :show.sync="this.$store.state.modals.bios" headerClasses="justify-content-center">
+            <h4 slot="header" class="title title-up"></h4>
+            
+            <bio-modal></bio-modal>
+
+            <template slot="footer">
+                <n-button type="danger" @click.native="hideModal">Close</n-button>
+            </template>
+        </modal>
+
         <modal :show.sync="this.$store.state.modals.login" modal-classes="modal-mini" headerClasses="justify-content-center" class="modal-default">
             <h4 slot="header" class="title title-up"></h4>
             
@@ -48,6 +58,8 @@
                 <n-button type="danger" @click.native="hideModal">Close</n-button>
             </template>
         </modal>
+
+        
 
     </div>
 </template>
@@ -64,6 +76,7 @@
     import CarePackage from './components/CarePackageForm.vue'
     import AssistanceForm from './components/AssistanceForm.vue'
     import Login from './components/LoginComponent.vue'
+    import BioModal from './components/BioModal.vue'
 
     export default {
         name: "mainApp",
@@ -79,7 +92,8 @@
             Notifications,
             CarePackage,
             AssistanceForm,
-            Login
+            Login,
+            BioModal
         },
         methods: {
             init() {
