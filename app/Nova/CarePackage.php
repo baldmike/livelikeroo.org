@@ -12,6 +12,8 @@ use Laravel\Nova\Panel;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use App\Nova\Actions\sendCarePackage;
+use NovaButton\Button;
+use App\Events\CarePackageSent;
 
 class CarePackage extends Resource
 {
@@ -65,6 +67,8 @@ class CarePackage extends Resource
     protected function cpRequestFields()
     {
         return [
+            ID::make('ID', 'id'),
+            
             DateTime::make('Created At')
                 ->sortable(),
 
@@ -75,7 +79,12 @@ class CarePackage extends Resource
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
             Boolean::make('Sent')
-                ->sortable()
+                ->sortable(),
+
+            Button::make('send')
+                ->event('App\Events\CarePackageSent')
+                ->style('primary')
+                ->reload()
         ];
     }
 

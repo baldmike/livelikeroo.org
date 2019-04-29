@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00bbe3ddb017739380551545e7391a13",
+    "content-hash": "776f1e386151068f9382335a24ba4a92",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -307,6 +307,46 @@
                 "symmetric key cryptography"
             ],
             "time": "2018-07-24T23:27:56+00:00"
+        },
+        {
+            "name": "dillingham/nova-button",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dillingham/nova-button.git",
+                "reference": "d7547cc787bb24e7bb19b7f045fc39715724372a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dillingham/nova-button/zipball/d7547cc787bb24e7bb19b7f045fc39715724372a",
+                "reference": "d7547cc787bb24e7bb19b7f045fc39715724372a",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NovaButton\\Providers\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NovaButton\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brian Dillingham",
+                    "email": "bdillingham88@gmail.com"
+                }
+            ],
+            "description": "Nova button package",
+            "time": "2019-04-18T11:59:41+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3292,16 +3332,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v6.33.0",
+            "version": "v6.34.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "042acd0d1c956a51f447419075d1f23969b0f262"
+                "reference": "60335d5dad000fb4b08aa7176b832a59d13d0420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/042acd0d1c956a51f447419075d1f23969b0f262",
-                "reference": "042acd0d1c956a51f447419075d1f23969b0f262",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/60335d5dad000fb4b08aa7176b832a59d13d0420",
+                "reference": "60335d5dad000fb4b08aa7176b832a59d13d0420",
                 "shasum": ""
             },
             "require": {
@@ -3344,7 +3384,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2019-04-22T23:29:54+00:00"
+            "time": "2019-04-26T18:30:55+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5984,16 +6024,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "4.1.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "6fda8ce1974b62b14935adc02a9ed38252eca656"
+                "reference": "3095910f0f0fb155ac4021fc51a4a7a39ac04e8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/6fda8ce1974b62b14935adc02a9ed38252eca656",
-                "reference": "6fda8ce1974b62b14935adc02a9ed38252eca656",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/3095910f0f0fb155ac4021fc51a4a7a39ac04e8a",
+                "reference": "3095910f0f0fb155ac4021fc51a4a7a39ac04e8a",
                 "shasum": ""
             },
             "require": {
@@ -6008,7 +6048,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -6033,7 +6073,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2019-02-01T05:27:49+00:00"
+            "time": "2019-04-25T07:55:20+00:00"
         },
         {
             "name": "sebastian/exporter",
