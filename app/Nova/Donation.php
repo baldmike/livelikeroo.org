@@ -19,8 +19,6 @@ use App\Nova\Metrics\DonationsRoo;
 use App\Nova\Metrics\DonationsBooker;
 
 
-
-
 class Donation extends Resource
 {
     /**
@@ -35,7 +33,7 @@ class Donation extends Resource
      *
      * @var string
      */
-    public static $title = 'donation';
+    public static $title = 'name_on_card';
 
     /**
      * The columns that should be searched.
@@ -99,8 +97,8 @@ class Donation extends Resource
     protected function donationFields()
     {
         return [
-            ID::make()->sortable()
-                ->hideFromIndex(),
+            // ID::make()->sortable()
+            //     ->hideFromIndex(),
             
             Select::make('Fund')
                 ->options([

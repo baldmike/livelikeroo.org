@@ -60,7 +60,7 @@
                             <div class="icon icon-success">
                                 <i class="now-ui-icons objects_support-17"></i>
                             </div>
-                            <h4 class="info-title">Meaningful Support</h4>
+                            <h4 class="info-title">Real Support</h4>
                             <p class="description">
                                 $10,000+ Medical expenses paid <em>per month</em>
                         
@@ -76,7 +76,7 @@
                             <div class="icon icon-danger">
                                 <i class="now-ui-icons ui-2_favourite-28"></i>
                             </div>
-                            <h4 class="info-title">Real Impact</h4>
+                            <h4 class="info-title">Meaningful Impact</h4>
                             <p class="description">We have assisted over 6000 families and 8200 animals, including dogs, cats, rabbits, horses and the luckiest hamster ever.
                             </p>
                         </div>
