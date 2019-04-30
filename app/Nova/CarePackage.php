@@ -16,6 +16,8 @@ use NovaButton\Button;
 use App\Events\CarePackageSent;
 use App\Nova\Lenses\ActiveCPRequest;
 
+use App\Nova\Metrics\CarePackageRequests;
+
 class CarePackage extends Resource
 {
     /**
@@ -38,7 +40,7 @@ class CarePackage extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'about', 'diagnosis', 'image', 
+        'id', 'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'about', 'diagnosis', 'image', 
     ];
 
     /**
@@ -100,6 +102,10 @@ class CarePackage extends Resource
             Text::make('Pet Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
+
+            Text::make('Species')
+                ->sortable()
+                ->hideFromIndex(),
 
             Text::make('About')
                 ->sortable()
@@ -165,7 +171,9 @@ class CarePackage extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new CarePackageRequests
+        ];
     }
 
     /**

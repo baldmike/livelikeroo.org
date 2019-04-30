@@ -17,7 +17,8 @@ use App\Nova\Filters\selectedFund;
 use App\Nova\Metrics\DonationsTotal;
 use App\Nova\Metrics\DonationsRoo;
 use App\Nova\Metrics\DonationsBooker;
-
+use App\Nova\Metrics\DonationsByFund;
+use App\Nova\Metrics\DonationsPerDay;
 
 class Donation extends Resource
 {
@@ -171,8 +172,8 @@ class Donation extends Resource
     {
         return [
             new DonationsTotal,
-            new DonationsRoo,
-            new DonationsBooker
+            new DonationsPerDay,
+            new DonationsByFund
         ];
     }
 
