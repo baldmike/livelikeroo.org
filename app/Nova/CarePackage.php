@@ -84,7 +84,6 @@ class CarePackage extends Resource
             Button::make('send')
                 ->event('App\Events\CarePackageSent')
                 ->style('primary')
-                ->reload()
         ];
     }
 
