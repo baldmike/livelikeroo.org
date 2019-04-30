@@ -14,4 +14,14 @@ class CarePackage extends Model
     protected $fillable = [
         'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'about', 'diagnosis', 'image',
     ];
+
+    public function sent($query)
+    {
+        return $query->where('sent', 1);
+    }
+
+    public function unsent($query)
+    {
+        return $query->where('sent', 0);
+    }
 }

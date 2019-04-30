@@ -17,6 +17,8 @@ use App\Events\CarePackageSent;
 use App\Nova\Lenses\ActiveCPRequest;
 
 use App\Nova\Metrics\CarePackageRequests;
+use App\Nova\Metrics\UnsentCarePackages;
+use App\Nova\Metrics\SentCarePackages;
 
 class CarePackage extends Resource
 {
@@ -172,6 +174,8 @@ class CarePackage extends Resource
     public function cards(Request $request)
     {
         return [
+            new UnsentCarePackages,
+            new SentCarePackages,
             new CarePackageRequests
         ];
     }
