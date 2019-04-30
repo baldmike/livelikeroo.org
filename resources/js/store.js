@@ -174,6 +174,7 @@ export default new Vuex.Store({
         },
         showDnForm(context, payload) {
             context.commit('setFund', payload.fund);
+            console.log('BOOKER FUND SELECTED')
             
             if (payload.freq === 'oneTime') {
                 context.commit('setOneTime')

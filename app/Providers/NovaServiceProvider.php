@@ -9,6 +9,8 @@ use App\Nova\Metrics\DonationsBooker;
 use App\Nova\Metrics\DonationsRoo;
 use App\Nova\Metrics\AssistanceRequests;
 use App\Nova\Metrics\CarePackageRequests;
+use App\Nova\Metrics\DonationsPerDay;
+use App\Nova\Metrics\DonationsByFund;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
@@ -62,7 +64,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             // new Help,
-            new DonationsTotal, new DonationsRoo, new DonationsBooker, new CarePackageRequests, new AssistanceRequests
+            new DonationsTotal, 
+            new DonationsPerDay,
+            new DonationsByFund,
+            new DonationsRoo, 
+            new DonationsBooker, 
+            new CarePackageRequests, 
+            new AssistanceRequests
         ];
     }
 

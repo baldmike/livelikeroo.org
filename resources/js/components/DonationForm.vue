@@ -271,7 +271,7 @@
                     recipientName: '',
                     recipientEmail: '',
                     recipientMessage: '',
-                    fund: 'roo'
+                    fund: ''
                 },
                 show: true,
                 notify: false,
@@ -394,6 +394,10 @@
                     this.$el.appendChild(hiddenInput);
 
                     // build the FormData object - by using forEach, we won't miss any inputs
+                    if (!this.form.fund) {
+                        this.form.fund = this.$store.state.fund;
+                    };
+
                     let fd = new FormData();
                     Object.keys(this.form).forEach(key => {
                         fd.append(key, this.form[key])
