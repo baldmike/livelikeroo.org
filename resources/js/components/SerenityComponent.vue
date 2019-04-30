@@ -15,7 +15,7 @@
                     <h5 class="card-title" style="background-color: #3d3293; color: white; opacity: .9; padding: 20px; text-align: center; font-size; 1.4rem;">
                         To inquire about assistance from Serenity's Wish, please click the button below and fill out the Financial Assistance form.
 
-                    <n-button @click.prevent.native="showFnForm" type="primary" size="lg" block round>DONATE</n-button> 
+                    <n-button @click.prevent.native="showFnForm" type="info" size="lg" block round>REQUEST ASSISTANCE</n-button> 
                     </h5>
                 </div>
             </div>
