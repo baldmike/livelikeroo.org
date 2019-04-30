@@ -51,7 +51,7 @@
                                 <i class="now-ui-icons sport_user-run"></i>
                             </div>
                             <h4 class="info-title">Volunteer Run</h4>
-                            <p class="description">Our amazing volunteers tirelessly put in over <strong>500</strong> hours <em>per month</em> - from making care packages to planning events to coodinating medical care.. they do it ALL.</p>
+                            <p class="textOnWhite">Our amazing volunteers tirelessly put in over <strong>500</strong> hours <em>per month</em> - from making care packages to planning events to coodinating medical care.. they do it ALL.</p>
                         </div>
                     </div>
                     
@@ -61,7 +61,7 @@
                                 <i class="now-ui-icons objects_support-17"></i>
                             </div>
                             <h4 class="info-title">Real Support</h4>
-                            <p class="description">
+                            <p class="textOnWhite">
                                 $10,000+ Medical expenses paid <em>per month</em>
                         
                                 $10,000+ spent on care packages <em>per month</em>
@@ -77,7 +77,7 @@
                                 <i class="now-ui-icons ui-2_favourite-28"></i>
                             </div>
                             <h4 class="info-title">Meaningful Impact</h4>
-                            <p class="description">We have assisted over 6000 families and 8200 animals, including dogs, cats, rabbits, horses and the luckiest hamster ever.
+                            <p class="textOnWhite">We have assisted over 6000 families and 8200 animals, including dogs, cats, rabbits, horses and the luckiest hamster ever.
                             </p>
                         </div>
                     </div>

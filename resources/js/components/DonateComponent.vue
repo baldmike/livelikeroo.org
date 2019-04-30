@@ -67,7 +67,11 @@
 
         monthly() {
             console.log("[DonateComponent] - MONTHLY")
-            EventBus.$emit('setMonthly');
+            let payload = {
+                fund: 'roo',
+                freq: 'monthly'
+            }
+            this.$store.dispatch('showDnForm', payload)
         }
     }
   }
