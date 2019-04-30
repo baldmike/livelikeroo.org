@@ -49,6 +49,8 @@
             </template>
         </modal>
 
+        
+
     </div>
 </template>
 
@@ -79,7 +81,7 @@
             Notifications,
             CarePackage,
             AssistanceForm,
-            Login
+            Login,
         },
         methods: {
             init() {

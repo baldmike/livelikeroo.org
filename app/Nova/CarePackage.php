@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Panel;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
+use App\Nova\Actions\sendCarePackage;
+use NovaButton\Button;
+use App\Events\CarePackageSent;
 
 class CarePackage extends Resource
 {
@@ -24,7 +29,7 @@ class CarePackage extends Resource
      *
      * @var string
      */
-    public static $title = 'CarePackage';
+    public static $title = 'email';
 
     /**
      * The columns that should be searched.
@@ -45,9 +50,73 @@ class CarePackage extends Resource
     {
         return [
 
+            new Panel('Request Information', $this->cpRequestFields()),
+
+            new Panel('Shipping Label', $this->labelFields()),
+
+            new Panel('Pet Information', $this->petFields()),
+
+        ];
+    }
+
+    /**
+     * Get the donor fields for the resource.
+     *
+     * @return array
+     */
+    protected function cpRequestFields()
+    {
+        return [
+            ID::make('ID', 'id'),
+            
             DateTime::make('Created At')
                 ->sortable(),
 
+            Text::make('Email')
+                ->sortable()
+                ->rules('required', 'email', 'max:254')
+                ->creationRules('unique:users,email')
+                ->updateRules('unique:users,email,{{resourceId}}'),
+
+            Boolean::make('Sent')
+                ->sortable(),
+
+            Button::make('send')
+                ->event('App\Events\CarePackageSent')
+                ->style('primary')
+        ];
+    }
+
+    /**
+     * Get the donor fields for the resource.
+     *
+     * @return array
+     */
+    protected function petFields()
+    {
+        return [
+            Text::make('Pet Name')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('About')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules('required', 'max:255'),
+                
+            Image::make('Image')->disk('local')
+                ->hideFromIndex()
+                ->maxWidth(50),
+        ];
+    }
+    /**
+     * Get the donor fields for the resource.
+     *
+     * @return array
+     */
+    protected function labelFields()
+    {
+        return [
             Text::make('First Name')
                 ->sortable()
                 ->hideFromIndex()
@@ -57,12 +126,6 @@ class CarePackage extends Resource
                 ->sortable()
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
 
             Text::make('Address 1')
                 ->sortable()
@@ -88,21 +151,8 @@ class CarePackage extends Resource
                 ->sortable()
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
-            
-            
-            Text::make('Pet Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('About')
-                ->sortable()
-                ->hideFromIndex()
-                ->rules('required', 'max:255'),
-                
-            Image::make('Image')->disk('local')
-                ->hideFromIndex()
-                ->maxWidth(50),
         ];
+
     }
 
     /**
@@ -146,6 +196,8 @@ class CarePackage extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new sendCarePackage
+        ];
     }
 }

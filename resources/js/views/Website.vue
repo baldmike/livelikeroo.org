@@ -4,8 +4,10 @@
         <div>
 
             <landing-page/>
-    
+            
+            
             <donate-component/>
+            
             <care-package/>        
             <assistance-component/>
             <team-component />

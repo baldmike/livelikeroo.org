@@ -28,7 +28,10 @@ class oneTimeDonationRequest extends FormRequest
     {
         return [
             'amount' => 'required',
+            'fund' => 'required|string|max:50',
             'email' => 'required',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
             'name_on_card' => 'required',
             'stripeToken' => 'required',
         ];

@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
-use App\Nova\Metrics\Donations;
+use App\Nova\Metrics\DonationsTotal;
+use App\Nova\Metrics\DonationsBooker;
+use App\Nova\Metrics\DonationsRoo;
 use App\Nova\Metrics\AssistanceRequests;
 use App\Nova\Metrics\CarePackageRequests;
 use Illuminate\Support\Facades\Gate;
@@ -60,7 +62,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             // new Help,
-            new Donations, new CarePackageRequests, new AssistanceRequests
+            new DonationsTotal, new DonationsRoo, new DonationsBooker, new CarePackageRequests, new AssistanceRequests
         ];
     }
 

@@ -77,14 +77,13 @@
                     <fg-input id="honoreeName"
                     placeholder="Honoree"
                     type="text"
-                    v-model="form.honoreeName"
-                    required/>
+                    v-model="form.honoreeName"/>
                 </div>
 
 
                 <div class="form-group" id="recipientInfoGroup" v-if="form.inMemory">
                     <n-button v-if="!notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
-                    <n-button v-if="notify" type="primary" @click.prevent.native="toggleNotify" block>Shh! Don't tell anyone!</n-button>
+                    <n-button v-if="notify" type="primary" @click.prevent.native="toggleNotify" block>Don't notify anyone</n-button>
                 </div>
 
                 <div class="form-group" id="recipientGroup" v-if="form.inMemory && isNotify" label="Recipient Name">
@@ -268,10 +267,10 @@
                     hundred: false,
                     name_on_card: '',
                     inMemory: 0,
-                    honoreeName: 'Honoree',
-                    recipientName: 'Recipient Name',
-                    recipientEmail: 'recipient@example.com',
-                    recipientMessage: 'Message to recipient',
+                    honoreeName: '',
+                    recipientName: '',
+                    recipientEmail: '',
+                    recipientMessage: '',
                     fund: 'roo'
                 },
                 show: true,
@@ -394,8 +393,7 @@
                     //append to form
                     this.$el.appendChild(hiddenInput);
 
-                    // build the FormData (web API) object
-                    // cycle thru each form input
+                    // build the FormData object - by using forEach, we won't miss any inputs
                     let fd = new FormData();
                     Object.keys(this.form).forEach(key => {
                         fd.append(key, this.form[key])

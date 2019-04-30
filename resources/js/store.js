@@ -30,7 +30,8 @@ export default new Vuex.Store({
                 dnForm: false,
                 cpForm: false,
                 fnForm: false,
-                login: false
+                login: false,
+                bios: false
             },
             alerts: {
                 info: false,
@@ -40,7 +41,8 @@ export default new Vuex.Store({
             },
             loading: false,
             message: '',
-            fund: 'roo'
+            fund: 'roo',
+            
             
         }
     },
@@ -107,6 +109,7 @@ export default new Vuex.Store({
             state.modals.cpForm = false;
             state.modals.login = false;
             state.modals.fnForm = false;
+            state.modals.bios = false;
         },
 
         // start and stop loader gif
@@ -127,22 +130,14 @@ export default new Vuex.Store({
         },
         setFund(state, payload) {
             state.fund = payload;
-        }
+        },
     },
 
 
     actions: {
         // actions are dispatched in component, they commit mutations
 
-        getAllUsers(context) {
-            axios.call("get", "/api/users").then(({ data }) => {
-                // console.log("[API call to users]: " + JSON.stringify(data));
-                context.commit('setUsers', data);
-            })
-            .catch(error => {
-                console.log("API call error: " + error);
-            });
-        },
+        // login/passport/oauth actions
         setLoginCred(context, payload) {
             context.commit('setLoginCred', payload)
         },
@@ -154,14 +149,40 @@ export default new Vuex.Store({
             })
         },
 
+        getAllUsers(context) {
+            axios.call("get", "/api/users").then(({ data }) => {
+                // console.log("[API call to users]: " + JSON.stringify(data));
+                context.commit('setUsers', data);
+            })
+            .catch(error => {
+                console.log("API call error: " + error);
+            });
+        },
+
+
         setOneTime(context) {
             context.commit('setOneTime');
         },
         setMonthly(context) {
             context.commit('setMonthly');
         },
+        showCpForm(context) {
+            context.commit('showCpForm');
+        },
+        showFnForm(context) {
+            context.commit('showFnForm');
+        },
+        showDnForm(context, payload) {
+            context.commit('setFund', payload.fund);
+            
+            if (payload.freq === 'oneTime') {
+                context.commit('setOneTime')
+            } else if (payload.freq === 'monthly') {
+                context.commit('setMonthly')
+            }
 
-        
+            context.commit('showDnForm');
+        },
         showLogin(context) {
             context.commit('showLogin');
         },
@@ -170,6 +191,7 @@ export default new Vuex.Store({
             context.commit('hideModal');
         },
 
+        // LOADER
         startLoading(context) {
             context.commit('startLoading');
         },
@@ -191,16 +213,12 @@ export default new Vuex.Store({
 
                 commit('logout');
                 commit('notify', payload);
-
                 
                 router.push({ path: '/' });
             })
         },
         clearNotifications(context) {
             context.commit('clearNotifications');
-        },
-        showCpForm(context) {
-            context.commit('showCpForm');
         },
         fnFormSubmit(context) {
             context.commit('hideModal');
@@ -245,6 +263,10 @@ export default new Vuex.Store({
             context.commit('notify', payload);
 
         },
+        dnFormSubmit(context) {
+            context.commit('hideModal');
+            context.commit('startLoading');
+        },
         dnFormSuccess(context) {
             context.commit('endLoading');
 
@@ -257,13 +279,7 @@ export default new Vuex.Store({
 
             router.push({ path: '/' });
         },
-        dnFormSubmit(context) {
-            context.commit('hideModal');
-            context.commit('startLoading');
-        },
-        showFnForm(context) {
-            context.commit('showFnForm');
-        },
+        
         cardSubmitError(context) {
             context.commit('endLoading');
 
@@ -274,16 +290,5 @@ export default new Vuex.Store({
 
             context.commit('notify', payload);
         },
-        showDnForm(context, payload) {
-            context.commit('setFund', payload.fund);
-            
-            if (payload.freq === 'oneTime') {
-                context.commit('setOneTime')
-            } else if (payload.freq === 'monthly') {
-                context.commit('setMonthly')
-            }
-
-            context.commit('showDnForm');
-        }
     }
 })
