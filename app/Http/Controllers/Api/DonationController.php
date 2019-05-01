@@ -85,7 +85,7 @@ class DonationController extends Controller
                 
                 $D->save();
 
-                Mail::to('baldmike312@gmail.com')->send(new OneTimeDonation($D));
+                // Mail::to('baldmike312@gmail.com')->send(new OneTimeDonation($D));
                 // Mail::to($request->email)->send(new OneTimeDonation($D));
 
                 return response()->json(null, Response::HTTP_CREATED);
@@ -164,7 +164,7 @@ class DonationController extends Controller
                 $D->save();
 
                 // change to $request->email
-                Mail::to('baldmike312@gmail.com')->send(new MonthlyDonation($D, $user));
+                // Mail::to('baldmike312@gmail.com')->send(new MonthlyDonation($D, $user));
 
                 return response()->json(null, Response::HTTP_CREATED);
                 
