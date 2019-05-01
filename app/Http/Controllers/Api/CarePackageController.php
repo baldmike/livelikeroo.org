@@ -54,7 +54,6 @@ class CarePackageController extends Controller
             $CP->zip = request('zip');
             $CP->pet_name = request('pet_name');
             $CP->about = request('about');
-            $CP->image = request('image');
             $CP->diagnosis = request('diagnosis');
         }
 
@@ -66,13 +65,10 @@ class CarePackageController extends Controller
             // $path includes 'public/', and we don't want that in our URL, so we we chop it off:
             $path = substr($path, 6);
 
-            Log::debug("[CarePackageController] - store - SUBSTRING path:");
-            Log::debug($path);
-
             $CP->image = $path;
         }
 
-        Mail::to('baldmike312@gmail.com')->send(new CarePackageConfirmation($CP));
+        // Mail::to('baldmike312@gmail.com')->send(new CarePackageConfirmation($CP));
 
         if ($CP->save()) {
             return response()->json(null, Response::HTTP_CREATED);
