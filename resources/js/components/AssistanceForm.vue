@@ -132,7 +132,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group has-success">
                         <label>Breed</label>
                         <fg-input
                                 type="text"

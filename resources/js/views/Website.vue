@@ -10,7 +10,7 @@
             
             <care-package/>    
 
-            <gallery/>
+            <!-- <gallery/> -->
 
             <assistance-component/>
             <team-component />

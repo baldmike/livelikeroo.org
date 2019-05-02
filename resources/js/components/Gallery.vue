@@ -2,26 +2,12 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-md-5 ml-auto mr-auto">
+            <div class="col-md-6 ml-auto mr-auto">
                 <img id="image1" class="image  " :src="image1"  fluid alt="Roo Impact">
-            </div>
-
-            <div class="col-md-5 ml-auto mr-auto">
-                <img id="image2" class="image  " :src="image2"  fluid alt="Roo Impact">
             </div>
         </div>
     
-        <div class="row">
-            <transition name="slide-fade">
-                <div v-if="show" class="col-md-5 ml-auto mr-auto">
-                    <img id="image3" class="image  " :src="image3"  fluid alt="Roo Impact">
-                </div>
-            </transition>
-
-            <div class="col-md-5 ml-auto mr-auto">
-                <img id="image4" class="image  " :src="image4"  fluid alt="Roo Impact">
-            </div>
-        </div>
+        
     
     </div>    
 </template>
