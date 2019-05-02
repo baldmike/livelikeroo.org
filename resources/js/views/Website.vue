@@ -8,7 +8,10 @@
             
             <donate-component/>
             
-            <care-package/>        
+            <care-package/>    
+
+            <gallery/>
+
             <assistance-component/>
             <team-component />
             <events-component />
@@ -34,6 +37,7 @@
     import EventsComponent from '../components/EventsComponent'
     import PartnerComponent from '../components/PartnerComponent'
     import TeamComponent from '../components/TeamComponent'
+    import Gallery from '../components/Gallery'
 
     import { EventBus } from '../event-bus.js';
 
@@ -53,7 +57,8 @@
             CarePackage,
             AssistanceComponent,
             PartnerComponent,
-            TeamComponent
+            TeamComponent,
+            Gallery
         },
         computed: {
 
