@@ -14,6 +14,8 @@
                         <h3 class="center">TELL US ABOUT YOUR PET!</h3>
                     </div>
 
+                    <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
+
                     <div class="form-group" :class="{ 'has-danger': !$v.form.petName.required }">
                         <label>Pet Name</label>
                         <fg-input
@@ -21,6 +23,7 @@
                                 :state="!$v.form.petName.$invalid"
                                 v-model="form.petName"
                                 placeholder="Pet's Name"
+                                maxlength="40"
                                 required/>
                     </div>
 
@@ -31,6 +34,7 @@
                                 class="form-control"
                                 :state="!$v.form.about.$invalid"
                                 v-model="form.about"
+                                maxlength="200"
                                 required/>
                     </div>
         
@@ -42,6 +46,7 @@
                                 class="form-control"
                                 :state="!$v.form.diagnosis.$invalid"
                                 v-model="form.diagnosis"
+                                maxlength="200"
                                 required/>
                     </div>
 
@@ -71,6 +76,7 @@
                                 :state="!$v.form.firstName.$invalid"
                                 v-model="form.firstName"
                                 placeholder="First Name"
+                                maxlength="50"
                                 required/>
                     </div>
 
@@ -82,6 +88,7 @@
                                 :state="!$v.form.lastName.$invalid"
                                 v-model="form.lastName"
                                 placeholder="Last Name"
+                                maxlength="50"
                                 required/>
                     </div>
 
@@ -93,7 +100,6 @@
                                 :state="!$v.form.email.$invalid"
                                 v-model="form.email"
                                 placeholder="Email"
-                                addon-left-icon="now-ui-icons ui-1_email-85"
                                 required/>
                     </div>
 
@@ -178,7 +184,7 @@
     import { Button, FormGroupInput, Tabs, TabPane, Parallax } from '@/components';
     import {Select, Option} from 'element-ui'
     import { validationMixin } from "vuelidate";
-    import { helpers, required, minLength, email, between } from "vuelidate/lib/validators";
+    import { helpers, required, minLength, maxLength, email, between } from "vuelidate/lib/validators";
     export default {
 
         data() {
@@ -299,7 +305,8 @@
                     between: between(10000, 99999)
                 },
                 petName: {
-                    required
+                    required,
+                    maxLength: 30,
                 },
                 about: {
                     required
