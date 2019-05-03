@@ -14,10 +14,10 @@
                     <li>
                         <router-link to="contact">CONTACT</router-link>
                     </li>
-                    <li>
-                        <a href="/nova">LOGIN</a>
-                    </li>
                     <!-- <li>
+                        <a href="/nova">LOGIN</a>
+                    </li> -->
+                    <li>
                         <router-link to="" v-if='!isAuthenticated'>
                             <span v-on:click="showLogin">LOGIN</span>
                         </router-link>
@@ -30,7 +30,7 @@
                         <router-link to="/" v-if="isAuthenticated">
                             <span v-on:click="logout">LOGOUT</span>
                         </router-link>
-                    </li> -->
+                    </li>
                 </ul>
             </nav>
 

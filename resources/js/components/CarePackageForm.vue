@@ -93,7 +93,6 @@
                                 :state="!$v.form.email.$invalid"
                                 v-model="form.email"
                                 placeholder="Email"
-                                addon-left-icon="now-ui-icons ui-1_email-85"
                                 required/>
                     </div>
 

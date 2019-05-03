@@ -4,13 +4,16 @@
             <form>
 
                 <h3 class="center">FINANCIAL ASSISTANCE REQUEST</h3>
+
                 <img src="/images/headline1.jpg" fluid>
                 <br><br>
                 <h5 class="center text">Cancer SUCKS. We've been in your shoes, and we'd like to help you through this difficult time. To be considered for a grant, please tell us about you and your pet!</h5>
                 <br>
+
                 <div class="form-box">
                     <h3 class="center">YOUR INFORMATION</h3>
-                    <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
+                    <h6 class="center">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
+                    <br>
 
                     <div class="form-group has-success" :class="{ 'has-danger': $v.form.firstName.$invalid }" id="firstNameGroup">
                         
@@ -21,8 +24,8 @@
                                 v-model="form.firstName"
                                 :state="!$v.form.firstName.$invalid"
                                 placeholder="First Name"
+                                maxlength="50"
                                 required/>
-
                     </div>
 
                     <div class="form-group has-success" id="lastNameGroup" :class="{ 'has-danger': $v.form.lastName.$invalid }">
@@ -33,6 +36,7 @@
                                 v-model="form.lastName"
                                 :state="!$v.form.lastName.$invalid"
                                 placeholder="Last Name"
+                                maxlength="50"
                                 required/>
                     </div>
 
@@ -44,6 +48,7 @@
                                 v-model="form.email"
                                 :state="!$v.form.email.$invalid"
                                 placeholder="Email"
+                                maxlength="100"
                                 required/>
                     </div>
 
@@ -55,18 +60,20 @@
                                 v-model="form.address1"
                                 :state="!$v.form.address1.$invalid"
                                 placeholder="Address 1"
+                                maxlength="100"
                                 required/>
                     </div>
+
                     <div class="form-group has-success" id="address2GroupFnForm">
                         <label for="address2FnForm">Address 2</label>
                         <fg-input
                                 id="address2FnForm"
                                 type="text"
                                 v-model="form.address2"
+                                maxlength="100"
                                 placeholder="Address 2"/>
                     </div>
 
-                    
                     <div class="form-group has-success" id="cityGroupFnForm" :class="{ 'has-danger': $v.form.city.$invalid }">
                         <label for="cityFnForm">City</label>
                         <fg-input
@@ -75,22 +82,24 @@
                                 v-model="form.city"
                                 :state="!$v.form.city.$invalid"
                                 placeholder="City"
+                                maxlength="50"
                                 required/>
                     </div>
 
                     
                     <div class="form-group has-success" id="stateGroupFnForm" :class="{ 'has-danger': $v.form.state.$invalid }">
-                        <label for="stateFnForm">State</label>
-                        <select 
-                                id="stateFnForm"
-                                :options="states"
-                                class="form-control select-primary"
-                                v-model="form.state"
-                                :state="!$v.form.state.$invalid">
-                                    <option value=null disabled>Select State</option>
-                                    <option v-for="state in states" :key="state.value" :value="state.value">{{ state.label }}
-                                    </option>
-                        </select>
+                        <label>State</label>
+                        <el-select class="select-primary"
+                                placeholder="Select State"
+                                v-model="form.state">
+
+                                <el-option v-for="option in states"
+                                        class="select-primary"
+                                        :key="option.label"
+                                        :value="option.value"
+                                        :label="option.label"> 
+                                </el-option>
+                        </el-select>
                     </div>
 
                     <div class="form-group has-success" id="zipGroupFnForm" :class="{ 'has-danger': !$v.form.zip.required || $v.form.zip.$invalid }">
@@ -101,6 +110,7 @@
                             v-model="form.zip"
                             :state="!$v.form.zip.$invalid"
                             placeholder="Zip Code"
+                            maxlength="5"
                             required/>
                     </div>
                 </div>
@@ -124,15 +134,20 @@
 
                     <div class="form-group has-success" :class="{ 'has-danger': $v.form.species.$invalid }">
                         <label>Species</label>
-                        <fg-input
-                                type="text"
-                                :state="!$v.form.species.$invalid"
-                                v-model="form.species"
-                                placeholder="Species"
-                                required/>
+                        <el-select class="select-primary"
+                                    placeholder="Select Species"
+                                    v-model="form.species">
+
+                                <el-option v-for="option in types"
+                                        class="select-primary"
+                                        :key="option.label"
+                                        :value="option.value"
+                                        :label="option.label"> 
+                                </el-option>
+                        </el-select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group has-success">
                         <label>Breed</label>
                         <fg-input
                                 type="text"
@@ -152,38 +167,32 @@
 
                     <div class="form-group has-success" :class="{ 'has-danger': $v.form.gender.$invalid }">
                         <label for="gender">Gender</label>
-                        <select 
-                                required
-                                :options="gender"
-                                class="form-control select-primary"
-                                v-model="form.gender">
-                                <option value=null disabled>Select Gender</option>
+                        <el-select class="select-primary"
+                                    placeholder="Select Gender"
+                                    v-model="form.gender">
 
-                                <option v-for="gen in gender" :key="gen.value" :value="gen.value">
-                                {{ gen.label }}
-                                </option>
-                        </select>
+                                <el-option v-for="option in gender"
+                                        class="select-primary"
+                                        :key="option.label"
+                                        :value="option.value"
+                                        :label="option.label"> 
+                                </el-option>
+                        </el-select>
                     </div>
 
                     <div class="form-group has-success" :class="{ 'has-danger': $v.form.altered.$invalid }">
                         <label for="altered">Altered</label>
-                        <select 
-                                required
-                                :options="alteredYON"
-                                class="form-control select-primary"
-                                v-model="form.altered">
-                                <option 
-                                        value=null 
-                                        disabled>
-                                        Spayed/Neutered
-                                </option>
+                        <el-select class="select-primary"
+                                    placeholder="Spayed/Neutered"
+                                    v-model="form.altered">
 
-                                <option 
-                                        v-for="selection in alteredYON" 
-                                        :key="selection.value" :value="selection.value">
-                                        {{ selection.label }}
-                                </option>
-                        </select>
+                                <el-option v-for="option in alteredYON"
+                                        class="select-primary"
+                                        :key="option.label"
+                                        :value="option.value"
+                                        :label="option.label"> 
+                                </el-option>
+                        </el-select>
                     </div>
 
                     <div class="form-group has-success">
@@ -195,6 +204,7 @@
                                 required/>
                     </div>
 
+                    <!-- we are using Bootstrap-Vue for image input -->
                     <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="imageCP">
                         <b-form-file
                                 id="imageCP"
@@ -208,10 +218,9 @@
                             <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
                         </b-col>
                     </b-form-group>
-
                 </div>
-                <div class="form-box">
 
+                <div class="form-box">
                     <h3 class="form-headline">PET'S MEDICAL INFORMATION</h3>
 
                     <div class="form-group has-success" id="diagnosisGroup">
@@ -234,17 +243,17 @@
 
                     <div class="form-group has-success" :class="{ 'has-danger': !$v.form.previousDiagnosis.required }">
                         <label for="previousDiagnosis">Has your pet previously been diagnosed with cancer?</label>
-                        <select 
-                                required
-                                :options="prevDiagYON"
-                                class="form-control select-primary"
-                                v-model="form.previousDiagnosis">
-                                <option value=null disabled>Please Select</option>
+                        <el-select class="select-primary"
+                                    placeholder="Previous Diagnosis"
+                                    v-model="form.previousDiagnosis">
 
-                                <option v-for="response in prevDiagYON" :key="response.value" :value="response.value">
-                                {{ response.label }}
-                                </option>
-                        </select>
+                                <el-option v-for="option in prevDiagYON"
+                                        class="select-primary"
+                                        :key="option.label"
+                                        :value="option.value"
+                                        :label="option.label"> 
+                                </el-option>
+                        </el-select>
                     </div>
 
                     <div class="form-group has-success" id="primaryVetFirstNameGroup" :class="{ 'has-danger': !$v.form.primaryVetFirstName.required }">
@@ -456,7 +465,14 @@
                     {value: "WA", label: "WA"},
                     {value: "WI", label: "WI"},
                     {value: "WV", label: "WV"},
-                    {value: "WY", label: "WY"},
+                    {value: "WY", label: "WY"}
+                ],
+                types: [
+                    {value: "Dog", label: "Dog"},
+                    {value: "Cat", label: "Cat"},
+                    {value: "Rabbit", label: "Rabbit"},
+                    {value: "Horse", label: "Horse"},
+                    {value: "Other", label: "Other"}
                 ],
                 prevDiagYON: [
                     {value: "Yes", label: "Yes, previously diagnosed"},
@@ -496,20 +512,25 @@
                 firstName: {
                     required,
                     minLength: 1,
+                    maxLength: 50,
                 },
                 lastName: {
                     required,
                     minLength: 2,
+                    maxLength: 50,
                 },
                 email: {
                     email,
                     required,
+                    maxLength: 100
                 },
                 address1: {
-                    required
+                    required,
+                    maxLength: 50,
                 },
                 city: {
-                    required
+                    required,
+                    maxLength: 50,
                 },
                 state: {
                     required
@@ -519,13 +540,15 @@
                     between: between(10000, 99999)
                 },
                 petName: {
-                    required
+                    required,
+                    maxLength: 50,
                 },
                 species: {
-                    required
+                    required,
                 },
                 age: {
-                    required
+                    required,
+                    between: between(0, 25)
                 },
                 gender: {
                     required
@@ -537,10 +560,12 @@
                     required
                 },
                 primaryVetFirstName: {
-                    required
+                    required,
+                    maxLength: 50,
                 },
                 primaryVetLastName: {
-                    required
+                    required,
+                    maxLength: 50,
                 },
                 primaryClinicName: {
                     required
