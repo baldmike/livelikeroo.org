@@ -36,7 +36,7 @@
                                     </p>
                                         
                                     <p v-if="sarah" class="card-description textOnWhite">
-                                        and decided she wanted to make a difference in the lives of animals that were in dire need of rescue. As a transfer team member, she assisted rescues in evaluating dogs for their programs. Dogs that she interacted with were often euthanized. Sarah grew a thick skin. When she met Roo at the same shelter, she had no idea the crazy turn her life would take in the next 6 months. Live Like Roo is the epitome of everything that she believes in and she is happy to carry on his legacy through this Foundation.
+                                        and decided she wanted to make a difference in the lives of animals that were in dire need of rescue. As a transfer team member, she assisted rescues in evaluating dogs for their programs. Dogs that she interacted with were often euthanized. Sarah grew a thick skin. When she met Roo at the same shelter, she had no idea the crazy turn her life would take in the next 6 months. Live Like Roo is the epitome of everything that she believes in and she is happy to carry on his legacy through this Foundation. Her full-time job is in sports television as an Executive Producer at NBC Sports and she is married to a very patient man we call Schipp. They have 4 dogs-Mac, Cheese, Steve and Zoey.
                                     </p>
                                     
                                     <n-button type="primary" @click.prevent.native="showBioSarah"><span v-if="sarah">Show Less</span><span v-if="!sarah">...Read Full Bio</span></n-button>
