@@ -54,7 +54,8 @@ class DonationController extends Controller
             ]);
         }
 
-        if($validated) {
+        if($validated) 
+        {
             try {
                 $charge = Stripe::charges()->create([
                     'amount' => $request->amount,
