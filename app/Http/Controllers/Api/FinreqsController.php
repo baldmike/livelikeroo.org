@@ -46,15 +46,15 @@ class FinReqsController extends Controller
 
             $FinReq = new FinReq();
 
-            $FinReq->first_name = request('first_name');
-            $FinReq->last_name = request('last_name');
+            $FinReq->first_name = request('firstName');
+            $FinReq->last_name = request('lastName');
             $FinReq->email = request('email');
-            $FinReq->address_1 = request('address_1');
-            $FinReq->address_2 = request('address_2');
+            $FinReq->address_1 = request('address1');
+            $FinReq->address_2 = request('address2');
             $FinReq->city = request('city');
             $FinReq->state = request('state');
             $FinReq->zip = request('zip');
-            $FinReq->pet_name = request('pet_name');
+            $FinReq->pet_name = request('petName');
             $FinReq->species = request('species');
             $FinReq->breed = request('breed');
             $FinReq->age = request('age');
@@ -62,15 +62,15 @@ class FinReqsController extends Controller
             $FinReq->altered = request('altered');
             $FinReq->about = request('about');
             $FinReq->diagnosis = request('diagnosis');
-            $FinReq->diagnosis_date = request('diagnosis_date');
-            $FinReq->previous_diagnosis = request('previous_diagnosis');
-            $FinReq->vet_first_name = request('vet_first_name');
-            $FinReq->vet_last_name = request('vet_last_name');
-            $FinReq->primary_clinic_name = request('primary_clinic_name');
-            $FinReq->primary_clinic_phone = request('primary_clinic_phone');
-            $FinReq->primary_clinic_email = request('primary_clinic_email'); 
+            $FinReq->diagnosis_date = request('diagnosisDate');
+            $FinReq->previous_diagnosis = request('previousDiagnosis');
+            $FinReq->vet_first_name = request('primaryVetFirstName');
+            $FinReq->vet_last_name = request('primaryVetLastName');
+            $FinReq->primary_clinic_name = request('primaryClinicName');
+            $FinReq->primary_clinic_phone = request('primaryClinicPhone');
+            $FinReq->primary_clinic_email = request('primaryClinicEmail'); 
             $FinReq->specialist = request('specialist');
-            $FinReq->other_help = request('other_help');     
+            $FinReq->other_help = request('otherHelp');     
 
             // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL (on the front end)
             if($request->hasFile('image'))

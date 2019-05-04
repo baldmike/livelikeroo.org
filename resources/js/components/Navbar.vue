@@ -4,17 +4,17 @@
             :color-on-scroll="colorOnScroll"
             menu-classes="ml-auto">
         <template slot-scope="{toggle, isToggled}">
-                <router-link v-popover:popover1 class="navbar-brand" to="/" style="border: none;">
+                <router-link class="navbar-brand" to="/" style="border: none;">
                     <img src="/images/llr_logo.png" alt="LLR Logo" id="navLogo" width="70">
                 </router-link>
-                <el-popover
+                <!-- <el-popover
                         ref="popover1"
                         popper-class="popover"
                         placement="bottom"
                         width="120"
                         trigger="hover">
                     <div class="popover-body">Click here to bring you Home!</div>
-                </el-popover>
+                </el-popover> -->
         </template>
         <template slot="navbar-menu">
             <li class="nav-item">

@@ -22,8 +22,12 @@
                             <p>LIVE LIKE ROO</p>
                         </h3>
                         <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>DONATE</n-button>    
-                    </div>
+                    </div>  
                 </div>
+                <div class="col-md-6 ml-auto mr-auto phonely">
+                    <n-button @click.prevent.native="showDnForm"               type="primary" size="sm" block round>DONATE</n-button>
+                </div>
+                
             </div>
 
             <div class="row">
@@ -165,7 +169,22 @@
     }
   }
 </script>
-<style>
+<style scoped>
+    @media only screen and (max-width: 600px) {
+        .donate-box {
+            display: none;
+        }
+
+        .phonely {
+            position: absolute;
+            bottom: 100;
+            width: 500px;
+            margin: 0 auto;
+            z-index: 10;
+            
+        }
+    }
+
     .white-box {
         
         background-color: white;
@@ -183,4 +202,5 @@
         color: #fd7e14;
         position: absolute; top: 40%
     }
+
 </style>

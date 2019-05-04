@@ -19,17 +19,17 @@
                 </div>
 
 
-                <div class="col-md-3 offset-md-9" style="position: absolute; top: 15%;">
+                <div class="col-md-3 offset-md-5">
                     
                     <!-- <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4"> -->
-                        <div class="donate-box">
+                        <!-- <div class="donate-box">
                             <h3 style="color: #384666">
                                 <p>REQUEST</p>
                                 <p>FINANCIAL</p>
                                 <p>ASSISTANCE</p>
-                            </h3>
-                            <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showFnForm" type="neutral" size="lg" block round>SELECT</n-button>    
-                        </div>
+                            </h3> -->
+                            <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showFnForm" type="neutral" size="lg" block round>Apply For Assistance</n-button>    
+                        <!-- </div> -->
                     <!-- </div> -->
                     <!-- <n-button @click.prevent.native="showFnForm" type="primary" block>Request Financial Assistance</n-button> -->
                 </div>
