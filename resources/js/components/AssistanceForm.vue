@@ -91,7 +91,8 @@
                         <label>State</label>
                         <el-select class="select-primary"
                                 placeholder="Select State"
-                                v-model="form.state">
+                                v-model="form.state"
+                                required>
 
                                 <el-option v-for="option in states"
                                         class="select-primary"
@@ -102,7 +103,7 @@
                         </el-select>
                     </div>
 
-                    <div class="form-group has-success" id="zipGroupFnForm" :class="{ 'has-danger': !$v.form.zip.required || $v.form.zip.$invalid }">
+                    <div class="form-group has-success" id="zipGroupFnForm" :class="{ 'has-danger': $v.form.zip.$invalid }">
                         <label for="zipFnForm">Zip Code</label>
                         <fg-input
                             id="zipFnForm"
@@ -183,7 +184,7 @@
                     <div class="form-group has-success" :class="{ 'has-danger': $v.form.altered.$invalid }">
                         <label for="altered">Altered</label>
                         <el-select class="select-primary"
-                                    placeholder="Spayed/Neutered"
+                                    placeholder="Is your pet Spayed/Neutered?"
                                     v-model="form.altered">
 
                                 <el-option v-for="option in alteredYON"
@@ -234,6 +235,12 @@
 
                     <div class="form-group has-success" id="diagnosisDateGroup">
                         <label for="diagnosisDate">Diagnosis Date, if known</label>
+                        <!-- <fg-input>
+                            <el-date-picker v-model="form.diagnosisDate"
+                                            type="date"
+                                            placeholder="Click to select Diagnosis Date">
+                            </el-date-picker>
+                        </fg-input> -->
                         <fg-input
                                 id="diagnosisDate"
                                 type="date"
@@ -241,7 +248,7 @@
                                 placeholder="Diagnosis Date" />
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': !$v.form.previousDiagnosis.required }">
+                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.previousDiagnosis.$invalid }">
                         <label for="previousDiagnosis">Has your pet previously been diagnosed with cancer?</label>
                         <el-select class="select-primary"
                                     placeholder="Previous Diagnosis"
@@ -256,7 +263,7 @@
                         </el-select>
                     </div>
 
-                    <div class="form-group has-success" id="primaryVetFirstNameGroup" :class="{ 'has-danger': !$v.form.primaryVetFirstName.required }">
+                    <div class="form-group has-success" id="primaryVetFirstNameGroup" :class="{ 'has-danger': $v.form.primaryVetFirstName.$invalid }">
                         <label for="primaryVetFirstName">Vet First Name</label>
                         <fg-input
                                 id="primaryVetFirstName"
@@ -266,7 +273,7 @@
                                 required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryVetLastNameGroup" :class="{ 'has-danger': !$v.form.primaryVetLastName.required }">
+                    <div class="form-group has-success" id="primaryVetLastNameGroup" :class="{ 'has-danger': $v.form.primaryVetLastName.$invalid }">
                         <label for="primaryVetLastName">Vet Last Name</label>
                         <fg-input
                                 id="primaryVetLastName"
@@ -276,7 +283,7 @@
                                 required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryClinicGroup" :class="{ 'has-danger': !$v.form.primaryClinicName.required }">
+                    <div class="form-group has-success" id="primaryClinicGroup" :class="{ 'has-danger': $v.form.primaryClinicName.$invalid }">
                         <label for="primaryClinicName">Vet Clinic/Hospital Name</label>
                         <fg-input
                                 id="primaryClinicName"
@@ -286,13 +293,13 @@
                                 required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryClinicPhoneGroup" :class="{ 'has-danger': !$v.form.primaryClinicPhone.required }">
+                    <div class="form-group has-success" id="primaryClinicPhoneGroup" :class="{ 'has-danger': $v.form.primaryClinicPhone.$invalid }">
                         <label for="primaryClinicPhone">Clinic Phone Number</label>
                         <fg-input
                                 id="primaryClinicPhone"
                                 type="tel"
                                 v-model="form.primaryClinicPhone"
-                                placeholder="Primary Clinic Phone"
+                                placeholder="(XXX) XXX-XXXX"
                                 required />
                     </div>
 
@@ -337,19 +344,26 @@
                     <div class="col-md-6">
                         <n-checkbox
                                 v-model="robot"
+                                v-if="!$v.form.$invalid"
                                 required>
                             I'm not a robot
                         </n-checkbox>
                     </div>
                     <div class="col-md-6">
                         <n-button 
+                                v-if="robot"
                                 type="primary" 
                                 round 
                                 class="pull-right"
-                                :disabled="$v.form.required || !robot"
+                                :disabled="$v.form.$invalid"
                                 @click.prevent.native="onSubmit">
                                 Request Financial Assistance</n-button>
+                                
                     </div>
+                    
+                    <br>
+
+
                 </div>
 
                 <div class="sent" v-if="sent">This form has been submitted</div>
@@ -357,7 +371,8 @@
                 <div style="text-align: center; margin: 2rem;">
                     <img src="/images/llr_logo.png">
                 </div>
-                
+
+                <div class="error" style="margin-top: 20px;" v-if="$v.form.$invalid">A required field isn't correctly filled out.</div>                
             </form>
         </div>
    </div>
@@ -367,7 +382,7 @@
 
     import { validationMixin } from "vuelidate";
     import { helpers, required, minLength, maxLength, email, between, sameAs } from "vuelidate/lib/validators";
-    import {Select, Option} from 'element-ui'
+    import { Select, Option, DatePicker, TimeSelect } from 'element-ui'
     import { Button, FormGroupInput, Tabs, TabPane, Radio, Checkbox } from '@/components';
     
     import { EventBus } from '../event-bus.js';
@@ -500,7 +515,9 @@
             [Select.name]: Select,
             [Option.name]: Option,
             [Radio.name]: Radio,
-            [Checkbox.name]: Checkbox
+            [Checkbox.name]: Checkbox,
+            [DatePicker.name]: DatePicker,
+            [TimeSelect.name]: TimeSelect
         },
         mixins: [
             validationMixin
@@ -574,54 +591,51 @@
                     required,
                     phone
                 },
+            },
                 robot: {
                     required
                 },
-            }
         },
-        computed: {
-            hasSpecialist() {
-                return this.form.specialist;
-            }
-        },
+        computed: {},
         methods: {
-            onSubmit(evt) {
-                
+            onSubmit() {
+
                 let fd = new FormData();
+                
+                Object.keys(this.form).forEach(key => {
+                    fd.append(key, this.form[key])
+                })
 
-                this.$emit('startLoading');
-
-                fd.append('first_name', this.form.firstName);
-                fd.append('last_name', this.form.lastName);
-                fd.append('email', this.form.email);
-                fd.append('address_1', this.form.address1);
-                fd.append('address_2', this.form.address2);
-                fd.append('city', this.form.city);
-                fd.append('state', this.form.state);
-                fd.append('zip', this.form.zip);
-                fd.append('phone', this.form.phone);
-                fd.append('pet_name', this.form.petName);
-                fd.append('species', this.form.species);
-                fd.append('breed', this.form.breed);
-                fd.append('age', this.form.age);
-                fd.append('gender', this.form.gender);
-                fd.append('altered', this.form.altered);
-                fd.append('about', this.form.about);
-                fd.append('image', this.form.image);
-                fd.append('diagnosis', this.form.diagnosis);
-                fd.append('diagnosis_date', this.form.diagnosisDate);
-                fd.append('previous_diagnosis', this.form.previousDiagnosis);
-                fd.append('vet_first_name', this.form.primaryVetFirstName);
-                fd.append('vet_last_name', this.form.primaryVetLastName);
-                fd.append('primary_clinic_name', this.form.primaryClinicName);
-                fd.append('primary_clinic_phone', this.form.primaryClinicPhone);
-                fd.append('primary_clinic_email', this.form.primaryClinicEmail);
-                fd.append('specialist', this.form.specialist);
-                fd.append('other_help', this.form.otherHelp);
+                // fd.append('first_name', this.form.firstName);
+                // fd.append('last_name', this.form.lastName);
+                // fd.append('email', this.form.email);
+                // fd.append('address_1', this.form.address1);
+                // fd.append('address_2', this.form.address2);
+                // fd.append('city', this.form.city);
+                // fd.append('state', this.form.state);
+                // fd.append('zip', this.form.zip);
+                // fd.append('pet_name', this.form.petName);
+                // fd.append('species', this.form.species);
+                // fd.append('breed', this.form.breed);
+                // fd.append('age', this.form.age);
+                // fd.append('gender', this.form.gender);
+                // fd.append('altered', this.form.altered);
+                // fd.append('about', this.form.about);
+                // fd.append('image', this.form.image);
+                // fd.append('diagnosis', this.form.diagnosis);
+                // fd.append('diagnosis_date', this.form.diagnosisDate);
+                // fd.append('previous_diagnosis', this.form.previousDiagnosis);
+                // fd.append('vet_first_name', this.form.primaryVetFirstName);
+                // fd.append('vet_last_name', this.form.primaryVetLastName);
+                // fd.append('primary_clinic_name', this.form.primaryClinicName);
+                // fd.append('primary_clinic_phone', this.form.primaryClinicPhone);
+                // fd.append('primary_clinic_email', this.form.primaryClinicEmail);
+                // fd.append('specialist', this.form.specialist);
+                // fd.append('other_help', this.form.otherHelp);
 
                 this.$store.dispatch('fnFormSubmit');
 
-                axios.post("/api/finreqs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                axios.post("/api/fin_reqs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
                     
                    this.$store.dispatch('fnFormSuccess')
 

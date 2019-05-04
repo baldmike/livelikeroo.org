@@ -27,24 +27,24 @@ class FinreqRequest extends FormRequest
         Log::debug("INSIDE THE FIN REQ REQUEST");
 
         return [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required',
-            'address_1' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zip' => 'required',
-            'pet_name' => 'required',
-            'species' => 'required',
-            'age' => 'required',
-            'gender' => 'required',
-            'altered' => 'required',
-            'about' => 'required',
-            'previous_diagnosis' => 'required',
-            'vet_first_name' => 'required',
-            'vet_last_name' => 'required',
-            'primary_clinic_name' => 'required',
-            'primary_clinic_phone' => 'required',
+            'firstName' => 'required',
+            // 'lastName' => 'required',
+            // 'email' => 'required',
+            // 'address1' => 'required',
+            // 'city' => 'required',
+            // 'state' => 'required',
+            // 'zip' => 'required',
+            // 'petName' => 'required',
+            // 'species' => 'required',
+            // 'age' => 'required',
+            // 'gender' => 'required',
+            // 'altered' => 'required',
+            // 'about' => 'required',
+            // 'previousDiagnosis' => 'required',
+            // 'primaryVetFirstName' => 'required',
+            // 'primaryVetLastName' => 'required',
+            // 'primaryClinicName' => 'required',
+
         ];
     }
 }
