@@ -25,7 +25,7 @@
                     </div>  
                 </div>
                 <div class="col-md-6 ml-auto mr-auto phonely">
-                    <n-button @click.prevent.native="showDnForm"               type="primary" size="sm" block round>DONATE</n-button>
+                    <n-button @click.prevent.native="showDnForm" type="primary" size="sm" block round>DONATE</n-button>
                 </div>
                 
             </div>
@@ -181,8 +181,11 @@
             width: 500px;
             margin: 0 auto;
             z-index: 10;
-            
         }
+    }
+
+    .phonely {
+        display: none;
     }
 
     .white-box {
