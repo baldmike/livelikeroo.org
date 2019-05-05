@@ -20,7 +20,7 @@
                                     <h4 class="description">Our Roo Cancer Care Packages include some of Roo’s favorite items-including a blanket (which has become a favorite of the packages), a gift card for McDonald’s, toys, treats, and a tennis ball. We have found that people and animals that receive these packages have their spirits lifted during one of the most difficult times of their lives. Though they are labor-intensive, we know they are the most important thing that we do because of the emotion behind each and every one. We love to see the animals living like Roo.</h4>
 
                                     <!-- <div class="section-space"></div> -->
-                                    <n-button @click.prevent.native="showCpForm" type="primary" block>Request a Care Package</n-button>
+                                    <n-button @click.prevent.native="showCpForm" type="primary" size="lg" round>Request a Care Package</n-button>
                                     
                                     <div class="section-space"></div>
 

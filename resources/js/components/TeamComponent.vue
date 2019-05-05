@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
-                    <h2 class="title">Meet The Team</h2>
+                    <h2 class="title">Meet The Board</h2>
                     <h4 class="description">Making moves by day, saving dogs by night. Here is our team.</h4>
                 </div>
             </div>
