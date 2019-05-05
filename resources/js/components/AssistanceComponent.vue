@@ -5,6 +5,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 ml-auto mr-auto">
+                  <div class="icon icon-white">
+                      <i class="now-ui-icons emoticons_satisfied"></i>
+                  </div>
                     <div class="icon icon-white" style="text-align: center;">
                         <h3 class="info-title">Financial Assistance</h3>
                     </div>
