@@ -1,5 +1,5 @@
 <template>
-    <div  style="background-image: url('images/unsplash-pugina-blanket.jpg'); height: 1200;" id="pricing-3">
+    <div  class="features-8 section-image" style="background-image: url('images/unsplash-pugina-blanket.jpg'); height: 1200;" id="pricing-3">
         <div class="container-fluid">
             <div class="col-md-12 icon icon-white" style="text-align: center;">
                 <h3 class="info-title">Donate To Live Like Roo</h3>

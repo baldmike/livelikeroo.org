@@ -2,23 +2,24 @@
     <transition name="fade">
         <div class="container-fluid">
             <!--     *********     FEATURES 8      *********      -->
-            <div class="features-8 section-image" style="background-image: url('images/unsplash-pug-floor-matthew-henry.jpg');">
+            <div class="features-8 section-image" style="background-image: url('images/unsplash-pug-floor-matthew-henry.jpg'); min-height: 120%;">
+                <div class="row">
+                    <div class="col-md-2 title">EVENTS</div>
+                </div>
+                <div class="row">
 
-                <div class="row" style="margin-top: 300px;">
-                    <div class="col-md-4 title">EVENTS</div>
+                
+                <!-- <div class="row"> -->
+                    <div class="col-md-4 offset-md-4 text-center" style="z-index: 10; margin-top: 140px;">
+                        <iframe class="fb-frame" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLiveLikeRoo%2F&tabs=events&width=380&height=520&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="420" height="500" style="border:1px solid black; padding: 20px; box-shadow: 10px 15px 30px white; overflow:scroll" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+
                     <div class="col-md-4 text-center">
                         
                         <h4 class="description" style="background-color: black; color: white; opacity: .7;">Whether you're a dog lover looking for more of us, or just someone who likes a good, sometimes weird, time - our events always put the sing in fundraising! Click on an event and you'll be taken to that FaceBook page, where you can get more information, register/sign up or buy tickets. Come play with us!</h4>
+
                     </div>
                 </div>
-                <br><br>
-                <!-- <div class="row"> -->
-                    <div class="col-md-4 ml-auto mr-auto text-center" style="z-index: 10;">
-                        <iframe class="fb-frame" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLiveLikeRoo%2F&tabs=events&width=380&height=520&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="420" height="500" style="border:1px solid black; padding: 20px; box-shadow: 10px 15px 30px white; overflow:scroll" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
-                    </div>
-                <!-- </div> -->
-
             </div>
         </div>
     </transition>
@@ -63,7 +64,6 @@
         }
 
         .title {
-            margin-top: 100px;
             font-size: 20vw;
             text-align: center;
         }
@@ -83,7 +83,7 @@
 
         .title {
             
-            font-size: 12vw;
+            font-size: 13vw;
             transform: rotate(90deg);
         }
     }
