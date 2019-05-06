@@ -4,17 +4,13 @@
     <div class="pricing-3 section-image" style="background-image: url('images/unsplash-dog-stick.jpg'); height: 100vh;">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 ml-auto mr-auto">
-                  <div class="icon icon-white">
-                      <i class="now-ui-icons emoticons_satisfied"></i>
-                  </div>
+                <div class="col-md-4 ml-auto mr-auto">                    
                     <div class="icon icon-white" style="text-align: center;">
                         <h3 class="info-title">Financial Assistance</h3>
                     </div>
-              </div>
-                                
-                
+                </div>
             </div>
+
             <div class="row">
                 <div class="col-md-4 text-center">
                     <h2 class="title" style="margin-top: 200px;">Need some help?</h2>

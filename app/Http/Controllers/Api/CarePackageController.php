@@ -68,7 +68,7 @@ class CarePackageController extends Controller
             $CP->image = $path;
         }
 
-        // ('baldmike312@gmail.com')->send(new CarePackageConfirmation($CP));
+        Mail::to('baldmike312@gmail.com')->send(new CarePackageConfirmation($CP));
 
         if ($CP->save()) {
             return response()->json(null, Response::HTTP_CREATED);

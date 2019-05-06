@@ -16,7 +16,7 @@ class CarePackageConfirmation extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * The donation instance.
+     * The care package instance.
      *
      * @var CarePackage
      */
