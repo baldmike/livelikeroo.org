@@ -16,13 +16,15 @@
 
                     <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.petName.required }">
+                    <div class="form-group">
                         <label>Pet Name</label>
                         <fg-input
+                                class="has-success"
+                                :class="{ 'has-danger': !$v.form.petName.required }"
                                 type="text"
-                                :state="!$v.form.petName.$invalid"
                                 v-model="form.petName"
                                 placeholder="Pet's Name"
+                                addon-left-icon="now-ui-icons ui-2_favourite-28"
                                 maxlength="40"
                                 required/>
                     </div>
@@ -68,47 +70,51 @@
 
                 <div class="form-box">
                     <h3 class="center">TELL US ABOUT YOURSELF!</h3>               
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.firstName.required }">
+                    <div class="form-group">
                         <label for="firstNameCpForm">First Name</label>
                         <fg-input
                                 id="firstNamecpForm"
-                                type="text"
-                                :state="!$v.form.firstName.$invalid"
+                                class="has-success"
+                                :class="{ 'has-danger': $v.form.firstName.$invalid }"
                                 v-model="form.firstName"
                                 placeholder="First Name"
+                                addon-left-icon="now-ui-icons users_single-02"                
                                 maxlength="50"
                                 required/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.lastName.required }">
+                    <div class="form-group">
                         <label for="lastNameCpForm">Last Name</label>
                         <fg-input
                                 id="lastNameCpForm"
-                                type="text"
-                                :state="!$v.form.lastName.$invalid"
+                                class="has-success"
+                                :class="{ 'has-danger': $v.form.lastName.$invalid }"
                                 v-model="form.lastName"
                                 placeholder="Last Name"
+                                addon-left-icon="now-ui-icons users_single-02"
                                 maxlength="50"
                                 required/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.email.required }">
+                    <div class="form-group">
                         <label for="emailCpForm">Email</label>
                         <fg-input
                                 id="emailCpForm"
+                                class="has-success"
+                                :class="{ 'has-danger': $v.form.email.$invalid }"
                                 type="email"
-                                :state="!$v.form.email.$invalid"
+                                addon-left-icon="now-ui-icons ui-1_email-85 error"
                                 v-model="form.email"
                                 placeholder="Email"
                                 required/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.address1.required }">
+                    <div class="form-group">
                         <label for="address1CpForm">Street Address</label>
                         <fg-input
                                 id="address1CpForm"
-                                type="text"
-                                :state="!$v.form.address1.$invalid"
+                                class="has-success"
+                                :class="{ 'has-danger': $v.form.address1.$invalid }"
                                 v-model="form.address1"
                                 placeholder="Street Address"
                                 required/>
@@ -117,25 +123,38 @@
                     <div class="form-group">
                         <label for="form.address2">Street Address 2</label>
                         <fg-input
-                                type="text"
+                                class="has-success"
                                 v-model="form.address2"
                                 placeholder="Street Address 2"/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.city.required }">
+                    <div class="form-group">
                         <label for="cityCpForm">City</label>
                         <fg-input
                                 id="cityCpForm"
-                                type="text"
-                                :state="!$v.form.city.$invalid"
+                                class="has-success"
+                                :class="{ 'has-danger': $v.form.city.$invalid }"
                                 v-model="form.city"
                                 placeholder="City"
                                 required/>
                     </div>
                     
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.zip.required }">
+                    <div class="form-group">
                         <label for="state">State</label>
-                        <select 
+                        <el-select :class="{ 'has-danger': $v.form.state.required }"
+                                class="select-primary"
+                                placeholder="Select State"
+                                v-model="form.state"
+                                required>
+
+                                <el-option v-for="option in states"
+                                        class="select-primary"
+                                        :key="option.label"
+                                        :value="option.value"
+                                        :label="option.label"> 
+                                </el-option>
+                        </el-select>
+                        <!-- <select 
                                 required
                                 :options="states"
                                 class="form-control select-primary"
@@ -144,14 +163,15 @@
                                 <option v-for="state in states" :key="state.value" :value="state.value">
                                 {{ state.label }}
                                 </option>
-                        </select>
+                        </select> -->
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': !$v.form.zip.required || !$v.form.zip.between }">
+                    <div class="form-group">
                         <label>Zip Code</label>
                         <fg-input
-                            type="text"
-                            :state="!$v.form.zip.between"
+                            class="has-success"
+                            :class="{ 'has-danger': !$v.form.zip.required || !$v.form.zip.between }"
+                            :state="$v.form.zip.$invalid"
                             v-model="form.zip"
                             placeholder="Zip Code"
                             required/>
@@ -182,7 +202,7 @@
 <script>
 
     import { Button, FormGroupInput, Tabs, TabPane, Parallax } from '@/components';
-    import {Select, Option} from 'element-ui'
+    import { Select, Option, DatePicker, TimeSelect } from 'element-ui'
     import { validationMixin } from "vuelidate";
     import { helpers, required, minLength, maxLength, email, between } from "vuelidate/lib/validators";
     export default {
@@ -306,7 +326,8 @@
                 },
                 petName: {
                     required,
-                    maxLength: 30,
+                    minLength: 1,
+                    maxLength: 30
                 },
                 about: {
                     required

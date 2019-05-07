@@ -57,12 +57,12 @@ class CarePackageController extends Controller
             $CP->diagnosis = request('diagnosis');
         }
 
-        // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL (on the front end)
+        // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL on the front end
         if($request->hasFile('image'))
         {
             $path = Storage::putFile('public/images', $request->file('image'), 'public');
 
-            // $path includes 'public/', and we don't want that in our URL, so we we chop it off:
+            // $path includes 'public/', and we don't want that in our URL, so we chop it off:
             $path = substr($path, 6);
 
             $CP->image = $path;

@@ -42,9 +42,10 @@
                     <div class="col-md-6 offset-md-3" style="font-size: 1.5rem;">
                         <fg-input
                         style="text-align: center !important;"
-                        class="amount"
+                        
                         id="amount"
                         v-on:input="clearButtons"
+                        addon-left-icon="now-ui-icons business_money-coins"
                         type="number"
                         v-model="form.amount"
                         required/>
@@ -129,9 +130,9 @@
                     <label for="firstNameDnForm">First Name</label>
                     <fg-input 
                             id="firstNameDnForm"
-                            class="input-lg"
                             placeholder="First Name "
                             v-model="form.firstName"
+                            addon-left-icon="now-ui-icons business_money-coins"
                             required
                             :state="!$v.form.firstName.required">
                     </fg-input>
