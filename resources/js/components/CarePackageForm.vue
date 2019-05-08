@@ -363,6 +363,7 @@
                     this.$store.dispatch('cpFormSuccess')
 
                 }).catch((error) => {
+                        console.log(`WE HAVE AN ERROR: { $error }`)
                         this.$store.dispatch('cpFormError')
                 })
             },
