@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class oneTimeDonationRequest extends FormRequest
+class OneTimeDonationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

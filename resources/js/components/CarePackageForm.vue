@@ -21,7 +21,6 @@
                         <fg-input
                                 class="has-success"
                                 :class="{ 'has-danger': !$v.form.petName.required }"
-                                type="text"
                                 v-model="form.petName"
                                 placeholder="Pet's Name"
                                 addon-left-icon="now-ui-icons ui-2_favourite-28"

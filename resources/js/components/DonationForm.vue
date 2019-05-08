@@ -41,14 +41,11 @@
                 
                     <div class="col-md-6 offset-md-3" style="font-size: 1.5rem;">
                         <fg-input
-                        style="text-align: center !important;"
-                        
-                        id="amount"
-                        v-on:input="clearButtons"
-                        addon-left-icon="now-ui-icons business_money-coins"
-                        type="number"
-                        v-model="form.amount"
-                        required/>
+                                id="amount"
+                                v-on:input="clearButtons"
+                                type="number"
+                                v-model="form.amount"
+                                required/>
                     </div>
 
                     <h4 class="ml-auto mr-auto" v-if="isMonthly">MONTHLY DONATION OF ${{ form.amount }}.00</h4>
@@ -126,66 +123,66 @@
                 <br><br>
                 <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
                 
-                <div class="form-group has-success" :class="{ 'has-danger': !$v.form.firstName.required }">
+                <div class="form-group">
                     <label for="firstNameDnForm">First Name</label>
                     <fg-input 
                             id="firstNameDnForm"
+                            class="has-success"
+                            :class="{ 'has-danger': $v.form.firstName.$invalid }"
                             placeholder="First Name "
                             v-model="form.firstName"
-                            addon-left-icon="now-ui-icons business_money-coins"
-                            required
-                            :state="!$v.form.firstName.required">
-                    </fg-input>
+                            addon-left-icon="now-ui-icons users_single-02"
+                            required/>
                 </div>
 
-                <div class="form-group has-success" :class="{ 'has-danger': $v.form.lastName.$invalid }">
+                <div class="form-group">
                     <label for="lastNameDnForm">Last Name</label>
                     <fg-input
                             id="lastNameDnform"
-                            class="input-lg"
+                            class="has-success"
+                            :class="{ 'has-danger': $v.form.lastName.$invalid }"
                             placeholder="Last Name"
                             v-model="form.lastName"
-                            required
-                            :state="!$v.form.lastName.$invalid">
-                    </fg-input>
+                            addon-left-icon="now-ui-icons users_single-02"
+                            required/>
                 </div>
 
-                <div class="form-group has-success" :class="{ 'has-danger': $v.form.email.$invalid }">
+                <div class="form-group">
                     <label for="emailDnForm">Email</label>
                     <fg-input
                             id="emailDnForm"
-                            class="input-lg"
+                            class="has-success"
+                            :class="{ 'has-danger': $v.form.email.$invalid }"
                             placeholder="Email"
                             v-model="form.email"
-                            :state="!$v.form.email.$invalid">
-                    </fg-input>
+                            addon-left-icon="now-ui-icons ui-1_email-85"
+                            required/>
                 </div>
 
-                
-
                 <!-- if monthly -->
-
                 <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password below. Your email and password will allow you to log in, view and edit your account from the website.</div>
 
 
                 <div id="passwordLoginGroup" v-if="isMonthly">
                     
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.password.$invalid }">
+                    <div class="form-group">
                         <label for="passwordDnForm">Password</label>
                         <fg-input id="passwordDnForm"
+                                class="has-success"
+                                :class="{ 'has-danger': $v.form.password.$invalid }"
                                 type="password"
                                 placeholder="Password"
                                 v-model="form.password" 
-                                required 
-                                :state="!$v.form.password.$invalid"/>
+                                required/>
                     </div>
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.repeatPassword.$invalid }">    
+                    <div class="form-group">    
                         <label for="passwordDnForm">Repeat Password</label>
                         <fg-input id="repeatPassword"
+                                class="has-success"
+                                :class="{ 'has-danger': $v.form.repeatPassword.$invalid }"
                                 type="password"
                                 placeholder="Repeat Password"
                                 v-model="form.repeatPassword"
-                                :state="!$v.form.repeatPassword.$invalid"
                                 required/>
                     </div>
                 </div>
@@ -197,19 +194,18 @@
                 <!-- CC/DONOR INFORMTION -->
                 <h3 class="center">PAYMENT INFORMATION</h3>
 
-                <div class="form-group has-success" :class="{ 'has-danger': $v.form.name_on_card.$invalid }">
+                <div class="form-group">
                     <label for="card-element">Name on Card</label>
-                    <fg-input 
+                    <fg-input id="name_on_card"
+                        class="has-success"
+                        :class="{ 'has-danger': $v.form.name_on_card.$invalid }"
                         placeholder="Name on Card"
-                        id="name_on_card"
-                        type="text"
                         v-model="form.name_on_card"
-                        required
-                        :state="!$v.form.name_on_card.$invalid"/>
+                        required/>
                 </div>
 
                 <!-- use Stripe's card element -->
-                <div class="form-group" :class="{ 'has-danger': $v.form.$invalid }" id="nameOnCardGroup">
+                <div class="form-group">
                     <label for="card-element">Card Information</label>
                     <card-element required></card-element>
                 </div>
@@ -221,7 +217,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12 center">
-                        <n-button :disabled="$v.form.$invalid"        v-if="isOneTime" type="primary"      @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }} 
+                        <n-button :disabled="$v.form.$invalid" v-if="isOneTime" type="primary"      @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }} 
                             <span v-if="form.inMemory"> In Memory of {{ form.honoreeName }} </span> to {{ getFund }}
                         </n-button>
                     </div>

@@ -7,8 +7,8 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use App\Http\Requests\monthlyDonationRequest;
-use App\Http\Requests\oneTimeDonationRequest;
+use App\Http\Requests\MonthlyDonationRequest;
+use App\Http\Requests\OneTimeDonationRequest;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
 
@@ -30,7 +30,7 @@ class DonationController extends Controller
      * make a one-time donation
      *
      */
-    public function oneTime(oneTimeDonationRequest $request)
+    public function oneTime(OneTimeDonationRequest $request)
     {
         $validated = $request->validated();
 
@@ -110,7 +110,7 @@ class DonationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function monthly(monthlyDonationRequest $request)
+    public function monthly(MonthlyDonationRequest $request)
     {
         $validated = $request->validated();
 
