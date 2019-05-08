@@ -12,21 +12,16 @@
             <img v-if="isMonthly" src="/images/headline3.jpg" fluid>
             
             <div class="form-box">
-
                 <!-- DONATION AMOUNT -->
                 <div class="row">
-                        <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" block type="primary">One Time</n-button></div>
-                        <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary" block>Monthly</n-button></div>
-                    </div>
-                
-                
+                    <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleOneTime" block type="primary">One Time</n-button></div>
+                    <div class="col-md-6 ml-auto mr-auto"><n-button @click.prevent.native="toggleMonthly" type="primary" block>Monthly</n-button></div>
+                </div>
                 
                 <div class="col-md-12">
                     <h5 class="center">Your tax-deductable donation helps pets and their families through a cancer diagnosis. Please select one time or monthly donation with the buttons above, and choose your amount below. Thank You!</h5>
                 </div>
 
-
-            
                 <div class="row">
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary" :class="{ red: isTen }"><i class="fa fa-heart"></i>  $10</n-button></div>
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary" :class="{ red: isTwentyFive }"><i class="fa fa-heart"></i> $25</n-button></div>
@@ -51,7 +46,6 @@
                     <h4 class="ml-auto mr-auto" v-if="isMonthly">MONTHLY DONATION OF ${{ form.amount }}.00</h4>
                     <h4 class="ml-auto mr-auto" v-if="isOneTime">ONE TIME DONATION OF ${{ form.amount }}.00</h4>
                 </div>
-
                 
             </div>
 
@@ -68,7 +62,6 @@
                     <div class="col-md-6"><n-button type="primary" @click.prevent.native="isPersonal" block>Personal</n-button></div>
                     <div class="col-md-6"><n-button type="primary" @click.prevent.native="isMemorial" block>In Memory Of</n-button></div>
                 </div>
-            
 
                 <div class="form-group" id="inMemoryGroup" v-if="form.inMemory" label="In Memory Of">
                     <label>In Memory Of</label>
@@ -77,7 +70,6 @@
                     type="text"
                     v-model="form.honoreeName"/>
                 </div>
-
 
                 <div class="form-group" id="recipientInfoGroup" v-if="form.inMemory">
                     <n-button v-if="!notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
@@ -109,11 +101,7 @@
                 </div>
             </div>
 
-
-
                     <!-- YOUR INFORMATION  -->
-
-
 
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
@@ -161,7 +149,6 @@
 
                 <!-- if monthly -->
                 <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password below. Your email and password will allow you to log in, view and edit your account from the website.</div>
-
 
                 <div id="passwordLoginGroup" v-if="isMonthly">
                     
