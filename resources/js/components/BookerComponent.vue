@@ -11,7 +11,7 @@
                     <h1 class="card-title booker-tile tilt">The Booker Fund</h1>
                 </div>
                 
-                <div class="col-md-4">
+                <div class="col-md-4 offset-md-4">
                     <div class="donate-box">
                         <h5>
                             <p>DONATE</p>
@@ -31,7 +31,7 @@
             <br>
 
             <div class="col-md-4 offset-md-8">
-                <h5 class="card-title booker-tile add-opacity" style="margin-top: 40px; padding: 20px;">The Booker Fund allows us to spoil hospice dogs with a cancer diagnosis. This Fund, an arm of the Live Like Roo Foundation, pays for hotel rooms, wagons, dog beds and anything a dog needs in the final days or months. We have sent many dogs and their owners to hotel stays to forget about cancer for awhile and we have found that it TRULY helps them. This Fund is named for a dude named Booker, who takes in hospice dogs and gives them the best life!</h5>
+                <h5 class="card-title booker-tile add-opacity" style="padding: 20px;">The Booker Fund allows us to spoil hospice dogs with a cancer diagnosis. This Fund, an arm of the Live Like Roo Foundation, pays for hotel rooms, wagons, dog beds and anything a dog needs in the final days or months. We have sent many dogs and their owners to hotel stays to forget about cancer for awhile and we have found that it TRULY helps them. This Fund is named for a dude named Booker, who takes in hospice dogs and gives them the best life!</h5>
             </div>
                                   
         </div>
@@ -64,7 +64,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .tilt {
         transform: rotate(-15deg);
     }

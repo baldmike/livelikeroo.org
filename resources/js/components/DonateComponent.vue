@@ -1,5 +1,5 @@
 <template>
-    <div  class="features-8 section-image" style="background-image: url('images/unsplash-pugina-blanket.jpg'); height: 1200;" id="pricing-3">
+    <div  class="features-8 section-image background" id="pricing-3">
         <div class="container-fluid">
             <!-- <div class="col-md-12 icon icon-white" style="text-align: center;">
                 <h3 class="info-title">Donate To Live Like Roo</h3>
@@ -11,12 +11,15 @@
 
             <div class="row">
                 <div class="col-md-3 offset-md-2">
-                    <h4 class="text">We have helped over 2000 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donation is tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
-                    <!-- <div class="section-space"></div> -->
+                    <h4 class="text">We have helped over 8200 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donation is tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
+                    
                 </div>
             </div>
+
+            <div class="section-space"></div>
+
             <div class="row">
-                <div class="col-md-3 ml-auto mr-auto">
+                <div class="col-md-3 ml-auto">
                     <card type="pricing">
                         <img src="/images/headline2.jpg">
                         <h3>Make a</h3>
@@ -27,7 +30,7 @@
                         <n-button @click.prevent.native="oneTime" type="primary" round>Select</n-button>
                     </card>
                 </div>
-                <div class="col-md-3 mr-auto ml-auto">
+                <div class="col-md-3 mr-auto">
                     <card type="pricing" raised color="orange">
                         <img src="/images/headline3.jpg" style="margin-bottom: 15px;">
                         <h3>Make a</h3>
@@ -83,13 +86,33 @@
 </script>
 
 <style lang="scss" scoped>
-    .text {
-        color: orange;
+
+    @media only screen and (max-width: 500px) {
+        .background {
+            background-color: orange;
+            height: 100%;
+        }
+
+
+        .title {       
+            font-size: 5vw;
+            
+        }
     }
 
-    .title {
-            
-        font-size: 13vw;
-        transform: rotate(90deg);
+    @media only screen and (min-width: 500px) {
+        .background {
+            background-image: url('/images/unsplash-pugina-blanket.jpg'); 
+        }
+        .text {
+            color: orange;
+        }
+
+        .title {
+                
+            font-size: 13vw;
+            transform: rotate(90deg);
+        }
     }
+    
 </style>

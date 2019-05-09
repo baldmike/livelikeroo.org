@@ -311,7 +311,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .textOnWhite {
         color: #333333 !important;
     }
