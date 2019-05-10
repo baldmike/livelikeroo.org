@@ -117,10 +117,12 @@ class DonationController extends Controller
         // find or create the user
         $user = User::where('email', $request->email)->first();
 
-        if($user->role = 'donor')
-        {
-            $user->role = "monthly_donor";
-            $user-save();
+        if($user) {
+            if($user->role = 'donor')
+            {
+                $user->role = "monthly_donor";
+                $user->save();
+            }
         }
         
                 

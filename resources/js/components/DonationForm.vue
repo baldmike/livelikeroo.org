@@ -101,25 +101,9 @@
                         <textarea name="message" class="form-control" id="recipientMessage" rows="6" v-model="form.recipientMessage"></textarea>
                 </div>
             </div>
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             
             <!-- YOUR INFORMATION  -->            
+
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
 
@@ -420,11 +404,14 @@
                             fd.append(key, this.form[key])
                         })
 
+                        fd.append 
+
                         // append hidden input to FormData object
                         fd.append('stripeToken', result.token.id);
 
                         if(this.isOneTime) {
 
+                            fd.append('role', 'donor');
                             // send to our server to process onetime payment
                             axios.post("/api/make_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
@@ -443,6 +430,7 @@
                             })
 
                         } else if(this.isMonthly) {
+                            fd.append('role', 'monthly_donor');
                             axios.post("/api/monthly_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
                                 this.resetForm();
@@ -452,7 +440,7 @@
                             }).catch((error) => {
                                 console.log(error.response.data.message);
 
-                                this.$store.dispatch('endLoading')
+                                this.$store.dispatch('dnFormError');
 
                             })
                         }
