@@ -2,7 +2,7 @@
     <transition name="fade">
         <div class="container-fluid">
             <!--     *********     FEATURES 8      *********      -->
-            <div class="features-8 section-image" style="background-image: url('images/unsplash-pug-floor-matthew-henry.jpg'); min-height: 120%;">
+            <div class="features-8 section-image background">
                 <div class="row">
                     <div class="col-md-2 title">EVENTS</div>
                 </div>
@@ -56,18 +56,28 @@
 <style lang="scss" scoped>
 
     @media only screen and (max-width: 500px) {
+
         .fb-frame {
-            margin: 240 -30;
+            margin: -140 -30;
         }
 
         .title {
             font-size: 20vw;
             text-align: center;
         }
+
+        .description {
+            display: none;
+        }
     
     }
 
     @media only screen and (min-width: 500px) {
+        
+        .background {
+            background-image: url('/images/unsplash-pug-floor-matthew-henry.jpg'); 
+            min-height: 120%
+        }
 
         .text {
             color: #fd7e14;

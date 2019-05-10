@@ -11,8 +11,10 @@
 
             <div class="row">
                 <div class="col-md-3 offset-md-2 text-center">
-                    <h2 class="header">Need some help?</h2>
-                    <h4 class="description">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you both emotionally and financially. Please fill out the grant form, and we will email you the details of the review process.</h4>
+                    
+                    <h4 class="description" style="margin-top: -60;">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you. Please fill out the grant form, and we will email you the details of the review process.</h4>
+
+                    <h2 class="header"style="margin-top: 300px;">Need some help?</h2>
                 </div>
 
                 <div class="col-md-3 offset-md-3">

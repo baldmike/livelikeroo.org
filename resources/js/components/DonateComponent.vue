@@ -16,7 +16,7 @@
             <div class="section-space"></div>
 
             <div class="row donate-cards">
-                <div class="col-md-3 ml-auto">
+                <div class="col-md-3 ml-auto noPhone">
                     <card type="pricing">
                         <img src="/images/headline2.jpg">
                         <h3>Make a</h3>
@@ -27,7 +27,12 @@
                         <n-button @click.prevent.native="oneTime" type="primary" size="lg" round>ONE TIME DONATION</n-button>
                     </card>
                 </div>
-                <div class="col-md-3 mr-auto">
+
+                <div class="phonely">
+                    <n-button @click.prevent.native="oneTime" type="primary" size="lg" round>ONE TIME DONATION</n-button>
+                </div>
+                
+                <div class="col-md-3 mr-auto noPhone">
                     <card type="pricing" raised color="orange">
                         <img src="/images/headline3.jpg" style="margin-bottom: 15px;">
                         <h3>Make a</h3>
@@ -36,8 +41,11 @@
                         </h1>
                         <h3>Donation</h3>
                         <n-button @click.native="monthly" type="neutral" size="lg" round>MONTHLY DONATION</n-button>
-
                     </card>
+                </div>
+
+                <div class="phonely">
+                    <n-button @click.native="monthly" type="neutral" size="lg" round>MONTHLY DONATION</n-button>
                 </div>
             </div>
         </div>
@@ -87,13 +95,12 @@
     @media only screen and (max-width: 500px) {
         .background {
             background-image: url('/images/unsplash-pugina-blanket.jpg');
-            height: 1500px;
         }
         .title {
-            height: 100%;
+            
             font-size: 20vw;
             padding: 0 15;
-            margin-top: -25;
+            transform: rotate(90deg);
         }
 
         .text {       
@@ -102,6 +109,10 @@
 
         .donate-cards {
             margin-top: 300px;
+        }
+
+        .noPhone {
+            display: none;
         }
     }
 
@@ -117,6 +128,10 @@
         .title {    
             font-size: 11vw;
             transform: rotate(90deg);
+        }
+
+        .phonely {
+            display: none;
         }
     }
     

@@ -13,12 +13,12 @@
                     <hr>
 
                     <div class="fa-q"><span class="faq-highlight">Q</span> Can I request a care package for someone else?</div>
-                    <div class="faq-answer"><span class="faq-highlight">a</span> Yes, just use their name and address and your email.</div>
+                    <div class="faq-answer"><span class="faq-highlight">a</span> Yes, just use their name and address and your email. We humbly request a donation of at least $10, but our goal is help everyone we can, regardless of their ability to pay.</div>
 
                     <hr>
 
                     <div class="fa-q"><span class="faq-highlight">Q</span> Can you recommend vets or specialists?</div>
-                    <div class="faq-answer"><span class="faq-highlight">A</span>  Because we are nationwide, it is tough to do that. Locally, however, have a partnership with <a href="https://www.blvd.vet/river-north/" target="_blank">Boulevard Vet</a> in Chicago, but we are happy to research vets in your area that may be good once we've reviewed your application.</div>
+                    <div class="faq-answer"><span class="faq-highlight">A</span>  Because we are nationwide, it is tough to do that. Locally, however, we have a partnership with <a href="https://www.blvd.vet/river-north/" target="_blank">Boulevard Vet</a> in Chicago, but we are happy to research vets in your area that may be good once we've reviewed your application.</div>
 
                     <hr>
 
@@ -29,7 +29,7 @@
                     <hr>
 
                     <div class="fa-q"><span class="faq-highlight">Q</span> Are you a rescue?</div>
-                    <div class="faq-answer"><span class="faq-highlight">A</span>  No, we are a 501-c3 charitable foundation (EIN: 47-4770782) who assists pets and their families through cancer diagnoses. However, we have now partnered with Lulu’s Locker Rescue to assist and home animals that are in danger of euthanasia, face major medical issues or are no longer able to be cared for by their owner. For more on The Hot Mess Express, click <a href="www.facebook.com/The-Hot-Mess-Express-285509102269571/" target="_blank">HERE.</a></div>
+                    <div class="faq-answer"><span class="faq-highlight">A</span>  No, we are a 501-c3 charitable foundation (EIN: 47-4770782) who assist pets and their families through cancer diagnoses. However, we have now partnered with Lulu’s Locker Rescue to assist and home animals that are in danger of euthanasia, face major medical issues or are no longer able to be cared for by their owner. For more on The Hot Mess Express, click <a href="www.facebook.com/The-Hot-Mess-Express-285509102269571/" target="_blank">HERE.</a></div>
 
                     <hr>
 
