@@ -12,7 +12,7 @@
 
                 <div class="form-box">
                     <h3 class="center">YOUR INFORMATION</h3>
-                    <h6 class="center">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
+                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
                     <br>
 
                     <div class="form-group" id="firstNameGroup">
