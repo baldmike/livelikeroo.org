@@ -306,7 +306,7 @@
                             <div class="col-md-7">
                                 <div class="card-body">
                                     <h4 class="card-title">Bald Mike</h4>
-                                    <h6 class="category">Tech Nerd/Model</h6>
+                                    <h6 class="category">Tech Nerd/Former Model</h6>
                                     <p class="card-description textOnWhite">    
                                         After a quarter century in the Chicago bar business, Bald Mike woke up one morning and decided to begin his modeling career. Sadly, his modeling
                                     </p>
