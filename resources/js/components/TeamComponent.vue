@@ -18,14 +18,12 @@
                                     </a>
                                 </div>
 
-                                <!-- <div class="card-footer">
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-twitter"><i
+                                <div class="card-footer">
+                                    <a href="https://www.instagram.com/instasarah/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a href="https://www.twitter.com/sarahlauch" target="_blank" class="btn btn-icon btn-neutral btn-twitter"><i
                                             class="fab fa-twitter"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
-                                            class="fab fa-facebook-square"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
-                                            class="fab fa-google"></i></a>
-                                </div> -->
+                                </div>
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -55,16 +53,7 @@
                                     </a>
                                 </div>
 
-                                <!-- <div class="card-footer">
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
-                                            class="fab fa-facebook-square"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-dribbble"><i
-                                            class="fab fa-dribbble"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
-                                            class="fab fa-google"></i></a>
-                                </div> -->
+                                
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -174,14 +163,12 @@
                                     </a>
                                 </div>
 
-                                <!-- <div class="card-footer">
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
+                                <div class="card-footer">
+                                    <a href="https://www.linkedin.com/in/sara-depasquale-99794710/" class="btn btn-icon btn-neutral btn-linkedin"><i
                                             class="fab fa-linkedin"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
-                                            class="fab fa-facebook-square"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
-                                            class="fab fa-google"></i></a>
-                                </div> -->
+                                    <a href="https://www.instagram.com/sarafina85/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -215,14 +202,10 @@
                                     </a>
                                 </div>
 
-                                <!-- <div class="card-footer">
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
-                                            class="fab fa-facebook-square"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
-                                            class="fab fa-google"></i></a>
-                                </div> -->
+                                <div class="card-footer">
+                                    <a href="https://www.instagram.com/daebreyk/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                            class="fab fa-instagram"></i></a>
+                                </div>
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
