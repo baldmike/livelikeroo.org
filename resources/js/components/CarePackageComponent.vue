@@ -1,6 +1,5 @@
 <template>
     <transition name="fade">
-
          <div class="features-4">
             <div class="container">
                 <!-- <div class="row">

@@ -218,11 +218,11 @@
                                 <span v-if="form.inMemory">In Memory of {{ form.honoreeName }} </span> to {{ getFund }}
                         </n-button>
                     </div>
-
-                    <div class="col-md-12 center">
-                        <n-button @click.prevent.native="resetForm" type="danger">RESET</n-button>
-                    </div>
                 </div>
+            </div>
+
+            <div class="col-md-12 center">
+                <n-button @click.prevent.native="resetForm" type="danger">RESET FORM</n-button>
             </div>
 
             <div class="col-md-12 center"><img src="/images/llr_logo.png"></div>
