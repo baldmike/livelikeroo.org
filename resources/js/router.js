@@ -52,7 +52,7 @@ export const router = new VueRouter({
                     path: '/assistance',
                     components: {default: AssistanceComponent, header: Navbar, footer: Footer},
                     title: 'Assistance',
-                    props: {header: {colorOnScroll: 800}}
+                    props: {header: {colorOnScroll: 100}}
                 },
                 {
                     path: '/faq',

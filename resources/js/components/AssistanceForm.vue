@@ -15,79 +15,80 @@
                     <h6 class="center">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
                     <br>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.firstName.$invalid }" id="firstNameGroup">
+                    <div class="form-group" id="firstNameGroup">
                         
                         <label for="firstNameFnForm">First Name</label>
                         <fg-input
                                 id="firstNameFnForm"
                                 type="text"
                                 v-model="form.firstName"
-                                :state="!$v.form.firstName.$invalid"
+                                :class="{ 'has-danger': $v.form.firstName.$invalid && $v.form.firstName.$dirty, 'has-success': !$v.form.firstName.$invalid }"
                                 placeholder="First Name"
                                 maxlength="50"
                                 required/>
                     </div>
 
-                    <div class="form-group has-success" id="lastNameGroup" :class="{ 'has-danger': $v.form.lastName.$invalid }">
+                    <div class="form-group" id="lastNameGroup">
                         <label for="lastNameFnForm">Last Name</label>
                         <fg-input
                                 id="lastNameFnForm"
                                 type="text"
                                 v-model="form.lastName"
-                                :state="!$v.form.lastName.$invalid"
+                                :class="{ 'has-danger': $v.form.lastName.$invalid && $v.form.lastName.$dirty, 'has-success': !$v.form.lastName.$invalid }"
                                 placeholder="Last Name"
                                 maxlength="50"
                                 required/>
                     </div>
 
-                    <div class="form-group has-success" id="emailGroupFnForm" :class="{ 'has-danger': $v.form.email.$invalid }">
+                    <div class="form-group" id="emailGroupFnForm">
                         <label for="emailFnForm">Email</label>
                         <fg-input
                                 id="emailFnForm"
                                 type="email"
                                 v-model="form.email"
-                                :state="!$v.form.email.$invalid"
+                                :class="{ 'has-danger': $v.form.email.$invalid && $v.form.email.$dirty, 'has-success': !$v.form.email.$invalid }"
                                 placeholder="Email"
                                 maxlength="100"
                                 required/>
                     </div>
 
-                    <div class="form-group has-success" id="address1GroupFnForm" :class="{ 'has-danger': $v.form.address1.$invalid }">
+                    <div class="form-group" id="address1GroupFnForm">
                         <label for="address1FnForm">Address 1</label>
                         <fg-input
                                 id="address1FnForm"
                                 type="text"
                                 v-model="form.address1"
-                                :state="!$v.form.address1.$invalid"
+                                :class="{ 'has-danger': $v.form.address1.$invalid && $v.form.address1.$dirty, 'has-success': !$v.form.address1.$invalid }"
                                 placeholder="Address 1"
                                 maxlength="100"
                                 required/>
                     </div>
 
-                    <div class="form-group has-success" id="address2GroupFnForm">
+                    <div class="form-group" id="address2GroupFnForm">
                         <label for="address2FnForm">Address 2</label>
                         <fg-input
                                 id="address2FnForm"
                                 type="text"
                                 v-model="form.address2"
+                                
                                 maxlength="100"
                                 placeholder="Address 2"/>
                     </div>
 
-                    <div class="form-group has-success" id="cityGroupFnForm" :class="{ 'has-danger': $v.form.city.$invalid }">
+                    <div class="form-group" id="cityGroupFnForm">
                         <label for="cityFnForm">City</label>
                         <fg-input
                                 id="cityFnForm"
                                 type="text"
                                 v-model="form.city"
-                                :state="!$v.form.city.$invalid"
+                                :class="{ 'has-danger': $v.form.city.$invalid && $v.form.city.$dirty, 'has-success': !$v.form.city.$invalid }"
                                 placeholder="City"
                                 maxlength="50"
                                 required/>
                     </div>
 
                     
-                    <div class="form-group has-success" id="stateGroupFnForm" :class="{ 'has-danger': $v.form.state.$invalid }">
+                    <div class="form-group" id="stateGroupFnForm" :class="{ 'has-danger': $v.form.state.$invalid && $v.form.state.$dirty }">
                         <label>State</label>
                         <el-select class="select-primary"
                                 placeholder="Select State"
@@ -103,13 +104,13 @@
                         </el-select>
                     </div>
 
-                    <div class="form-group has-success" id="zipGroupFnForm" :class="{ 'has-danger': $v.form.zip.$invalid }">
+                    <div class="form-group" id="zipGroupFnForm">
                         <label for="zipFnForm">Zip Code</label>
                         <fg-input
                             id="zipFnForm"
                             type="text"
                             v-model="form.zip"
-                            :state="!$v.form.zip.$invalid"
+                            :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.zip.$dirty, 'has-success': !$v.form.zip.$invalid }"
                             placeholder="Zip Code"
                             maxlength="5"
                             required/>
@@ -123,17 +124,17 @@
                         <h3 class="center">YOUR PET'S INFORMATION</h3>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.petName.$invalid }">
+                    <div class="form-group">
                         <label>Pet Name</label>
                         <fg-input
                                 type="text"
-                                :state="!$v.form.petName.$invalid"
+                                :class="{ 'has-danger': $v.form.petName.$invalid && $v.form.petName.$dirty, 'has-success': !$v.form.petName.$invalid }"
                                 v-model="form.petName"
                                 placeholder="Pet's Name"
                                 required/>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.species.$invalid }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.species.$invalid && $v.form.species.$dirty }">
                         <label>Species</label>
                         <el-select class="select-primary"
                                     placeholder="Select Species"
@@ -148,7 +149,7 @@
                         </el-select>
                     </div>
 
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <label>Breed</label>
                         <fg-input
                                 type="text"
@@ -156,17 +157,19 @@
                                 placeholder="Breed"/>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.age.$invalid }">
+                    <div class="form-group">
                         <label for="ageFnForm">Age</label>
                         <fg-input
                                 id="ageFnForm"
+                                :class="{ 'has-danger': $v.form.age.$invalid && $v.form.age.$dirty, 'has-success': !$v.form.age.$invalid }"
                                 type="number"
+                                max="30"
                                 v-model="form.age"
                                 placeholder="Age"
                                 required/>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.gender.$invalid }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.gender.$invalid && $v.form.gender.$dirty }">
                         <label for="gender">Gender</label>
                         <el-select class="select-primary"
                                     placeholder="Select Gender"
@@ -181,7 +184,7 @@
                         </el-select>
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.altered.$invalid }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.altered.$invalid && $v.form.altered.$dirty }">
                         <label for="altered">Altered</label>
                         <el-select class="select-primary"
                                     placeholder="Is your pet Spayed/Neutered?"
@@ -196,7 +199,7 @@
                         </el-select>
                     </div>
 
-                    <div class="form-group has-success">
+                    <div class="form-group">
                         <label>Tell us about a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                         <textarea
                                 rows="6"
@@ -224,7 +227,7 @@
                 <div class="form-box">
                     <h3 class="form-headline">PET'S MEDICAL INFORMATION</h3>
 
-                    <div class="form-group has-success" id="diagnosisGroup">
+                    <div class="form-group" id="diagnosisGroup">
                         <label for="diagnosis">Medical Diagosis, if known</label>
                         <fg-input
                                 id="diagnosis"
@@ -233,7 +236,7 @@
                                 placeholder="Diagnosis" />
                     </div>
 
-                    <div class="form-group has-success" id="diagnosisDateGroup">
+                    <div class="form-group" id="diagnosisDateGroup">
                         <label for="diagnosisDate">Diagnosis Date, if known</label>
                         <!-- <fg-input>
                             <el-date-picker v-model="form.diagnosisDate"
@@ -248,7 +251,7 @@
                                 placeholder="Diagnosis Date" />
                     </div>
 
-                    <div class="form-group has-success" :class="{ 'has-danger': $v.form.previousDiagnosis.$invalid }">
+                    <div class="form-group" :class="{ 'has-danger': $v.form.previousDiagnosis.$invalid && $v.form.previousDiagnosis.$dirty }">
                         <label for="previousDiagnosis">Has your pet previously been diagnosed with cancer?</label>
                         <el-select class="select-primary"
                                     placeholder="Previous Diagnosis"
@@ -258,52 +261,56 @@
                                         class="select-primary"
                                         :key="option.label"
                                         :value="option.value"
-                                        :label="option.label"> 
+                                        :label="option.label">
                                 </el-option>
                         </el-select>
                     </div>
 
-                    <div class="form-group has-success" id="primaryVetFirstNameGroup" :class="{ 'has-danger': $v.form.primaryVetFirstName.$invalid }">
+                    <div class="form-group" id="primaryVetFirstNameGroup">
                         <label for="primaryVetFirstName">Vet First Name</label>
                         <fg-input
                                 id="primaryVetFirstName"
                                 type="text"
+                                :class="{ 'has-danger': $v.form.primaryVetFirstName.$invalid && $v.form.primaryVetFirstName.$dirty, 'has-success': !$v.form.primaryVetFirstName.$invalid }"
                                 v-model="form.primaryVetFirstName"
                                 placeholder="Primary Vet First Name"
                                 required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryVetLastNameGroup" :class="{ 'has-danger': $v.form.primaryVetLastName.$invalid }">
+                    <div class="form-group" id="primaryVetLastNameGroup">
                         <label for="primaryVetLastName">Vet Last Name</label>
                         <fg-input
                                 id="primaryVetLastName"
                                 type="text"
+                                :class="{ 'has-danger': $v.form.primaryVetLastName.$invalid && $v.form.primaryVetLastName.$dirty, 'has-success': !$v.form.primaryVetLastName.$invalid }"
                                 v-model="form.primaryVetLastName"
                                 placeholder="Primary Vet Last Name"
                                 required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryClinicGroup" :class="{ 'has-danger': $v.form.primaryClinicName.$invalid }">
+                    <div class="form-group" id="primaryClinicGroup">
                         <label for="primaryClinicName">Vet Clinic/Hospital Name</label>
                         <fg-input
                                 id="primaryClinicName"
                                 type="text"
+                                :class="{ 'has-danger': $v.form.primaryClinicName.$invalid && $v.form.primaryClinicName.$dirty, 'has-success': !$v.form.primaryClinicName.$invalid }"
                                 v-model="form.primaryClinicName"
                                 placeholder="Primary Clinic Name"
                                 required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryClinicPhoneGroup" :class="{ 'has-danger': $v.form.primaryClinicPhone.$invalid }">
+                    <div class="form-group" id="primaryClinicPhoneGroup">
                         <label for="primaryClinicPhone">Clinic Phone Number</label>
                         <fg-input
                                 id="primaryClinicPhone"
                                 type="tel"
+                                :class="{ 'has-danger': $v.form.primaryClinicPhone.$invalid && $v.form.primaryClinicPhone.$dirty, 'has-success': !$v.form.primaryClinicPhone.$invalid }"
                                 v-model="form.primaryClinicPhone"
                                 placeholder="(XXX) XXX-XXXX"
                                 required />
                     </div>
 
-                    <div class="form-group has-success" id="primaryClinicEmailGroup">
+                    <div class="form-group" id="primaryClinicEmailGroup">
                         <label for="primaryClinicEmail">Clinic Email</label>
                         <fg-input
                                 id="primaryClinicEmail"
@@ -351,19 +358,13 @@
                     </div>
                     <div class="col-md-6">
                         <n-button 
-                                v-if="robot"
                                 type="primary" 
                                 round 
                                 class="pull-right"
-                                :disabled="$v.form.$invalid"
                                 @click.prevent.native="onSubmit">
                                 Request Financial Assistance</n-button>
-                                
-                    </div>
-                    
+                    </div>                    
                     <br>
-
-
                 </div>
 
                 <div class="sent" v-if="sent">This form has been submitted</div>
@@ -372,7 +373,7 @@
                     <img src="/images/llr_logo.png">
                 </div>
 
-                <div class="error" style="margin-top: 20px;" v-if="$v.form.$invalid">A required field isn't correctly filled out.</div>                
+                <!-- <div class="error" style="margin-top: 20px;" v-if="$v.form.$invalid">A required field isn't correctly filled out.</div>                 -->
             </form>
         </div>
    </div>
@@ -428,59 +429,60 @@
                 },
                 url: null,
                 robot: false,
+                show: true,
 
                 states: [
-                    {value: "AK", label: "AK"},
-                    {value: "AL", label: "AL"},
-                    {value: "AR", label: "AR"},
-                    {value: "AZ", label: "AZ"},
-                    {value: "CA", label: "CA"},
-                    {value: "CO", label: "CO"},
-                    {value: "CT", label: "CT"},
+                    {value: "AK", label: "Alaska"},
+                    {value: "AL", label: "Alabama"},
+                    {value: "AR", label: "Arkansas"},
+                    {value: "AZ", label: "Arizona"},
+                    {value: "CA", label: "California"},
+                    {value: "CO", label: "Colorado"},
+                    {value: "CT", label: "Connecticut"},
                     {value: "DC", label: "DC"},
-                    {value: "DE", label: "DE"},
-                    {value: "FL", label: "FL"},
-                    {value: "GA", label: "GA"},
-                    {value: "HI", label: "HI"},
-                    {value: "IA", label: "IA"},
-                    {value: "ID", label: "ID"},
-                    {value: "IL", label: "IL"},
-                    {value: "IN", label: "IN"},
-                    {value: "KS", label: "KS"},
-                    {value: "KY", label: "KY"},
-                    {value: "LA", label: "LA"},
-                    {value: "MA", label: "MA"},
-                    {value: "MD", label: "MD"},
-                    {value: "ME", label: "ME"},
-                    {value: "MI", label: "MI"},
-                    {value: "MN", label: "MN"},
-                    {value: "MO", label: "MO"},
-                    {value: "MS", label: "MS"},
-                    {value: "MT", label: "MT"},
-                    {value: "NC", label: "NC"},
-                    {value: "ND", label: "ND"},
-                    {value: "NE", label: "NE"},
-                    {value: "NH", label: "NH"},
-                    {value: "NJ", label: "NJ"},
-                    {value: "NM", label: "NM"},
-                    {value: "NV", label: "NV"},
-                    {value: "NY", label: "NY"},
-                    {value: "OH", label: "OH"},
-                    {value: "OK", label: "OK"},
-                    {value: "OR", label: "OR"},
-                    {value: "PA", label: "PA"},
-                    {value: "RI", label: "RI"},
-                    {value: "SC", label: "SC"},
-                    {value: "SD", label: "SD"},
-                    {value: "TN", label: "TN"},
-                    {value: "TX", label: "TX"},
-                    {value: "UT", label: "UT"},
-                    {value: "VA", label: "VA"},
-                    {value: "VT", label: "VT"},
-                    {value: "WA", label: "WA"},
-                    {value: "WI", label: "WI"},
-                    {value: "WV", label: "WV"},
-                    {value: "WY", label: "WY"}
+                    {value: "DE", label: "Deleware"},
+                    {value: "FL", label: "Florida"},
+                    {value: "GA", label: "Georgia"},
+                    {value: "HI", label: "Hawaii"},
+                    {value: "IA", label: "Iowa"},
+                    {value: "ID", label: "Idaho"},
+                    {value: "IL", label: "Illinois"},
+                    {value: "IN", label: "Indiana"},
+                    {value: "KS", label: "Kansas"},
+                    {value: "KY", label: "Kentucky"},
+                    {value: "LA", label: "Louisiana"},
+                    {value: "MA", label: "Massachusetts"},
+                    {value: "MD", label: "Maryland"},
+                    {value: "ME", label: "Maine"},
+                    {value: "MI", label: "Michigan"},
+                    {value: "MN", label: "Minnesota"},
+                    {value: "MO", label: "Missouri"},
+                    {value: "MS", label: "Mississippi"},
+                    {value: "MT", label: "Montana"},
+                    {value: "NC", label: "North Carolina"},
+                    {value: "ND", label: "North Dakota"},
+                    {value: "NE", label: "Nebraska"},
+                    {value: "NH", label: "New Hampshire"},
+                    {value: "NJ", label: "New Jersey"},
+                    {value: "NM", label: "New Mexico"},
+                    {value: "NV", label: "Nevada"},
+                    {value: "NY", label: "New York"},
+                    {value: "OH", label: "Ohio"},
+                    {value: "OK", label: "Oklahoma"},
+                    {value: "OR", label: "Oregon"},
+                    {value: "PA", label: "Pennsylvania"},
+                    {value: "RI", label: "Rhode Island"},
+                    {value: "SC", label: "South Carolina"},
+                    {value: "SD", label: "South Dakota"},
+                    {value: "TN", label: "Tennessee"},
+                    {value: "TX", label: "Texas"},
+                    {value: "UT", label: "Utah"},
+                    {value: "VA", label: "Virginia"},
+                    {value: "VT", label: "Vermont"},
+                    {value: "WA", label: "Washington"},
+                    {value: "WI", label: "Wisconson"},
+                    {value: "WV", label: "West Virginia"},
+                    {value: "WY", label: "Wyoming"},
                 ],
                 types: [
                     {value: "Dog", label: "Dog"},
@@ -599,49 +601,26 @@
         computed: {},
         methods: {
             onSubmit() {
+                this.$v.form.$touch();
 
-                let fd = new FormData();
+                if (!this.$v.form.$invalid) {
+
+                    let fd = new FormData();
                 
-                Object.keys(this.form).forEach(key => {
-                    fd.append(key, this.form[key])
-                })
+                    Object.keys(this.form).forEach(key => {
+                        fd.append(key, this.form[key])
+                    })
 
-                // fd.append('first_name', this.form.firstName);
-                // fd.append('last_name', this.form.lastName);
-                // fd.append('email', this.form.email);
-                // fd.append('address_1', this.form.address1);
-                // fd.append('address_2', this.form.address2);
-                // fd.append('city', this.form.city);
-                // fd.append('state', this.form.state);
-                // fd.append('zip', this.form.zip);
-                // fd.append('pet_name', this.form.petName);
-                // fd.append('species', this.form.species);
-                // fd.append('breed', this.form.breed);
-                // fd.append('age', this.form.age);
-                // fd.append('gender', this.form.gender);
-                // fd.append('altered', this.form.altered);
-                // fd.append('about', this.form.about);
-                // fd.append('image', this.form.image);
-                // fd.append('diagnosis', this.form.diagnosis);
-                // fd.append('diagnosis_date', this.form.diagnosisDate);
-                // fd.append('previous_diagnosis', this.form.previousDiagnosis);
-                // fd.append('vet_first_name', this.form.primaryVetFirstName);
-                // fd.append('vet_last_name', this.form.primaryVetLastName);
-                // fd.append('primary_clinic_name', this.form.primaryClinicName);
-                // fd.append('primary_clinic_phone', this.form.primaryClinicPhone);
-                // fd.append('primary_clinic_email', this.form.primaryClinicEmail);
-                // fd.append('specialist', this.form.specialist);
-                // fd.append('other_help', this.form.otherHelp);
+                    this.$store.dispatch('fnFormSubmit');
 
-                this.$store.dispatch('fnFormSubmit');
+                    axios.post("/api/fin_reqs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                        
+                        this.$store.dispatch('fnFormSuccess')
 
-                axios.post("/api/fin_reqs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
-                    
-                   this.$store.dispatch('fnFormSuccess')
-
-                }).catch((error) => {
+                    }).catch((error) => {
                         this.$store.dispatch('cpFormError')
-                })
+                    })
+                }
             },
 
             onReset(evt) {

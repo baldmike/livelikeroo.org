@@ -140,7 +140,7 @@
                     <div class="form-group">
                         <label>Zip Code</label>
                         <fg-input
-                            :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.petName.$dirty }"
+                            :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.zip.$dirty, 'has-success': !$v.form.zip.$invalid }"
                             v-model="form.zip"
                             placeholder="Zip Code"
                             required/>
@@ -148,15 +148,21 @@
                     <div class="errors center" v-if="$v.form.$dirty">We're gonna need to know more than that!</div>
                     <div class="sent" v-if="sent">This Form Has been submitted.</div>
 
+                    <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
+                        <n-button 
+                                type="primary" 
+                                round 
+                                @click.prevent.native="requestCarePackage">
+                                Request A Care Package
+                        </n-button>
+                    </div>
+
                 </div>
 
-                <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
-                    <n-button 
-                            type="primary" 
-                            round 
-                            @click.prevent.native="requestCarePackage">
-                            Request A Care Package
-                    </n-button>
+                
+
+                <div class="col-md-12 center">
+                    <n-button @click.prevent.native="resetForm" type="danger">RESET FORM</n-button>
                 </div>
 
                 <div style="text-align: center; margin: 2rem;">
