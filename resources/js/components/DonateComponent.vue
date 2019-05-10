@@ -114,8 +114,7 @@
             color: orange;
         }
 
-        .title {
-                
+        .title {    
             font-size: 11vw;
             transform: rotate(90deg);
         }

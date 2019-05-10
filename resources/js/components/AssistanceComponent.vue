@@ -1,10 +1,17 @@
 <template>
     <div class="features-8 section-image background">
+        
+            
         <div class="container-fluid">
 
+            <div class="row center" style="height: 0;">
+                <div class="col-md-2 title">ASSISTANCE</div>
+            </div>
+            
+
             <div class="row">
-                <div class="col-md-4 offset-md-1 text-center">
-                    <h2 class="title">Need some help?</h2>
+                <div class="col-md-3 offset-md-2 text-center">
+                    <h2 class="header">Need some help?</h2>
                     <h4 class="description">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to support you both emotionally and financially. Please fill out the grant form, and we will email you the details of the review process.</h4>
                 </div>
 
@@ -48,11 +55,18 @@
     @media only screen and (max-width: 500px) {
         .background {
             background-image: url('/images/unsplash-dog-stick.jpg');
-
         }
 
         .fin-button {
             margin-top: 0;
+        }
+
+        .header {
+            color: white;
+        }
+
+        .title {
+            display: none;
         }
     }
 
@@ -61,12 +75,28 @@
             background-image: url('/images/unsplash-dog-stick.jpg');
             height: 1000px;   
         }
+
         .fin-button {
             margin-top: 220px; 
         }
 
         .title {
+            font-size: 11vw;
+            transform: rotate(90deg);
+            font-weight: 2000;
+            font-size: 8vw;
+            color: white;
+            margin: 0;
+            padding: 0;
+        
+        }
+        .header {
             margin-top: 300px;
+            color: white;
+        }
+
+        .center {
+            text-align: center;
         }
     }
 
