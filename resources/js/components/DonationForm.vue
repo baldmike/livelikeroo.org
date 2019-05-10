@@ -2,7 +2,7 @@
 
     <div v-if="show">
 
-        <form id="donation-form" @submit.prevent="pay()" @reset="resetForm()">
+        <form>
             
             <h3 class="center" v-if="isMonthly">MONTHLY DONATION</h3>
             <h3 class="center" v-if="isOneTime">ONE TIME DONATION</h3>
@@ -39,6 +39,7 @@
                                 id="amount"
                                 v-on:input="clearButtons"
                                 type="number"
+                                addon-left-icon="fa fa-dollar-sign"
                                 v-model="form.amount"
                                 required/>
                     </div>
@@ -101,25 +102,39 @@
                 </div>
             </div>
 
-                    <!-- YOUR INFORMATION  -->
+            
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <!-- YOUR INFORMATION  -->            
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
 
                 <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you. With your email and password, you'll be able to log in and view, update or cancel your donation at any time.</div>
 
                 <br><br>
-                <small>Fields marked with a red <span style="color: red;">X</span> are required</small>
+                <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required</h6>
                 
                 <div class="form-group">
                     <label for="firstNameDnForm">First Name</label>
                     <fg-input 
                             id="firstNameDnForm"
-                            class="has-success"
-                            :class="{ 'has-danger': $v.form.firstName.$invalid }"
+                            :class="{ 'has-danger': $v.form.firstName.$invalid && $v.form.firstName.$dirty, 'has-success': !$v.form.firstName.$invalid}"
                             placeholder="First Name "
                             v-model="form.firstName"
-                            addon-left-icon="now-ui-icons users_single-02"
                             required/>
                 </div>
 
@@ -127,11 +142,9 @@
                     <label for="lastNameDnForm">Last Name</label>
                     <fg-input
                             id="lastNameDnform"
-                            class="has-success"
-                            :class="{ 'has-danger': $v.form.lastName.$invalid }"
+                            :class="{ 'has-danger': $v.form.lastName.$invalid && $v.form.lastName.$dirty, 'has-success': !$v.form.lastName.$invalid }"
                             placeholder="Last Name"
                             v-model="form.lastName"
-                            addon-left-icon="now-ui-icons users_single-02"
                             required/>
                 </div>
 
@@ -139,11 +152,9 @@
                     <label for="emailDnForm">Email</label>
                     <fg-input
                             id="emailDnForm"
-                            class="has-success"
-                            :class="{ 'has-danger': $v.form.email.$invalid }"
+                            :class="{ 'has-danger': $v.form.email.$invalid && $v.form.email.$dirty, 'has-success': !$v.form.email.$invalid }"
                             placeholder="Email"
                             v-model="form.email"
-                            addon-left-icon="now-ui-icons ui-1_email-85"
                             required/>
                 </div>
 
@@ -155,8 +166,7 @@
                     <div class="form-group">
                         <label for="passwordDnForm">Password</label>
                         <fg-input id="passwordDnForm"
-                                class="has-success"
-                                :class="{ 'has-danger': $v.form.password.$invalid }"
+                                :class="{ 'has-danger': $v.form.password.$invalid && $v.form.password.$dirty, 'has-success': !$v.form.password.$invalid }"
                                 type="password"
                                 placeholder="Password"
                                 v-model="form.password" 
@@ -165,8 +175,7 @@
                     <div class="form-group">    
                         <label for="passwordDnForm">Repeat Password</label>
                         <fg-input id="repeatPassword"
-                                class="has-success"
-                                :class="{ 'has-danger': $v.form.repeatPassword.$invalid }"
+                                :class="{ 'has-danger': $v.form.repeatPassword.$invalid && $v.form.repeatPassword.$dirty, 'has-success': !$v.form.repeatPassword.$invalid }"
                                 type="password"
                                 placeholder="Repeat Password"
                                 v-model="form.repeatPassword"
@@ -184,8 +193,7 @@
                 <div class="form-group">
                     <label for="card-element">Name on Card</label>
                     <fg-input id="name_on_card"
-                        class="has-success"
-                        :class="{ 'has-danger': $v.form.name_on_card.$invalid }"
+                        :class="{ 'has-danger': $v.form.name_on_card.$invalid && $v.form.name_on_card.$dirty, 'has-success': !$v.form.name_on_card.$invalid }"
                         placeholder="Name on Card"
                         v-model="form.name_on_card"
                         required/>
@@ -204,14 +212,31 @@
 
                 <div class="form-group">
                     <div class="col-md-12 center">
-                        <n-button :disabled="$v.form.$invalid" v-if="isOneTime" type="primary"      @click.prevent.native="pay">Make a One-Time Donation of ${{ form.amount }} 
-                            <span v-if="form.inMemory"> In Memory of {{ form.honoreeName }} </span> to {{ getFund }}
+                        <n-button
+                                v-if="isOneTime" 
+                                type="primary"
+                                block
+                                round
+                                @click.prevent.native="makeDonation">
+                                Make a One-Time Donation of ${{ form.amount }} 
+                                <span v-if="form.inMemory"> In Memory of {{ form.honoreeName }} </span> to {{ getFund }}
                         </n-button>
                     </div>
+
                     <div class="col-md-12 center">
-                        <n-button :disabled="$v.form.$invalid" v-if="isMonthly" type="primary" @click.native="pay">Begin Monthly Donation of ${{ form.amount }}
-                            <span v-if="form.inMemory">In Memory of {{ form.honoreeName }} </span> to {{ getFund }}
+                        <n-button
+                                v-if="isMonthly"
+                                type="primary"
+                                block
+                                round
+                                @click.prevent.native="makeDonation">
+                                Begin Monthly Donation of ${{ form.amount }}
+                                <span v-if="form.inMemory">In Memory of {{ form.honoreeName }} </span> to {{ getFund }}
                         </n-button>
+                    </div>
+
+                    <div class="col-md-12 center">
+                        <n-button @click.prevent.native="resetForm" type="danger">RESET</n-button>
                     </div>
                 </div>
             </div>
@@ -272,10 +297,12 @@
 
             form: {
                 firstName: {
-                    required
+                    required,
+                    minLength: minLength(1)
                 },
                 lastName: {
-                    required
+                    required,
+                    minLength: minLength(2)
                 },
                 email: {
                     email,
@@ -286,6 +313,8 @@
                     minLength:minLength(8),
                 },
                 repeatPassword: {
+                    required,
+                    minLength:minLength(8),
                     sameAsPassword: sameAs('password')
                 },
                 amount: {
@@ -349,83 +378,88 @@
             },
         },
         methods: {
-            pay() {
-                this.$store.dispatch('dnFormSubmit');
+            makeDonation() {
 
-                // createToken returns a Promise which resolves in a result object with
-                // either a token or an error key.
-                // See https://stripe.com/docs/api#tokens for the token object.
-                // See https://stripe.com/docs/api#errors for the error object.
-                // More general https://stripe.com/docs/stripe.js#stripe-create-token.
-                const options = {
-                    name: this.name_on_card,
-                }
-                createToken(options).then(result => {
+                this.$v.form.$touch();
 
-                    if(result.error) {
-                        this.$store.dispatch('cardSubmitError');
+                if (!this.$v.form.$invalid) {
+                    this.$store.dispatch('dnFormSubmit');
+
+                    // createToken returns a Promise which resolves in a result object with
+                    // either a token or an error key.
+                    // See https://stripe.com/docs/api#tokens for the token object.
+                    // See https://stripe.com/docs/api#errors for the error object.
+                    // More general https://stripe.com/docs/stripe.js#stripe-create-token.
+                    const options = {
+                        name: this.name_on_card,
                     }
-                    
-                    console.log({result});
-                    // create hidden input with stripe token to complete transaction
-                    let hiddenInput = document.createElement('input');
-                    
-                    hiddenInput.setAttribute('type', 'hidden');
-                    hiddenInput.setAttribute('name', 'stripeToken');
-                    hiddenInput.setAttribute('value', result.token.id);
+                    createToken(options).then(result => {
 
-                    //append to form
-                    this.$el.appendChild(hiddenInput);
-
-                    // build the FormData object - by using forEach, we won't miss any inputs
-                    if (!this.form.fund) {
-                        this.form.fund = this.$store.state.fund;
-                    };
-
-                    let fd = new FormData();
-                    Object.keys(this.form).forEach(key => {
-                        fd.append(key, this.form[key])
-                    })
-
-                    // append hidden input to FormData object
-                    fd.append('stripeToken', result.token.id);
-
-                    if(this.isOneTime) {
-
-                        // send to our server to process onetime payment
-                        axios.post("/api/make_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
-
-                            this.resetForm();
-                            console.log("----------->[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
-                            this.$store.dispatch('dnFormSuccess');
-
-                            console.log("[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
-                            console.log("TOKEN: " + result.token.id);
-
-                            
+                        if(result.error) {
+                            this.$store.dispatch('cardSubmitError');
+                        }
                         
-                        }).catch((error) => {
-                            console.log(error.response.data.message);
-                            
-                            this.$store.dispatch('endLoading');
+                        console.log({result});
+                        // create hidden input with stripe token to complete transaction
+                        let hiddenInput = document.createElement('input');
+                        
+                        hiddenInput.setAttribute('type', 'hidden');
+                        hiddenInput.setAttribute('name', 'stripeToken');
+                        hiddenInput.setAttribute('value', result.token.id);
 
+                        //append to form
+                        this.$el.appendChild(hiddenInput);
+
+                        // build the FormData object - by using forEach, we won't miss any inputs
+                        if (!this.form.fund) {
+                            this.form.fund = this.$store.state.fund;
+                        };
+
+                        let fd = new FormData();
+                        Object.keys(this.form).forEach(key => {
+                            fd.append(key, this.form[key])
                         })
 
-                    } else if(this.isMonthly) {
-                        axios.post("/api/monthly_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                        // append hidden input to FormData object
+                        fd.append('stripeToken', result.token.id);
 
-                            this.resetForm();
-                            this.$store.dispatch('endLoading');
-                            this.$store.dispatch('dnFormSuccess');
+                        if(this.isOneTime) {
 
-                        }).catch((error) => {
-                            console.log(error.response.data.message);
+                            // send to our server to process onetime payment
+                            axios.post("/api/make_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
-                            this.$store.dispatch('endLoading')
+                                this.resetForm();
+                                console.log("----------->[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
+                                this.$store.dispatch('dnFormSuccess');
 
-                        })
-                    }
-                })
+                                console.log("[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
+                                console.log("TOKEN: " + result.token.id);
+
+                            }).catch((error) => {
+                                console.log(error.response.data.message);
+                                
+                                this.$store.dispatch('endLoading');
+
+                            })
+
+                        } else if(this.isMonthly) {
+                            axios.post("/api/monthly_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+
+                                this.resetForm();
+                                this.$store.dispatch('endLoading');
+                                this.$store.dispatch('dnFormSuccess');
+
+                            }).catch((error) => {
+                                console.log(error.response.data.message);
+
+                                this.$store.dispatch('endLoading')
+
+                            })
+                        }
+                    })
+                }
+
+                console.log("incomplete form")
             },
             toggleNotify() {
                 this.notify = !this.notify;
@@ -477,6 +511,8 @@
 
             resetForm() {
 
+                console.log("RESET FORM");
+
                 this.ten = true;
                 this.twentyFive = false;
                 this.fifty = false;
@@ -519,7 +555,6 @@
             },
 
             hide() {
-
                 /* reset/clear native browser form validation state */
                 this.show = false
                 this.$nextTick(() => {

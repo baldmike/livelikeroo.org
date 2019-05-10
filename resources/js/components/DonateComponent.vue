@@ -1,10 +1,7 @@
 <template>
-    <div  class="features-8 section-image background" id="pricing-3">
+    <div  class="features-8 section-image background">
         <div class="container-fluid">
-            <!-- <div class="col-md-12 icon icon-white" style="text-align: center;">
-                <h3 class="info-title">Donate To Live Like Roo</h3>
-            </div> -->
-
+            
             <div class="row" style="height: 0;">
                 <div class="col-md-2 title">DONATE</div>
             </div>
@@ -18,7 +15,7 @@
 
             <div class="section-space"></div>
 
-            <div class="row">
+            <div class="row donate-cards">
                 <div class="col-md-3 ml-auto">
                     <card type="pricing">
                         <img src="/images/headline2.jpg">
@@ -27,7 +24,7 @@
                            One Time
                         </h1>
                         <h3>Donation</h3>
-                        <n-button @click.prevent.native="oneTime" type="primary" round>Select</n-button>
+                        <n-button @click.prevent.native="oneTime" type="primary" size="lg" round>ONE TIME DONATION</n-button>
                     </card>
                 </div>
                 <div class="col-md-3 mr-auto">
@@ -38,7 +35,7 @@
                            Monthly
                         </h1>
                         <h3>Donation</h3>
-                        <n-button @click.native="monthly" type="neutral" round>Select</n-button>
+                        <n-button @click.native="monthly" type="neutral" size="lg" round>MONTHLY DONATION</n-button>
 
                     </card>
                 </div>
@@ -89,20 +86,29 @@
 
     @media only screen and (max-width: 500px) {
         .background {
-            background-color: orange;
+            background-image: url('/images/unsplash-pugina-blanket.jpg');
+            height: 1500px;
+        }
+        .title {
             height: 100%;
+            font-size: 20vw;
+            padding: 0 15;
+            margin-top: -25;
         }
 
+        .text {       
+            display: none;
+        }
 
-        .title {       
-            font-size: 5vw;
-            
+        .donate-cards {
+            margin-top: 300px;
         }
     }
 
     @media only screen and (min-width: 500px) {
         .background {
-            background-image: url('/images/unsplash-pugina-blanket.jpg'); 
+            background-image: url('/images/unsplash-pugina-blanket.jpg');
+            min-height: 1100px;
         }
         .text {
             color: orange;
@@ -110,7 +116,7 @@
 
         .title {
                 
-            font-size: 13vw;
+            font-size: 11vw;
             transform: rotate(90deg);
         }
     }

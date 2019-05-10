@@ -35,7 +35,7 @@
             </nav>
 
             <div class="copyright">
-                &copy; {{year}}, The Live Like Roo Foundation - From the Fingers of 
+                &copy; {{year}}, The Live Like Roo Foundation - Designed and Developed with Love by 
                 <a href="https://github.com/baldmike" target="_blank">Bald Mike</a>
             </div>
         </div>

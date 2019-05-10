@@ -9,16 +9,14 @@
                 <div class="error" v-if="errors">Invalid Credentials. Please try again.</div>
                 <br>
                 <h2 class="text-center">LOGIN</h2>
-                
 
-                <!-- TO DO - ADDON ICONS -->
                 <fg-input id="emailLogin"
                         type="email"
                         v-model="form.emailLogin"
                         :state="!$v.form.emailLogin.$invalid"
                         placeholder="Email" />
 
-                <!-- TO DO - ADDON ICONS -->
+                
                 <fg-input id="password"
                         type="password"
                         v-model="form.password" 

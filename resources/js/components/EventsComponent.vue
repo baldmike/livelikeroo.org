@@ -16,7 +16,7 @@
 
                     <div class="col-md-3 text-center" style="padding: 30px; margin: 30px;">
                         
-                        <h4 class="description" style="background-color: black; color: white; opacity: .7;">Whether you're a dog lover looking for more of us, or just someone who likes a good, sometimes weird, time - our events always put the sing in fundraising! Click on an event and you'll be taken to that FaceBook page, where you can get more information, register/sign up or buy tickets. Come play with us!</h4>
+                        <h4 class="description">Whether you're a dog lover looking for more of us, or just someone who likes a good, sometimes weird, time - our events always put the sing in fundraising! Click on an event and you'll be taken to that FaceBook page, where you can get more information, register/sign up or buy tickets. Come play with us!</h4>
 
                     </div>
                 </div>
