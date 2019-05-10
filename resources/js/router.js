@@ -68,7 +68,7 @@ export const router = new VueRouter({
                     path: '/contact',
                     components: {default: ContactComponent, header: Navbar, footer: Footer},
                     title: 'Contact',   
-                    props: {header: {colorOnScroll: 800}}
+                    props: {header: {colorOnScroll: 10}}
                 },
                 {
                     path: '/booker',
