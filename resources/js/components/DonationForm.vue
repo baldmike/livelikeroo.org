@@ -109,7 +109,7 @@
 
                 <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you. With your email and password, you'll be able to log in and view, update or cancel your donation at any time.</div>
 
-                <br><br>
+                
                 <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required</h6>
                 
                 <div class="form-group">
@@ -523,7 +523,8 @@
                 this.show = false;
                 
                 this.$nextTick(() => {
-                    this.show = true
+                    this.show = true;
+                    this.$v.$reset();
                 });
 
                 

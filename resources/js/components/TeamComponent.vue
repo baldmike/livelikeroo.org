@@ -18,14 +18,14 @@
                                     </a>
                                 </div>
 
-                                <div class="card-footer">
+                                <!-- <div class="card-footer">
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-twitter"><i
                                             class="fab fa-twitter"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
                                             class="fab fa-facebook-square"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
                                             class="fab fa-google"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -55,7 +55,7 @@
                                     </a>
                                 </div>
 
-                                <div class="card-footer">
+                                <!-- <div class="card-footer">
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
                                             class="fab fa-linkedin"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
@@ -64,7 +64,7 @@
                                             class="fab fa-dribbble"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
                                             class="fab fa-google"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -94,14 +94,14 @@
                                     </a>
                                 </div>
 
-                                 <div class="card-footer">
+                                 <!-- <div class="card-footer">
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-youtube"><i
                                             class="fab fa-youtube"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-twitter"><i
                                             class="fab fa-twitter"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-instagram"><i
                                             class="fab fa-instagram"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -133,14 +133,14 @@
                                     </a>
                                 </div>
 
-                                <div class="card-footer">
+                                <!-- <div class="card-footer">
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
                                             class="fab fa-linkedin"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
                                             class="fab fa-facebook-square"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
                                             class="fab fa-google"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -174,14 +174,14 @@
                                     </a>
                                 </div>
 
-                                <div class="card-footer">
+                                <!-- <div class="card-footer">
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
                                             class="fab fa-linkedin"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
                                             class="fab fa-facebook-square"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
                                             class="fab fa-google"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -215,14 +215,14 @@
                                     </a>
                                 </div>
 
-                                <div class="card-footer">
+                                <!-- <div class="card-footer">
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
                                             class="fab fa-linkedin"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
                                             class="fab fa-facebook-square"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
                                             class="fab fa-google"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -255,14 +255,14 @@
                                     </a>
                                 </div>
 
-                                <div class="card-footer">
+                                <!-- <div class="card-footer">
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
                                             class="fab fa-linkedin"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
                                             class="fab fa-facebook-square"></i></a>
                                     <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
                                             class="fab fa-google"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">

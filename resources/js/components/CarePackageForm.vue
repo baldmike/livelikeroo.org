@@ -344,9 +344,6 @@
                             this.$store.dispatch('cpFormError')
                     })
                 }
-
-                console.log("INVALID FORM");
-                
             },
             onReset(evt) {
                 evt.preventDefault()
@@ -366,7 +363,8 @@
                 /* reset/clear native browser form validation state */
                 this.show = false
                 this.$nextTick(() => {
-                    this.show = true
+                    this.show = true;
+                    this.$v.$reset();
                 })
             },
             hide() {

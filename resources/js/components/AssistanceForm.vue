@@ -660,7 +660,8 @@
                 /* reset/clear native browser form validation state */
                 this.show = false
                 this.$nextTick(() => {
-                    this.show = true
+                    this.show = true;
+                    this.$v.$reset();
                 })
             },
             onFileChange(e) {
