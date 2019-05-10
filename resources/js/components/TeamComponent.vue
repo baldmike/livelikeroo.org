@@ -282,6 +282,44 @@
                         </div>
                     </card>
                 </div>
+
+                <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
+                    <card type="profile" plain>
+                        <div slot="raw-content" class="row">
+                            <div class="col-md-5">
+                                <div class="card-image">
+                                    <a href="#pablo">
+                                        <img class="img img-raised rounded"
+                                                src="images/bald_idiot2.jpg"/>
+                                    </a>
+                                </div>
+
+                                <!-- <div class="card-footer">
+                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
+                                            class="fab fa-linkedin"></i></a>
+                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
+                                            class="fab fa-facebook-square"></i></a>
+                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
+                                            class="fab fa-google"></i></a>
+                                </div> -->
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h4 class="card-title">Bald Mike</h4>
+                                    <h6 class="category">Tech Nerd/Model</h6>
+                                    <p class="card-description textOnWhite">    
+                                        After a quarter century in the Chicago bar business, Bald Mike woke up one morning and decided to begin his modeling career. Sadly, his modeling
+                                    </p>
+                                    <p v-if="mike">
+                                        career was tragically cut short the following day, when he discovered that no one wants that. Following his other, slightly more realistic dream, He is a web developer, working primarily with PHP/Laravel and JavaScript/Vue.js. His goal is to bridge the gap between dullards like himself and the technology that we all rely on and would love nothing more than to assist all rescues in updating their technology. Bald Mike freaking loves dogs, but has a soft spot for the smart ass Bully breeds, like his knucklehead, Chopper - who himself is a cancer survivor, with help from Live Like Roo. After years of involvement in the rescue community, he finally got a date out of it, and Bald Mike and Chopper now live with Mia and her maniac princess dog, Coco. 
+                                    </p>
+
+                                    <n-button type="primary" @click.prevent.native="showBioMike"><span v-if="lindsay">Show Less</span><span v-if="!lindsay">...Read Full Bio</span></n-button>
+                                </div>
+                            </div>
+                        </div>
+                    </card>
+                </div>
             </div>
         </div>
     </div>
@@ -312,7 +350,8 @@
             kathy: false,
             dawn: false,
             sara: false,
-            lindsay: false
+            lindsay: false,
+            mike: false
         }
     },
     methods: {
@@ -337,6 +376,9 @@
         showBioLindsay() {
             this.lindsay = !this.lindsay;
         },
+        showBioMike() {
+            this.mike = !this.mike;
+        }
     }
   }
 </script>
