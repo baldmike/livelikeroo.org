@@ -102,12 +102,12 @@
                             </p>
                         </div>
                         <!-- Second image on the left side of the article -->
-                        <div class="image-container image-left-bottom"
+                        <div class="image-container image-left-bottom noPhone"
                                 style="background-image: url('images/rooTooPage12.jpg')"></div>
                     </div>
                     <div class="col-md-5">
                         <!-- First image on the right side, above the article -->
-                        <div class="image-container image-right"
+                        <div class="image-container image-right noPhone"
                                 style="background-image: url('images/homeTooPic7.jpg')"></div>
                         <h2 class="title">All About Roo</h2>
                         <p class="textOnWhite">
@@ -170,7 +170,11 @@
   }
 </script>
 <style scoped>
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 500px) {
+        .noPhone {
+            display: none;
+        }
+
         .donate-box {
             display: none;
         }
@@ -181,6 +185,10 @@
             width: 500px;
             margin: 0 auto;
             z-index: 10;
+        }
+
+        .title {
+            margin-top: 42px;
         }
     }
 
