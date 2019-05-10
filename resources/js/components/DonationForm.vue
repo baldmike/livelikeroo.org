@@ -423,7 +423,6 @@
                                 console.log("TOKEN: " + result.token.id);
 
                             }).catch((error) => {
-                                console.log(error.response.data.message);
                                 
                                 this.$store.dispatch('endLoading');
 
@@ -438,8 +437,8 @@
                                 this.$store.dispatch('dnFormSuccess');
 
                             }).catch((error) => {
-                                console.log(error.response.data.message);
 
+                                this.$store.dispatch('endLoading')
                                 this.$store.dispatch('dnFormError');
 
                             })
@@ -514,7 +513,7 @@
                 this.form.password = 'password';
                 this.form.repeatPassword = 'password';
 
-                this.form.inMemory = false;
+                this.form.inMemory = 0;
                 this.form.honoreeName = 'honoree';
                 this.form.recipientName = 'Recipient Name';
                 this.form.recipientEmail = 'recipient@example.com';
@@ -526,6 +525,8 @@
                 this.$nextTick(() => {
                     this.show = true
                 });
+
+                
             },
 
             toggleMonthly() {
