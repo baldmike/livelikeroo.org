@@ -3,6 +3,13 @@
             :class="{[`footer-${type}`]: type}"
             :data-background-color="backgroundColor">
         <div class="container">
+
+            <div class="row">
+                <div class="col-1">
+                    <i
+                                            class="fab fa-facebook-square"></i>
+                </div>
+            </div>
             <nav>
                 <ul>
                     <li>
