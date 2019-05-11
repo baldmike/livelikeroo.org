@@ -7,7 +7,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3 offset-md-2">
+                <div class="col-8 offset-2 col-md-3 offset-md-2">
                     <h4 class="text">We have helped over 8200 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donation is tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
                     
                 </div>
@@ -18,7 +18,7 @@
             <div class="row donate-cards">
                 <div class="col-md-3 ml-auto noPhone">
                     <card type="pricing">
-                        <img src="/images/headline2.jpg">
+                        <!-- <img src="/images/headline2.jpg"> -->
                         <h3>Make a</h3>
                         <h1>
                            One Time
@@ -28,13 +28,13 @@
                     </card>
                 </div>
 
-                <div class="phonely">
-                    <n-button @click.prevent.native="oneTime" type="primary" size="lg" round>ONE TIME DONATION</n-button>
+                <div class="col-md-8 ml-auto mr-auto phonely">
+                    <n-button @click.prevent.native="oneTime" type="primary" size="lg" round block>ONE TIME DONATION</n-button>
                 </div>
                 
                 <div class="col-md-3 mr-auto noPhone">
                     <card type="pricing" raised color="orange">
-                        <img src="/images/headline3.jpg" style="margin-bottom: 15px;">
+                        <!-- <img src="/images/headline3.jpg" style="margin-bottom: 15px;"> -->
                         <h3>Make a</h3>
                         <h1>
                            Monthly
@@ -44,8 +44,8 @@
                     </card>
                 </div>
 
-                <div class="phonely">
-                    <n-button @click.native="monthly" type="neutral" size="lg" round>MONTHLY DONATION</n-button>
+                <div class="col-md-8 ml-auto mr-auto phonely">
+                    <n-button @click.native="monthly" type="neutral" size="lg" round block>MONTHLY DONATION</n-button>
                 </div>
             </div>
         </div>
@@ -97,13 +97,6 @@
             background-image: url('/images/unsplash-pugina-blanket.jpg');
         }
         .title {
-            
-            font-size: 20vw;
-            padding: 0 15;
-            transform: rotate(90deg);
-        }
-
-        .text {       
             display: none;
         }
 
@@ -114,6 +107,14 @@
         .noPhone {
             display: none;
         }
+
+        .text {
+            font-size: 1rem;
+            position: absolute;
+            top: 100;
+            color: orange;
+        }
+
     }
 
     @media only screen and (min-width: 500px) {

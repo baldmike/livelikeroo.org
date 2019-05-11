@@ -14,7 +14,7 @@ use Laravel\Nova\Http\Requests\LensRequest;
 use App\Nova\Actions\sendCarePackage;
 use NovaButton\Button;
 
-class ActiveCPRequest extends Lens
+class CarePackagesToSend extends Lens
 {
     /**
      * Get the query builder / paginator for the lens.
@@ -61,7 +61,8 @@ class ActiveCPRequest extends Lens
                 ->hideFromIndex(),
             
             DateTime::make('Created At')
-                ->sortable(),
+                ->sortable()
+                ->hideFromIndex(),
 
             Text::make('Email')
                 ->sortable()
@@ -94,7 +95,8 @@ class ActiveCPRequest extends Lens
             Text::make('About')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255')
+                ->hideFromIndex(),
                 
             Image::make('Image')->disk('local')
                 ->hideFromIndex()

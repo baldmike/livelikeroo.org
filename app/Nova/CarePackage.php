@@ -14,7 +14,7 @@ use Laravel\Nova\Fields\Password;
 use App\Nova\Actions\sendCarePackage;
 use NovaButton\Button;
 use App\Events\CarePackageSent;
-use App\Nova\Lenses\ActiveCPRequest;
+use App\Nova\Lenses\CarePackagesToSend;
 
 use App\Nova\Metrics\CarePackageRequests;
 use App\Nova\Metrics\UnsentCarePackages;
@@ -200,7 +200,7 @@ class CarePackage extends Resource
     public function lenses(Request $request)
     {
         return [
-            new ActiveCPRequest
+            new CarePackagesToSend
         ];
     }
 
