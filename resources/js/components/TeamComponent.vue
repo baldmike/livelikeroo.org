@@ -121,16 +121,8 @@
                                                 src="images/teamKathy1.jpg"/>
                                     </a>
                                 </div>
-
-                                <!-- <div class="card-footer">
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
-                                            class="fab fa-facebook-square"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
-                                            class="fab fa-google"></i></a>
-                                </div> -->
                             </div>
+
                             <div class="col-md-7">
                                 <div class="card-body">
                                     <h4 class="card-title">Kathy Lesinski</h4>
@@ -148,6 +140,7 @@
                                     <n-button type="primary" @click.prevent.native="showBioKathy"><span v-if="kathy">Show Less</span><span v-if="!kathy">...Read Full Bio</span></n-button>
                                 </div>
                             </div>
+                            
                         </div>
                     </card>
                 </div>
@@ -204,6 +197,8 @@
 
                                 <div class="card-footer">
                                     <a href="https://www.instagram.com/daebreyk/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/dawnmm/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
                                             class="fab fa-instagram"></i></a>
                                 </div>
                             </div>

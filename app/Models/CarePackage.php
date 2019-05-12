@@ -24,4 +24,24 @@ class CarePackage extends Model
     {
         return $query->where('sent', 0);
     }
+
+    /**
+     * Return the shipping data for a user
+     * 
+     * @return array
+     */
+    public function shippingAddress()
+    {
+        return [
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'address1' => $this->address1,
+            'address2' => $this->address2,
+            'city' => $this->city,
+            'state' => $this->state,
+            'zip' => $this->zip,
+            'email' => $this->email,
+        ];
+    }
+    
 }
