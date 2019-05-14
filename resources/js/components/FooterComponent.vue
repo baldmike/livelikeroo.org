@@ -4,7 +4,7 @@
             :data-background-color="backgroundColor">
         <div class="container-fluid">
             <div class="row social-footer">
-                <div class="col-3 offset-md-9">
+                <div class="col-2 ml-auto mr-auto">
                     <a href="https://www.facebook.com/LiveLikeRoo/"><i class="fab fa-facebook-square"></i></a>
                     
                     <a href="https://www.instagram.com/livelikeroofoundation/?hl=en"><i class="fab fa-instagram"></i></a>

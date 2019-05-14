@@ -23,11 +23,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'10')"   outline round type="primary" :class="{ red: isTen }"><i class="fa fa-heart"></i>  $10</n-button></div>
-                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'25')"   outline round type="primary" :class="{ red: isTwentyFive }"><i class="fa fa-heart"></i> $25</n-button></div>
-                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'50')"   outline round type="primary" :class="{ red: isFifty }"><i class="fa fa-heart"></i> $50</n-button></div>
-                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate($event,'100')" outline round type="primary" :class="{ red: isHundred }"><i class="fa fa-heart"></i>$100</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('25')"   block round type="primary"><span :class="{ red: isTwentyFive }"><i class="fa fa-heart"></i></span>$25</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('50')"   block round type="primary"><span :class="{ red: isFifty }"><i class="fa fa-heart"></i></span>$50</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('100')" block round type="primary"><span :class="{ red: isHundred }"><i class="fa fa-heart"></i></span>$100</n-button></div>
+                    <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('250')"   block round type="primary"><span :class="{ red: isTwoFifty }"><i class="fa fa-heart"></i></span>$250</n-button></div>
                 </div>
+
+                <!-- <n-button @click.prevent.native = "donateHundred">$100</n-button> -->
 
                 <div class="row">
                     <div class="col-md-12 center">
@@ -247,16 +249,12 @@
 
                 form: {
                     fund: '',
-                    amount: 25,
+                    amount: '25',
                     email: '',
                     password: 'password',
                     repeatPassword: 'password',
                     firstName: '',
                     lastName: '',
-                    ten: false,
-                    twentyFive: false,
-                    fifty: true,
-                    hundred: false,
                     name_on_card: '',
                     inMemory: 0,
                     honoreeName: '',
@@ -316,18 +314,19 @@
 
         },
         computed: {
-            isTen() {
-                return !!(this.form.amount = 10);
-            },
             isTwentyFive() {
-                return !!(this.form.amount = 25);
+                return !!(this.form.amount === '25');
             },
             isFifty() {
-                return !!(this.form.amount = 50);
+                return !!(this.form.amount === '50');
             },
             isHundred() {
-                return !!(this.form.amount = 100);
+                return !!(this.form.amount === '100');
             },
+            isTwoFifty() {
+                return !!(this.form.amount === '250');
+            },
+
             donationType() {
                 if (this.form.inMemory) {
                     return 'Memorial'
@@ -408,64 +407,51 @@
                         // append hidden input to FormData object
                         fd.append('stripeToken', result.token.id);
 
+                        // Make the call to our server to process donation using Stripe result.token.id 
+
                         if(this.isOneTime) {
 
                             fd.append('role', 'donor');
-                            // send to our server to process onetime payment
+                            
                             axios.post("/api/make_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
                                 this.resetForm();
-                                console.log("----------->[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
                                 this.$store.dispatch('dnFormSuccess');
-
-                                console.log("[DONATION FORM MODAL - PAY()] -- PAYMENT PROCESSED")
-                                console.log("TOKEN: " + result.token.id);
 
                             }).catch((error) => {
                                 
-                                this.$store.dispatch('endLoading');
+                                this.$store.dispatch('dnFormError');
 
                             })
 
                         } else if(this.isMonthly) {
+
                             fd.append('role', 'monthly_donor');
+                            
                             axios.post("/api/monthly_donation", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
                                 this.resetForm();
-                                this.$store.dispatch('endLoading');
                                 this.$store.dispatch('dnFormSuccess');
 
                             }).catch((error) => {
 
-                                this.$store.dispatch('endLoading')
                                 this.$store.dispatch('dnFormError');
 
                             })
                         }
                     })
                 }
-
-                console.log("incomplete form")
             },
             toggleNotify() {
                 this.notify = !this.notify;
             },
 
-            donate(event, amt) {
+            donate(amt) {
                 
-                this.donateClear();
-                console.log("THE AMT IS---------->  " + amt);
                 this.form.amount = amt;
 
                 console.log(this.amount);
             }, 
-
-            donateClear() {
-                this.ten = false;
-                this.twentyFive = false;
-                this.fifty = false;
-                this.hundred = false;
-            },
 
             clearButtons() {
                 console.log("clearButtons()");
@@ -504,7 +490,7 @@
                 this.fifty = false;
                 this.hundred = false;
 
-                this.form.amount = '10';
+                this.form.amount = '25';
                 this.form.name_on_card = '';
                 this.form.firstName = '';
                 this.form.lastName = '';
@@ -525,14 +511,12 @@
                     this.show = true;
                     this.$v.$reset();
                 });
-
-                
             },
 
             toggleMonthly() {
 
                 this.form.password = '';
-                this.form.password = '';
+                this.form.repeatPassword = '';
                 this.$store.dispatch('setMonthly');
             },
 
@@ -575,7 +559,7 @@
     }
 
     .red {
-        color: red;
+        color: red !important;
     }
     
 </style>

@@ -32,12 +32,13 @@ class SendCarePackage
             $event->carePackage->sent = true;
             $event->carePackage->save();   
 
-            // Try and validate the address
-            $validate = $this->shipping->validateAddress($event->carePacakge);
-            // Make sure it's not an invalid address this
-            // could also be moved to a custom validator rule
-            if ($validate->object_state == 'INVALID') {
-                return back()->withMessages($validate->messages);
-            }
+            // SHIPPING STUFF
+            // // Try and validate the address
+            // $validate = $this->shipping->validateAddress($event->carePacakge);
+            // // Make sure it's not an invalid address this
+            // // could also be moved to a custom validator rule
+            // if ($validate->object_state == 'INVALID') {
+            //     return back()->withMessages($validate->messages);
+            // }
     }
 }
