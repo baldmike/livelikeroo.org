@@ -3,19 +3,21 @@
             :class="{[`footer-${type}`]: type}"
             :data-background-color="backgroundColor">
         <div class="container-fluid">
+            
+
+            
+            
             <div class="row social-footer">
                 <div class="col-2 ml-auto mr-auto">
+                    <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link"></a>
+                    
                     <a href="https://www.facebook.com/LiveLikeRoo/"><i class="fab fa-facebook-square"></i></a>
                     
                     <a href="https://www.instagram.com/livelikeroofoundation/?hl=en"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-4 ml-auto mr-auto">
-                    <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link"></a>
-                </div>
-            </div>
+            
             
             <nav>
                 <ul>
