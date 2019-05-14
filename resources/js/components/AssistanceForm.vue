@@ -348,26 +348,31 @@
                 <br><br>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-6 ml-auto mr-auto">
                         <n-checkbox
                                 v-model="robot"
-                                v-if="!$v.form.$invalid"
-                                required>
+                                required
+                                style="text-align: center;">
                             I'm not a robot
                         </n-checkbox>
                     </div>
-                    <div class="col-md-6">
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-12 ml-auto mr-auto">
                         <n-button 
                                 type="primary" 
                                 round 
-                                class="pull-right"
+                                block
                                 @click.prevent.native="onSubmit">
                                 Request Financial Assistance</n-button>
                     </div>                    
-                    <br>
                 </div>
 
                 <div class="sent" v-if="sent">This form has been submitted</div>
+                <div class="error" v-if="$v.form.$dirty">You have missing fields, please check the form.</div>
 
                 <div style="text-align: center; margin: 2rem;">
                     <img src="/images/llr_logo.png">
@@ -375,6 +380,11 @@
 
                 <!-- <div class="error" style="margin-top: 20px;" v-if="$v.form.$invalid">A required field isn't correctly filled out.</div>                 -->
             </form>
+
+
+            <div class="col-md-12 center">
+                    <n-button @click.prevent.native="resetForm" type="danger">RESET FORM</n-button>
+                </div>
         </div>
    </div>
 </template>
@@ -423,7 +433,6 @@
                     primaryClinicFax: '',
                     primaryClinicEmail: '',
                     specialist: '',
-                    specialistDetails: '',
                     otherHelp: '',
                     verify: false,
                 },
@@ -623,8 +632,7 @@
                 }
             },
 
-            onReset(evt) {
-                evt.preventDefault()
+            resetForm() {
                 /* Reset our form values */
                 this.form.firstName = ''
                 this.form.lastName = ''
@@ -652,7 +660,9 @@
                 this.form.primaryClinicPhone = ''
                 this.form.primaryClinicFax = ''
                 this.form.primaryClinicEmail = ''
-                this.form.verify = null
+                this.form.specialist = '',
+                this.form.otherHelp = '',
+                this.form.verify = false,
                 this.url = null
 
                 this.sent = false;

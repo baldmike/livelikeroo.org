@@ -483,13 +483,6 @@
 
             resetForm() {
 
-                console.log("RESET FORM");
-
-                this.ten = true;
-                this.twentyFive = false;
-                this.fifty = false;
-                this.hundred = false;
-
                 this.form.amount = '25';
                 this.form.name_on_card = '';
                 this.form.firstName = '';

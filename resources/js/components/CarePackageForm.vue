@@ -145,7 +145,7 @@
                             placeholder="Zip Code"
                             required/>
                     </div>
-                    <div class="errors center" v-if="$v.form.$dirty">We're gonna need to know more than that!</div>
+                    <div class="errors center" v-if="$v.form.$dirty">There are missing or incomplete fields.</div>
                     <div class="sent" v-if="form.sent">This Form Has been submitted.</div>
 
                     <div v-if="!form.sent" style="text-align: center; margin-top: 2rem;">
