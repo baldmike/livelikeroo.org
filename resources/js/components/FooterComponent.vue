@@ -2,14 +2,15 @@
     <footer class="footer"
             :class="{[`footer-${type}`]: type}"
             :data-background-color="backgroundColor">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-1">
-                    <i
-                                            class="fab fa-facebook-square"></i>
+        <div class="container-fluid">
+            <div class="row social-footer">
+                <div class="col-3 offset-md-9">
+                    <a href="https://www.facebook.com/LiveLikeRoo/"><i class="fab fa-facebook-square"></i></a>
+                    
+                    <a href="https://www.instagram.com/livelikeroofoundation/?hl=en"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+            
             <nav>
                 <ul>
                     <li>
@@ -81,5 +82,14 @@
     }
 </script>
 
-<style>
+<style lang="scss">
+    @import "../../sass/now-ui-kit/variables";
+
+    .social-footer {
+        height: 80px;
+        width: 100%;
+        font-size: 3rem;
+        margin-bottom: 50px;
+        color: $roo;
+    }
 </style>

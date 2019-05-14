@@ -146,9 +146,9 @@
                             required/>
                     </div>
                     <div class="errors center" v-if="$v.form.$dirty">We're gonna need to know more than that!</div>
-                    <div class="sent" v-if="sent">This Form Has been submitted.</div>
+                    <div class="sent" v-if="form.sent">This Form Has been submitted.</div>
 
-                    <div v-if="!sent" style="text-align: center; margin-top: 2rem;">
+                    <div v-if="!form.sent" style="text-align: center; margin-top: 2rem;">
                         <n-button 
                                 type="primary" 
                                 round 
@@ -199,8 +199,9 @@
                     diagnosis: '',
                     image: null,
                     url: null,
+                    sent: false,
                 },
-                sent: false,
+                
 
                 states: [
                     {value: "AK", label: "Alaska"},
@@ -320,18 +321,9 @@
                 if (!this.$v.form.$invalid) {
                     let fd = new FormData();
 
-                    fd.append('first_name', this.form.firstName);
-                    fd.append('last_name', this.form.lastName);
-                    fd.append('email', this.form.email);
-                    fd.append('address_1', this.form.address1);
-                    fd.append('address_2', this.form.address2);
-                    fd.append('city', this.form.city);
-                    fd.append('state', this.form.state);
-                    fd.append('zip', this.form.zip);
-                    fd.append('pet_name', this.form.petName);
-                    fd.append('about', this.form.about);
-                    fd.append('diagnosis', this.form.diagnosis);
-                    fd.append('image', this.form.image);
+                    Object.keys(this.form).forEach(key => {
+                        fd.append(key, this.form[key])
+                    })
 
                     this.$store.dispatch('cpFormSubmit');
                     

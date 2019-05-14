@@ -29,14 +29,14 @@ class CarePackageRequest extends FormRequest
         Log::debug("INSIDE THE CARE PKG REQUEST RULES");
 
         return [
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
             'email' => 'required',
-            'address_1' => 'required',
+            'address1' => 'required',
             'city' => 'required',
             'state' => 'required',
             'zip' => 'required',
-            'pet_name' => 'required',
+            'petName' => 'required',
             'about' => 'required',
         ];
     }

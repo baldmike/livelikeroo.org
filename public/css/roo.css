@@ -1,0 +1,24 @@
+:root {
+  --transparent: transparent;
+  --black: #22292f;
+  --white: white;
+  --white-50: rgba(255, 255, 255, 0.5);
+  --danger: #e74444;
+  --success: #21b978;
+  --warning: #ffeb3b;
+  --info: #03a9f4;
+  --primary: #fd7e14;
+  --primary-dark: #fd7e14;
+  --primary-70: rgba(64, 153, 222, 0.7);
+  --primary-50: rgba(64, 153, 222, 0.5);
+  --primary-30: rgba(64, 153, 222, 0.3);
+  --primary-10: rgba(64, 153, 222, 0.1);
+  --logo: #252d37;
+  --sidebar-icon: #b3c1d1;
+}
+
+/* Background Image
+---------------------------------------------------------------------------- */
+.bg-grad-sidebar {
+  background-image: linear-gradient(0deg, #7e8ea1 0%, #3c4655 100%);
+}

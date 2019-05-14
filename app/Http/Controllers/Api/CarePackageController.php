@@ -44,17 +44,18 @@ class CarePackageController extends Controller
         {
             $CP = new CarePackage();
 
-            $CP->first_name = request('first_name');
-            $CP->last_name = request('last_name');
+            $CP->first_name = request('firstName');
+            $CP->last_name = request('lastName');
             $CP->email = request('email');
-            $CP->address_1 = request('address_1');
-            $CP->address_2 = request('address_2');
+            $CP->address_1 = request('address1');
+            $CP->address_2 = request('address2');
             $CP->city = request('city');
             $CP->state = request('state');
             $CP->zip = request('zip');
-            $CP->pet_name = request('pet_name');
+            $CP->pet_name = request('petName');
             $CP->about = request('about');
             $CP->diagnosis = request('diagnosis');
+            $CP->sent = 0;
         }
 
         // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL on the front end
