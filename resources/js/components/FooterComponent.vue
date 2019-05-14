@@ -10,6 +10,12 @@
                     <a href="https://www.instagram.com/livelikeroofoundation/?hl=en"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-4 ml-auto mr-auto">
+                    <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link"></a>
+                </div>
+            </div>
             
             <nav>
                 <ul>
