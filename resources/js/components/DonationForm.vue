@@ -261,7 +261,7 @@
                     recipientName: '',
                     recipientEmail: '',
                     recipientMessage: '',
-                    fund: ''
+                    fund: this.$store.state.fund,
                 },
                 show: true,
                 notify: false,
@@ -402,8 +402,7 @@
                             fd.append(key, this.form[key])
                         })
 
-                        fd.append 
-
+                        
                         // append hidden input to FormData object
                         fd.append('stripeToken', result.token.id);
 

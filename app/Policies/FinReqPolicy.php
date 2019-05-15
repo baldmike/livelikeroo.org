@@ -19,7 +19,7 @@ class FinReqPolicy
      */
     public function view(User $user, FinReq $finReq)
     {
-        //
+        return true;
     }
 
     /**
@@ -42,7 +42,7 @@ class FinReqPolicy
      */
     public function update(User $user, FinReq $finReq)
     {
-        //
+        return true;
     }
 
     /**

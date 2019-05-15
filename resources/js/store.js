@@ -41,7 +41,7 @@ export default new Vuex.Store({
             },
             loading: false,
             message: '',
-            fund: 'roo',
+            fund: '',
             
             
         }

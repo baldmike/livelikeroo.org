@@ -286,10 +286,10 @@
                                     <h4 class="card-title">Bald Mike</h4>
                                     <h6 class="category">Nerd/Model</h6>
                                     <p class="card-description textOnWhite">    
-                                        After a quarter century in the Chicago bar business, Bald Mike sobered up one afternoon and decided to begin his modeling career. Sadly, this
+                                        Bald Mike makes computers do stuff. And he'd love nothing more than to 
                                     </p>
                                     <p v-if="mike">
-                                        was tragically cut short, as the shiny lights were too distracting. So now he's a software developer, working primarily with PHP/Laravel and JavaScript/Vue.js in an effort to bridge the gap between humanity and the robots. He would love nothing more than to assist rescues and shelters in updating their technology. Bald Mike freaking loves typing this in the third person, AND he loves all dogs, but has a soft spot for the silly Bully breeds, like his knucklehead, Chopper - who himself is a cancer survivor, with help from Live Like Roo. After years of involvement in the rescue community, he FINALLY got a date out of it, and Bald Mike and Chopper are now over the moon for Mia and her maniac mutt, Coco Louise.
+                                        make computers do stuff to assist rescues and shelters in updating their technology. This guy loves all dogs, but has a soft spot for the silly Bully breeds, like his knucklehead, Chopper - who himself is a cancer survivor, with help from Live Like Roo. After years of involvement in the rescue community, he FINALLY got a date out of it, and Bald Mike and Chopper are now over the moon for Mia and her maniac mutt, Coco Louise.
                                     </p>
 
                                     <n-button type="primary" @click.prevent.native="showBioMike"><span v-if="mike">Show Less</span><span v-if="!mike">...Read Full Bio</span></n-button>

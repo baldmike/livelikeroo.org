@@ -111,7 +111,8 @@ class Donation extends Resource
                 ])
                 ->sortable(),
                 
-            DateTime::make('Created At')
+            DateTime::make('Made On', 'created_at')
+                ->format('MMMM DD YYYY h:mm a')
                 ->sortable(),
 
             Text::make('Name On Card')

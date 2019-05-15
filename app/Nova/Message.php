@@ -6,6 +6,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 
@@ -31,7 +32,7 @@ class Message extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'email', 'message'
+        'created_at', 'first_name', 'last_name', 'email', 'message'
     ];
 
     /**
@@ -43,9 +44,11 @@ class Message extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
 
-
+            DateTime::make('Received', 'created_at')
+                ->format('MMMM DD YYYY h:mm a')
+                ->sortable(),
+            
             Text::make('First Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -61,9 +64,9 @@ class Message extends Resource
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
             Textarea::make('Message')
-                ->hideFromIndex()
                 ->sortable()
                 ->rules('required')
+                ->hideWhenUpdating(),
         ];
     }
 

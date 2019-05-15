@@ -37,6 +37,16 @@ class CarePackage extends Resource
     public static $title = 'email';
 
     /**
+     * Get the displayble label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return 'Care Packages';
+    }
+
+    /**
      * The columns that should be searched.
      *
      * @var array
@@ -61,6 +71,8 @@ class CarePackage extends Resource
 
             new Panel('Pet Information', $this->petFields()),
 
+            new Panel('Action Fields', $this->actionFields()),
+
         ];
     }
 
@@ -72,9 +84,9 @@ class CarePackage extends Resource
     protected function cpRequestFields()
     {
         return [
-            ID::make('ID', 'id'),
             
-            DateTime::make('Created At')
+            DateTime::make('Requested', 'created_at')
+                ->format('MMMM DD YYYY h:mm a')
                 ->sortable(),
 
             Text::make('Email')
@@ -85,11 +97,6 @@ class CarePackage extends Resource
 
             Boolean::make('Sent')
                 ->sortable(),
-
-            Button::make('send')
-                ->event('App\Events\CarePackageSent')
-                ->style('primary')
-                ->hideFromIndex(),
         ];
     }
 
@@ -119,6 +126,23 @@ class CarePackage extends Resource
                 ->maxWidth(50),
         ];
     }
+
+    /**
+     * Get the action fields for the resource.
+     *
+     * @return array
+     */
+    protected function actionFields()
+    {
+        return [
+            Button::make('send')
+            ->event('App\Events\CarePackageSent')
+            ->style('primary')
+            ->visible($this->sent === 0),
+        ];
+        
+    }
+    
     /**
      * Get the donor fields for the resource.
      *

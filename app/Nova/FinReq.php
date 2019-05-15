@@ -11,10 +11,13 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Select;
 
+use App\Nova\Metrics\AssistanceRequests;
+use App\Nova\Metrics\AssistanceRequestsPerDay;
 
 use Illuminate\Http\Request;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
+
 
 class FinReq extends Resource
 {
@@ -24,6 +27,16 @@ class FinReq extends Resource
      * @var string
      */
     public static $model = 'App\Models\FinReq';
+
+    /**
+     * Get the displayble label of the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return 'Assistance';
+    }
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -50,7 +63,8 @@ class FinReq extends Resource
     public function fields(Request $request)
     {
         return [
-            DateTime::make('Created At')
+            DateTime::make('Received', 'created_at')
+                ->format('MMMM DD YYYY h:mm a')
                 ->sortable(),
 
             Text::make('First Name')
@@ -180,7 +194,10 @@ class FinReq extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new AssistanceRequests,
+            new AssistanceRequestsPerDay
+        ];
     }
 
     /**

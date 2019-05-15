@@ -25,12 +25,16 @@ class SendCarePackage
      * Handle the event.
      *
      * @param  object  $event
-     * @return void
+     * 
      */
     public function handle(CarePackageSent $event)
     {
             $event->carePackage->sent = true;
-            $event->carePackage->save();   
+            $event->carePackage->save();
+
+            Log::debug("[SEND CARE PACKAGE EVENT LISTENER] - sent: " . $event->carePackage->sent);
+            
+            return redirect('/nova');
 
             // SHIPPING STUFF
             // // Try and validate the address

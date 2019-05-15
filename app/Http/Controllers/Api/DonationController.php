@@ -83,6 +83,7 @@ class DonationController extends Controller
                 $D->recipient_name = request('recipientName');
                 $D->recipient_email = request('recipientEmail');
                 $D->recipient_msg = request('recipientMessage');
+                $D->fund = request('fund');
                 
                 $D->save();
 
@@ -164,6 +165,7 @@ class DonationController extends Controller
                 $D->recipient_name = request('recipientName');
                 $D->recipient_email = request('recipientEmail');
                 $D->recipient_msg = request('recipientMessage');
+                $D->fund = request('fund');
                 $D->save();
 
                 // change to $request->email
