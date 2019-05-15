@@ -25,8 +25,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         parent::boot();
 
-        // Nova::style('roo', asset('/roo.css'));
-
     }
 
     /**
