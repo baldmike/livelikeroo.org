@@ -26,7 +26,7 @@ class CarePackagesToSend extends Lens
     public static function query(LensRequest $request, $query)
     {
         return $request->withOrdering($request->withFilters(
-            $query->where('sent', false)->orderBy('created_at', 'desc')
+            $query->where('sent', 0)->orderBy('created_at', 'desc')
         ));
     }
 

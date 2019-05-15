@@ -27,7 +27,7 @@ class sendCarePackage extends Action
     {
         foreach ($models as $model) {
             $model->update([
-                $model->forceFill(['sent' => true])->save()
+                $model->forceFill(['sent' => 1])->save()
             ]);
         }
     }

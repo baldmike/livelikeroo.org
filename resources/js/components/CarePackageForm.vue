@@ -27,6 +27,24 @@
                                 required/>
                     </div>
 
+                    <div class="form-group" :class="{ 'has-danger': $v.form.species.$invalid && $v.form.species.$dirty, 'has-success': !$v.form.species.$invalid }">
+                        <label for="species">Species</label>
+                        <el-select
+                                class="select-primary"
+                                placeholder="Select Species"
+                                v-model="form.species"
+                                required>
+
+                                <el-option v-for="option in species"
+                                        class="select-primary"
+                                        :key="option.label"
+                                        :value="option.value"
+                                        :label="option.label"> 
+                                </el-option>
+                        </el-select>
+                    </div>
+
+
                     <div class="form-group" :class="{ 'has-danger': $v.form.about.$invalid && $v.form.about.$dirty, 'has-success': !$v.form.about.$invalid }">
                         <label>Tell us a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                         <textarea
@@ -195,6 +213,7 @@
                     state: null,
                     zip: '',
                     petName: '',
+                    species: '',
                     about: '',
                     diagnosis: '',
                     image: null,
@@ -256,7 +275,13 @@
                     {value: "WV", label: "West Virginia"},
                     {value: "WY", label: "Wyoming"},
                 ],
-                species: [ 'Dog', 'Cat', 'Rabbit', 'Bird', 'Other' ],
+                species: [ 
+                    { value: 'Dog', label: 'Dog' },
+                    { value: 'Cat', label: 'Cat' },
+                    { value: 'Rabbit', label: 'Rabbit' },
+                    { value: 'Horse', label: 'Horse' },
+                    { value: 'Other', label: 'Other' }
+                ],
                 show: true
             }
         },
@@ -303,6 +328,9 @@
                     required,
                     minLength: 1,
                     maxLength: 30
+                },
+                species: {
+                    required,
                 },
                 about: {
                     required
