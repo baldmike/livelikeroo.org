@@ -138,7 +138,8 @@ class CarePackage extends Resource
             Button::make('send')
             ->event('App\Events\CarePackageSent')
             ->style('primary')
-            ->visible($this->sent === 0),
+            ->visible($this->sent === 0)
+            ->reload(),
         ];
         
     }

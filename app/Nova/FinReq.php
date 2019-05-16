@@ -13,6 +13,7 @@ use Laravel\Nova\Fields\Select;
 
 use App\Nova\Metrics\AssistanceRequests;
 use App\Nova\Metrics\AssistanceRequestsPerDay;
+use App\Nova\Metrics\AssistanceRequestsByState;
 
 use Illuminate\Http\Request;
 
@@ -196,7 +197,8 @@ class FinReq extends Resource
     {
         return [
             new AssistanceRequests,
-            new AssistanceRequestsPerDay
+            new AssistanceRequestsPerDay,
+            new AssistanceRequestsByState
         ];
     }
 
