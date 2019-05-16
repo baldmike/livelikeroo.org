@@ -10,6 +10,8 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 
+use App\Nova\Metrics\Messages;
+
 class Message extends Resource
 {
     /**
@@ -78,7 +80,9 @@ class Message extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new Messages
+        ];
     }
 
     /**

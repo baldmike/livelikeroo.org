@@ -35,10 +35,10 @@ class MessagePolicy
      */
     public function create(User $user)
     {
-        if ($user->role === 'admin')
-        {
-            return true;
-        }
+        // if ($user->role === 'admin')
+        // {
+        //     return true;
+        // }
 
         return false;
     }

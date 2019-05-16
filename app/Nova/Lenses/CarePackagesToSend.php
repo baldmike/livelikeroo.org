@@ -11,7 +11,6 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Panel;
 use Laravel\Nova\Lenses\Lens;
 use Laravel\Nova\Http\Requests\LensRequest;
-use App\Nova\Actions\sendCarePackage;
 use NovaButton\Button;
 
 class CarePackagesToSend extends Lens

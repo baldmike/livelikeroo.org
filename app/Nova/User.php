@@ -43,8 +43,7 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
-
+            
             Gravatar::make('Avatar', 'email'),
 
             Text::make('First Name')
