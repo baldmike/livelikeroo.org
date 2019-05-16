@@ -56,10 +56,9 @@ class CarePackagesToSend extends Lens
     protected function cpRequestFields()
     {
         return [
-            ID::make('ID', 'id')
-                ->hideFromIndex(),
             
-            DateTime::make('Created At')
+            DateTime::make('Requested', 'created_at')
+                ->format('MMMM DD YYYY h:mm a')
                 ->sortable()
                 ->hideFromIndex(),
 
