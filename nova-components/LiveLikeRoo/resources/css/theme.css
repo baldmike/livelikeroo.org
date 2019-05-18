@@ -1,12 +1,13 @@
 :root {
   --primary: #fd7e14;
-  --primary-dark: rgb(28, 204, 21);
+  --primary-dark: rgba(9, 247, 247, 1);
   --primary-70: rgba(253, 126, 20, 0.7);
   --primary-50: rgba(253, 126, 20, 0.5);
   --primary-30: rgba(253, 126, 20, 0.3);
   --primary-10: rgba(253, 126, 20, 0.1);
   --logo: white;
   --sidebar-icon: white;
+  --success: rgba(9, 247, 247, 1);
 }
 
 .bg-grad-sidebar {

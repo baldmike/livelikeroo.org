@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Shippo::setApiKey($this->app['config']['services.shippo.key']);
     }
 }

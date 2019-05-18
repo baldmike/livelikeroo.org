@@ -45,4 +45,8 @@ return [
         'client_secret' => env('PASSPORT_CLIENT_SECRET'),
     ],
 
+    'shippo' => [
+        'shippo_key' => env('SHIPPO_KEY'),
+    ]
+
 ];
