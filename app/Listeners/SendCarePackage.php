@@ -6,11 +6,12 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Shippo;
 use Shippo_Transaction;
+use Shippo_Address;
 
 use Illuminate\Support\Facades\Log;
 
 use App\Events\CarePackageSent;
-use App\Services\Shipping;
+
 
 class SendCarePackage
 {
@@ -19,9 +20,9 @@ class SendCarePackage
      *
      * @return void
      */
-    public function __construct(Shipping $shipping)
+    public function __construct()
     {
-        $this->shipping = $shipping;
+        Shippo::setApiKey(config('services.shippo.shippo_key'));
     }
 
     /**
@@ -32,20 +33,11 @@ class SendCarePackage
      */
     public function handle(CarePackageSent $event)
     {   
-        Shippo::setApiKey(config('services.shippo.shippo_key'));
-
         $toAddress = $event->carePackage->shippingAddress();
 
-        Log::debug($toAddress);
+        Log::debug("[SendCarePackage] -> BEFORE validation--> ");
 
-
-        // use below with the Shipping Class
-        // $validated = $this->shipping->validateAddress($toAddress);
-        // $shipment = $this->shipping->createShipment($toAddress);
-        // $transaction = $this->shipping->createLabel($shipment);
-        // Log::debug("[SEND CARE PACKAGE EVENT LISTENER] - create label");
-
-        $fromAddress = array(
+        $fromAddress = Shippo_Address::create(array(
             'name' => 'Sarah Lauch',
             'company' => 'Live Like Roo',
             'street1' => '5830 N Melvina',
@@ -53,7 +45,11 @@ class SendCarePackage
             'state' => 'IL',
             'zip' => '60646',
             'country' => 'US',
-        );
+            'email' => 'sarah@livelikeroo.org',
+            'validate' => true,
+        ));
+
+        Log::debug("[SendCarePackage] -> AFTER validation--> ");
 
         $parcel = array(
             'length'=> '5',
@@ -74,21 +70,22 @@ class SendCarePackage
             'shipment' => $shipment,
             'carrier_account' => 'c48be54b2f71475187f79b5dab7d4f30',
             'servicelevel_token' => 'usps_priority',
+            'label_file_type' => "PDF",
+            'async' => false,
         ));
 
-        // If it failed then redirect back and tell them whats wrong
-        if ($transaction["object_status"] != "SUCCESS"){
+        if ($transaction["object_status"] === "ERROR") {
             return back()->withMessage($transaction["messages"]);
         }
 
         Log::debug("[TRANSACTION] ------>");
         Log::debug($transaction);
 
-        $event->carePackage->sent = true;
-        $event->carePackage->save();    
-
         $url = $transaction->label_url;
-
-        return redirect()->to('https://www.google.com');
+        
+        $event->carePackage->sent = true;         
+        $event->carePackage->label_url = $url;
+        
+        $event->carePackage->save();
     }
 }

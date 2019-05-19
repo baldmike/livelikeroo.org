@@ -96,7 +96,8 @@ class CarePackage extends Resource
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
             Boolean::make('Sent')
-                ->sortable(),
+                ->sortable()
+                ->hideFromIndex(),
         ];
     }
 
@@ -135,13 +136,16 @@ class CarePackage extends Resource
     protected function actionFields()
     {
         return [
-            Button::make('send')
-            ->event('App\Events\CarePackageSent')
-            ->style('primary')
-            ->visible($this->sent === 0)
-            ->reload(),
-        ];
-        
+            Button::make('Ship')
+                ->event('App\Events\CarePackageSent')
+                ->style('primary')
+                ->visible(!$this->label_url),
+
+            Button::make('View')
+                ->link($this->label_url)
+                ->style('primary')
+                ->visible($this->label_url),
+        ];   
     }
     
     /**
@@ -186,6 +190,7 @@ class CarePackage extends Resource
                 ->sortable()
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
+                
         ];
 
     }
