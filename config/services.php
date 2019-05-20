@@ -47,6 +47,6 @@ return [
 
     'shippo' => [
         'shippo_key' => env('SHIPPO_KEY'),
+        'carrier_account' => env('CARRIER_ACCOUNT'),
     ]
-
 ];

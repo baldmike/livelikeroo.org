@@ -72,7 +72,7 @@ class CarePackagesToSend extends Lens
                 ->sortable(),
 
             Button::make('send')
-                ->event('App\Events\CarePackageSent')
+                ->event('App\Events\CarePackageBuyLabel')
                 ->style('primary')
                 ->reload()
         ];

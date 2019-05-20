@@ -198,7 +198,7 @@
                                 <div class="card-footer">
                                     <a href="https://www.instagram.com/daebreyk/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
                                             class="fab fa-instagram"></i></a>
-                                    <a href="https://www.linkedin.com/in/dawnmm/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                    <a href="https://www.linkedin.com/in/dawnmm/" target="_blank" class="btn btn-icon btn-neutral btn-linkedin"><i
                                             class="fab fa-instagram"></i></a>
                                 </div>
                             </div>

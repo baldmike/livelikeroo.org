@@ -40,7 +40,7 @@ export const router = new VueRouter({
                     path: '/events',
                     components: {default: EventsComponent, header: Navbar, footer: Footer},
                     title: 'Events',
-                    props: {header: {colorOnScroll: 800}}
+                    props: {header: {colorOnScroll: 200}}
                 },
                 {
                     path: '/care_package',

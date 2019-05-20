@@ -13,7 +13,7 @@ use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Password;
 use App\Nova\Actions\sendCarePackage;
 use NovaButton\Button;
-use App\Events\CarePackageSent;
+use App\Events\CarePackageBuyLabel;
 use App\Nova\Lenses\CarePackagesToSend;
 
 use App\Nova\Metrics\CarePackageRequests;
@@ -89,15 +89,9 @@ class CarePackage extends Resource
                 ->format('MMMM DD YYYY h:mm a')
                 ->sortable(),
 
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
             Boolean::make('Sent')
-                ->sortable()
-                ->hideFromIndex(),
+                ->sortable(),
+
         ];
     }
 
@@ -109,6 +103,7 @@ class CarePackage extends Resource
     protected function petFields()
     {
         return [
+
             Text::make('Pet Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -125,6 +120,7 @@ class CarePackage extends Resource
             Image::make('Image')->disk('local')
                 ->hideFromIndex()
                 ->maxWidth(50),
+
         ];
     }
 
@@ -136,15 +132,25 @@ class CarePackage extends Resource
     protected function actionFields()
     {
         return [
-            Button::make('Ship')
-                ->event('App\Events\CarePackageSent')
-                ->style('primary')
-                ->visible(!$this->label_url),
 
-            Button::make('View')
+            Button::make('Buy')
+                ->event('App\Events\CarePackageBuyLabel')
+                ->style('primary')
+                ->visible(!$this->label_url)
+                ->reload(),
+
+            Button::make('Print')
                 ->link($this->label_url)
                 ->style('primary')
-                ->visible($this->label_url),
+                ->visible($this->label_url && !$this->sent),
+
+            Button::make('Ship')
+                ->event('App\Events\CarePackageShip')
+                ->style('primary')
+                ->visible($this->label_url && !$this->sent)
+                ->confirm('Please make sure you have printed the shipping label first. This will mark '. $this->first_name . ' ' . $this->last_name .'\'s Care Package as sent.')
+                ->reload(),
+
         ];   
     }
     
@@ -156,14 +162,13 @@ class CarePackage extends Resource
     protected function labelFields()
     {
         return [
+            
             Text::make('First Name')
                 ->sortable()
-                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Last Name')
                 ->sortable()
-                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Address 1')
@@ -190,6 +195,16 @@ class CarePackage extends Resource
                 ->sortable()
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
+
+            Text::make('label_url')
+                ->hideFromIndex(),
+
+            Text::make('Email')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules('required', 'email', 'max:254')
+                ->creationRules('unique:users,email')
+                ->updateRules('unique:users,email,{{resourceId}}'),
                 
         ];
 

@@ -89,7 +89,7 @@ class CarePackageController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/');
     }
 
     /**

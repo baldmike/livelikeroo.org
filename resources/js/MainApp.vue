@@ -19,7 +19,7 @@
             </template>
         </modal>
 
-        <modal :show.sync="this.$store.state.modals.cpForm" headerClasses="justify-content-center">
+        <modal :show.sync="this.$store.state.modals.cpForm" headerClasses="justify-content-center" data-backdrop="static" >
             <h4 slot="header" class="title title-up"></h4>
             
             <care-package></care-package>
