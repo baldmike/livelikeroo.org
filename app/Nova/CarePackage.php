@@ -14,7 +14,8 @@ use Laravel\Nova\Fields\Password;
 use App\Nova\Actions\sendCarePackage;
 use NovaButton\Button;
 use App\Events\CarePackageBuyLabel;
-use App\Nova\Lenses\CarePackagesToSend;
+
+use App\Nova\Filters\CarePackageStatus;
 
 use App\Nova\Metrics\CarePackageRequests;
 use App\Nova\Metrics\UnsentCarePackages;
@@ -52,7 +53,7 @@ class CarePackage extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'about', 'diagnosis', 'image', 'sent'
+        'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'about', 'diagnosis'
     ];
 
     /**
@@ -233,7 +234,9 @@ class CarePackage extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new CarePackageStatus,
+        ];
     }
 
     /**
@@ -244,9 +247,7 @@ class CarePackage extends Resource
      */
     public function lenses(Request $request)
     {
-        return [
-            new CarePackagesToSend
-        ];
+        return [];
     }
 
     /**
