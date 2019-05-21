@@ -110,7 +110,7 @@ class Nova
      */
     public static function version()
     {
-        return '1.3.2';
+        return '2.0.5';
     }
 
     /**
@@ -120,7 +120,7 @@ class Nova
      */
     public static function name()
     {
-        return config('nova.name', 'Live Like Roo');
+        return config('nova.name', 'Nova Site');
     }
 
     /**
@@ -165,13 +165,13 @@ class Nova
     public static function resourceInformation(Request $request)
     {
         return collect(static::$resources)->map(function ($resource) use ($request) {
-            return [
+            return array_merge([
                 'uriKey' => $resource::uriKey(),
                 'label' => $resource::label(),
                 'singularLabel' => $resource::singularLabel(),
                 'authorizedToCreate' => $resource::authorizedToCreate($request),
                 'searchable' => $resource::searchable(),
-            ];
+            ], $resource::additionalInformation($request));
         })->values()->all();
     }
 

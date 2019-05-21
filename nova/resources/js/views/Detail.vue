@@ -222,6 +222,7 @@ export default {
          */
         handleKeydown(e) {
             if (
+                this.resource.authorizedToUpdate &&
                 !e.ctrlKey &&
                 !e.altKey &&
                 !e.metaKey &&
@@ -499,6 +500,15 @@ export default {
          */
         cardsEndpoint() {
             return `/nova-api/${this.resourceName}/cards`
+        },
+
+        /**
+         * Get the extra card params to pass to the endpoint.
+         */
+        extraCardParams() {
+            return {
+                resourceId: this.resourceId,
+            }
         },
     },
 }

@@ -1,6 +1,6 @@
 <template>
     <div v-if="!loading">
-        <heading class="mb-3">{{ __('Edit') }} {{ singularName }}</heading>
+        <heading class="mb-3">{{ __('Edit :resource', { resource: singularName }) }}</heading>
 
         <card class="overflow-hidden">
             <form v-if="fields" @submit.prevent="updateResource" autocomplete="off">
@@ -20,9 +20,16 @@
                 </div>
 
                 <!-- Update Button -->
-                <div class="bg-30 flex px-8 py-4">
+                <div class="bg-30 flex items-center px-8 py-4">
+                    <a
+                        @click="$router.back()"
+                        class="btn btn-link dim cursor-pointer text-80 ml-auto mr-6"
+                    >
+                        {{ __('Cancel') }}
+                    </a>
+
                     <progress-button
-                        class="ml-auto mr-3"
+                        class="mr-3"
                         dusk="update-and-continue-editing-button"
                         @click.native="updateAndContinueEditing"
                         :disabled="isWorking"
@@ -37,7 +44,7 @@
                         :disabled="isWorking"
                         :processing="submittedViaUpdateResource"
                     >
-                        {{ __('Update') }} {{ singularName }}
+                        {{ __('Update :resource', { resource: singularName }) }}
                     </progress-button>
                 </div>
             </form>
@@ -87,7 +94,7 @@ export default {
         // and use the label for that as the one we use for the title and buttons
         if (this.isRelation) {
             const { data } = await Nova.request(
-                '/nova-api/' + this.viaResource + '/field/' + this.viaRelationship
+                `/nova-api/${this.viaResource}/field/${this.viaRelationship}`
             )
             this.relationResponse = data
         }
@@ -107,7 +114,15 @@ export default {
             this.fields = []
 
             const { data: fields } = await Nova.request()
-                .get(`/nova-api/${this.resourceName}/${this.resourceId}/update-fields`)
+                .get(`/nova-api/${this.resourceName}/${this.resourceId}/update-fields`, {
+                    params: {
+                        editing: true,
+                        editMode: 'update',
+                        viaResource: this.viaResource,
+                        viaResourceId: this.viaResourceId,
+                        viaRelationship: this.viaRelationship,
+                    },
+                })
                 .catch(error => {
                     if (error.response.status == 404) {
                         this.$router.push({ name: '404' })
@@ -127,7 +142,9 @@ export default {
             this.submittedViaUpdateResource = true
 
             try {
-                const response = await this.updateRequest()
+                const {
+                    data: { redirect },
+                } = await this.updateRequest()
 
                 this.submittedViaUpdateResource = false
 
@@ -138,13 +155,7 @@ export default {
                     { type: 'success' }
                 )
 
-                this.$router.push({
-                    name: 'detail',
-                    params: {
-                        resourceName: this.resourceName,
-                        resourceId: response.data.id,
-                    },
-                })
+                this.$router.push({ path: redirect })
             } catch (error) {
                 this.submittedViaUpdateResource = false
 
@@ -211,7 +222,14 @@ export default {
         updateRequest() {
             return Nova.request().post(
                 `/nova-api/${this.resourceName}/${this.resourceId}`,
-                this.updateResourceFormData
+                this.updateResourceFormData,
+                {
+                    params: {
+                        viaResource: this.viaResource,
+                        viaResourceId: this.viaResourceId,
+                        viaRelationship: this.viaRelationship,
+                    },
+                }
             )
         },
 

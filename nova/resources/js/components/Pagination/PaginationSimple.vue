@@ -1,16 +1,16 @@
 <template>
     <div class="bg-20 rounded-b">
-        <nav v-if="resources.length > 0" class="flex justify-between items-center">
+        <nav class="flex justify-between items-center">
             <!-- Previous Link -->
             <button
-                :disabled="!hasPreviousPages"
+                :disabled="!hasPreviousPages || linksDisabled"
                 class="btn btn-link py-3 px-4"
                 :class="{
                     'text-primary dim': hasPreviousPages,
-                    'text-80 opacity-50': !hasPreviousPages,
+                    'text-80 opacity-50': !hasPreviousPages || linksDisabled,
                 }"
                 rel="prev"
-                @click.prevent="selectPreviousPage()"
+                @click.prevent="selectPreviousPage"
                 dusk="previous"
             >
                 {{ __('Previous') }}
@@ -20,14 +20,14 @@
 
             <!-- Next Link -->
             <button
-                :disabled="!hasMorePages"
+                :disabled="!hasMorePages || linksDisabled"
                 class="btn btn-link py-3 px-4"
                 :class="{
                     'text-primary dim': hasMorePages,
-                    'text-80 opacity-50': !hasMorePages,
+                    'text-80 opacity-50': !hasMorePages || linksDisabled,
                 }"
                 rel="next"
-                @click.prevent="selectNextPage()"
+                @click.prevent="selectNextPage"
                 dusk="next"
             >
                 {{ __('Next') }}
@@ -38,21 +38,54 @@
 
 <script>
 export default {
-    props: ['resourceName', 'resources', 'resourceResponse'],
+    props: {
+        page: {
+            type: Number,
+            required: true,
+        },
+        pages: {
+            type: Number,
+            default: 0,
+        },
+        next: {
+            type: Boolean,
+            default: false,
+        },
+        previous: {
+            type: Boolean,
+            default: false,
+        },
+    },
+
+    data: () => ({ linksDisabled: false }),
+
+    mounted() {
+        Nova.$on('resources-loaded', () => {
+            this.linksDisabled = false
+        })
+    },
 
     methods: {
         /**
          * Select the previous page.
          */
         selectPreviousPage() {
-            this.$emit('previous')
+            this.selectPage(this.page - 1)
         },
 
         /**
          * Select the next page.
          */
         selectNextPage() {
-            this.$emit('next')
+            this.selectPage(this.page + 1)
+        },
+
+        /**
+         * Select the page.
+         */
+        selectPage(page) {
+            this.linksDisabled = true
+            this.$emit('page', page)
         },
     },
 
@@ -61,14 +94,14 @@ export default {
          * Determine if prior pages are available.
          */
         hasPreviousPages: function() {
-            return Boolean(this.resourceResponse && this.resourceResponse.prev_page_url)
+            return this.previous
         },
 
         /**
          * Determine if more pages are available.
          */
         hasMorePages: function() {
-            return Boolean(this.resourceResponse && this.resourceResponse.next_page_url)
+            return this.next
         },
     },
 }
