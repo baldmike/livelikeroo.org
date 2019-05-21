@@ -15,7 +15,7 @@ use App\Http\Resources\MessageResource;
 
 use App\Models\Message;
 
-// use App\Mail\MessageConfirmation;
+use App\Mail\EmailMessage;
 
 use Mail;
 
@@ -50,7 +50,7 @@ class MessageController extends Controller
             $MSG->message = request('message');
         }
 
-        // Mail::to('baldmike312@gmail.com')->send(new MessageConfirmation($MSG));
+        Mail::to('sarahlauch@gmail.com')->send(new EmailMessage($MSG));
 
         if ($MSG->save()) {
             return response()->json(null, Response::HTTP_CREATED);
