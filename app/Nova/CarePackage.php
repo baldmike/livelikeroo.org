@@ -134,7 +134,7 @@ class CarePackage extends Resource
     {
         return [
 
-            Button::make('Buy')
+            Button::make('Buy Label')
                 ->event('App\Events\CarePackageBuyLabel')
                 ->style('primary')
                 ->visible(!$this->label_url)
