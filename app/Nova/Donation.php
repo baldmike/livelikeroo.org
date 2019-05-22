@@ -13,10 +13,11 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
-use App\Nova\Filters\selectedFund;
+use App\Nova\Filters\SelectedFund;
+use App\Nova\Filters\DonationFrequency;
+use App\Nova\Filters\DonationAmount;
+
 use App\Nova\Metrics\DonationsTotal;
-use App\Nova\Metrics\DonationsRoo;
-use App\Nova\Metrics\DonationsBooker;
 use App\Nova\Metrics\DonationsByFund;
 use App\Nova\Metrics\DonationsPerDay;
 
@@ -187,7 +188,9 @@ class Donation extends Resource
     public function filters(Request $request)
     {
         return [
-            new selectedFund
+            new SelectedFund,
+            new DonationFrequency,
+            new DonationAmount
         ];
     }
 

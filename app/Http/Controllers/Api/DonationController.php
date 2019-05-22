@@ -87,8 +87,7 @@ class DonationController extends Controller
                 
                 $D->save();
 
-                Mail::to('baldmike312@gmail.com')->send(new OneTimeDonation($D));
-                // Mail::to($request->email)->send(new OneTimeDonation($D));
+                Mail::to($request->email)->send(new OneTimeDonation($D));
 
                 return response()->json(null, Response::HTTP_CREATED);
 

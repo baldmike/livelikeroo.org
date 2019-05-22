@@ -78,13 +78,20 @@ class BuyCarePackageLabel
             return back()->withMessage($transaction["messages"]);
         }
 
+        // Shippo returns an object - object_id, tracking_number, tracking_url_provider, label_url
         Log::debug("[TRANSACTION] ------>");
         Log::debug($transaction);
 
         $url = $transaction->label_url;
-               
+        $tracking_number = $transaction->tracking_number;
+        $tracking_url_provider = $transaction->tracking_url_provider;
+        $shipping_id = $transaction->object_id;
+
         $event->carePackage->label_url = $url;
-        
+        $event->carePackage->tracking_number = $tracking_number;
+        $event->carePackage->tracking_url_provider = $tracking_url_provider;
+        $event->carePackage->shipping_id = $shipping_id;
+
         $event->carePackage->save();
     }
 }

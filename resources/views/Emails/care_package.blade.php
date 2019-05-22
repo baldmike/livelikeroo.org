@@ -2,7 +2,7 @@
 
 @section('headline')
     <p>
-        Good News! {{ $care_package->pet_name }}'s care package has been requested!
+        Good News! We've received {{ $care_package->pet_name }}'s care package request!
     </p>
 @stop
 

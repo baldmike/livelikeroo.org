@@ -5,7 +5,7 @@ namespace App\Nova\Filters;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 
-class SelectedFund extends Filter
+class DonationFrequency extends Filter
 {
     /**
      * The filter's component.
@@ -24,7 +24,7 @@ class SelectedFund extends Filter
      */
     public function apply(Request $request, $query, $value)
     {
-        return $query->where('fund', $value);
+        return $query->where('frequency', $value);
     }
 
     /**
@@ -36,11 +36,8 @@ class SelectedFund extends Filter
     public function options(Request $request)
     {
         return [
-            'LLR' => 'roo',
-            'Booker Fund' => 'booker',
-            'Cappy Fund' => 'cappy',
-            'Maggie\'s Mission' => 'maggie',
-            'Serenity\'s Wish' => 'serenity',
+            'One-Time' => 'one-time',
+            'Monthly' => 'Monthly'
         ];
     }
 }
