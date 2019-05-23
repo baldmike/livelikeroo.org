@@ -68,7 +68,7 @@
     import Login from './components/LoginComponent.vue'
 
     export default {
-        name: "mainApp",
+        name: "MainApp",
         data() {
             return {
                 loading: false,

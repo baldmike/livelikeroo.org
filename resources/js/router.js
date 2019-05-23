@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-import MainApp from './mainApp';
+import MainApp from './MainApp';
 import DonateComponent from './components/DonateComponent.vue'
 import EventsComponent from './components/EventsComponent.vue'
 import CarePackageComponent from './components/CarePackageComponent.vue'

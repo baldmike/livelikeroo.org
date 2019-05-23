@@ -24,7 +24,7 @@ Vue.use(require('vue-moment'))
 window.Vue = require('vue')
 window.auth = new Auth();
 
-Vue.component('main-app', require('./mainApp.vue'))
+Vue.component('main-app', require('./MainApp.vue'))
 
 Vue.component(
     'passport-clients',
