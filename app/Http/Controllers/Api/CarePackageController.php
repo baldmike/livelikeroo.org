@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,7 +18,7 @@ use App\Models\CarePackage;
 
 use App\Mail\CarePackageConfirmation;
 
-use Mail;
+// use Mail;
 
 class CarePackageController extends Controller
 {
