@@ -286,7 +286,7 @@
                                     <h4 class="card-title">Bald Mike</h4>
                                     <h6 class="category">Nerd/Model</h6>
                                     <p class="card-description textOnWhite">    
-                                        Bald Mike is a former loud-mouth and house music aficianado who came out of the closet as a nerd a few years ago and now makes computers do things to help people. 
+                                        Bald Mike is a former loud-mouth and house music aficianado who came out as a nerd a few years ago and now makes computers do things to help people. 
                                     </p>
                                     <p v-if="mike">
                                         As a rescue/foster/adoption advocate, Bald Mike loves all dogs, but has a soft spot for the silly bully breeds, like his knucklehead, Chopper - who himself is a cancer survivor, with help from Live Like Roo. After fostering several dogs including Dog Mike (now Duke), Screwball (now Steel) and Mr. Bananas (still Mr. Bananas), he foster-failed with Chopper because you would have, too.  Professionally, Bald Mike makes computers do stuff. His goal is to make computers do stuff to assist as many rescues and shelters as he can with their technology. After years of involvement in the rescue community, he FINALLY got a date out of it, and Bald Mike and Chopper are now over the moon for Mia and Coco Louise. That's a person and a dog.
