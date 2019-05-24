@@ -42,20 +42,20 @@ class CarePackageController extends Controller
         $validated = $request->validated();
         if($validated)
         {
-            $CP = new CarePackage();
+            $cp = new CarePackage();
 
-            $CP->first_name = request('firstName');
-            $CP->last_name = request('lastName');
-            $CP->email = request('email');
-            $CP->address_1 = request('address1');
-            $CP->address_2 = request('address2');
-            $CP->city = request('city');
-            $CP->state = request('state');
-            $CP->zip = request('zip');
-            $CP->pet_name = request('petName');
-            $CP->about = request('about');
-            $CP->diagnosis = request('diagnosis');
-            $CP->sent = 0;
+            $cp->first_name = request('firstName');
+            $cp->last_name = request('lastName');
+            $cp->email = request('email');
+            $cp->address_1 = request('address1');
+            $cp->address_2 = request('address2');
+            $cp->city = request('city');
+            $cp->state = request('state');
+            $cp->zip = request('zip');
+            $cp->pet_name = request('petName');
+            $cp->about = request('about');
+            $cp->diagnosis = request('diagnosis');
+            $cp->sent = 0;
         }
 
         // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL on the front end
@@ -66,12 +66,12 @@ class CarePackageController extends Controller
             // $path includes 'public/', and we don't want that in our URL, so we chop it off:
             $path = substr($path, 6);
 
-            $CP->image = $path;
+            $cp->image = $path;
         }
 
-        Mail::to($request->email)->send(new CarePackageConfirmation($CP));
+        Mail::to($request->email)->send(new CarePackageConfirmation($cp));
 
-        if ($CP->save()) {
+        if ($cp->save()) {
             return response()->json(null, Response::HTTP_CREATED);
         };
 

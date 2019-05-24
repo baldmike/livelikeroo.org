@@ -71,23 +71,23 @@ class DonationController extends Controller
                 ]);
 
                 // instantiate a new Donation
-                $D = New Donation();
-                $D->amount = request('amount');
-                $D->name_on_card = request('name_on_card');
-                $D->first_name = request('firstName');
-                $D->last_name = request('lastName');
-                $D->email = request('email');
-                $D->in_memory = request('inMemory');
-                $D->honoree = request('honoreeName');
-                $D->frequency = 'one-time';
-                $D->recipient_name = request('recipientName');
-                $D->recipient_email = request('recipientEmail');
-                $D->recipient_msg = request('recipientMessage');
-                $D->fund = request('fund');
+                $d = New Donation();
+                $d->amount = request('amount');
+                $d->name_on_card = request('name_on_card');
+                $d->first_name = request('firstName');
+                $d->last_name = request('lastName');
+                $d->email = request('email');
+                $d->in_memory = request('inMemory');
+                $d->honoree = request('honoreeName');
+                $d->frequency = 'one-time';
+                $d->recipient_name = request('recipientName');
+                $d->recipient_email = request('recipientEmail');
+                $d->recipient_msg = request('recipientMessage');
+                $d->fund = request('fund');
                 
-                $D->save();
+                $d->save();
 
-                Mail::to($request->email)->send(new OneTimeDonation($D));
+                Mail::to($request->email)->send(new OneTimeDonation($d));
 
                 return response()->json(null, Response::HTTP_CREATED);
 
@@ -152,23 +152,22 @@ class DonationController extends Controller
 
                 Log::debug("MONTHLY VALIDATED - SUBCRIBED");
                 
-                $D = New Donation();
-                $D->amount = request('amount');
-                $D->name_on_card = request('name_on_card');
-                $D->first_name = request('first_name');
-                $D->last_name = request('last_name');
-                $D->email = request('email');
-                $D->in_memory = request('inMemory');
-                $D->frequency = 'monthly';
-                $D->honoree = request('honoreeName');
-                $D->recipient_name = request('recipientName');
-                $D->recipient_email = request('recipientEmail');
-                $D->recipient_msg = request('recipientMessage');
-                $D->fund = request('fund');
-                $D->save();
+                $d = New Donation();
+                $d->amount = request('amount');
+                $d->name_on_card = request('name_on_card');
+                $d->first_name = request('first_name');
+                $d->last_name = request('last_name');
+                $d->email = request('email');
+                $d->in_memory = request('inMemory');
+                $d->frequency = 'monthly';
+                $d->honoree = request('honoreeName');
+                $d->recipient_name = request('recipientName');
+                $d->recipient_email = request('recipientEmail');
+                $d->recipient_msg = request('recipientMessage');
+                $d->fund = request('fund');
+                $d->save();
 
-                // change to $request->email
-                Mail::to('baldmike312@gmail.com')->send(new MonthlyDonation($D, $user));
+                Mail::to($request->email)->send(new MonthlyDonation($d, $user));
 
                 return response()->json(null, Response::HTTP_CREATED);
                 
