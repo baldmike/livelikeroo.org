@@ -89,7 +89,7 @@ class FinReqsController extends Controller
             $FinReq->save();
 
             // SEND CONFIRMATION EMAIL
-            Mail::to('baldmike312@gmail.com')->send(new FinReqReceivedEmail($FinReq));
+            Mail::to($request->email)->send(new FinReqReceivedEmail($FinReq));
             
             return new FinReqResource($FinReq);
         }
