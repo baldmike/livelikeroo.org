@@ -19,7 +19,7 @@ class CarePackagePolicy
      */
     public function view(User $user, CarePackage $CarePackage)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'guest')
         {
             return true;
         }

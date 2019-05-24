@@ -19,7 +19,7 @@ class DonationPolicy
      */
     public function view(User $user, Donation $donation)
     {
-        if ($user->role === 'admin') 
+        if ($user->role === 'admin' || $user->role === 'guest') 
         {
             return true;
         }

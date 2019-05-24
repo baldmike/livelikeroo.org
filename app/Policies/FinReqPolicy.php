@@ -19,7 +19,12 @@ class FinReqPolicy
      */
     public function view(User $user, FinReq $finReq)
     {
-        return true;
+        if ($user->role === 'admin' || $user->role === 'guest') 
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -42,7 +47,12 @@ class FinReqPolicy
      */
     public function update(User $user, FinReq $finReq)
     {
-        return true;
+        if ($user->role === 'admin') 
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**
