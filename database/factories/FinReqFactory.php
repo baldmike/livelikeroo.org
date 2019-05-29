@@ -2,18 +2,18 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Model;
+use App\Models\FinReq;
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\FinReq::class, function (Faker $faker) {
+$factory->define(FinReq::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
-        'address_1' => '1060 W. Addison',
-        'city' => 'Chicago',
-        'state' => 'IL',
-        'zip' => '60657',
+        'address_1' => '4 Yawkey Way',
+        'city' => 'Boston',
+        'state' => 'MA',
+        'zip' => '02215',
 
         'pet_name' => $faker->firstName,
         'species' => $faker->randomElement($array = array ('dog', 'cat', 'horse', 'squirrel', 'pigeon')),

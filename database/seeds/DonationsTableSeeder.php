@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CarePackagesSeeder extends Seeder
+class DonationsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class CarePackagesSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\CarePackage::class, 50)->create();
+        factory(App\Models\Donation::class, 100)->create();
     }
 }

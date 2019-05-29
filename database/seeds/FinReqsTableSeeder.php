@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class FinReqSeeder extends Seeder
+class FinReqsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

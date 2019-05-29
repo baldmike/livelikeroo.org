@@ -2,20 +2,20 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Model;
+use App\Models\CarePackage;
 use Faker\Generator as Faker;
 
-$factory->define(App\Models\CarePackage::class, function (Faker $faker) {
+$factory->define(CarePackage::class, function (Faker $faker) {
     return [
         
 
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
-        'address_1' => '1060 W. Addison',
+        'address_1' => '333 W 35th Street',
         'city' => 'Chicago',
         'state' => 'IL',
-        'zip' => '60657',
+        'zip' => '60616',
 
         'pet_name' => $faker->firstName,
         'species' => $faker->randomElement($array = array ('dog', 'cat', 'horse', 'squirrel',)),
