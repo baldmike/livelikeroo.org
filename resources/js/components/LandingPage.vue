@@ -42,9 +42,9 @@
                     <div class="separator-line separator-primary"></div>
                     <br>
                     <h2 class="title">The Live Like Roo Foundation</h2>
-                    <h5 class="textOnWhite">We are an all-volunteer-run, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis. Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 2000 pets and their families through cancer diagnoses. Having experienced this devastation first-hand with the loss of Roosevelt, The Live Like Roo Foundation strives to be a helping hand in a difficult and sometimes confusing time. Ultimately, our mission is that you and your pet will #LiveLikeRoo.</h5>
+                    <h5 class="text-on-white">We are an all-volunteer-run, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis. Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 2000 pets and their families through cancer diagnoses. Having experienced this devastation first-hand with the loss of Roosevelt, The Live Like Roo Foundation strives to be a helping hand in a difficult and sometimes confusing time. Ultimately, our mission is that you and your pet will #LiveLikeRoo.</h5>
 
-                    <h5 class="textOnWhite">We strive to be a real life sounding board and support system for people that need guidance and hope, sharing compassion and strength along the way.</h5>
+                    <h5 class="text-on-white">We strive to be a real life sounding board and support system for people that need guidance and hope, sharing compassion and strength along the way.</h5>
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                                 <i class="now-ui-icons sport_user-run"></i>
                             </div>
                             <h4 class="info-title">Volunteer Run</h4>
-                            <p class="textOnWhite">Our amazing volunteers tirelessly put in over <strong>500</strong> hours <em>per month</em> - from making care packages to planning events to coodinating medical care.. they do it ALL.</p>
+                            <p class="text-on-white">Our amazing volunteers tirelessly put in over <strong>500</strong> hours <em>per month</em> - from making care packages to planning events to coodinating medical care.. they do it ALL.</p>
                         </div>
                     </div>
                     
@@ -65,7 +65,7 @@
                                 <i class="now-ui-icons objects_support-17"></i>
                             </div>
                             <h4 class="info-title">Real Support</h4>
-                            <p class="textOnWhite">
+                            <p class="text-on-white">
                                 $10,000+ Medical expenses paid <em>per month</em>
                         
                                 $10,000+ spent on care packages <em>per month</em>
@@ -81,7 +81,7 @@
                                 <i class="now-ui-icons ui-2_favourite-28"></i>
                             </div>
                             <h4 class="info-title">Meaningful Impact</h4>
-                            <p class="textOnWhite">We have assisted over 6000 families and 8200 animals, including dogs, cats, rabbits, horses and the luckiest hamster ever.
+                            <p class="text-on-white">We have assisted over 6000 families and 8200 animals, including dogs, cats, rabbits, horses and the luckiest hamster ever.
                             </p>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     <div class="col-md-6">
                         <!-- First image on the left side -->
                         <div class="image-container image-left" style="background-image: url('images/rooTooPage17.jpg')">
-                            <p class="blockquote blockquote-primary">Your one-time or monthly donation is tax-deductable and will go to work immediately to help pets worldwide #LiveLikeRoo! 
+                            <p class="blockquote">Your one-time or monthly donation is tax-deductable and will go to work immediately to help pets worldwide #LiveLikeRoo! 
                                 <br>
                                 <br>
                                 <n-button type="primary" round block @click.native="showDnForm">Donate Today</n-button>
@@ -110,10 +110,10 @@
                         <div class="image-container image-right noPhone"
                                 style="background-image: url('images/homeTooPic7.jpg')"></div>
                         <h2 class="title">All About Roo</h2>
-                        <p class="textOnWhite">
+                        <p class="text-on-white">
                             Roosevelt was rescued from Chicago Animal Care and Control in April 2015. I saw him relaxing quietly in his cage as all the other dogs were barking and jumping to get my attention. He looked so sad.  His owner surrender card said “has issues urinating.” Once outside, Roosevelt peed for a long time and it was mostly just dribbling out. His teeth were totally ground down, probably from eating rocks or trying to escape his crate. We felt so helpless and so sad for him. Immediately we tried to find him a foster, so we could get him out and get him healthy. One Tail at a Time committed to rescue him and we were able to foster.
                         </p>
-                        <p class="textOnWhite">
+                        <p class="text-on-white">
                             Unfortunately, even after a neuter, his urinating issues were still a problem. During his dental, the vet discovered that Roo had terminal bone cancer. Our hearts were shattered, but we knew what we had to do. Roo lived life to the FULLEST for the next 5 months. Hotel stays, boat rides, long walks, belly rubs, ice cream, even attending an LFL game...  And so much more. To Live Like Roo became a way of life, and we made sure we didn't lose one second of the time we had left.
                         </p>
                     </div>
@@ -121,7 +121,7 @@
                 <div class="col-md-11">
                     <br>
                     <br>
-                    <p class="textOnWhite">
+                    <p class="text-on-white">
                         Roo passed away on September 8th, 2015. It was one of the toughest days, but it was time to let go. While he didn't have a good start to life, his eyes told us how loved he felt at the end. We miss him so much and we will always have a place in our hearts for this boy that changed the way thousands of people approach life. He is one in a million and we are so grateful that he was ours and that we were able to share him with all of you. #LiveLikeRoo
                     </p>
                 </div>
@@ -202,7 +202,7 @@
         color: orange;
     }
 
-    .textOnWhite {
+    .text-on-white {
         color: #333333 !important;
     }
 
