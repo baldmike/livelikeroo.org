@@ -172,6 +172,11 @@ class AuthController extends Controller
                     ->where('user_id', $currentId)
                     ->delete();
             }
+
+            return response()->json([
+                'message' => "You have successfully logged out.",
+                'status' => Response::HTTP_OK,
+            ], Response::HTTP_OK);
         }
 
         // return null
