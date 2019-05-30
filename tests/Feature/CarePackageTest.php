@@ -22,7 +22,7 @@ class CarePackageTest extends TestCase
      */
     public function testRequestCarePackage()
     {
-        // Create the Care Package instance
+        // Create the Care Package instance using valid address
         $care_package = factory(CarePackage::class)->make();
 
         //build $data array
@@ -62,11 +62,8 @@ class CarePackageTest extends TestCase
             'lastName' => $care_package->last_name,
             'email' => $care_package->email,
             'address1' => "123 Wrong St.",
-            // 'city' => $care_package->city,
-            'city' => "Fartville",
+            'city' => "Wrongton Heights",
             'state' => "ZZ",
-            // 'state' => $care_package->state,
-            // 'zip' => $care_package->zip,
             'zip' => 10101,
 
             'petName' => $care_package->pet_name,
@@ -75,8 +72,8 @@ class CarePackageTest extends TestCase
             'diagnosis' => $care_package->diagnosis
         );
 
-        // hit API, assert record created
+        // hit API, assert validation error
         $response = $this->json('POST', '/api/care_pkgs', $data, );
-        $response->assertStatus(404);
+        $response->assertStatus(400);
     }
 }

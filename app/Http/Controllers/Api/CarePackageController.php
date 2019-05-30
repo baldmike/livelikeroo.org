@@ -40,8 +40,8 @@ class CarePackageController extends Controller
      */
     public function store(CarePackageRequest $request)
     {
+        // first, validate the address with Shippo
         Shippo::setApiKey(config('services.shippo.shippo_key'));
-
         $shippingName = request('firstName') . request('lastName');        
 
         $toAddress = Shippo_Address::create( array(
@@ -100,7 +100,7 @@ class CarePackageController extends Controller
             };
         }
 
-        return response()->json(null, Response::HTTP_NOT_FOUND);
+        return response()->json(null, Response::HTTP_BAD_REQUEST);
 
         
         
