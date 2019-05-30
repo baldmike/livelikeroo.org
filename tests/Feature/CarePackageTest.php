@@ -7,10 +7,16 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\CarePackage;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
+
+
 class CarePackageTest extends TestCase
 {
     /**
-     * test care package request
+     * test care package request success with VALID address
      *
      * @return void
      */
@@ -21,16 +27,22 @@ class CarePackageTest extends TestCase
 
         //build $data array
         $data = array(
+            'firstName' => $care_package->first_name,
+            'lastName' => $care_package->last_name,
             'email' => $care_package->email,
-            'first_name' => $care_package->first_name,
-            'last_name' => $care_package->last_name,
-            'address_1' => $care_package->streetAddress,
+            'address1' => $care_package->address_1,
             'city' => $care_package->city,
             'state' => $care_package->state,
-            'zip' => $care_package->postCode,
+            'zip' => $care_package->zip,
 
-
-            
+            'petName' => $care_package->pet_name,
+            'species' => $care_package->species,
+            'about' => $care_package->about,
+            'diagnosis' => $care_package->diagnosis
         );
+
+        // hit API, assert record created
+        $response = $this->json('POST', '/api/care_pkgs', $data, );
+        $response->assertStatus(201);
     }
 }

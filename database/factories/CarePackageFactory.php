@@ -7,8 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(CarePackage::class, function (Faker $faker) {
     return [
-        
-
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
@@ -23,7 +21,5 @@ $factory->define(CarePackage::class, function (Faker $faker) {
         'diagnosis' => $faker->realText($maxNbChars = 100, $indexSize = 2),
         
         'sent' => 0,
-        
-
     ];
 });
