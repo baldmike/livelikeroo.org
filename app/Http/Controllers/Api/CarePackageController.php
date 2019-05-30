@@ -16,7 +16,8 @@ use App\Http\Resources\CarePackageResource;
 use App\Models\CarePackage;
 
 use App\Mail\CarePackageConfirmation;
-
+use Shippo_Address;
+use Shippo;
 use Mail;
 
 class CarePackageController extends Controller
@@ -39,41 +40,65 @@ class CarePackageController extends Controller
      */
     public function store(CarePackageRequest $request)
     {
-        $validated = $request->validated();
-        if($validated)
+        Shippo::setApiKey(config('services.shippo.shippo_key'));
+
+        $shippingName = request('firstName') . request('lastName');        
+
+        $toAddress = Shippo_Address::create( array(
+            "name" => $shippingName,
+            "company" => "CP",
+            "street1" => request('address1'),
+            "city" => request('city'),
+            "state" => request('state'),
+            "zip" => request('zip'),
+            "country" => "US",
+            "email" => request('email'),
+            "validate" => true
+        ));
+
+        Log::debug("TO ADDRESS - CARE PACKAGE CONTROLLER----->");
+        Log::debug($toAddress);
+
+        if($toAddress->validation_results->is_valid)
         {
-            $cp = new CarePackage();
+            $validated = $request->validated();
+            if($validated)
+            {
+                $cp = new CarePackage();
 
-            $cp->first_name = request('firstName');
-            $cp->last_name = request('lastName');
-            $cp->email = request('email');
-            $cp->address_1 = request('address1');
-            $cp->address_2 = request('address2');
-            $cp->city = request('city');
-            $cp->state = request('state');
-            $cp->zip = request('zip');
-            $cp->pet_name = request('petName');
-            $cp->about = request('about');
-            $cp->diagnosis = request('diagnosis');
-            $cp->sent = 0;
+                $cp->first_name = request('firstName');
+                $cp->last_name = request('lastName');
+                $cp->email = request('email');
+                $cp->address_1 = request('address1');
+                $cp->address_2 = request('address2');
+                $cp->city = request('city');
+                $cp->state = request('state');
+                $cp->zip = request('zip');
+                $cp->pet_name = request('petName');
+                $cp->about = request('about');
+                $cp->diagnosis = request('diagnosis');
+                $cp->sent = 0;
+            }
+        
+        
+
+            // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL on the front end
+            if($request->hasFile('image'))
+            {
+                $path = Storage::putFile('public/images', $request->file('image'), 'public');
+
+                // $path includes 'public/', and we don't want that in our URL, so we chop it off:
+                $path = substr($path, 6);
+
+                $cp->image = $path;
+            }
+
+            Mail::to($request->email)->send(new CarePackageConfirmation($cp));
+
+            if ($cp->save()) {
+                return response()->json(null, Response::HTTP_CREATED);
+            };
         }
-
-        // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL on the front end
-        if($request->hasFile('image'))
-        {
-            $path = Storage::putFile('public/images', $request->file('image'), 'public');
-
-            // $path includes 'public/', and we don't want that in our URL, so we chop it off:
-            $path = substr($path, 6);
-
-            $cp->image = $path;
-        }
-
-        Mail::to($request->email)->send(new CarePackageConfirmation($cp));
-
-        if ($cp->save()) {
-            return response()->json(null, Response::HTTP_CREATED);
-        };
 
         return response()->json(null, Response::HTTP_NOT_FOUND);
 
