@@ -50,6 +50,11 @@ class AuthController extends Controller
                 'status' => Response::HTTP_CREATED,
             ], Response::HTTP_CREATED);
         }
+
+        return response()->json([
+            'status' => Response::HTTP_UNPROCESSABLE_ENTITY,
+            'message' => 'Unable to complete registration, please try again'
+        ], Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     public function login(Request $request)

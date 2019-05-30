@@ -18,7 +18,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'role' => $faker->randomElement($array = array ('admin', 'volunteer', 'board')),
+        'role' => $faker->randomElement($array = array ('volunteer', 'donor', 'monthly_donor', 'admin')),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => bcrypt('password'),
