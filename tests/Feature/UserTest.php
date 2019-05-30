@@ -20,8 +20,6 @@ class UserTest extends TestCase
      */
     public function testRegister()
     {
-        Mail::fake();
-
         // create random user with UserFactory
         $user = factory(User::class)->make();
         
@@ -61,7 +59,6 @@ class UserTest extends TestCase
      */
     public function testLogout()
     {
-
         $response = $this->json('POST', '/api/logout');
         $response->assertStatus(204);
     }
