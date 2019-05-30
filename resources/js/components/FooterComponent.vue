@@ -33,6 +33,7 @@
                     <li>
                         <a href="/nova">LOGIN</a>
                     </li>
+                    
                     <!-- <li>
                         <router-link to="" v-if='!isAuthenticated'>
                             <span v-on:click="showLogin">LOGIN</span>
