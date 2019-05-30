@@ -347,15 +347,15 @@
                 this.$v.form.$touch();
 
                 if (!this.$v.form.$invalid) {
-                    let fd = new FormData();
+                    let formData = new FormData();
 
                     Object.keys(this.form).forEach(key => {
-                        fd.append(key, this.form[key])
+                        formData.append(key, this.form[key])
                     })
 
                     this.$store.dispatch('cpFormSubmit');
                     
-                    axios.post("/api/care_pkgs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                    axios.post("/api/care_pkgs", formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
                         this.$store.dispatch('cpFormSuccess')
 
