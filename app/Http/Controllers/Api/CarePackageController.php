@@ -58,7 +58,7 @@ class CarePackageController extends Controller
 
         if(!$toAddress->validation_results->is_valid)
         {
-            return response()->json();
+                return response()->json(['message' => 'Invalid shipping address'], 400);
         }
 
         if($toAddress->validation_results->is_valid)
