@@ -56,8 +56,10 @@ class CarePackageController extends Controller
             "validate" => true
         ));
 
-        Log::debug("TO ADDRESS - CARE PACKAGE CONTROLLER----->");
-        Log::debug($toAddress);
+        if(!$toAddress->validation_results->is_valid)
+        {
+            return response()->json();
+        }
 
         if($toAddress->validation_results->is_valid)
         {
@@ -80,8 +82,6 @@ class CarePackageController extends Controller
                 $cp->sent = 0;
             }
         
-        
-
             // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL on the front end
             if($request->hasFile('image'))
             {
@@ -93,16 +93,14 @@ class CarePackageController extends Controller
                 $cp->image = $path;
             }
 
-            Mail::to($request->email)->send(new CarePackageConfirmation($cp));
-
-            if ($cp->save()) {
-                return response()->json(null, Response::HTTP_CREATED);
+            if ($cp->save()) 
+            {
+                return response()->json(['message' => 'Care Package Request successfully made.'], 201);
+                Mail::to($request->email)->send(new CarePackageConfirmation($cp));
             };
         }
 
-        return response()->json(null, Response::HTTP_BAD_REQUEST);
-
-        
+        return response()->json(['message' => 'General Server Error.'], 500);
         
     }
 

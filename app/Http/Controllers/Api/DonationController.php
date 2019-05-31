@@ -165,11 +165,15 @@ class DonationController extends Controller
                 $d->recipient_email = request('recipientEmail');
                 $d->recipient_msg = request('recipientMessage');
                 $d->fund = request('fund');
-                $d->save();
+                
+                if ($d->save())
+                {
+                    return response()->json(null, Response::HTTP_CREATED);
+                };
 
                 Mail::to($request->email)->send(new MonthlyDonation($d, $user));
 
-                return response()->json(null, Response::HTTP_CREATED);
+                
                 
                 } catch (CardErrorException $e) {
                 

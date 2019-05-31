@@ -360,7 +360,11 @@
                         this.$store.dispatch('cpFormSuccess')
 
                     }).catch((error) => {
-                            console.log("WE HAVE AN ERROR: " + error)
+
+                            if (error.response.status === 400) {
+                                console.log("WE HAVE OURSELVES A 400: " + error)
+                            }
+                            console.log("OUTSIDE THE STATUS CHECK IN CARE PACKAGES -----------------****")
                             this.$store.dispatch('cpFormError')
                     })
                 }

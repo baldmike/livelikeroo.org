@@ -257,7 +257,7 @@ export default new Vuex.Store({
 
             let payload = {
                 type: "danger",
-                message: "There was an error processing your request. Please click the orange button above, check the form and try again. If the problem persists, Bald Mike will fix it."
+                message: "There was an error processing your request. Please check that you are using a valid shipping address and re-submit the form - it has been saved for you."
             }
 
             context.commit('notify', payload);
