@@ -29,8 +29,6 @@
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('250')"   block round type="primary"><span :class="{ red: isTwoFifty }"><i class="fa fa-heart"></i></span>$250</n-button></div>
                 </div>
 
-                <!-- <n-button @click.prevent.native = "donateHundred">$100</n-button> -->
-
                 <div class="row">
                     <div class="col-md-12 center">
                         <h4 class="amount">Or Enter An Amount:</h4>
