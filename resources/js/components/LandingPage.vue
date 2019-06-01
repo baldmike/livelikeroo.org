@@ -21,7 +21,7 @@
                             <p>TO</p> 
                             <p>LIVE LIKE ROO</p>
                         </h3>
-                        <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>DONATE</n-button>    
+                        <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>    
                     </div>  
                 </div>
                 <div class="col-md-6 ml-auto mr-auto phonely">
@@ -39,22 +39,16 @@
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
                     <br><br><br><br>
-
-
-
-
-                    
-
-
-
-
-
                     <div class="separator-line separator-primary"></div>
                     <br>
                     <h2 class="title">The Live Like Roo Foundation</h2>
-                    <h5 class="text-on-white">We are an all-volunteer-run, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis. Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 2000 pets and their families through cancer diagnoses. Having experienced this devastation first-hand with the loss of Roosevelt, The Live Like Roo Foundation strives to be a helping hand in a difficult and sometimes confusing time. Ultimately, our mission is that you and your pet will #LiveLikeRoo.</h5>
+                    <h3 class="text-on-white">We are an all-volunteer-run,  donation-based, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis.</h3> 
+                    
+                    <h4 class="text-on-white">Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 2000 pets and their families through cancer diagnoses.</h4>
+                        
+                    <h4 class="text-on-white">Having experienced this devastation first-hand with the loss of Roosevelt, The Live Like Roo Foundation strives to be a helping hand in a difficult and sometimes confusing time. Ultimately, our mission is that you and your pet will #LiveLikeRoo.</h4>
 
-                    <h5 class="text-on-white">We strive to be a real life sounding board and support system for people that need guidance and hope, sharing compassion and strength along the way.</h5>
+                    <h4 class="text-on-white">We strive to be a real life sounding board and support system for people that need guidance and hope, sharing compassion and strength along the way.</h4>
                 </div>
             </div>
 
@@ -191,9 +185,11 @@
                     email: '',
                     message: '',
                 },
+                
                 fluxOptions: {
                     autoplay: true
                 },
+
                 fluxImages1: [
                     'images/roo2.jpg',
                     'images/rooGlasses.jpg',
@@ -217,7 +213,6 @@
                     'images/homeTooPic7.jpg',
                     'images/rooTooPage12.jpg',
                     'images/rooGlasses.jpg'
-                    
                 ],
                 
                 fluxTransitions1: {
@@ -227,7 +222,6 @@
                 fluxTransitions2: {
                     transitionFade: Transitions.transitionFade,
                     transitionBlocks1: Transitions.transitionBlocks1
-                    
                 },
             }
         },
