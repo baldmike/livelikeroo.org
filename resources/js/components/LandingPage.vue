@@ -108,7 +108,7 @@
                             <vue-flux
                                 :options="fluxOptions"
                                 :images="fluxImages3"
-                                :transitions="fluxTransitions"
+                                :transitions="fluxTransitions1"
                                 ref="slider">
                                     <flux-pagination slot="pagination"></flux-pagination>
                             </vue-flux>
@@ -123,7 +123,7 @@
                             <vue-flux
                                 :options="fluxOptions"
                                 :images="fluxImages1"
-                                :transitions="fluxTransitions"
+                                :transitions="fluxTransitions1"
                                 ref="slider">
                                     <flux-pagination slot="pagination"></flux-pagination>
                             </vue-flux>
@@ -135,7 +135,7 @@
                             <vue-flux
                                 :options="fluxOptions"
                                 :images="fluxImages2"
-                                :transitions="fluxTransitions"
+                                :transitions="fluxTransitions2"
                                 ref="slider">
                                     <flux-pagination slot="pagination"></flux-pagination>
                             </vue-flux>
@@ -220,8 +220,14 @@
                     
                 ],
                 
-                fluxTransitions: {
+                fluxTransitions1: {
+                    transitionBlocks1: Transitions.transitionBlocks1,
+                    transitionFade: Transitions.transitionFade
+                },
+                fluxTransitions2: {
                     transitionFade: Transitions.transitionFade,
+                    transitionBlocks1: Transitions.transitionBlocks1
+                    
                 },
             }
         },
