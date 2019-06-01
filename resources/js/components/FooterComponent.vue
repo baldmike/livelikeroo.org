@@ -17,8 +17,6 @@
                     <a href="https://www.instagram.com/livelikeroofoundation/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-
-            
             
             <nav>
                 <ul>

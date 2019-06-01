@@ -38,14 +38,17 @@
                         <fg-input
                                 id="amount"
                                 v-on:input="clearButtons"
+                                :class="{ 'has-danger': $v.form.amount.$invalid && $v.form.amount.$dirty, 'has-success': !$v.form.amount.$invalid }"
                                 type="number"
+                                step="1"
+                                min="10"
                                 addon-left-icon="fa fa-dollar-sign"
                                 v-model="form.amount"
                                 required/>
                     </div>
 
-                    <h4 class="ml-auto mr-auto" v-if="isMonthly">MONTHLY DONATION OF ${{ form.amount }}.00</h4>
-                    <h4 class="ml-auto mr-auto" v-if="isOneTime">ONE TIME DONATION OF ${{ form.amount }}.00</h4>
+                    <h4 class="ml-auto mr-auto" v-if="isMonthly">MONTHLY DONATION OF ${{ form.amount }}</h4>
+                    <h4 class="ml-auto mr-auto" v-if="isOneTime">ONE TIME DONATION OF ${{ form.amount }}</h4>
                 </div>
                 
             </div>
@@ -193,6 +196,8 @@
 
                 <br>
 
+                <div class="errors center" v-if="$v.form.$dirty">There are missing or incomplete fields.</div>
+
                 <div class="form-group">
                     <div class="col-md-12 center">
                         <n-button
@@ -297,7 +302,8 @@
                     sameAsPassword: sameAs('password')
                 },
                 amount: {
-                    required
+                    required,
+                    between: between(10, 10000)
                 },
                 name_on_card: {
                     required
