@@ -39,6 +39,16 @@
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
                     <br><br><br><br>
+
+
+
+
+                    
+
+
+
+
+
                     <div class="separator-line separator-primary"></div>
                     <br>
                     <h2 class="title">The Live Like Roo Foundation</h2>
@@ -94,7 +104,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <!-- First image on the left side -->
-                        <div class="image-container image-left" style="background-image: url('images/rooTooPage17.jpg')">
+                        <div class="image-container image-left">
+                            <vue-flux
+                                :options="fluxOptions"
+                                :images="fluxImages3"
+                                :transitions="fluxTransitions"
+                                ref="slider">
+                                    <flux-pagination slot="pagination"></flux-pagination>
+                            </vue-flux>
                             <p class="blockquote">Your one-time or monthly donation is tax-deductable and will go to work immediately to help pets worldwide #LiveLikeRoo! 
                                 <br>
                                 <br>
@@ -102,13 +119,27 @@
                             </p>
                         </div>
                         <!-- Second image on the left side of the article -->
-                        <div class="image-container image-left-bottom noPhone"
-                                style="background-image: url('images/rooTooPage12.jpg')"></div>
+                        <div class="image-container image-left-bottom noPhone">
+                            <vue-flux
+                                :options="fluxOptions"
+                                :images="fluxImages1"
+                                :transitions="fluxTransitions"
+                                ref="slider">
+                                    <flux-pagination slot="pagination"></flux-pagination>
+                            </vue-flux>
+                        </div>
                     </div>
                     <div class="col-md-5">
                         <!-- First image on the right side, above the article -->
-                        <div class="image-container image-right noPhone"
-                                style="background-image: url('images/homeTooPic7.jpg')"></div>
+                        <div class="image-container image-right noPhone">
+                            <vue-flux
+                                :options="fluxOptions"
+                                :images="fluxImages2"
+                                :transitions="fluxTransitions"
+                                ref="slider">
+                                    <flux-pagination slot="pagination"></flux-pagination>
+                            </vue-flux>
+                        </div>
                         <h2 class="title">All About Roo</h2>
                         <p class="text-on-white">
                             Roosevelt was rescued from Chicago Animal Care and Control in April 2015. I saw him relaxing quietly in his cage as all the other dogs were barking and jumping to get my attention. He looked so sad.  His owner surrender card said “has issues urinating.” Once outside, Roosevelt peed for a long time and it was mostly just dribbling out. His teeth were totally ground down, probably from eating rocks or trying to escape his crate. We felt so helpless and so sad for him. Immediately we tried to find him a foster, so we could get him out and get him healthy. One Tail at a Time committed to rescue him and we were able to foster.
@@ -130,44 +161,83 @@
     </div>
 </template>
 <script>
-  import { Card, Button, FormGroupInput, Tabs, TabPane, Parallax, Modal } from '@/components';
+    import { Card, Button, FormGroupInput, Tabs, TabPane, Parallax, Modal } from '@/components';
+    import { VueFlux, FluxPagination, Transitions } from 'vue-flux';
 
-  import { EventBus } from '../event-bus.js';
+    import { EventBus } from '../event-bus.js';
 
-  export default {
-    name: 'landing-page',
-    bodyClass: 'landing-page',
-    components: {
-      Card,
-      Tabs,
-      TabPane,
-      Parallax,
-      Modal,
-      [Button.name]: Button,
-      [FormGroupInput.name]: FormGroupInput
-    },
-    data() {
-      return {
-        form: {
-          firstName: '',
-          email: '',
-          message: ''
+    export default {
+
+        name: 'landing-page',
+        bodyClass: 'landing-page',
+        components: {
+            Card,
+            Tabs,
+            TabPane,
+            Parallax,
+            Modal,
+            [Button.name]: Button,
+            [FormGroupInput.name]: FormGroupInput,
+            VueFlux,
+            FluxPagination
+
         },
-      }
-    },
-    methods: {
-        showDnForm() {
-            console.log("[HomeComponent] - showDnForm");
-            
-            let payload = {
-                fund: 'roo',
-                freq: 'oneTime'
-            };
-
-            this.$store.dispatch('showDnForm', payload);
+        
+        data() {
+        
+            return {
+                form: {
+                    firstName: '',
+                    email: '',
+                    message: '',
+                },
+                fluxOptions: {
+                    autoplay: true
+                },
+                fluxImages1: [
+                    'images/ROO2.jpg',
+                    'images/rooGlasses.jpg',
+                    'images/homeTooPic7.jpg',
+                    'images/rooTooPage12.jpg',
+                    'images/rooTooPage17.jpg',
+                    'images/sarah_roo2.jpeg'
+                ],
+                fluxImages2: [
+                    'images/sarah_roo2.jpeg',
+                    'images/rooTooPage17.jpg',
+                    'images/rooGlasses.jpg',
+                    'images/rooTooPage12.jpg',
+                    'images/homeTooPic7.jpg',
+                    'images/ROO2.jpg'
+                ],
+                fluxImages3: [
+                    'images/rooTooPage17.jpg',
+                    'images/sarah_roo2.jpeg',
+                    'images/ROO2.jpg',
+                    'images/homeTooPic7.jpg',
+                    'images/rooTooPage12.jpg',
+                    'images/rooGlasses.jpg'
+                    
+                ],
+                
+                fluxTransitions: {
+                    transitionFade: Transitions.transitionFade,
+                },
+            }
         },
+        methods: {
+            showDnForm() {
+                console.log("[HomeComponent] - showDnForm");
+                
+                let payload = {
+                    fund: 'roo',
+                    freq: 'oneTime'
+                };
+
+                this.$store.dispatch('showDnForm', payload);
+            },
+        }
     }
-  }
 </script>
 <style scoped>
     @media only screen and (max-width: 500px) {
