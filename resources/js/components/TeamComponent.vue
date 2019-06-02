@@ -286,10 +286,10 @@
                                     <h4 class="card-title">Bald Mike</h4>
                                     <h6 class="category">Nerd/Before Model</h6>
                                     <p class="card-description textOnWhite">    
-                                        Bald Mike is a computer nerd who loves shelter dogs, roots for the underdogs and, despite being from Chicago, puts ketchup on his hot dogs.
+                                        Bald Mike is a computer nerd who loves shelter dogs, roots for the underdogs and, despite being from Chicago, puts ketchup on his hot dogs. As a
                                     </p>
                                     <p v-if="mike">
-                                        As a rescue/foster/adoption advocate, Bald Mike loves all dogs, but has a soft spot for the silly bully breeds, like his knucklehead, Chopper - who himself is a cancer survivor, with help from Live Like Roo. After fostering several dogs including Dog Mike (now Duke), Screwball (now Steel) and Mr. Bananas (still Mr. Bananas), he foster-failed with Chopper because you would have, too.  Professionally, Bald Mike is a software developer, working currently with PHP/Laravel and JavaScript/Vue.js. His goal is to assist as many rescues and shelters as he can with their technology. After years of involvement in the rescue community, he FINALLY got a date out of it, and Bald Mike and Chopper are now over the moon for Mia and Coco Louise. That's a person and a dog.
+                                        rescue/foster/adoption advocate, Bald Mike loves all dogs, but has a soft spot for the silly bully breeds, like his knucklehead, Chopper - who himself is a cancer survivor, with help from Live Like Roo. After fostering several dogs including Dog Mike (now Duke), Screwball (now Steel) and Mr. Bananas (still Mr. Bananas), he foster-failed with Chopper because you would have, too.  Professionally, Bald Mike is a software developer, working currently with PHP/Laravel and JavaScript/Vue.js. His goal is to assist as many rescues and shelters as he can with their technology. After years of involvement in the rescue community, he FINALLY got a date out of it, and Bald Mike and Chopper are now over the moon for Mia and Coco Louise. That's a person and a dog.
                                     </p>
 
                                     <n-button type="primary" @click.prevent.native="showBioMike"><span v-if="mike">Show Less</span><span v-if="!mike">...Read Full Bio</span></n-button>

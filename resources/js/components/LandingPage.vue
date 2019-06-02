@@ -201,17 +201,17 @@
                     'images/sarah_roo2.jpeg',
                     'images/rooTooPage17.jpg',
                     'images/rooGlasses.jpg',
-                    'images/rooTooPage12.jpg',
                     'images/homeTooPic7.jpg',
+                    'images/rooTooPage12.jpg',
                     'images/roo2.jpg'
                 ],
                 fluxImages3: [
                     'images/rooTooPage17.jpg',
+                    'images/homeTooPic7.jpg',
                     'images/sarah_roo2.jpeg',
                     'images/roo2.jpg',
-                    'images/homeTooPic7.jpg',
+                    'images/rooGlasses.jpg',
                     'images/rooTooPage12.jpg',
-                    'images/rooGlasses.jpg'
                 ],
                 
                 fluxTransitions1: {
