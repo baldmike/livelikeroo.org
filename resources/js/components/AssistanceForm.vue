@@ -2,22 +2,70 @@
    <div class="container" v-if="show">
         <div class="row">
             <form>
+                <h3 class="col-4 mr-auto ml-auto"><img src="images/llr_logo.png" alt="Live Like Roo Logo"></h3>
 
-                <h3 class="center">FINANCIAL ASSISTANCE REQUEST</h3>
+                <!-- FORM STEP 1 -->
+                <div class="col-12 mr-auto ml-auto step-box" v-if="formStep===1">
 
-                <img src="/images/headline1.jpg" fluid>
-                <br><br>
-                <h5 class="center text">Cancer SUCKS. We've been in your shoes, and we'd like to help you through this difficult time. To be considered for a grant, please tell us about you and your pet!</h5>
-                <br>
+                    <h5 class="title">Financial Assistance</h5>
+                    
+                    <h5 class="description">Cancer SUCKS. We've been in your shoes, and we'd like to help you through this difficult time. The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, and are awarded after a complete review of this application and the <em>accompanying medical records</em>. Please read the following, and we'll help guide you through the process.</h5>
 
-                <div class="form-box">
-                    <h3 class="center">YOUR INFORMATION</h3>
-                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
-                    <br>
+                    <n-button 
+                        type="primary"
+                        round 
+                        block
+                        @click.prevent.native="nextStep">
+                        Click here to get started</n-button>
+
+                </div>
+
+                <!-- FORM STEP 2 -->
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===2">
+                    
+                    <h5 class="description">
+                        To qualify and be considered for a grant, you must meet the following requirements. Please check each one off as they apply.</h5><br>
+                    
+                    <n-checkbox
+                            v-model="requirement1"
+                            required
+                            style="text-align: center;">
+                                <strong>Pet has a confirmed cancer diagnosis</strong>. (The board reserves the right to assist non confirmed cases, based on medical records and an established treatment plan, to confirm suspected diagnosis.)
+                    </n-checkbox>
+                        
+                    <n-checkbox
+                            v-model="requirement2"
+                            required
+                            style="text-align: center;">
+                                <strong>Veterinary records, estimates and treatment plans will be submitted by the applicant with this application</strong>, and <em>we cannot process an application without medical records.</em> We will need the documents in a digital format, preferably PDF, and cannot accept fax. Application submisison/review will open on the 1st day of every month, and will continue until 11:59 p.m. CST on the third Sunday of that month.
+                    </n-checkbox>
+
+                    <n-button
+                            type="primary"
+                            round
+                            block
+                            disabled
+                            v-if="!requirement1 || !requirement2">
+                            Please check off the requirements to continue.</n-button>
+                    
+                    <n-button 
+                            type="primary"
+                            v-if="requirement1 && requirement2"
+                            round 
+                            block
+                            @click.prevent.native="nextStep">
+                            I understand, let's get started!</n-button>
+                </div>
+                
+                <!-- FORM STEP 3-->
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===3">
+                    <h4 class="description-box description">
+                        Great, let's get started on the grant application. First, we'll need some information about you.</h4>
+
+                    <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
 
                     <div class="form-group" id="firstNameGroup">
-                        
-                        <label for="firstNameFnForm">First Name</label>
+                        <label for="firstNameFnForm">Your Name</label>
                         <fg-input
                                 id="firstNameFnForm"
                                 type="text"
@@ -25,11 +73,11 @@
                                 :class="{ 'has-danger': $v.form.firstName.$invalid && $v.form.firstName.$dirty, 'has-success': !$v.form.firstName.$invalid }"
                                 placeholder="First Name"
                                 maxlength="50"
+                                minlength="2"
                                 required/>
                     </div>
 
                     <div class="form-group" id="lastNameGroup">
-                        <label for="lastNameFnForm">Last Name</label>
                         <fg-input
                                 id="lastNameFnForm"
                                 type="text"
@@ -41,7 +89,7 @@
                     </div>
 
                     <div class="form-group" id="emailGroupFnForm">
-                        <label for="emailFnForm">Email</label>
+                        <label for="emailFnForm">Your Email</label>
                         <fg-input
                                 id="emailFnForm"
                                 type="email"
@@ -53,7 +101,7 @@
                     </div>
 
                     <div class="form-group" id="address1GroupFnForm">
-                        <label for="address1FnForm">Address 1</label>
+                        <label for="address1FnForm">Your Address</label>
                         <fg-input
                                 id="address1FnForm"
                                 type="text"
@@ -65,7 +113,7 @@
                     </div>
 
                     <div class="form-group" id="address2GroupFnForm">
-                        <label for="address2FnForm">Address 2</label>
+                        
                         <fg-input
                                 id="address2FnForm"
                                 type="text"
@@ -87,21 +135,17 @@
                                 required/>
                     </div>
 
-                    
                     <div class="form-group" id="stateGroupFnForm" :class="{ 'has-danger': $v.form.state.$invalid && $v.form.state.$dirty }">
                         <label>State</label>
-                        <el-select class="select-primary"
-                                placeholder="Select State"
+                        <fg-input
+                                id="stateFnForm"
+                                type="text"
                                 v-model="form.state"
-                                required>
-
-                                <el-option v-for="option in states"
-                                        class="select-primary"
-                                        :key="option.label"
-                                        :value="option.value"
-                                        :label="option.label"> 
-                                </el-option>
-                        </el-select>
+                                :class="{ 'has-danger': $v.form.state.$invalid && $v.form.state.$dirty, 'has-success': !$v.form.state.$invalid }"
+                                placeholder="State"
+                                minlength="2"
+                                maxlength="2"
+                                required/>
                     </div>
 
                     <div class="form-group" id="zipGroupFnForm">
@@ -115,17 +159,22 @@
                             maxlength="5"
                             required/>
                     </div>
-                </div>
+                    
+                    <form-navigation v-if="formValid1" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
 
+                </div>
+                        
                 <!-- PET INFORMATION -->
 
-                <div class="form-box">
-                    <div class="col-md-12">
-                        <h3 class="center">YOUR PET'S INFORMATION</h3>
-                    </div>
+                <!-- formStep 4 -->
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===4">
+                    <h4 class="description-box description">
+                        Now, please tell us all about your best friend. Let's start with their name, a picture and what makes them special to you.
+                    </h4>
+                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
+                    <br>
 
                     <div class="form-group">
-                        <label>Pet Name</label>
                         <fg-input
                                 type="text"
                                 :class="{ 'has-danger': $v.form.petName.$invalid && $v.form.petName.$dirty, 'has-success': !$v.form.petName.$invalid }"
@@ -134,84 +183,10 @@
                                 required/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': $v.form.species.$invalid && $v.form.species.$dirty }">
-                        <label>Species</label>
-                        <el-select class="select-primary"
-                                    placeholder="Select Species"
-                                    v-model="form.species">
-
-                                <el-option v-for="option in types"
-                                        class="select-primary"
-                                        :key="option.label"
-                                        :value="option.value"
-                                        :label="option.label"> 
-                                </el-option>
-                        </el-select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Breed</label>
-                        <fg-input
-                                type="text"
-                                v-model="form.breed"
-                                placeholder="Breed"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ageFnForm">Age</label>
-                        <fg-input
-                                id="ageFnForm"
-                                :class="{ 'has-danger': $v.form.age.$invalid && $v.form.age.$dirty, 'has-success': !$v.form.age.$invalid }"
-                                type="number"
-                                max="30"
-                                v-model="form.age"
-                                placeholder="Age"
-                                required/>
-                    </div>
-
-                    <div class="form-group" :class="{ 'has-danger': $v.form.gender.$invalid && $v.form.gender.$dirty }">
-                        <label for="gender">Gender</label>
-                        <el-select class="select-primary"
-                                    placeholder="Select Gender"
-                                    v-model="form.gender">
-
-                                <el-option v-for="option in gender"
-                                        class="select-primary"
-                                        :key="option.label"
-                                        :value="option.value"
-                                        :label="option.label"> 
-                                </el-option>
-                        </el-select>
-                    </div>
-
-                    <div class="form-group" :class="{ 'has-danger': $v.form.altered.$invalid && $v.form.altered.$dirty }">
-                        <label for="altered">Altered</label>
-                        <el-select class="select-primary"
-                                    placeholder="Is your pet Spayed/Neutered?"
-                                    v-model="form.altered">
-
-                                <el-option v-for="option in alteredYON"
-                                        class="select-primary"
-                                        :key="option.label"
-                                        :value="option.value"
-                                        :label="option.label"> 
-                                </el-option>
-                        </el-select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tell us about a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
-                        <textarea
-                                rows="6"
-                                class="form-control"
-                                v-model="form.about"
-                                required/>
-                    </div>
-
                     <!-- we are using Bootstrap-Vue for image input -->
-                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="imageCP">
+                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="imageFinReq">
                         <b-form-file
-                                id="imageCP"
+                                id="imageFinReq"
                                 accept="image/*"
                                 v-model="form.image"
                                 placeholder="Choose a file..."
@@ -222,9 +197,130 @@
                             <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
                         </b-col>
                     </b-form-group>
+
+                    <div class="form-group">
+                        <label>Tell us a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
+                        <textarea
+                                rows="6"
+                                class="form-control"
+                                v-model="form.about"
+                                minlength="30"
+                                required/>
+                    </div>
+
+                    <!-- form navigation -->
+                    <form-navigation v-if="form.petName && !$v.form.about.$invalid" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+
                 </div>
 
-                <div class="form-box">
+                <!-- FORM STEP 5 -->
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===5">
+                    <h4 class="description-box description">
+                        What is {{ form.petName }}? If you know {{ form.petName }}'s breed, please list that as well.
+                    </h4>
+                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
+                    <br>
+
+                    <div class="form-group">    
+                        <div class="row">
+                            <div class="col-3 center">
+                                <n-button @click.prevent.native="selectSpecies('dog')" type="primary" block><span :class="{ red: isDog }"><i class="fa fa-dog"></i></span>
+                                <br><br>DOG</n-button>
+                            </div>
+                            <div class="col-3 center">
+                                <n-button @click.prevent.native="selectSpecies('cat')" type="primary" block><span :class="{ red: isCat }"><i class="fa fa-cat"></i></span>
+                                <br><br>CAT</n-button>
+                            </div>
+                            <div class="col-3 center">
+                                <n-button @click.prevent.native="selectSpecies('horse')" type="primary" block><span :class="{ red: isHorse }"><i class="fa fa-horse"></i></span>
+                                <br><br>HORSE</n-button>
+                            </div>
+                            <div class="col-3 center">
+                                <n-button @click.prevent.native="selectSpecies('other')" type="primary" block><span :class="{ red: isOther }"><i class="fa fa-dragon"></i></span>
+                                <br><br>OTHER</n-button>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="form-group">
+                        <fg-input
+                                type="text"
+                                v-model="form.breed"
+                                placeholder="Breed"/>
+                    </div>
+
+                    <!-- form navigation -->
+                    <form-navigation v-if="form.species" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                </div>
+                    
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===6">
+                    <h4 class="description-box description">
+                        Is {{ form.petName }} a boy {{ form.species }}, or a girl {{ form.species }}? Select the gender, and use the arrow keys at the bottom to advance.
+                    </h4>
+                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
+                    <br>
+
+                    <div class="form-group">    
+                        <div class="row">
+                            <div class="col-4 ml-auto mr-auto">
+                                <n-button @click.prevent.native="selectGender('m')" type="primary" block><span :class="{ selectedGender: isMale }"><i class="fa fa-mars"></i></span>
+                                <br><br>MALE</n-button>
+                            </div>
+                            <div class="col-4 ml-auto mr-auto">
+                                <n-button @click.prevent.native="selectGender('f')" type="primary" block><span :class="{ selectedGender: isFemale }"><i class="fa fa-venus"></i></span>
+                                <br><br>FEMALE</n-button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form-navigation v-if="form.gender" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                </div>
+
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===7">
+
+                    <h4 class="description-box description">
+                        Is {{ form.petName }} spayed/neutered? Select below, and use the arrow keys at the bottom to advance.
+                    </h4>
+                    
+                    <br>
+
+                    <div class="form-group">    
+                        <div class="row">
+                            <div class="col-4 ml-auto mr-auto">
+                                <n-button @click.prevent.native="altered(0)" type="primary" block><span :class="{ red: isUnaltered }"><i class="fa fa-times"></i></span>
+                                <br><br>NOT {{ procedure }}</n-button>
+                            </div>
+                            <div class="col-4 ml-auto mr-auto">
+                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ red: isAltered }"><i class="fa fa-check"></i></span>
+                                <br><br>{{ procedure }}</n-button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form-navigation v-if="form.altered != null" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                </div>
+
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===8">
+
+                    <h4 class="description-box description">
+                        Rounded to the nearest year, how old is {{ form.petName }}?
+                    </h4>
+
+                    <div class="form-group col-6 ml-auto mr-auto">
+                        <fg-input
+                                id="ageFnForm"
+                                class="age-box"
+                                :class="{ 'has-danger': $v.form.age.$invalid && $v.form.age.$dirty, 'has-success': !$v.form.age.$invalid }"
+                                type="number"
+                                max="30"
+                                v-model="form.age"
+                                required/>
+                    </div>
+
+                    <form-navigation v-if="form.age" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                </div>
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
+                
                     <h3 class="form-headline">PET'S MEDICAL INFORMATION</h3>
 
                     <div class="form-group" id="diagnosisGroup">
@@ -285,7 +381,7 @@
                                 :class="{ 'has-danger': $v.form.primaryVetLastName.$invalid && $v.form.primaryVetLastName.$dirty, 'has-success': !$v.form.primaryVetLastName.$invalid }"
                                 v-model="form.primaryVetLastName"
                                 placeholder="Primary Vet Last Name"
-                                required />
+                                required />                                
                     </div>
 
                     <div class="form-group" id="primaryClinicGroup">
@@ -344,49 +440,47 @@
                     </div>
                 </div>
 
-                
-                <br><br>
+                <div class="col-12 mr-auto ml-auto" v-if="formStep>8">
+                    <div class="row">
+                        <div class="col-12 ml-auto mr-auto">
+                            <n-checkbox
+                                    v-model="robot"
+                                    required
+                                    style="text-align: center;">
+                                I'm not a robot
+                            </n-checkbox>
+                        </div>
+                    </div>
 
-                <div class="row">
-                    <div class="col-6 ml-auto mr-auto">
-                        <n-checkbox
-                                v-model="robot"
-                                required
-                                style="text-align: center;">
-                            I'm not a robot
-                        </n-checkbox>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-12 ml-auto mr-auto">
+                            <n-button 
+                                    type="primary" 
+                                    round 
+                                    block
+                                    @click.prevent.native="onSubmit">
+                                    Request Financial Assistance</n-button>
+                        </div>                    
+
+                        <div class="sent" v-if="sent">This form has been submitted</div>
+                        <div class="error" v-if="$v.form.$dirty">You have missing fields, please check the form.</div>
+
+                        <div style="text-align: center; margin: 2rem;">
+                            <img src="/images/llr_logo.png">
+                        </div>    
+                    </div>
+                
+                
+                    <div class="col-md-12 mr-auto ml-auto" v-if="formStep>8">
+                        <n-button @click.prevent.native="resetForm" type="danger">RESET FORM</n-button>
                     </div>
                 </div>
 
-                <br>
-
-                <div class="row">
-                    <div class="col-12 ml-auto mr-auto">
-                        <n-button 
-                                type="primary" 
-                                round 
-                                block
-                                @click.prevent.native="onSubmit">
-                                Request Financial Assistance</n-button>
-                    </div>                    
-                </div>
-
-                <div class="sent" v-if="sent">This form has been submitted</div>
-                <div class="error" v-if="$v.form.$dirty">You have missing fields, please check the form.</div>
-
-                <div style="text-align: center; margin: 2rem;">
-                    <img src="/images/llr_logo.png">
-                </div>
-
-                <!-- <div class="error" style="margin-top: 20px;" v-if="$v.form.$invalid">A required field isn't correctly filled out.</div>                 -->
             </form>
-
-
-            <div class="col-md-12 center">
-                    <n-button @click.prevent.native="resetForm" type="danger">RESET FORM</n-button>
-                </div>
-        </div>
-   </div>
+        </div> 
+    </div>
 </template>
 
 <script>
@@ -395,6 +489,7 @@
     import { helpers, required, minLength, maxLength, email, between, sameAs } from "vuelidate/lib/validators";
     import { Select, Option, DatePicker, TimeSelect } from 'element-ui'
     import { Button, FormGroupInput, Tabs, TabPane, Radio, Checkbox } from '@/components';
+    import FormNavigation from './FormNavigation'
     
     import { EventBus } from '../event-bus.js';
     const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/)
@@ -412,14 +507,13 @@
                     address1: '',
                     address2: '',
                     city: '',
-                    state: null,
+                    state: '',
                     zip: '',
-                    phone: '',
                     petName: '',
                     species: '',
                     breed: '',
                     age: '',
-                    gender: null,
+                    gender: '',
                     altered: null,
                     about: '',
                     image: null,
@@ -439,67 +533,10 @@
                 url: null,
                 robot: false,
                 show: true,
+                formStep: 1,
+                requirement1: false,
+                requirement2: false,
 
-                states: [
-                    {value: "AK", label: "Alaska"},
-                    {value: "AL", label: "Alabama"},
-                    {value: "AR", label: "Arkansas"},
-                    {value: "AZ", label: "Arizona"},
-                    {value: "CA", label: "California"},
-                    {value: "CO", label: "Colorado"},
-                    {value: "CT", label: "Connecticut"},
-                    {value: "DC", label: "DC"},
-                    {value: "DE", label: "Deleware"},
-                    {value: "FL", label: "Florida"},
-                    {value: "GA", label: "Georgia"},
-                    {value: "HI", label: "Hawaii"},
-                    {value: "IA", label: "Iowa"},
-                    {value: "ID", label: "Idaho"},
-                    {value: "IL", label: "Illinois"},
-                    {value: "IN", label: "Indiana"},
-                    {value: "KS", label: "Kansas"},
-                    {value: "KY", label: "Kentucky"},
-                    {value: "LA", label: "Louisiana"},
-                    {value: "MA", label: "Massachusetts"},
-                    {value: "MD", label: "Maryland"},
-                    {value: "ME", label: "Maine"},
-                    {value: "MI", label: "Michigan"},
-                    {value: "MN", label: "Minnesota"},
-                    {value: "MO", label: "Missouri"},
-                    {value: "MS", label: "Mississippi"},
-                    {value: "MT", label: "Montana"},
-                    {value: "NC", label: "North Carolina"},
-                    {value: "ND", label: "North Dakota"},
-                    {value: "NE", label: "Nebraska"},
-                    {value: "NH", label: "New Hampshire"},
-                    {value: "NJ", label: "New Jersey"},
-                    {value: "NM", label: "New Mexico"},
-                    {value: "NV", label: "Nevada"},
-                    {value: "NY", label: "New York"},
-                    {value: "OH", label: "Ohio"},
-                    {value: "OK", label: "Oklahoma"},
-                    {value: "OR", label: "Oregon"},
-                    {value: "PA", label: "Pennsylvania"},
-                    {value: "RI", label: "Rhode Island"},
-                    {value: "SC", label: "South Carolina"},
-                    {value: "SD", label: "South Dakota"},
-                    {value: "TN", label: "Tennessee"},
-                    {value: "TX", label: "Texas"},
-                    {value: "UT", label: "Utah"},
-                    {value: "VA", label: "Virginia"},
-                    {value: "VT", label: "Vermont"},
-                    {value: "WA", label: "Washington"},
-                    {value: "WI", label: "Wisconson"},
-                    {value: "WV", label: "West Virginia"},
-                    {value: "WY", label: "Wyoming"},
-                ],
-                types: [
-                    {value: "Dog", label: "Dog"},
-                    {value: "Cat", label: "Cat"},
-                    {value: "Rabbit", label: "Rabbit"},
-                    {value: "Horse", label: "Horse"},
-                    {value: "Other", label: "Other"}
-                ],
                 prevDiagYON: [
                     {value: "Yes", label: "Yes, previously diagnosed"},
                     {value: "No", label: "No, never diagnosed previously"}
@@ -528,7 +565,8 @@
             [Radio.name]: Radio,
             [Checkbox.name]: Checkbox,
             [DatePicker.name]: DatePicker,
-            [TimeSelect.name]: TimeSelect
+            [TimeSelect.name]: TimeSelect,
+            FormNavigation
         },
         mixins: [
             validationMixin
@@ -561,7 +599,9 @@
                     maxLength: 50,
                 },
                 state: {
-                    required
+                    required,
+                    minLength: 2,
+                    maxLength: 2
                 },
                 zip: {
                     required,
@@ -569,7 +609,7 @@
                 },
                 petName: {
                     required,
-                    maxLength: 50,
+                    maxLength: 50
                 },
                 species: {
                     required,
@@ -584,16 +624,20 @@
                 altered: {
                     required
                 },
+                about: {
+                    required,
+                    minLength: 20
+                },
                 previousDiagnosis: {
                     required
                 },
                 primaryVetFirstName: {
                     required,
-                    maxLength: 50,
+                    maxLength: 50
                 },
                 primaryVetLastName: {
                     required,
-                    maxLength: 50,
+                    maxLength: 50
                 },
                 primaryClinicName: {
                     required
@@ -607,7 +651,52 @@
                     required
                 },
         },
-        computed: {},
+        computed: {
+            formValid1() {
+                return !!(!this.$v.form.email.$invalid && !this.$v.form.firstName.$invalid && !this.$v.form.lastName.$invalid && !this.$v.form.address1.$invalid && !this.$v.form.city.$invalid && !this.$v.form.state.$invalid && !this.$v.form.zip.$invalid);
+            },
+
+            isDog() {
+                return !!(this.form.species === 'dog');
+            },
+            
+            isCat() {
+                return !!(this.form.species === 'cat');
+                
+            },
+
+            isHorse() {
+                return !!(this.form.species === 'horse');
+            },
+
+            isOther() {
+                return !!(this.form.species === 'other');
+            },
+
+            isMale() {
+                return !!(this.form.gender === 'm');
+            },
+
+            isFemale() {
+                return !!(this.form.gender === 'f');
+            },
+
+            isAltered() {
+                return !!(this.form.altered === 1)
+            },
+
+            isUnaltered() {
+                return !!(this.form.altered === 0)
+            },
+
+            procedure() {
+                if (this.form.gender === 'f') {
+                    return "spayed"
+                }
+
+                return "neutered"
+            }
+        },
         methods: {
             onSubmit() {
                 this.$v.form.$touch();
@@ -632,6 +721,26 @@
                 }
             },
 
+            nextStep() {
+                this.formStep += 1;
+            },
+
+            backStep() {
+                this.formStep -= 1;
+            },
+
+            selectSpecies(animal) {
+                this.form.species = animal;
+            }, 
+
+            selectGender(gen) {
+                this.form.gender = gen;
+            },
+
+            altered(value) {
+                this.form.altered = value;
+            },
+
             resetForm() {
                 /* Reset our form values */
                 this.form.firstName = ''
@@ -642,7 +751,6 @@
                 this.form.city = ''
                 this.form.state = ''
                 this.form.zip = ''
-                this.form.phone = ''
                 this.form.petName = ''
                 this.form.species = ''
                 this.form.breed = ''
@@ -663,7 +771,8 @@
                 this.form.specialist = '',
                 this.form.otherHelp = '',
                 this.form.verify = false,
-                this.url = null
+                this.url = null,
+                this.formStep = 1,
 
                 this.sent = false;
 
@@ -676,7 +785,8 @@
             },
             onFileChange(e) {
                 const file = e.target.files[0];
-                this.url = URL.createObjectURL(file);
+                console.log("ON FILE CHANGE --> FILE: " + file);
+                this.form.url = URL.createObjectURL(file);
                 console.log("THE URL: " + this.url)
 
                 this.form.image = file;
@@ -686,19 +796,39 @@
 </script>
 
 <style lang="scss" scoped>
+    * {
+        -webkit-transition: font-size .3s; /* Safari */
+        transition: font-size .3s;
+    }
+    
     .center {
         text-align: center;
-    }
-
-    .text {
-        color: darkgrey;
     }
   
     .form-box {
         border: 1px solid #fd7e14;
         border-radius: 6px;
-        margin: 1rem;
         padding: 1rem;
+    }
+
+    .step-box {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .red {
+        color: red;
+        font-size: 1.6rem;
+    }
+
+    .selectedGender {
+        color: red;
+        font-size: 1.6rem;
+    }
+
+    .age-box {
+        font-size: 3rem;
+        text-shadow: #fd7e14;
     }
 
 </style>
