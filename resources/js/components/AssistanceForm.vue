@@ -118,7 +118,6 @@
                                 id="address2FnForm"
                                 type="text"
                                 v-model="form.address2"
-                                
                                 maxlength="100"
                                 placeholder="Address 2"/>
                     </div>
@@ -135,7 +134,7 @@
                                 required/>
                     </div>
 
-                    <div class="form-group" id="stateGroupFnForm" :class="{ 'has-danger': $v.form.state.$invalid && $v.form.state.$dirty }">
+                    <div class="form-group" id="stateGroupFnForm">
                         <label>State</label>
                         <fg-input
                                 id="stateFnForm"
@@ -160,7 +159,7 @@
                             required/>
                     </div>
                     
-                    <form-navigation v-if="formValid1" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step4" v-on:backStep="backStep"></form-navigation>
 
                 </div>
                         
@@ -204,12 +203,13 @@
                                 rows="6"
                                 class="form-control"
                                 v-model="form.about"
+                                :class="{ 'has-danger': $v.form.about.$invalid && $v.form.about.$dirty, 'has-success': !$v.form.about.$invalid }"
                                 minlength="30"
                                 required/>
                     </div>
 
                     <!-- form navigation -->
-                    <form-navigation v-if="form.petName && !$v.form.about.$invalid" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step5" v-on:backStep="backStep"></form-navigation>
 
                 </div>
 
@@ -218,7 +218,7 @@
                     <h4 class="description-box description">
                         What is {{ form.petName }}? If you know {{ form.petName }}'s breed, please list that as well.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
+                    <h6 class="center" v-if="$v.form.$dirty">You must select a species.</h6>
                     <br>
 
                     <div class="form-group">    
@@ -250,14 +250,14 @@
                     </div>
 
                     <!-- form navigation -->
-                    <form-navigation v-if="form.species" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step6" v-on:backStep="backStep"></form-navigation>
                 </div>
                     
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===6">
                     <h4 class="description-box description">
                         Is {{ form.petName }} a boy {{ form.species }}, or a girl {{ form.species }}? Select the gender, and use the arrow keys at the bottom to advance.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
+                    <h6 class="center" v-if="$v.form.$dirty">You must select a gender.</h6>
                     <br>
 
                     <div class="form-group">    
@@ -273,7 +273,7 @@
                         </div>
                     </div>
 
-                    <form-navigation v-if="form.gender" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step7" v-on:backStep="backStep"></form-navigation>
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===7">
@@ -281,7 +281,7 @@
                     <h4 class="description-box description">
                         Is {{ form.petName }} spayed/neutered? Select below, and use the arrow keys at the bottom to advance.
                     </h4>
-                    
+                    <h6 class="center" v-if="$v.form.$dirty">You must tell us if {{ form.petName }} is altered.</h6>
                     <br>
 
                     <div class="form-group">    
@@ -297,7 +297,7 @@
                         </div>
                     </div>
 
-                    <form-navigation v-if="form.altered != null" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step8" v-on:backStep="backStep"></form-navigation>
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===8">
@@ -305,6 +305,9 @@
                     <h4 class="description-box description">
                         Rounded to the nearest year, how old is {{ form.petName }}?
                     </h4>
+
+                    <h6 class="center" v-if="$v.form.$dirty">Age must be between 1 and 30.</h6>
+                    <br>
 
                     <div class="form-group col-6 ml-auto mr-auto">
                         <fg-input
@@ -317,8 +320,9 @@
                                 required/>
                     </div>
 
-                    <form-navigation v-if="form.age" v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step9" v-on:backStep="backStep"></form-navigation>
                 </div>
+
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
                 
                     <h3 class="form-headline">PET'S MEDICAL INFORMATION</h3>
@@ -616,7 +620,7 @@
                 },
                 age: {
                     required,
-                    between: between(0, 25)
+                    between: between(1, 25)
                 },
                 gender: {
                     required
@@ -626,7 +630,7 @@
                 },
                 about: {
                     required,
-                    minLength: 20
+                    minLength: 10
                 },
                 previousDiagnosis: {
                     required
@@ -654,6 +658,10 @@
         computed: {
             formValid1() {
                 return !!(!this.$v.form.email.$invalid && !this.$v.form.firstName.$invalid && !this.$v.form.lastName.$invalid && !this.$v.form.address1.$invalid && !this.$v.form.city.$invalid && !this.$v.form.state.$invalid && !this.$v.form.zip.$invalid);
+            },
+
+            formValid2() {
+                return !!(!this.$v.form.about.$invalid && !this.$v.form.petName.$invalid);
             },
 
             isDog() {
@@ -719,6 +727,59 @@
                         this.$store.dispatch('cpFormError')
                     })
                 }
+            },
+            step4() {
+                if(this.formValid1) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                }
+                this.$v.form.$touch();
+            },
+
+            step5() {
+                if(this.formValid2) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                }
+                this.$v.form.$touch();
+            },
+
+            step6() {
+                if(!this.$v.form.species.$invalid) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                }
+                this.$v.form.$touch();
+            },
+
+            step7() {
+                if(!this.$v.form.gender.$invalid) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                }
+                this.$v.form.$touch();
+            },
+
+            step8() {
+                if(this.form.altered != null) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                }
+                this.$v.form.$touch();
+            },
+
+            step9() {
+                if(!this.$v.form.age.$invalid) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                }
+                this.$v.form.$touch();
             },
 
             nextStep() {
