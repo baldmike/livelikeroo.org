@@ -54,7 +54,7 @@
                             round 
                             block
                             @click.prevent.native="nextStep">
-                            I understand, let's get started!</n-button>
+                            I understand, let's move on!</n-button>
                 </div>
                 
                 <!-- FORM STEP 3-->
@@ -170,7 +170,7 @@
                     <h4 class="description-box description">
                         Now, please tell us all about your best friend. Let's start with their name, a picture and what makes them special to you.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6>
+                    <h6 class="center" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
                     <br>
 
                     <div class="form-group">
@@ -281,7 +281,7 @@
                     <h4 class="description-box description">
                         Is {{ form.petName }} spayed/neutered? Select below, and use the arrow keys at the bottom to advance.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">You must tell us if {{ form.petName }} is altered.</h6>
+                    <h6 class="center" v-if="$v.form.$dirty">You must tell us if {{ form.petName }} is {{ procedure }}.</h6>
                     <br>
 
                     <div class="form-group">    
@@ -306,7 +306,7 @@
                         Rounded to the nearest year, how old is {{ form.petName }}?
                     </h4>
 
-                    <h6 class="center" v-if="$v.form.$dirty">Age must be between 1 and 30.</h6>
+                    <h6 class="center" v-if="$v.form.$dirty">Age must be between 1 and 25.</h6>
                     <br>
 
                     <div class="form-group col-6 ml-auto mr-auto">
@@ -701,7 +701,6 @@
                 if (this.form.gender === 'f') {
                     return "spayed"
                 }
-
                 return "neutered"
             }
         },
