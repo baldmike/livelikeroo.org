@@ -28,7 +28,7 @@ export const router = new VueRouter({
                     path: '',
                     components: {default: Website, header: Navbar, footer: Footer},
                     title: 'Website',
-                    props: {header: {colorOnScroll: 700}}
+                    props: {header: {colorOnScroll: 400}}
                 },
                 {
                     path: '/donate',

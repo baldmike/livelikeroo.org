@@ -173,7 +173,7 @@
                     <h6 class="center" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
                     <br>
 
-                    <div class="form-group">
+                    <div class="form-group box">
                         <fg-input
                                 type="text"
                                 :class="{ 'has-danger': $v.form.petName.$invalid && $v.form.petName.$dirty, 'has-success': !$v.form.petName.$invalid }"
@@ -183,7 +183,7 @@
                     </div>
 
                     <!-- we are using Bootstrap-Vue for image input -->
-                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="imageFinReq">
+                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="imageFinReq" class="box">
                         <b-form-file
                                 id="imageFinReq"
                                 accept="image/*"
@@ -197,7 +197,7 @@
                         </b-col>
                     </b-form-group>
 
-                    <div class="form-group">
+                    <div class="form-group box">
                         <label>Tell us a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                         <textarea
                                 rows="6"
@@ -281,7 +281,7 @@
                     <h4 class="description-box description">
                         Is {{ form.petName }} spayed/neutered? Select below, and use the arrow keys at the bottom to advance.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">You must tell us if {{ form.petName }} is {{ procedure }}.</h6>
+                    <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
                     <br>
 
                     <div class="form-group">    
@@ -291,7 +291,7 @@
                                 <br><br>NOT {{ procedure }}</n-button>
                             </div>
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ red: isAltered }"><i class="fa fa-check"></i></span>
+                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ green: isAltered }"><i class="fa fa-check"></i></span>
                                 <br><br>{{ procedure }}</n-button>
                             </div>
                         </div>
@@ -324,11 +324,10 @@
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
+                    <h5 class="description">Lastly, we'll need {{ form.petName }}'s medical information and records.</h5>
                 
-                    <h3 class="form-headline">PET'S MEDICAL INFORMATION</h3>
-
                     <div class="form-group" id="diagnosisGroup">
-                        <label for="diagnosis">Medical Diagosis, if known</label>
+                        <label for="diagnosis">Medical Diagosis</label>
                         <fg-input
                                 id="diagnosis"
                                 type="text"
@@ -337,34 +336,47 @@
                     </div>
 
                     <div class="form-group" id="diagnosisDateGroup">
-                        <label for="diagnosisDate">Diagnosis Date, if known</label>
-                        <!-- <fg-input>
+                        <label for="diagnosisDate">Diagnosis Date</label>
+                        <fg-input>
                             <el-date-picker v-model="form.diagnosisDate"
                                             type="date"
                                             placeholder="Click to select Diagnosis Date">
                             </el-date-picker>
-                        </fg-input> -->
-                        <fg-input
+                        </fg-input>
+                        <!-- <fg-input
                                 id="diagnosisDate"
                                 type="date"
                                 v-model="form.diagnosisDate"
-                                placeholder="Diagnosis Date" />
+                                placeholder="Diagnosis Date" /> -->
                     </div>
 
+                    <form-navigation v-on:nextStep="step10" v-on:backStep="backStep"></form-navigation>
+                </div>
+
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===10">
                     <div class="form-group" :class="{ 'has-danger': $v.form.previousDiagnosis.$invalid && $v.form.previousDiagnosis.$dirty }">
-                        <label for="previousDiagnosis">Has your pet previously been diagnosed with cancer?</label>
-                        <el-select class="select-primary"
-                                    placeholder="Previous Diagnosis"
-                                    v-model="form.previousDiagnosis">
-
-                                <el-option v-for="option in prevDiagYON"
-                                        class="select-primary"
-                                        :key="option.label"
-                                        :value="option.value"
-                                        :label="option.label">
-                                </el-option>
-                        </el-select>
+                        <h5 class="description">as {{ form.petName }} previously been diagnosed with cancer?</h5>
+                        <div class="row">
+                            <div class="col-4 ml-auto mr-auto">
+                                <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ red: noPriorDiag }"><i class="fa fa-times"></i></span>
+                                <br><br>NO</n-button>
+                            </div>
+                            <div class="col-4 ml-auto mr-auto">
+                                <n-button @click.prevent.native="prevDiag(1)" type="primary" block><span :class="{ green: priorDiag }"><i class="fa fa-check"></i></span>
+                                <br><br>YES</n-button>
+                            </div>
+                        </div>
                     </div>
+
+                    <form-navigation v-on:nextStep="step11" v-on:backStep="backStep"></form-navigation>
+                </div>
+
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===11">
+                    <h4 class="description-box description">
+                        Lastly, we'll need {{ form.petName }}'s veterinarian information and records.
+                    </h4>
+                    <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
+                    <br>
 
                     <div class="form-group" id="primaryVetFirstNameGroup">
                         <label for="primaryVetFirstName">Vet First Name</label>
@@ -444,7 +456,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep>8">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep>12">
                     <div class="row">
                         <div class="col-12 ml-auto mr-auto">
                             <n-checkbox
@@ -528,7 +540,6 @@
                     primaryVetLastName: '',
                     primaryClinicName: '',
                     primaryClinicPhone: '',
-                    primaryClinicFax: '',
                     primaryClinicEmail: '',
                     specialist: '',
                     otherHelp: '',
@@ -540,23 +551,6 @@
                 formStep: 1,
                 requirement1: false,
                 requirement2: false,
-
-                prevDiagYON: [
-                    {value: "Yes", label: "Yes, previously diagnosed"},
-                    {value: "No", label: "No, never diagnosed previously"}
-                ],
-                alteredYON: [
-                    {value: "1", label: "Yes, my pet is spayed/neutered"},
-                    {value: "0", label: "No, my pet is not spayed/neutered"}
-                ],
-
-                gender: [
-                    // {value: null, label: "Select Gender"},
-                    {value: "M", label: "Male"},
-                    {value: "F", label: "Female"}
-                ],
-
-                species: [ 'Dog', 'Cat', 'Rabbit', 'Bird', 'Other' ],
                 show: true,
                 sent: false
             }
@@ -702,6 +696,14 @@
                     return "spayed"
                 }
                 return "neutered"
+            },
+
+            priorDiag() {
+                return !!(this.form.previousDiagnosis === 1);
+            },
+
+            noPriorDiag() {
+                return !!(this.form.previousDiagnosis === 0);
             }
         },
         methods: {
@@ -781,6 +783,22 @@
                 this.$v.form.$touch();
             },
 
+            step10() {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                
+            },
+
+            step11() {
+                if(!this.$v.form.previousDiagnosis.$invalid) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                }
+                this.$v.form.$touch();
+            },
+
             nextStep() {
                 this.formStep += 1;
             },
@@ -795,10 +813,23 @@
 
             selectGender(gen) {
                 this.form.gender = gen;
+
+                // let self = this;
+                // setTimeout(function() {
+                    
+                //     // reset the form for each new section
+                //     self.$nextTick(() => { this.$v.$reset() })
+                //     self.formStep += 1
+                 
+                // }, 2000);
             },
 
             altered(value) {
                 this.form.altered = value;
+            },
+
+            prevDiag(prev) {
+                this.form.previousDiagnosis = prev;
             },
 
             resetForm() {
@@ -821,7 +852,7 @@
                 this.form.about = '' 
                 this.form.diagnosis = ''
                 this.form.diagnosisDate = ''
-                this.form.previousDiagnosis = ''
+                this.form.previousDiagnosis = null
                 this.form.primaryVetFirstName = ''
                 this.form.primaryVetLastName = ''
                 this.form.primaryClinicName = ''
@@ -878,6 +909,11 @@
 
     .red {
         color: red;
+        font-size: 1.6rem;
+    }
+
+    .green {
+        color: green;
         font-size: 1.6rem;
     }
 
