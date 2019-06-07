@@ -15,6 +15,7 @@ use App\Models\FinReq;
 use App\Mail\FinReqReceivedEmail;
 
 use Mail;
+use App\Models\FinReqRecord;
 
 class FinReqsController extends Controller
 {
@@ -88,11 +89,23 @@ class FinReqsController extends Controller
     
             $FinReq->save();
 
-            // SEND CONFIRMATION EMAIL
+            // Now save records to fin_req_records table
+                        
+            foreach ($request->records as $record) {
+                $filename = $record->store('records');
+
+                FinReqRecord::create([
+                    'fin_req_id' => $FinReq->id,
+                    'filename' => $filename
+                ]);
+            }
+
+            // SEND CONFIRMATION EMAIL ---- TODO EMIT AN EVENT THAT SENDS MAIL
             Mail::to($request->email)->send(new FinReqReceivedEmail($FinReq));
             
             return new FinReqResource($FinReq);
         }
+
     }
 
     /**

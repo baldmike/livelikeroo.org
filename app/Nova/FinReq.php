@@ -11,6 +11,8 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Select;
 
+use Laravel\Nova\Fields\HasMany;
+
 use App\Nova\Metrics\AssistanceRequests;
 use App\Nova\Metrics\AssistanceRequestsPerDay;
 use App\Nova\Metrics\AssistanceRequestsByState;

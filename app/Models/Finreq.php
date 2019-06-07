@@ -18,4 +18,12 @@ class FinReq extends Model
     protected $casts = [
         'diagnosis_date' => 'date'
     ];
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function records()
+    {
+        return $this->hasMany('App\Models\FinReqRecord');
+    }
 }

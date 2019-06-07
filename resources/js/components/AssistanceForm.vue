@@ -188,12 +188,11 @@
                                 id="imageFinReq"
                                 accept="image/*"
                                 v-model="form.image"
-                                placeholder="Choose a file..."
-                                drop-placeholder="Drop file here..."
+                                placeholder="Choose an image..."
                                 @change="onFileChange"/>
 
                         <b-col cols="6" offset="3" style="margin-top: 1rem;">
-                            <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
+                            <img v-if="url" :src="url" width="200" alt="uploaded image">
                         </b-col>
                     </b-form-group>
 
@@ -337,17 +336,17 @@
 
                     <div class="form-group" id="diagnosisDateGroup">
                         <label for="diagnosisDate">Diagnosis Date</label>
-                        <fg-input>
+                        <!-- <fg-input>
                             <el-date-picker v-model="form.diagnosisDate"
                                             type="date"
                                             placeholder="Click to select Diagnosis Date">
                             </el-date-picker>
-                        </fg-input>
-                        <!-- <fg-input
+                        </fg-input> -->
+                        <fg-input
                                 id="diagnosisDate"
                                 type="date"
                                 v-model="form.diagnosisDate"
-                                placeholder="Diagnosis Date" /> -->
+                                placeholder="Diagnosis Date" />
                     </div>
 
                     <form-navigation v-on:nextStep="step10" v-on:backStep="backStep"></form-navigation>
@@ -454,9 +453,21 @@
                                 v-model="form.otherHelp"
                                 placeholder="If applicable, please list any grants that you have received and the amount." />
                     </div>
+
+                    <b-form-group id="recordsGroup" label="Please upload your pet's medical records" label-for="recordsFinReq" class="box">
+                        <b-form-file
+                                id="recordsFinReq"
+                                accept="application/pdf, image/*"
+                                v-model="records"
+                                placeholder="Choose a file..."
+                                drop-placeholder="Drop file here..."
+                                multiple
+                                @change="onRecordChange"/>
+                    </b-form-group>
+
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep>12">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep>=11">
                     <div class="row">
                         <div class="col-12 ml-auto mr-auto">
                             <n-checkbox
@@ -546,6 +557,7 @@
                     verify: false,
                 },
                 url: null,
+                records: [],
                 robot: false,
                 show: true,
                 formStep: 1,
@@ -718,11 +730,16 @@
                         fd.append(key, this.form[key])
                     })
 
+                    this.records.forEach(file => {
+                        fd.append('records[]', file, file.name);
+                    });
+
                     this.$store.dispatch('fnFormSubmit');
 
                     axios.post("/api/fin_reqs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
                         
-                        this.$store.dispatch('fnFormSuccess')
+                        this.$store.dispatch('fnFormSuccess');
+                        this.resetForm();
 
                     }).catch((error) => {
                         this.$store.dispatch('cpFormError')
@@ -813,15 +830,6 @@
 
             selectGender(gen) {
                 this.form.gender = gen;
-
-                // let self = this;
-                // setTimeout(function() {
-                    
-                //     // reset the form for each new section
-                //     self.$nextTick(() => { this.$v.$reset() })
-                //     self.formStep += 1
-                 
-                // }, 2000);
             },
 
             altered(value) {
@@ -857,18 +865,19 @@
                 this.form.primaryVetLastName = ''
                 this.form.primaryClinicName = ''
                 this.form.primaryClinicPhone = ''
-                this.form.primaryClinicFax = ''
                 this.form.primaryClinicEmail = ''
                 this.form.specialist = '',
                 this.form.otherHelp = '',
                 this.form.verify = false,
+                
+                this.records = [],
                 this.url = null,
                 this.formStep = 1,
-
                 this.sent = false;
 
                 /* reset/clear native browser form validation state */
                 this.show = false
+                
                 this.$nextTick(() => {
                     this.show = true;
                     this.$v.$reset();
@@ -876,14 +885,23 @@
             },
             onFileChange(e) {
                 const file = e.target.files[0];
-                console.log("ON FILE CHANGE --> FILE: " + file);
-                this.form.url = URL.createObjectURL(file);
+                console.log("ON FILE/IMAGE CHANGE --> FILE: " + file);
+                this.url = URL.createObjectURL(file);
                 console.log("THE URL: " + this.url)
 
                 this.form.image = file;
             },
+
+            onRecordChange(e) {
+                const files = e.target.files;
+
+                Array.from(files).forEach(file => this.records.push(file));
+
+                console.log("RECORDS ARRAY --> " + this.records)
+            },
         }
     }
+
 </script>
 
 <style lang="scss" scoped>
