@@ -19,6 +19,7 @@ use App\Nova\Metrics\AssistanceRequestsByState;
 
 use Illuminate\Http\Request;
 
+
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 
@@ -186,6 +187,8 @@ class FinReq extends Resource
             Text::make('Other Help')
                 ->sortable()
                 ->hideFromIndex(),
+
+            HasMany::make('FinReqRecord')
         ];
     }
 

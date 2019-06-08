@@ -10,7 +10,7 @@ class FinReqRecord extends Model
         'fin_req_id', 'filename'
     ];
 
-    public function product()
+    public function finreq()
     {
         return $this->belongsTo('App\Models\FinReq');
     }
