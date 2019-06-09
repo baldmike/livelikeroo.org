@@ -39,7 +39,7 @@ class FinReq extends Resource
      */
     public static function label()
     {
-        return 'Assistance';
+        return 'Assistance Requests';
     }
 
     /**
