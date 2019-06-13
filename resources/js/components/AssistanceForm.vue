@@ -9,7 +9,11 @@
 
                     <h5 class="title">Financial Assistance</h5>
                     
-                    <h5 class="description">Cancer SUCKS. We've been in your shoes, and we'd like to help you through this difficult time. The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, and are awarded after a complete review of this application and the <em>accompanying medical records</em>. Please read the following, and we'll help guide you through the process.</h5>
+                    <h5>Cancer SUCKS. We've been in your shoes, and we'd like to help. Please read the following carefully, and we'll help determine if you're eligible and guide you through the process.</h5>
+                    
+                    <h5>The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, ranging from $500 - $1500 per qualified applicant and are awarded on a monthly basis after a complete review of this application and the <em>accompanying medical records.</em></h5>
+                    
+                    <h5>Upon approval, grants will typically be paid directly to veterinary offices, but may be paid directly to the applicant on a case by case basis. When you're ready, click the button below to begin the application.</h5>
 
                     <n-button 
                         type="primary"
@@ -323,7 +327,7 @@
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
-                    <h5 class="description">Lastly, we'll need {{ form.petName }}'s medical information and records.</h5>
+                    <h5 class="description">Now, we'll need {{ form.petName }}'s medical information and records.</h5>
                 
                     <div class="form-group" id="diagnosisGroup">
                         <label for="diagnosis">Medical Diagosis</label>
@@ -331,6 +335,7 @@
                                 id="diagnosis"
                                 type="text"
                                 v-model="form.diagnosis"
+                                required
                                 placeholder="Diagnosis" />
                     </div>
 
@@ -346,6 +351,7 @@
                                 id="diagnosisDate"
                                 type="date"
                                 v-model="form.diagnosisDate"
+                                :class="{ 'has-danger': $v.form.dateObject.$invalid, 'has-success': !$v.form.dateObject.$invalid }"
                                 placeholder="Diagnosis Date" />
                     </div>
 
@@ -513,13 +519,13 @@
 <script>
 
     import { validationMixin } from "vuelidate";
-    import { helpers, required, minLength, maxLength, email, between, sameAs } from "vuelidate/lib/validators";
+    import { helpers, required, minLength, maxLength, minValue, maxValue, email, between, sameAs } from "vuelidate/lib/validators";
     import { Select, Option, DatePicker, TimeSelect } from 'element-ui'
     import { Button, FormGroupInput, Tabs, TabPane, Radio, Checkbox } from '@/components';
     import FormNavigation from './FormNavigation'
     
     import { EventBus } from '../event-bus.js';
-    const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/)
+    const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
 
     export default {
 
@@ -545,7 +551,7 @@
                     about: '',
                     image: null,
                     diagnosis: '',
-                    diagnosisDate: null,
+                    diagnosisDate: '',
                     previousDiagnosis: null,
                     primaryVetFirstName: '',
                     primaryVetLastName: '',
@@ -567,6 +573,7 @@
                 sent: false
             }
         },
+        
         components: {
             [Button.name]: Button,
             [FormGroupInput.name]: FormGroupInput,
@@ -641,6 +648,10 @@
                 previousDiagnosis: {
                     required
                 },
+                diagnosisDate: {
+                    // maxValue: maxValue(new Date())
+                    minValue: value => value > new Date().toISOString()
+                },
                 primaryVetFirstName: {
                     required,
                     maxLength: 50
@@ -662,6 +673,9 @@
                 },
         },
         computed: {
+            dateObject () {
+                return this.form.diagnosisDate ? new Date(this.form.diagnosisDate) : null
+            },
             formValid1() {
                 return !!(!this.$v.form.email.$invalid && !this.$v.form.firstName.$invalid && !this.$v.form.lastName.$invalid && !this.$v.form.address1.$invalid && !this.$v.form.city.$invalid && !this.$v.form.state.$invalid && !this.$v.form.zip.$invalid);
             },
@@ -676,7 +690,6 @@
             
             isCat() {
                 return !!(this.form.species === 'cat');
-                
             },
 
             isHorse() {
@@ -801,10 +814,13 @@
             },
 
             step10() {
+                if(!this.$v.dateObject.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() })
                     this.formStep += 1
-                
+                }
+                this.$v.form.$touch();
+
             },
 
             step11() {
