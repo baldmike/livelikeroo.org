@@ -351,7 +351,8 @@
                                 id="diagnosisDate"
                                 type="date"
                                 v-model="form.diagnosisDate"
-                                :class="{ 'has-danger': $v.form.dateObject.$invalid, 'has-success': !$v.form.dateObject.$invalid }"
+                                @input="$v.dateObject.$touch"
+                                :class="{ 'has-danger': $v.dateObject.$invalid, 'has-success': !$v.dateObject.$invalid }"
                                 placeholder="Diagnosis Date" />
                     </div>
 
@@ -460,6 +461,17 @@
                                 placeholder="If applicable, please list any grants that you have received and the amount." />
                     </div>
 
+                    <form-navigation v-on:nextStep="step12" v-on:backStep="backStep"></form-navigation>
+                </div>
+
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===12">
+
+                    <h4 class="description-box description">
+                        Lastly, we'll need copies of your pet's current vet bills. If you have them already stored on this device, you may send them as they are. If you have physical copies, you may either scan them, or simply take pictures with your phone and send those.
+                    </h4>
+                    <h6 class="center" v-if="$v.form.$dirty">You must send medical records.</h6>
+                    <br>
+
                     <b-form-group id="recordsGroup" label="Please upload your pet's medical records" label-for="recordsFinReq" class="box">
                         <b-form-file
                                 id="recordsFinReq"
@@ -471,9 +483,16 @@
                                 @change="onRecordChange"/>
                     </b-form-group>
 
+                    <form-navigation v-on:nextStep="step13" v-on:backStep="backStep"></form-navigation>
+
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep>=11">
+
+
+
+
+
+                <div class="col-12 mr-auto ml-auto" v-if="formStep>=13">
                     <div class="row">
                         <div class="col-12 ml-auto mr-auto">
                             <n-checkbox
@@ -500,7 +519,8 @@
                         <div class="sent" v-if="sent">This form has been submitted</div>
                         <div class="error" v-if="$v.form.$dirty">You have missing fields, please check the form.</div>
 
-                        <div style="text-align: center; margin: 2rem;">
+                        <!-- <div style="text-align: center; margin: 2rem;"> -->
+                            <div class="col-md-4 mr-auto ml-auto">
                             <img src="/images/llr_logo.png">
                         </div>    
                     </div>
@@ -560,10 +580,10 @@
                     primaryClinicEmail: '',
                     specialist: '',
                     otherHelp: '',
+                    records: [],
                     verify: false,
                 },
                 url: null,
-                records: [],
                 robot: false,
                 show: true,
                 formStep: 1,
@@ -648,10 +668,6 @@
                 previousDiagnosis: {
                     required
                 },
-                diagnosisDate: {
-                    // maxValue: maxValue(new Date())
-                    minValue: value => value > new Date().toISOString()
-                },
                 primaryVetFirstName: {
                     required,
                     maxLength: 50
@@ -667,7 +683,13 @@
                     required,
                     phone
                 },
+                records: {
+                    required
+                }
             },
+                dateObject: {
+                    maxValue: maxValue(new Date())
+                },
                 robot: {
                     required
                 },
@@ -743,8 +765,8 @@
                         fd.append(key, this.form[key])
                     })
 
-                    this.records.forEach(file => {
-                        fd.append('records[]', file, file.name);
+                    this.form.records.forEach(file => {
+                        fd.append('form.records[]', file, file.name);
                     });
 
                     this.$store.dispatch('fnFormSubmit');
@@ -814,13 +836,12 @@
             },
 
             step10() {
-                if(!this.$v.dateObject.$invalid) {
+                if(!this.$v.diagnosisDate.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() })
                     this.formStep += 1
                 }
                 this.$v.form.$touch();
-
             },
 
             step11() {
@@ -832,7 +853,26 @@
                 this.$v.form.$touch();
             },
 
+            step12() {
+                // if(!this.$v.form.previousDiagnosis.$invalid) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                // }
+                this.$v.form.$touch();
+            },
+
+            step13() {
+                if(!this.form.records === null) {
+                    // reset the form for each new section
+                    this.$nextTick(() => { this.$v.$reset() })
+                    this.formStep += 1
+                }
+                this.$v.form.$touch();
+            },
+
             nextStep() {
+                this.$nextTick(() => { this.$v.$reset() })
                 this.formStep += 1;
             },
 
@@ -884,9 +924,8 @@
                 this.form.primaryClinicEmail = ''
                 this.form.specialist = '',
                 this.form.otherHelp = '',
+                this.form.records = [],
                 this.form.verify = false,
-                
-                this.records = [],
                 this.url = null,
                 this.formStep = 1,
                 this.sent = false;
@@ -911,9 +950,9 @@
             onRecordChange(e) {
                 const files = e.target.files;
 
-                Array.from(files).forEach(file => this.records.push(file));
+                Array.from(files).forEach(file => this.form.records.push(file));
 
-                console.log("RECORDS ARRAY --> " + this.records)
+                console.log("RECORDS ARRAY --> " + this.form.records)
             },
         }
     }
