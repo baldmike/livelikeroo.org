@@ -483,14 +483,14 @@
                     </b-form-group>
 
                     <b-col cols="6" offset="3" style="margin-top: 1rem;">
-                        <img v-if="recordUrl" :src="recordUrl" width="200" alt="uploaded image">
+                        <img v-if="fileType==='image'" :src="recordUrl" width="200" alt="uploaded image">
+
+                        <pdf v-if="fileType==='pdf'" :src="recordUrl" width="200" alt="uploaded record"></pdf>
                     </b-col>
 
                     <form-navigation v-on:nextStep="step13" v-on:backStep="backStep"></form-navigation>
 
                 </div>
-
-
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep>=13">
                     <div class="row">
@@ -545,6 +545,7 @@
     import { Select, Option, DatePicker, TimeSelect } from 'element-ui'
     import { Button, FormGroupInput, Tabs, TabPane, Radio, Checkbox } from '@/components';
     import FormNavigation from './FormNavigation'
+    import pdf from 'vue-pdf'
     
     import { EventBus } from '../event-bus.js';
     
@@ -586,6 +587,7 @@
                     record1: null,
                     verify: false,
                 },
+                fileType: '',
                 url: '',
                 recordUrl: '',
                 robot: false,
@@ -607,7 +609,8 @@
             [Checkbox.name]: Checkbox,
             [DatePicker.name]: DatePicker,
             [TimeSelect.name]: TimeSelect,
-            FormNavigation
+            FormNavigation,
+            pdf
         },
         mixins: [
             validationMixin
@@ -755,7 +758,7 @@
 
             noPriorDiag() {
                 return !!(this.form.previousDiagnosis === 0);
-            }
+            },
         },
         methods: {
             onSubmit() {
@@ -871,10 +874,6 @@
                 this.$v.form.$touch();
             },
 
-            disableButton() {
-                console.log("disabled button");
-            },
-
             nextStep() {
                 this.$nextTick(() => { this.$v.$reset() })
                 this.formStep += 1;
@@ -947,6 +946,12 @@
                 console.log("ON FILE/IMAGE CHANGE --> FILE: " + file);
                 this.url = URL.createObjectURL(file);
                 console.log("The URL: " + this.url)
+
+                if (file.type == 'image/*') {
+                    this.fileType = 'image'
+                } else {
+                    this.fileType = 'pdf'
+                }
 
                 this.form.image = file;
             },

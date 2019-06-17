@@ -107,7 +107,7 @@ class FinReqsController extends Controller
             
 
             // SEND CONFIRMATION EMAIL ---- TODO EMIT AN EVENT THAT SENDS MAIL
-            Mail::to($request->email)->send(new FinReqReceivedEmail($FinReq));
+            // Mail::to($request->email)->send(new FinReqReceivedEmail($FinReq));
             
             return new FinReqResource($FinReq);
         }
