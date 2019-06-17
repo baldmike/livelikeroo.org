@@ -361,7 +361,7 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===10">
                     <div class="form-group" :class="{ 'has-danger': $v.form.previousDiagnosis.$invalid && $v.form.previousDiagnosis.$dirty }">
-                        <h5 class="description">as {{ form.petName }} previously been diagnosed with cancer?</h5>
+                        <h5 class="description">Has {{ form.petName }} previously been diagnosed with cancer?</h5>
                         <div class="row">
                             <div class="col-4 ml-auto mr-auto">
                                 <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ red: noPriorDiag }"><i class="fa fa-times"></i></span>
@@ -476,7 +476,7 @@
                         <b-form-file
                                 id="recordsFinReq"
                                 accept="application/pdf, image/*"
-                                v-model="records"
+                                v-model="form.records"
                                 placeholder="Choose a file..."
                                 drop-placeholder="Drop file here..."
                                 multiple
@@ -526,8 +526,8 @@
                     </div>
                 
                 
-                    <div class="col-md-12 mr-auto ml-auto" v-if="formStep>8">
-                        <n-button @click.prevent.native="resetForm" type="danger">RESET FORM</n-button>
+                    <div class="col-md-4 mr-auto ml-auto" v-if="formStep>8">
+                        <n-button @click.prevent.native="resetForm" block type="danger">RESET FORM</n-button>
                     </div>
                 </div>
 
@@ -836,7 +836,7 @@
             },
 
             step10() {
-                if(!this.$v.diagnosisDate.$invalid) {
+                if(!this.$v.dateObject.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() })
                     this.formStep += 1
@@ -863,7 +863,7 @@
             },
 
             step13() {
-                if(!this.form.records === null) {
+                if(!this.$v.form.records.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() })
                     this.formStep += 1

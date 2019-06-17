@@ -90,10 +90,16 @@ class FinReqsController extends Controller
             $FinReq->save();
 
             // Now save records to fin_req_records table
-                        
-            foreach ($request->records as $record) {
-                $filename = $record->store('records');
+            $getRecords = $request->records;
+            
+            $records = (array)$getRecords;
+            
+            Log::debug($records);
+            Log::debug("[FINREQSCONTROLLER] --> THE RECORDS ARRAY ABOVE");
 
+            foreach ($records as $record) {
+                
+                $filename = Storage::putFile('public/records', file_get_contents($record), 'public');
                 FinReqRecord::create([
                     'fin_req_id' => $FinReq->id,
                     'filename' => $filename

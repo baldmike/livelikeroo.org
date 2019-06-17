@@ -79,6 +79,10 @@
         {
             "type": "path",
             "url": "./nova-components/LiveLikeRoo"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/tightenco/laravel-preset-jest"
         }
     ]
 }
