@@ -947,12 +947,6 @@
                 this.url = URL.createObjectURL(file);
                 console.log("The URL: " + this.url)
 
-                if (file.type == 'image/*') {
-                    this.fileType = 'image'
-                } else {
-                    this.fileType = 'pdf'
-                }
-
                 this.form.image = file;
             },
 
@@ -961,6 +955,12 @@
                 console.log("ON RECORD CHANGE --> FILE: " + record);
                 this.recordUrl = URL.createObjectURL(record);
                 console.log("record url: " + this.recordUrl)
+
+                if (record.type == 'image/jpeg' || record.type == 'image/png') {
+                    this.fileType = 'image'
+                } else {
+                    this.fileType = 'pdf'
+                }
 
                 this.form.record1 = record;
             },
