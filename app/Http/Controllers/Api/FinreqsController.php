@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FinReqRequest;
@@ -73,7 +74,7 @@ class FinReqsController extends Controller
             $FinReq->specialist = request('specialist');
             $FinReq->other_help = request('otherHelp');     
 
-            // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL (on the front end)
+            // putFile creates a unique string name, saves file in 'storage/app/public/images', makes it public and returns the path that we'll concat onto our URL (on the front end) **** the third arg, 'public', is the visibility of resource
             if($request->hasFile('image'))
             {
                 $path = Storage::putFile('public/images', $request->file('image'), 'public');
@@ -90,21 +91,20 @@ class FinReqsController extends Controller
             $FinReq->save();
 
             // Now save records to fin_req_records table
-            $getRecords = $request->records;
-            
-            $records = (array)$getRecords;
-            
-            Log::debug($records);
-            Log::debug("[FINREQSCONTROLLER] --> THE RECORDS ARRAY ABOVE");
+            // create uuid to name file
+            $uuid = (string) Str::uuid();
 
-            foreach ($records as $record) {
-                
-                $filename = Storage::putFile('public/records', file_get_contents($record), 'public');
-                FinReqRecord::create([
-                    'fin_req_id' => $FinReq->id,
-                    'filename' => $filename
-                ]);
-            }
+            $filename = 'records/' . 'mudbath' . '.jpg';
+            $file = $request->file('record1');
+
+            // 
+            $medRecord1 = Storage::putFileAs('', $file, $filename);
+            
+            FinReqRecord::create([
+                'fin_req_id' => $FinReq->id,
+                'filename' => $medRecord1
+            ]);
+            
 
             // SEND CONFIRMATION EMAIL ---- TODO EMIT AN EVENT THAT SENDS MAIL
             Mail::to($request->email)->send(new FinReqReceivedEmail($FinReq));

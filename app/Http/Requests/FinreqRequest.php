@@ -46,12 +46,6 @@ class FinReqRequest extends FormRequest
             'primaryClinicName' => 'required',
         ];
 
-        // $records = count($this->input('records'));
-
-        // foreach(range(0, $records) as $index) {
-        //     $rules['records.' . $index] = 'image|application|mimes:jpeg,png,pdf|max:2000';
-        // }
-
         return $rules;
     }
 }

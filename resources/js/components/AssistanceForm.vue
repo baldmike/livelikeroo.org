@@ -379,7 +379,7 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===11">
                     <h4 class="description-box description">
-                        Lastly, we'll need {{ form.petName }}'s veterinarian information and records.
+                        Now we'll need {{ form.petName }}'s veterinarian information and records.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
                     <br>
@@ -476,19 +476,19 @@
                         <b-form-file
                                 id="recordsFinReq"
                                 accept="application/pdf, image/*"
-                                v-model="form.records"
+                                v-model="form.record1"
                                 placeholder="Choose a file..."
                                 drop-placeholder="Drop file here..."
-                                multiple
                                 @change="onRecordChange"/>
                     </b-form-group>
+
+                    <b-col cols="6" offset="3" style="margin-top: 1rem;">
+                        <img v-if="recordUrl" :src="recordUrl" width="200" alt="uploaded image">
+                    </b-col>
 
                     <form-navigation v-on:nextStep="step13" v-on:backStep="backStep"></form-navigation>
 
                 </div>
-
-
-
 
 
 
@@ -524,6 +524,8 @@
                             <img src="/images/llr_logo.png">
                         </div>    
                     </div>
+
+                    <form-navigation v-on:nextStep="disabledButton" v-on:backStep="backStep"></form-navigation>
                 
                 
                     <div class="col-md-4 mr-auto ml-auto" v-if="formStep>8">
@@ -545,6 +547,7 @@
     import FormNavigation from './FormNavigation'
     
     import { EventBus } from '../event-bus.js';
+    
     const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
 
     export default {
@@ -580,10 +583,11 @@
                     primaryClinicEmail: '',
                     specialist: '',
                     otherHelp: '',
-                    records: [],
+                    record1: null,
                     verify: false,
                 },
-                url: null,
+                url: '',
+                recordUrl: '',
                 robot: false,
                 show: true,
                 formStep: 1,
@@ -683,7 +687,7 @@
                     required,
                     phone
                 },
-                records: {
+                record1: {
                     required
                 }
             },
@@ -759,19 +763,15 @@
 
                 if (!this.$v.form.$invalid) {
 
-                    let fd = new FormData();
+                    let formData = new FormData();
                 
                     Object.keys(this.form).forEach(key => {
-                        fd.append(key, this.form[key])
+                        formData.append(key, this.form[key])
                     })
-
-                    this.form.records.forEach(file => {
-                        fd.append('form.records[]', file, file.name);
-                    });
 
                     this.$store.dispatch('fnFormSubmit');
 
-                    axios.post("/api/fin_reqs", fd, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                    axios.post("/api/fin_reqs", formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
                         
                         this.$store.dispatch('fnFormSuccess');
                         this.resetForm();
@@ -863,12 +863,16 @@
             },
 
             step13() {
-                if(!this.$v.form.records.$invalid) {
+                if(!this.$v.form.record1.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() })
                     this.formStep += 1
                 }
                 this.$v.form.$touch();
+            },
+
+            disableButton() {
+                console.log("disabled button");
             },
 
             nextStep() {
@@ -924,7 +928,7 @@
                 this.form.primaryClinicEmail = ''
                 this.form.specialist = '',
                 this.form.otherHelp = '',
-                this.form.records = [],
+                this.form.record1 = '',
                 this.form.verify = false,
                 this.url = null,
                 this.formStep = 1,
@@ -942,17 +946,18 @@
                 const file = e.target.files[0];
                 console.log("ON FILE/IMAGE CHANGE --> FILE: " + file);
                 this.url = URL.createObjectURL(file);
-                console.log("THE URL: " + this.url)
+                console.log("The URL: " + this.url)
 
                 this.form.image = file;
             },
 
             onRecordChange(e) {
-                const files = e.target.files;
+                const record = e.target.files[0];
+                console.log("ON RECORD CHANGE --> FILE: " + record);
+                this.recordUrl = URL.createObjectURL(record);
+                console.log("record url: " + this.recordUrl)
 
-                Array.from(files).forEach(file => this.form.records.push(file));
-
-                console.log("RECORDS ARRAY --> " + this.form.records)
+                this.form.record1 = record;
             },
         }
     }
