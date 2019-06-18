@@ -10,6 +10,7 @@
 
     "require": {
         "php": "^7.3.5",
+        "beyondcode/live-like-roo": "*",
         "cartalyst/stripe-laravel": "10.0",
         "dillingham/nova-button": "^1.0",
         "doctrine/dbal": "^2.9",
@@ -19,10 +20,10 @@
         "laravel/framework": "5.8.*",
         "laravel/nova": "*",
         "laravel/passport": "^7.2",
+        "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0",
         "shippo/shippo-php": "^1.4",
-        "stripe/stripe-php": "^6.31",
-        "beyondcode/live-like-roo": "*"
+        "stripe/stripe-php": "^6.31"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -78,6 +79,10 @@
         {
             "type": "path",
             "url": "./nova-components/LiveLikeRoo"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/tightenco/laravel-preset-jest"
         }
     ]
 }

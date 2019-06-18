@@ -14,7 +14,7 @@
                     
                     <h2 class="header" style="margin-top: 100px;">Need some help?</h2>
 
-                    <h4 class="description" style="margin-top: 240px;">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to provide financial support. We accept financial assistance requests until 11:59 PM CST on the third Sunday of each month. To learn more and get started, click Apply For Assistance.</h4>
+                    <h4 class="description" style="margin-top: 240px;">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to provide financial support. We accept financial assistance requests until 11:59 PM CST on the third Sunday of each month. To learn more, see if you qualify and get started, click Apply For Assistance.</h4>
 
                     
                 </div>

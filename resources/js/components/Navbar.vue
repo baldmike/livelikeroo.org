@@ -18,27 +18,27 @@
         </template>
         <template slot="navbar-menu">
             <li class="nav-item">
-                <router-link class="nav-link" to="/donate"><i class="now-ui-icons business_money-coins roo"
-                aria-hidden="true"></i><p>Donate</p></router-link>
+                <router-link class="nav-link center" to="/donate"><i class="fas fa-donate roo"
+                aria-hidden="true" style="font-size: 2rem;"></i><h3>Donate</h3></router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/care_package"><i class="now-ui-icons shopping_box roo"
-                aria-hidden="true"></i><p>Care Packages</p></router-link>
+                <router-link class="nav-link center" to="/care_package"><i class="fas fa-gift roo"
+                aria-hidden="true" style="font-size: 2rem;"></i><h3>Care Packages</h3></router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/assistance"><i class="now-ui-icons ui-2_favourite-28 roo"
-                aria-hidden="true"></i><p>Assistance</p></router-link>
+                <router-link class="nav-link center" to="/assistance"><i class="fas fa-heart roo"
+                aria-hidden="true" style="font-size: 2rem;"></i><h3>Assistance</h3></router-link>
             </li>
             <li class="nav-item">
-                <router-link class="nav-link" to="/events"><i class="now-ui-icons ui-1_calendar-60 roo"
-                aria-hidden="true"></i><p>Events</p></router-link>
+                <router-link class="nav-link center" to="/events"><i class="fas fa-calendar-alt roo"
+                aria-hidden="true" style="font-size: 2rem;"></i><h3>events</h3></router-link>
             </li>
             <!-- <li class="nav-item">
                 <router-link class="nav-link" to="/shop"><i class="now-ui-icons shopping_basket roo"
                 aria-hidden="true"></i><p>Shop</p></router-link>
             </li> -->
             
-            <drop-down tag="li" title="programs" class="nav-item">
+            <drop-down style="font-size: 1.2rem;" tag="li" title="programs" class="nav-item center">
                 <nav-link class="dropdown-item" to="/booker">
                     <i class="now-ui-icons emoticons_satisfied" style="color: #fd7e14;"></i> Booker Fund
                 </nav-link>
@@ -79,5 +79,10 @@
 <style scoped>
     .roo {
         color: #fd7e14;
+    }
+
+    .center {
+        text-align: center;
+        width: 180px;
     }
 </style>

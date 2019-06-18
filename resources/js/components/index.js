@@ -55,5 +55,5 @@ export {
   Collapse,
   CollapseItem,
   Comment,
-  InfoSection
+  InfoSection,
 }

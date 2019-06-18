@@ -11,11 +11,14 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Select;
 
+use Laravel\Nova\Fields\HasMany;
+
 use App\Nova\Metrics\AssistanceRequests;
 use App\Nova\Metrics\AssistanceRequestsPerDay;
 use App\Nova\Metrics\AssistanceRequestsByState;
 
 use Illuminate\Http\Request;
+
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -36,7 +39,7 @@ class FinReq extends Resource
      */
     public static function label()
     {
-        return 'Assistance';
+        return 'Assistance Requests';
     }
 
     /**
@@ -184,6 +187,8 @@ class FinReq extends Resource
             Text::make('Other Help')
                 ->sortable()
                 ->hideFromIndex(),
+
+            HasMany::make('FinReqRecord')
         ];
     }
 

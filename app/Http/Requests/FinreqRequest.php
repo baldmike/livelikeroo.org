@@ -26,7 +26,7 @@ class FinReqRequest extends FormRequest
     {
         Log::debug("INSIDE THE FIN REQ REQUEST");
 
-        return [
+        $rules = [
             'firstName' => 'required',
             'lastName' => 'required',
             'email' => 'required',
@@ -44,7 +44,8 @@ class FinReqRequest extends FormRequest
             'primaryVetFirstName' => 'required',
             'primaryVetLastName' => 'required',
             'primaryClinicName' => 'required',
-
         ];
+
+        return $rules;
     }
 }
