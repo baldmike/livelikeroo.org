@@ -34,6 +34,7 @@ class BuyCarePackageLabel
     public function handle(CarePackageBuyLabel $event)
     {   
         $toAddress = $event->carePackage->shippingAddress();
+        $carrierAccount = config('services.shippo.carrier_key');
 
         Log::debug("[BuyCarePackageLabel] -> BEFORE validation--> ");
 
@@ -68,7 +69,7 @@ class BuyCarePackageLabel
 
         $transaction = Shippo_Transaction::create( array(
             'shipment' => $shipment,
-            'carrier_account' => 'c48be54b2f71475187f79b5dab7d4f30',
+            'carrier_account' => $carrierAccount,
             'servicelevel_token' => 'usps_priority',
             'label_file_type' => "PDF",
             'async' => false,

@@ -163,6 +163,8 @@
                             required/>
                     </div>
                     
+                    <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
+                    
                     <form-navigation v-on:nextStep="step4" v-on:backStep="backStep"></form-navigation>
 
                 </div>

@@ -26,7 +26,7 @@ class ShipCarePackage
      */
     public function handle(CarePackageShip $event)
     {
-        $event->care_package->sent = 1;
-        $event->care_package->save();
+        $event->carePackage->sent = 1;
+        $event->carePackage->save();
     }
 }

@@ -25,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\CarePackageShip' => [
             'App\Listeners\ShipCarePackage',
         ],
+
+        'App\Events\FinRequestRecieved' => [
+            'App\Listeners\HandleFinRequest',
+        ],
     ];
 
     /**

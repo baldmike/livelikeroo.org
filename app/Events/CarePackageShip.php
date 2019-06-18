@@ -22,9 +22,9 @@ class CarePackageShip
      *
      * @return void
      */
-    public function __construct(CarePackage $care_package)
+    public function __construct(CarePackage $carePackage)
     {
-        $this->care_package = $care_package;
+        $this->carePackage = $carePackage;
     }
 
     /**

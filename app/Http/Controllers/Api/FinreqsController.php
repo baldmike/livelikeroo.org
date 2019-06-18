@@ -94,10 +94,10 @@ class FinReqsController extends Controller
             // create uuid to name file
             $uuid = (string) Str::uuid();
 
-            $filename = 'records/' . 'mudbath' . '.jpg';
+            $filename = 'records/' . $uuid . '.jpg';
             $file = $request->file('record1');
 
-            // 
+            
             $medRecord1 = Storage::putFileAs('', $file, $filename);
             
             FinReqRecord::create([
@@ -106,12 +106,16 @@ class FinReqsController extends Controller
             ]);
             
 
-            // SEND CONFIRMATION EMAIL ---- TODO EMIT AN EVENT THAT SENDS MAIL
-            // Mail::to($request->email)->send(new FinReqReceivedEmail($FinReq));
+            // SEND CONFIRMATION EMAIL TO APPLICANT ---- TODO EMIT AN EVENT THAT SENDS MAIL
+            Mail::to($request->email)->send(new FinReqReceivedEmail($FinReq));
+
+            // SEND MED RECORDS TO LAURA
+            // Mail::to('roofinancials@gmail.com')->send(new MedRecordEmail($FinReq));
+
+
             
             return new FinReqResource($FinReq);
         }
-
     }
 
     /**
