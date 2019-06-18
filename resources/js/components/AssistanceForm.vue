@@ -27,7 +27,7 @@
                 <!-- FORM STEP 2 -->
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===2">
                     
-                    <h5 class="description">
+                    <h5>
                         To qualify and be considered for a grant, you must meet the following requirements. Please check each one off as they apply.</h5><br>
                     
                     <n-checkbox
@@ -227,19 +227,19 @@
                     <div class="form-group">    
                         <div class="row">
                             <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('dog')" type="primary" block><span :class="{ red: isDog }"><i class="fa fa-dog"></i></span>
+                                <n-button @click.prevent.native="selectSpecies('dog')" type="primary" block><span :class="{ black: isDog }"><i class="fa fa-dog"></i></span>
                                 <br><br>DOG</n-button>
                             </div>
                             <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('cat')" type="primary" block><span :class="{ red: isCat }"><i class="fa fa-cat"></i></span>
+                                <n-button @click.prevent.native="selectSpecies('cat')" type="primary" block><span :class="{ black: isCat }"><i class="fa fa-cat"></i></span>
                                 <br><br>CAT</n-button>
                             </div>
                             <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('horse')" type="primary" block><span :class="{ red: isHorse }"><i class="fa fa-horse"></i></span>
+                                <n-button @click.prevent.native="selectSpecies('horse')" type="primary" block><span :class="{ black: isHorse }"><i class="fa fa-horse"></i></span>
                                 <br><br>HORSE</n-button>
                             </div>
                             <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('other')" type="primary" block><span :class="{ red: isOther }"><i class="fa fa-dragon"></i></span>
+                                <n-button @click.prevent.native="selectSpecies('other')" type="primary" block><span :class="{ black: isOther }"><i class="fa fa-dragon"></i></span>
                                 <br><br>OTHER</n-button>
                             </div>
                         </div>
@@ -290,11 +290,11 @@
                     <div class="form-group">    
                         <div class="row">
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="altered(0)" type="primary" block><span :class="{ red: isUnaltered }"><i class="fa fa-times"></i></span>
+                                <n-button @click.prevent.native="altered(0)" type="primary" block><span :class="{ black: isUnaltered }"><i class="fa fa-times"></i></span>
                                 <br><br>NOT {{ procedure }}</n-button>
                             </div>
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ green: isAltered }"><i class="fa fa-check"></i></span>
+                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ black: isAltered }"><i class="fa fa-check"></i></span>
                                 <br><br>{{ procedure }}</n-button>
                             </div>
                         </div>
@@ -364,11 +364,11 @@
                         <h5 class="description">Has {{ form.petName }} previously been diagnosed with cancer?</h5>
                         <div class="row">
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ red: noPriorDiag }"><i class="fa fa-times"></i></span>
+                                <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ black: noPriorDiag }"><i class="fa fa-times"></i></span>
                                 <br><br>NO</n-button>
                             </div>
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="prevDiag(1)" type="primary" block><span :class="{ green: priorDiag }"><i class="fa fa-check"></i></span>
+                                <n-button @click.prevent.native="prevDiag(1)" type="primary" block><span :class="{ black: priorDiag }"><i class="fa fa-check"></i></span>
                                 <br><br>YES</n-button>
                             </div>
                         </div>
@@ -467,7 +467,7 @@
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===12">
 
                     <h4 class="description-box description">
-                        Lastly, we'll need copies of your pet's current vet bills. If you have them already stored on this device, you may send them as they are. If you have physical copies, you may either scan them, or simply take pictures with your phone and send those.
+                        And finally(!), we'll need copies of your pet's current vet bills. If you have them already stored on this device, you may send them as they are. If you have physical copies, you may either scan them, or simply take pictures with your phone and send those. We can accept image and PDF files.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">You must send medical records.</h6>
                     <br>
@@ -489,44 +489,45 @@
                     </b-col>
 
                     <form-navigation v-on:nextStep="step13" v-on:backStep="backStep"></form-navigation>
-
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep>=13">
-                    <div class="row">
-                        <div class="col-12 ml-auto mr-auto">
-                            <n-checkbox
-                                    v-model="robot"
-                                    required
-                                    style="text-align: center;">
-                                I'm not a robot
-                            </n-checkbox>
-                        </div>
+
+                    <h4 class="description-box description">
+                        That's it! If you need to check your submission, please use the back button or reset the form to start all over. You will receive an email from us with further information. 
+                    </h4>
+                    
+                    <div class="col-12 ml-auto mr-auto">
+                        <n-checkbox
+                                v-model="robot"
+                                required
+                                style="text-align: center;">
+                            By submitting this form, I certify that the information provided is true and accurate to the best of my knowledge.
+                        </n-checkbox>
                     </div>
-
                     <br>
-
-                    <div class="row">
-                        <div class="col-12 ml-auto mr-auto">
-                            <n-button 
-                                    type="primary" 
-                                    round 
-                                    block
-                                    @click.prevent.native="onSubmit">
-                                    Request Financial Assistance</n-button>
-                        </div>                    
+                    
+                    <div class="col-12 ml-auto mr-auto">
+                        <n-button 
+                                type="primary" 
+                                round 
+                                block
+                                :disabled="!robot"
+                                @click.prevent.native="onSubmit">
+                                Request Financial Assistance</n-button>
+                
 
                         <div class="sent" v-if="sent">This form has been submitted</div>
                         <div class="error" v-if="$v.form.$dirty">You have missing fields, please check the form.</div>
 
-                        <!-- <div style="text-align: center; margin: 2rem;"> -->
-                            <div class="col-md-4 mr-auto ml-auto">
-                            <img src="/images/llr_logo.png">
-                        </div>    
                     </div>
 
-                    <form-navigation v-on:nextStep="disabledButton" v-on:backStep="backStep"></form-navigation>
-                
+                    <br><br><hr>
+
+                    <div class="col-4 mr-auto ml-auto form-nav">
+                        <n-button @click.prevent.native="backStep" type="primary" round block><i class="fas fa-arrow-circle-left"></i></n-button>
+                        
+                    </div> 
                 
                     <div class="col-md-4 mr-auto ml-auto" v-if="formStep>8">
                         <n-button @click.prevent.native="resetForm" block type="danger">RESET FORM</n-button>
@@ -542,7 +543,7 @@
 
     import { validationMixin } from "vuelidate";
     import { helpers, required, minLength, maxLength, minValue, maxValue, email, between, sameAs } from "vuelidate/lib/validators";
-    import { Select, Option, DatePicker, TimeSelect } from 'element-ui'
+    import { Select, Option, DatePicker, TimeSelect, Table, TableColumn } from 'element-ui'
     import { Button, FormGroupInput, Tabs, TabPane, Radio, Checkbox } from '@/components';
     import FormNavigation from './FormNavigation'
     import pdf from 'vue-pdf'
@@ -609,6 +610,8 @@
             [Checkbox.name]: Checkbox,
             [DatePicker.name]: DatePicker,
             [TimeSelect.name]: TimeSelect,
+            [Table.name]: Table,
+            [TableColumn.name]: TableColumn,
             FormNavigation,
             pdf
         },
@@ -694,12 +697,14 @@
                     required
                 }
             },
-                dateObject: {
-                    maxValue: maxValue(new Date())
-                },
-                robot: {
-                    required
-                },
+                
+            dateObject: {
+                maxValue: maxValue(new Date())
+            },
+            
+            robot: {
+                required
+            },
         },
         computed: {
             dateObject () {
@@ -769,7 +774,7 @@
                     let formData = new FormData();
                 
                     Object.keys(this.form).forEach(key => {
-                        formData.append(key, this.form[key])
+                        formData.append(key, this.form[key]);
                     })
 
                     this.$store.dispatch('fnFormSubmit');
@@ -786,9 +791,9 @@
             },
             step4() {
                 if(this.formValid1) {
-                    // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    // reset form validation for each new section
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
@@ -796,8 +801,8 @@
             step5() {
                 if(this.formValid2) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
@@ -805,8 +810,8 @@
             step6() {
                 if(!this.$v.form.species.$invalid) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
@@ -814,8 +819,8 @@
             step7() {
                 if(!this.$v.form.gender.$invalid) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
@@ -823,8 +828,8 @@
             step8() {
                 if(this.form.altered != null) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
@@ -832,8 +837,8 @@
             step9() {
                 if(!this.$v.form.age.$invalid) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
@@ -841,8 +846,8 @@
             step10() {
                 if(!this.$v.dateObject.$invalid) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
@@ -850,8 +855,8 @@
             step11() {
                 if(!this.$v.form.previousDiagnosis.$invalid) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
@@ -859,8 +864,8 @@
             step12() {
                 // if(!this.$v.form.previousDiagnosis.$invalid) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 // }
                 this.$v.form.$touch();
             },
@@ -868,14 +873,14 @@
             step13() {
                 if(!this.$v.form.record1.$invalid) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() })
-                    this.formStep += 1
+                    this.$nextTick(() => { this.$v.$reset() });
+                    this.formStep += 1;
                 }
                 this.$v.form.$touch();
             },
 
             nextStep() {
-                this.$nextTick(() => { this.$v.$reset() })
+                this.$nextTick(() => { this.$v.$reset() });
                 this.formStep += 1;
             },
 
@@ -990,24 +995,31 @@
         text-align: center;
     }
 
-    .red {
-        color: red;
-        font-size: 1.6rem;
-    }
-
-    .green {
-        color: green;
+    .black {
+        color: black;
         font-size: 1.6rem;
     }
 
     .selectedGender {
-        color: red;
+        color: black;
         font-size: 1.6rem;
     }
 
     .age-box {
         font-size: 3rem;
         text-shadow: #fd7e14;
+    }
+
+    .form-nav {
+        text-align: center;
+        font-size: 3rem;
+        margin-top: 2rem;
+        
+    }
+
+    .nav-box {
+        border-top: 10px solid black;
+        margin-top: 2rem;
     }
 
 </style>
