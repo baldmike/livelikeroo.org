@@ -70,8 +70,9 @@ class FinReqRecord extends Resource
                 ->disk('public')
                 ->storeOriginalName('filename'),
 
-            BelongsTo::make('FinReq'),
-
+            Button::make('View')
+                ->link("/storage/" . $this->filename)
+                ->style('primary')
         ];
     }
 

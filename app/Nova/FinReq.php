@@ -188,7 +188,7 @@ class FinReq extends Resource
                 ->sortable()
                 ->hideFromIndex(),
 
-            HasMany::make('FinReqRecord')
+            HasMany::make('Medical Records', 'FinReqRecord', 'App\Nova\FinReqRecord')
         ];
     }
 

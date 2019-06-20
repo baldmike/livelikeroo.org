@@ -79,7 +79,7 @@ class FinReqsController extends Controller
             {
                 $path = Storage::putFile('public/images', $request->file('image'), 'public');
 
-                // $path includes 'public/', and we don't want that in our URL, so we we chop it off:
+                // $path includes 'public/', and we don't want that in our URL, so we we chop it right off:
                 $path = substr($path, 6);
 
                 Log::debug("[FinReqsController] - store - SUBSTRING path:");
@@ -91,14 +91,13 @@ class FinReqsController extends Controller
             $FinReq->save();
 
             // Now save records to fin_req_records table
-            // create uuid to name file
-            $uuid = (string) Str::uuid();
-
-            $filename = 'records/' . $uuid . '.jpg';
+ 
             $file = $request->file('record1');
-
             
-            $medRecord1 = Storage::putFileAs('', $file, $filename);
+            $medRecord1 = Storage::putFile('public/records', $file);
+
+            // $path includes 'public/', and we don't want that in our URL, so we we chop it right off:
+            $medRecord1 = substr($medRecord1, 6);
             
             FinReqRecord::create([
                 'fin_req_id' => $FinReq->id,
