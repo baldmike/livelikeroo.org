@@ -1005,7 +1005,7 @@
     }
 
     .black {
-        color: black;
+        color: rgba(9, 247, 247, 1);
         font-size: 1.6rem;
     }
 

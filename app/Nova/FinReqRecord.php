@@ -52,6 +52,15 @@ class FinReqRecord extends Resource
     ];
 
     /**
+     * Indicates if the resource should be displayed in the sidebar.
+     *
+     * @var bool
+     */
+    public static $displayInNavigation = false;
+
+
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -70,7 +79,7 @@ class FinReqRecord extends Resource
                 ->disk('public')
                 ->storeOriginalName('filename'),
 
-            Button::make('View')
+            Button::make('View Medical Record')
                 ->link("/storage/" . $this->filename)
                 ->style('primary')
         ];
