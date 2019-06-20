@@ -13,10 +13,10 @@ use App\Http\Requests\FinReqRequest;
 use App\Http\Resources\FinReqResource;
 
 use App\Models\FinReq;
-use App\Mail\FinReqReceivedEmail;
 
 use Mail;
 use App\Models\FinReqRecord;
+use App\Events\FinRequestReceived;
 
 class FinReqsController extends Controller
 {
@@ -105,14 +105,12 @@ class FinReqsController extends Controller
                 'filename' => $medRecord1
             ]);
             
+            event(new FinRequestReceived($FinReq));
 
             // SEND CONFIRMATION EMAIL TO APPLICANT ---- TODO EMIT AN EVENT THAT SENDS MAIL
-            Mail::to($request->email)->send(new FinReqReceivedEmail($FinReq));
-
+            
             // SEND MED RECORDS TO LAURA
             // Mail::to('roofinancials@gmail.com')->send(new MedRecordEmail($FinReq));
-
-
             
             return new FinReqResource($FinReq);
         }

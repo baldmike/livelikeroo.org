@@ -14,9 +14,9 @@ class FinReqReceivedEmail extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * The donation instance.
+     * The FinReq instance.
      *
-     * @var FinReq
+     * @var fin_req
      */
     public $fin_req;
 

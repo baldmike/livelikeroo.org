@@ -9,11 +9,11 @@
 
                     <h5 class="title">Financial Assistance</h5>
                     
-                    <h5>Cancer SUCKS. We've been in your shoes, and we'd like to help. Please read the following carefully, and we'll help determine if you're eligible and guide you through the process.</h5>
+                    <h5 class="description-box">Cancer SUCKS. We've been in your shoes, and we'd like to help. Please read the following carefully, and we'll help determine if you're eligible and guide you through the process.</h5>
                     
-                    <h5>The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, ranging from $500 - $1500 per qualified applicant and are awarded on a monthly basis after a complete review of this application and the <em>accompanying medical records.</em></h5>
+                    <h5 class="description-box">The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, ranging from $500 - $1500 per qualified applicant and are awarded on a monthly basis after a complete review of this application and the <em>accompanying medical records.</em></h5>
                     
-                    <h5>Upon approval, grants will typically be paid directly to veterinary offices, but may be paid directly to the applicant on a case by case basis. When you're ready, click the button below to begin the application.</h5>
+                    <h5 class="description-box">Upon approval, grants will typically be paid directly to veterinary offices, but may be paid directly to the applicant on a case by case basis. When you're ready, click the button below to begin the application.</h5>
 
                     <n-button 
                         type="primary"
@@ -27,8 +27,15 @@
                 <!-- FORM STEP 2 -->
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===2">
                     
-                    <h5>
-                        To qualify and be considered for a grant, you must meet the following requirements. Please check each one off as they apply.</h5><br>
+                    <h5 class="description-box">
+                        To qualify and be considered for a grant, you must meet the following requirements.
+                    </h5> 
+                    
+                    <br>
+                    
+                    <h5 class="description-box">
+                        Please check each one off as they apply.
+                    </h5>
                     
                     <n-checkbox
                             v-model="requirement1"
@@ -63,7 +70,7 @@
                 
                 <!-- FORM STEP 3-->
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===3">
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         Great, let's get started on the grant application. First, we'll need some information about you.</h4>
 
                     <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
@@ -173,7 +180,7 @@
 
                 <!-- formStep 4 -->
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===4">
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         Now, please tell us all about your best friend. Let's start with their name, a picture and what makes them special to you.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
@@ -220,7 +227,7 @@
 
                 <!-- FORM STEP 5 -->
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===5">
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         What is {{ form.petName }}? If you know {{ form.petName }}'s breed, please list that as well.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">You must select a species.</h6>
@@ -259,7 +266,7 @@
                 </div>
                     
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===6">
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         Is {{ form.petName }} a boy {{ form.species }}, or a girl {{ form.species }}? Select the gender, and use the arrow keys at the bottom to advance.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">You must select a gender.</h6>
@@ -283,7 +290,7 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===7">
 
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         Is {{ form.petName }} spayed/neutered? Select below, and use the arrow keys at the bottom to advance.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
@@ -307,7 +314,7 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===8">
 
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         Rounded to the nearest year, how old is {{ form.petName }}?
                     </h4>
 
@@ -329,7 +336,7 @@
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
-                    <h5 class="description">Now, we'll need {{ form.petName }}'s medical information and records.</h5>
+                    <h5 class="description-box">Now, we'll need {{ form.petName }}'s medical information and records.</h5>
                 
                     <div class="form-group" id="diagnosisGroup">
                         <label for="diagnosis">Medical Diagosis</label>
@@ -363,7 +370,7 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===10">
                     <div class="form-group" :class="{ 'has-danger': $v.form.previousDiagnosis.$invalid && $v.form.previousDiagnosis.$dirty }">
-                        <h5 class="description">Has {{ form.petName }} previously been diagnosed with cancer?</h5>
+                        <h5 class="description-box">Has {{ form.petName }} previously been diagnosed with cancer?</h5>
                         <div class="row">
                             <div class="col-4 ml-auto mr-auto">
                                 <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ black: noPriorDiag }"><i class="fa fa-times"></i></span>
@@ -380,7 +387,7 @@
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===11">
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         Now we'll need {{ form.petName }}'s veterinarian information and records.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
@@ -468,7 +475,7 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===12">
 
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         And finally(!), we'll need copies of your pet's current vet bills. If you have them already stored on this device, you may send them as they are. If you have physical copies, you may either scan them, or simply take pictures with your phone and send those. We can accept image and PDF files.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">You must send medical records.</h6>
@@ -495,7 +502,7 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep>=13">
 
-                    <h4 class="description-box description">
+                    <h4 class="description-box">
                         That's it! If you need to check your submission, please use the back button or reset the form to start all over. You will receive an email from us with further information. 
                     </h4>
                     
@@ -1022,6 +1029,12 @@
     .nav-box {
         border-top: 10px solid black;
         margin-top: 2rem;
+    }
+
+    .description-box {
+        font-size: 1rem;
+        text-align: center;
+        font-weight: 500;
     }
 
 </style>

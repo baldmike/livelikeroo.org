@@ -24,7 +24,7 @@ class FinRequestReceived
      */
     public function __construct(FinReq $finReq)
     {
-        $this->finReq = $finReq;
+        $this->fin_req = $finReq;
     }
 
     /**

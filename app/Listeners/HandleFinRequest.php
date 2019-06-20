@@ -2,9 +2,14 @@
 
 namespace App\Listeners;
 
-use App\Events\FinRequestRecieved;
+use App\Events\FinRequestReceived;
+use App\Mail\FinReqReceivedEmail;
+use App\Mail\MedicalRecordEmail;
+
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+
+use Mail;
 
 class HandleFinRequest
 {
@@ -19,13 +24,15 @@ class HandleFinRequest
     }
 
     /**
-     * Handle the event.
+     * Handle a financial assistance request.
      *
-     * @param  FinRequestRecieved  $event
+     * @param  FinRequestReceived  $event
      * @return void
      */
-    public function handle(FinRequestRecieved $event)
+    public function handle(FinRequestReceived $event)
     {
-        //
+        // send confirmation email to applicant
+        Mail::to($event->fin_req->email)->send(new FinReqReceivedEmail($event->fin_req));
+
     }
 }

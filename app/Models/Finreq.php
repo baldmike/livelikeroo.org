@@ -22,7 +22,7 @@ class FinReq extends Model
     /**
      * Get the comments for the blog post.
      */
-    public function finreqrecord()
+    public function finReqRecord()
     {
         return $this->hasMany('App\Models\FinReqRecord');
     }
