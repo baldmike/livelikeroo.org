@@ -3,27 +3,21 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
-
-use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\File;
+
+use Illuminate\Http\Request;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsTo;
 
-use NovaButton\Button;
-
-use Laravel\Nova\Http\Requests\NovaRequest;
-use phpDocumentor\Reflection\DocBlock\Tags\Link;
-
-
-class FinReqRecord extends Resource
+class FinReqNote extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Models\FinReqRecord';
+    public static $model = 'App\Models\FinReqNote';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -39,8 +33,15 @@ class FinReqRecord extends Resource
      */
     public static function label()
     {
-        return 'Medical Records';
+        return 'Notes';
     }
+
+    /**
+     * Indicates if the resource should be displayed in the sidebar.
+     *
+     * @var bool
+     */
+    public static $displayInNavigation = false;
 
     /**
      * The columns that should be searched.
@@ -50,14 +51,6 @@ class FinReqRecord extends Resource
     public static $search = [
         'id',
     ];
-
-    /**
-     * Indicates if the resource should be displayed in the sidebar.
-     *
-     * @var bool
-     */
-    public static $displayInNavigation = false;
-
 
 
     /**
@@ -69,23 +62,21 @@ class FinReqRecord extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable(),
 
-            DateTime::make('Received', 'created_at')
-                ->format('MMMM DD YYYY h:mm a')
-                ->sortable(),
+            DateTime::make('Created', 'created_at')
+                    ->format('MMMM DD YYYY h:mm a')
+                    ->sortable()
+                    ->hideWhenCreating(),
 
-            File::make('Filename')
-                ->disk('public')
-                ->storeOriginalName('filename'),
+            Textarea::make('Note')
+                    ->alwaysShow(),
 
-            Button::make('View Medical Record')
-                ->link("/storage/" . $this->filename)
-                ->style('primary'),
-
-            BelongsTo::make('FinReq')
+            BelongsTo::make('Left By', 'User', 'App\Nova\User')
+                    ->hideWhenCreating()->hideWhenUpdating(),
         ];
     }
+
+
 
     /**
      * Get the cards available for the request.

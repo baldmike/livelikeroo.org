@@ -105,11 +105,6 @@ class FinReqsController extends Controller
             ]);
             
             event(new FinRequestReceived($FinReq));
-
-            // SEND CONFIRMATION EMAIL TO APPLICANT ---- TODO EMIT AN EVENT THAT SENDS MAIL
-            
-            // SEND MED RECORDS TO LAURA
-            // Mail::to('roofinancials@gmail.com')->send(new MedRecordEmail($FinReq));
             
             return new FinReqResource($FinReq);
         }

@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\HasMany;
 
@@ -76,6 +77,11 @@ class FinReq extends Resource
 
             Text::make('Status')
                 ->sortable(),
+
+            Currency::make('award_amount')
+                ->format('$%.2n')
+                ->sortable(),
+                
 
             new Panel('Requested By', $this->requestedByFields()),
             new Panel('For', $this->petFields()),
@@ -236,7 +242,9 @@ class FinReq extends Resource
                 ->sortable()
                 ->hideFromIndex(),
 
-            HasMany::make('Medical Records', 'FinReqRecord', 'App\Nova\FinReqRecord')
+            HasMany::make('Medical Records', 'FinReqRecord', 'App\Nova\FinReqRecord'),
+
+            HasMany::make('Notes', 'FinReqNote', 'App\Nova\FinReqNote')
         ];
     }
 

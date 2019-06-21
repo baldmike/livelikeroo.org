@@ -120,7 +120,8 @@ class Donation extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Currency::make('Amount')->format('$%.2n')
+            Currency::make('Amount')
+                ->format('$%.2n')
                 ->sortable(),
 
             Select::make('Frequency')
