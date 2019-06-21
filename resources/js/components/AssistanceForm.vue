@@ -798,6 +798,8 @@
                     })
                 }
             },
+
+            // *TODO* refactor steps into single method
             step4() {
                 if(this.formValid1) {
                     // reset form validation for each new section
@@ -943,18 +945,26 @@
                 this.form.otherHelp = '',
                 this.form.record1 = '',
                 this.form.verify = false,
-                this.url = null,
                 this.formStep = 1,
-                this.sent = false;
+                this.fileType = '',
+                this.url = '',
+                this.recordUrl = '',
+                this.robot = false,
+                this.show = true,
+                this.formStep = 1,
+                this.requirement1 = false,
+                this.requirement2 = false,
+                this.show = true,
+                this.sent = false
 
                 /* reset/clear native browser form validation state */
                 this.show = false
-                
                 this.$nextTick(() => {
                     this.show = true;
                     this.$v.$reset();
                 })
             },
+
             onFileChange(e) {
                 const file = e.target.files[0];
                 console.log("ON FILE/IMAGE CHANGE --> FILE: " + file);
