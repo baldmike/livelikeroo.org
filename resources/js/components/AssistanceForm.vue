@@ -236,19 +236,19 @@
                     <div class="form-group">    
                         <div class="row">
                             <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('dog')" type="primary" block><span :class="{ black: isDog }"><i class="fa fa-dog"></i></span>
+                                <n-button @click.prevent.native="selectSpecies('dog')" type="primary" block><span :class="{ selected: isDog }"><i class="fa fa-dog"></i></span>
                                 <br><br>DOG</n-button>
                             </div>
                             <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('cat')" type="primary" block><span :class="{ black: isCat }"><i class="fa fa-cat"></i></span>
+                                <n-button @click.prevent.native="selectSpecies('cat')" type="primary" block><span :class="{ selected: isCat }"><i class="fa fa-cat"></i></span>
                                 <br><br>CAT</n-button>
                             </div>
                             <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('horse')" type="primary" block><span :class="{ black: isHorse }"><i class="fa fa-horse"></i></span>
+                                <n-button @click.prevent.native="selectSpecies('horse')" type="primary" block><span :class="{ selected: isHorse }"><i class="fa fa-horse"></i></span>
                                 <br><br>HORSE</n-button>
                             </div>
                             <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('other')" type="primary" block><span :class="{ black: isOther }"><i class="fa fa-dragon"></i></span>
+                                <n-button @click.prevent.native="selectSpecies('other')" type="primary" block><span :class="{ selected: isOther }"><i class="fa fa-dragon"></i></span>
                                 <br><br>OTHER</n-button>
                             </div>
                         </div>
@@ -275,11 +275,11 @@
                     <div class="form-group">    
                         <div class="row">
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="selectGender('m')" type="primary" block><span :class="{ selectedGender: isMale }"><i class="fa fa-mars"></i></span>
+                                <n-button @click.prevent.native="selectGender('m')" type="primary" block><span :class="{ selected: isMale }"><i class="fa fa-mars"></i></span>
                                 <br><br>MALE</n-button>
                             </div>
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="selectGender('f')" type="primary" block><span :class="{ selectedGender: isFemale }"><i class="fa fa-venus"></i></span>
+                                <n-button @click.prevent.native="selectGender('f')" type="primary" block><span :class="{ selected: isFemale }"><i class="fa fa-venus"></i></span>
                                 <br><br>FEMALE</n-button>
                             </div>
                         </div>
@@ -299,11 +299,11 @@
                     <div class="form-group">    
                         <div class="row">
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="altered(0)" type="primary" block><span :class="{ black: isUnaltered }"><i class="fa fa-times"></i></span>
+                                <n-button @click.prevent.native="altered(0)" type="primary" block><span :class="{ selected: isUnaltered }"><i class="fa fa-times"></i></span>
                                 <br><br>NOT {{ procedure }}</n-button>
                             </div>
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ black: isAltered }"><i class="fa fa-check"></i></span>
+                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ selected: isAltered }"><i class="fa fa-check"></i></span>
                                 <br><br>{{ procedure }}</n-button>
                             </div>
                         </div>
@@ -373,11 +373,11 @@
                         <h5 class="description-box">Has {{ form.petName }} previously been diagnosed with cancer?</h5>
                         <div class="row">
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ black: noPriorDiag }"><i class="fa fa-times"></i></span>
+                                <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ selected: noPriorDiag }"><i class="fa fa-times"></i></span>
                                 <br><br>NO</n-button>
                             </div>
                             <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="prevDiag(1)" type="primary" block><span :class="{ black: priorDiag }"><i class="fa fa-check"></i></span>
+                                <n-button @click.prevent.native="prevDiag(1)" type="primary" block><span :class="{ selected: priorDiag }"><i class="fa fa-check"></i></span>
                                 <br><br>YES</n-button>
                             </div>
                         </div>
@@ -1004,13 +1004,8 @@
         text-align: center;
     }
 
-    .black {
+    .selected {
         color: rgba(9, 247, 247, 1);
-        font-size: 1.6rem;
-    }
-
-    .selectedGender {
-        color: black;
         font-size: 1.6rem;
     }
 
