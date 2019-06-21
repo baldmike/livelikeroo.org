@@ -42,8 +42,8 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\HandleFinReqApprove',
         ],
 
-        'App\Events\FinReqClose' => [
-            'App\Listeners\HandleFinReqClose',
+        'App\Events\FinReqFund' => [
+            'App\Listeners\HandleFinReqFund',
         ],
 
     ];

@@ -12,7 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 use App\Models\FinReq;
 
-class FinReqClose
+class FinReqFund
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

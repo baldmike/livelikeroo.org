@@ -22,7 +22,7 @@ use App\Nova\Metrics\AssistanceRequestsByState;
 
 use Illuminate\Http\Request;
 
-
+use App\Nova\Filters\FinReqStatus;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 
@@ -269,10 +269,10 @@ class FinReq extends Resource
                 ->hideFromIndex()
                 ->reload(),
 
-            Button::make('Close')
-                ->event('App\Events\FinReqClose')
+            Button::make('Fund')
+                ->event('App\Events\FinReqFund')
                 ->style('primary')
-                ->confirm('This will mark this request "closed". This assumes that all funds have been paid, would you like to proceed?')
+                ->confirm('This will mark this request "funded". This assumes that all funds have been paid, and you have adjusted the "award amount" - would you like to proceed?')
                 ->hideFromIndex()
                 ->reload(),
         ];
@@ -302,7 +302,9 @@ class FinReq extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new FinReqStatus
+        ];
     }
 
     /**

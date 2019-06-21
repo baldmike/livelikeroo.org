@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\FinReqClose;
+use App\Events\FinReqFund;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class HandleFinReqClose
+class HandleFinReqFund
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class HandleFinReqClose
     /**
      * Handle the event.
      *
-     * @param  FinReqClose  $event
+     * @param  FinReqFund  $event
      * @return void
      */
-    public function handle(FinReqClose $event)
+    public function handle(FinReqFund $event)
     {
         $event->fin_req->status = 'closed';
         $event->fin_req->save();
