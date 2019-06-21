@@ -10,8 +10,11 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Select;
-
 use Laravel\Nova\Fields\HasMany;
+
+use NovaButton\Button;
+
+use Laravel\Nova\Panel;
 
 use App\Nova\Metrics\AssistanceRequests;
 use App\Nova\Metrics\AssistanceRequestsPerDay;
@@ -71,6 +74,23 @@ class FinReq extends Resource
                 ->format('MMMM DD YYYY h:mm a')
                 ->sortable(),
 
+            new Panel('Requested By', $this->requestedByFields()),
+            new Panel('For', $this->petFields()),
+            new Panel('Medical Info', $this->medFields()),
+            new Panel('Action', $this->actionFields()),
+        ];
+    }
+
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @return array
+     */
+    public function requestedByFields()
+    {
+        return [
+            
+
             Text::make('First Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -110,6 +130,19 @@ class FinReq extends Resource
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
             
+        ];
+    }
+
+
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @return array
+     */
+    public function petFields()
+    {
+        return [
+
             Text::make('Pet Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -147,6 +180,18 @@ class FinReq extends Resource
             Image::make('Image')->disk('local')
                 ->hideFromIndex()
                 ->maxWidth(50),
+
+            ];
+    }
+
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @return array
+     */
+    public function medFields()
+    {
+        return [
 
             Text::make('Diagnosis')
                 ->sortable()
@@ -190,6 +235,45 @@ class FinReq extends Resource
 
             HasMany::make('Medical Records', 'FinReqRecord', 'App\Nova\FinReqRecord')
         ];
+    }
+
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @return array
+     */
+    public function actionFields()
+    {
+        return [
+
+            Button::make('Decline')
+                ->event('App\Events\FinReqDecline')
+                ->style('primary')
+                ->confirm('This will email a declination letter to the requester and mark this request "declined", would you like to proceed?')
+                ->hideFromIndex()
+                ->reload(),
+
+            Button::make('In Progess')
+                ->event('App\Events\FinReqInProgress')
+                ->style('primary')
+                ->hideFromIndex()
+                ->reload(),
+
+            Button::make('Approve')
+                ->event('App\Events\FinReqApprove')
+                ->style('primary')
+                ->confirm('This will email an award letter to the requester and mark this request "approved", would you like to proceed?')
+                ->hideFromIndex()
+                ->reload(),
+
+            Button::make('Close')
+                ->event('App\Events\FinReqClosed')
+                ->style('primary')
+                ->confirm('This will mark this request "closed". This assumes that all funds have been paid, would you like to proceed?')
+                ->hideFromIndex()
+                ->reload(),
+        ];
+
     }
 
     /**
