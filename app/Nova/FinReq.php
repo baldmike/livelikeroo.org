@@ -58,7 +58,7 @@ class FinReq extends Resource
      * @var array
      */
     public static $search = [
-        'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'breed', 'age', 'gender', 'altered', 'about', 'image', 'diagnosis', 'diagnosis_date', 'previous_diagnosis', 'vet_first_name', 'vet_last_name', 'primary_clinic_name', 'primary_clinic_phone', 'primary_clinic_email', 'specialist', 'other_help' 
+        'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'breed', 'age', 'gender', 'altered', 'about', 'image', 'diagnosis', 'diagnosis_date', 'previous_diagnosis', 'vet_first_name', 'vet_last_name', 'primary_clinic_name', 'primary_clinic_phone', 'primary_clinic_email', 'specialist', 'other_help', 'status'
     ];
 
     /**
@@ -72,6 +72,9 @@ class FinReq extends Resource
         return [
             DateTime::make('Received', 'created_at')
                 ->format('MMMM DD YYYY h:mm a')
+                ->sortable(),
+
+            Text::make('Status')
                 ->sortable(),
 
             new Panel('Requested By', $this->requestedByFields()),
@@ -267,7 +270,7 @@ class FinReq extends Resource
                 ->reload(),
 
             Button::make('Close')
-                ->event('App\Events\FinReqClosed')
+                ->event('App\Events\FinReqClose')
                 ->style('primary')
                 ->confirm('This will mark this request "closed". This assumes that all funds have been paid, would you like to proceed?')
                 ->hideFromIndex()
