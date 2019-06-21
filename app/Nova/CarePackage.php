@@ -156,7 +156,7 @@ class CarePackage extends Resource
     }
     
     /**
-     * Get the donor fields for the resource.
+     * Get the shipping label fields for the resource.
      *
      * @return array
      */

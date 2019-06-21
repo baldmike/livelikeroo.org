@@ -29,6 +29,23 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\FinRequestReceived' => [
             'App\Listeners\HandleFinRequest',
         ],
+
+        'App\Events\FinReqDecline' => [
+            'App\Listeners\HandleFinReqDecline',
+        ],
+
+        'App\Events\FinReqInProgress' => [
+            'App\Listeners\HandleFinReqInProgress',
+        ],
+
+        'App\Events\FinReqApprove' => [
+            'App\Listeners\HandleFinReqApprove',
+        ],
+
+        'App\Events\FinReqFund' => [
+            'App\Listeners\HandleFinReqFund',
+        ],
+
     ];
 
     /**

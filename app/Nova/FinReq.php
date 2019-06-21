@@ -10,8 +10,11 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Select;
-
 use Laravel\Nova\Fields\HasMany;
+
+use NovaButton\Button;
+
+use Laravel\Nova\Panel;
 
 use App\Nova\Metrics\AssistanceRequests;
 use App\Nova\Metrics\AssistanceRequestsPerDay;
@@ -19,7 +22,7 @@ use App\Nova\Metrics\AssistanceRequestsByState;
 
 use Illuminate\Http\Request;
 
-
+use App\Nova\Filters\FinReqStatus;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 
@@ -55,7 +58,7 @@ class FinReq extends Resource
      * @var array
      */
     public static $search = [
-        'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'breed', 'age', 'gender', 'altered', 'about', 'image', 'diagnosis', 'diagnosis_date', 'previous_diagnosis', 'vet_first_name', 'vet_last_name', 'primary_clinic_name', 'primary_clinic_phone', 'primary_clinic_email', 'specialist', 'other_help' 
+        'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'species', 'breed', 'age', 'gender', 'altered', 'about', 'image', 'diagnosis', 'diagnosis_date', 'previous_diagnosis', 'vet_first_name', 'vet_last_name', 'primary_clinic_name', 'primary_clinic_phone', 'primary_clinic_email', 'specialist', 'other_help', 'status'
     ];
 
     /**
@@ -70,6 +73,26 @@ class FinReq extends Resource
             DateTime::make('Received', 'created_at')
                 ->format('MMMM DD YYYY h:mm a')
                 ->sortable(),
+
+            Text::make('Status')
+                ->sortable(),
+
+            new Panel('Requested By', $this->requestedByFields()),
+            new Panel('For', $this->petFields()),
+            new Panel('Medical Info', $this->medFields()),
+            new Panel('Action', $this->actionFields()),
+        ];
+    }
+
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @return array
+     */
+    public function requestedByFields()
+    {
+        return [
+            
 
             Text::make('First Name')
                 ->sortable()
@@ -110,6 +133,19 @@ class FinReq extends Resource
                 ->hideFromIndex()
                 ->rules('required', 'max:255'),
             
+        ];
+    }
+
+
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @return array
+     */
+    public function petFields()
+    {
+        return [
+
             Text::make('Pet Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -147,6 +183,18 @@ class FinReq extends Resource
             Image::make('Image')->disk('local')
                 ->hideFromIndex()
                 ->maxWidth(50),
+
+            ];
+    }
+
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @return array
+     */
+    public function medFields()
+    {
+        return [
 
             Text::make('Diagnosis')
                 ->sortable()
@@ -193,6 +241,45 @@ class FinReq extends Resource
     }
 
     /**
+     * Get the fields displayed by the resource.
+     *
+     * @return array
+     */
+    public function actionFields()
+    {
+        return [
+
+            Button::make('Decline')
+                ->event('App\Events\FinReqDecline')
+                ->style('primary')
+                ->confirm('This will email a declination letter to the requester and mark this request "declined", would you like to proceed?')
+                ->hideFromIndex()
+                ->reload(),
+
+            Button::make('In Progess')
+                ->event('App\Events\FinReqInProgress')
+                ->style('primary')
+                ->hideFromIndex()
+                ->reload(),
+
+            Button::make('Approve')
+                ->event('App\Events\FinReqApprove')
+                ->style('primary')
+                ->confirm('This will email an award letter to the requester and mark this request "approved", would you like to proceed?')
+                ->hideFromIndex()
+                ->reload(),
+
+            Button::make('Fund')
+                ->event('App\Events\FinReqFund')
+                ->style('primary')
+                ->confirm('This will mark this request "funded". This assumes that all funds have been paid, and you have adjusted the "award amount" - would you like to proceed?')
+                ->hideFromIndex()
+                ->reload(),
+        ];
+
+    }
+
+    /**
      * Get the cards available for the request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -215,7 +302,9 @@ class FinReq extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new FinReqStatus
+        ];
     }
 
     /**

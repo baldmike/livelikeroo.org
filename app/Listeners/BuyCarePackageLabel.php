@@ -34,7 +34,7 @@ class BuyCarePackageLabel
     public function handle(CarePackageBuyLabel $event)
     {   
         $toAddress = $event->carePackage->shippingAddress();
-        $carrierAccount = config('services.shippo.carrier_key');
+        $carrierAccount = config('services.shippo.carrier_account');
 
         Log::debug("[BuyCarePackageLabel] -> BEFORE validation--> ");
 
