@@ -11,6 +11,12 @@ class FinReqsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\FinReq::class, 25)->create();
+        factory(App\Models\FinReq::class, 100)->create()->each(function ($fin_req) {
+            //create 3 notes for each FinReq
+            factory(App\Models\FinReqNote::class, 3)
+            ->create([
+                'fin_req_id'=>$fin_req->id
+            ]);
+        });
     }
 }
