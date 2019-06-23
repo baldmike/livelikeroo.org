@@ -17,6 +17,11 @@ class FinReqsTableSeeder extends Seeder
             ->create([
                 'fin_req_id'=>$fin_req->id
             ]);
+
+            factory(App\Models\FinReqRecord::class, 1)
+            ->create([
+                'fin_req_id'=>$fin_req->id
+            ]);
         });
     }
 }

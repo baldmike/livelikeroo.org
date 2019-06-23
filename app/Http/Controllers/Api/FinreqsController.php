@@ -40,11 +40,8 @@ class FinReqsController extends Controller
     {
         $validated = $request->validated();
 
-        Log::debug("FinReqsController - store()");
-
         if($validated) 
         {
-            Log::debug("[FINREQS CONTROLLER -- REQUEST IS VALIDATED");
 
             $FinReq = new FinReq();
 
@@ -80,10 +77,7 @@ class FinReqsController extends Controller
                 $path = Storage::putFile('public/images', $request->file('image'), 'public');
 
                 // $path includes 'public/', and we don't want that in our URL, so we we chop it right off:
-                // $path = substr($path, 6);
-
-                // Log::debug("[FinReqsController] - store - SUBSTRING path:");
-                Log::debug($path);
+                $path = substr($path, 6);
 
                 $FinReq->image = $path;
             }
