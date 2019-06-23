@@ -195,8 +195,20 @@
                                 required/>
                     </div>
 
+                    <div class="form-group box">
+                        <label>Tell us a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
+                        <textarea
+                                rows="6"
+                                class="form-control"
+                                v-model="form.about"
+                                :class="{ 'has-danger': $v.form.about.$invalid && $v.form.about.$dirty, 'has-success': !$v.form.about.$invalid }"
+                                minlength="30"
+                                required/>
+                    </div>
+
                     <!-- we are using Bootstrap-Vue for image input -->
-                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="imageFinReq" class="box">
+                    <b-form-group id="imageGroup" label-for="imageFinReq" class="box">
+                        <label>Send us a picture of <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                         <b-form-file
                                 id="imageFinReq"
                                 accept="image/*"
@@ -208,17 +220,6 @@
                             <img v-if="url" :src="url" width="200" alt="uploaded image">
                         </b-col>
                     </b-form-group>
-
-                    <div class="form-group box">
-                        <label>Tell us a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
-                        <textarea
-                                rows="6"
-                                class="form-control"
-                                v-model="form.about"
-                                :class="{ 'has-danger': $v.form.about.$invalid && $v.form.about.$dirty, 'has-success': !$v.form.about.$invalid }"
-                                minlength="30"
-                                required/>
-                    </div>
 
                     <!-- form navigation -->
                     <form-navigation v-on:nextStep="step5" v-on:backStep="backStep"></form-navigation>

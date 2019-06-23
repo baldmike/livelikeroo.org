@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FinReqRequest;
 use App\Http\Resources\FinReqResource;
 
 use App\Models\FinReq;
-
-use Mail;
 use App\Models\FinReqRecord;
+
 use App\Events\FinRequestReceived;
 
 class FinReqsController extends Controller
@@ -80,9 +80,9 @@ class FinReqsController extends Controller
                 $path = Storage::putFile('public/images', $request->file('image'), 'public');
 
                 // $path includes 'public/', and we don't want that in our URL, so we we chop it right off:
-                $path = substr($path, 6);
+                // $path = substr($path, 6);
 
-                Log::debug("[FinReqsController] - store - SUBSTRING path:");
+                // Log::debug("[FinReqsController] - store - SUBSTRING path:");
                 Log::debug($path);
 
                 $FinReq->image = $path;
@@ -91,10 +91,8 @@ class FinReqsController extends Controller
             $FinReq->save();
 
             // Now save records to fin_req_records table
- 
-            $file = $request->file('record1');
             
-            $medRecord1 = Storage::putFile('public/records', $file);
+            $medRecord1 = Storage::putFile('public/records', $request->file('record1'), 'public');
 
             // $path includes 'public/', and we don't want that in our URL, so we we chop it right off:
             $medRecord1 = substr($medRecord1, 6);

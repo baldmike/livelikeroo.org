@@ -80,7 +80,8 @@ class FinReq extends Resource
 
             Currency::make('award_amount')
                 ->format('$%.2n')
-                ->sortable(),
+                ->sortable()
+                ->hideFromIndex(),
                 
 
             new Panel('Requested By', $this->requestedByFields()),
@@ -153,42 +154,45 @@ class FinReq extends Resource
         return [
 
             Text::make('Pet Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
+                    ->sortable()
+                    ->rules('required', 'max:255'),
 
-            Select::make('Species')->options([
-                'dog' => 'Dog', 
-                'cat' => 'Cat', 
-                'rabbit' => 'Rabbit', 
-                'bird' => 'Bird', 
-                'other' => 'Other'
-            ])
-                ->sortable()
-                ->hideFromIndex(),
+            Select::make('Species')
+                    ->options([
+                        'dog' => 'Dog', 
+                        'cat' => 'Cat', 
+                        'rabbit' => 'Rabbit', 
+                        'bird' => 'Bird', 
+                        'other' => 'Other'
+                    ])
+                    ->sortable()
+                    ->hideFromIndex(),
             
             Text::make('Breed')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
             Number::make('Age')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
             Text::make('Gender')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
             Boolean::make('Altered')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
             Text::make('About')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
-            Image::make('Image')->disk('local')
-                ->hideFromIndex()
-                ->maxWidth(50),
+            Image::make('Image')
+                    ->disk('local')
+                    ->path('images')
+                    ->hideFromIndex()
+                    ->maxWidth(50),
 
             ];
     }
@@ -267,6 +271,7 @@ class FinReq extends Resource
             Button::make('In Progess')
                 ->event('App\Events\FinReqInProgress')
                 ->style('primary')
+                
                 ->hideFromIndex()
                 ->reload(),
 

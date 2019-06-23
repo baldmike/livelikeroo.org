@@ -7,7 +7,7 @@ use App\Models\FinReqNote;
 class FinReqNoteObserver
 {
     // /**
-    //  * Handle the fin req note "created" event.
+    //  * set the current auth'd user.
     //  *
     //  * @param  \App\FinReqNote  $finReqNote
     //  * @return void
