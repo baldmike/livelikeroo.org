@@ -96,7 +96,7 @@ class CarePackageController extends Controller
             if ($cp->save()) 
             {
                 return response()->json(['message' => 'Care Package Request successfully made.'], 201);
-                Mail::to($request->email)->send(new CarePackageConfirmation($cp));
+                // Mail::to($request->email)->send(new CarePackageConfirmation($cp));
             };
         }
 
