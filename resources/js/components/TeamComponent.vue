@@ -118,7 +118,7 @@
                                 <div class="card-image">
                                     <a href="#pablo">
                                         <img class="img img-raised rounded"
-                                                src="images/teamKathy1.jpg"/>
+                                                src="images/kathyBill.jpg"/>
                                     </a>
                                 </div>
                             </div>

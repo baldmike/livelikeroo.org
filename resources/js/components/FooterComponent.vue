@@ -12,9 +12,11 @@
 
             <div class="row social-footer">
                 <div class="col-12 ml-auto mr-auto">        
-                    <a href="https://www.facebook.com/LiveLikeRoo/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.facebook.com/LiveLikeRoo/" target="_blank" class="social-links"><i class="fab fa-facebook-square"></i></a>
                     
-                    <a href="https://www.instagram.com/livelikeroofoundation/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/livelikeroofoundation/?hl=en" target="_blank" class="social-links"><i class="fab fa-instagram"></i></a>
+
+                    <a href="https://www.twitter.com/livelikeroo/?hl=en" target="_blank" class="social-links"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             
@@ -95,9 +97,13 @@
 
     .social-footer {
         height: 80px;
-        width: 100%;
         font-size: 3rem;
         margin-bottom: 50px;
-        color: $roo;
+        color: black;
+     
+    }
+
+    .social-links {
+        margin: 0 5vw;
     }
 </style>

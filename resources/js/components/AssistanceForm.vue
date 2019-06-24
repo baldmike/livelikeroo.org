@@ -292,7 +292,7 @@
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===7">
 
                     <h4 class="description-box">
-                        Is {{ form.petName }} spayed/neutered? Select below, and use the arrow keys at the bottom to advance.
+                        Is {{ form.petName }} {{ procedure }}? Select below, and use the arrow keys at the bottom to advance.
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
                     <br>
@@ -709,7 +709,8 @@
             },
                 
             dateObject: {
-                maxValue: maxValue(new Date())
+                maxValue: maxValue(new Date()),
+                minValue: minValue(new Date().setFullYear(new Date().getFullYear() - 2))
             },
             
             robot: {
