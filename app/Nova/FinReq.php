@@ -73,10 +73,12 @@ class FinReq extends Resource
         return [
             DateTime::make('Received', 'created_at')
                 ->format('MMMM DD YYYY h:mm a')
-                ->sortable(),
+                ->sortable()
+                ->onlyOnIndex(),
 
             Text::make('Status')
-                ->sortable(),
+                ->sortable()
+                ->hideWhenUpdating(),
 
             Currency::make('award_amount')
                 ->format('$%.2n')
@@ -112,8 +114,8 @@ class FinReq extends Resource
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->creationRules('email'),
+                // ->updateRules('email,{{resourceId}}'),
 
             Text::make('Address 1')
                 ->sortable()

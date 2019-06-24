@@ -6,16 +6,16 @@ use App\Models\FinReqNote;
 
 class FinReqNoteObserver
 {
-    // /**
-    //  * set the current auth'd user.
-    //  *
-    //  * @param  \App\FinReqNote  $finReqNote
-    //  * @return void
-    //  */
-    // public function creating(FinReqNote $finReqNote)
-    // {
-    //     $finReqNote->user_id = auth()->user()->id();
-    // }
+    /**
+     * set the current auth'd user.
+     *
+     * @param  \App\FinReqNote  $finReqNote
+     * @return void
+     */
+    public function creating(FinReqNote $finReqNote)
+    {
+        $finReqNote->user_id = auth()->user()->id();
+    }
 
     /**
      * Handle the fin req note "created" event.

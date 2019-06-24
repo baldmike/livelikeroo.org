@@ -62,8 +62,8 @@ class Message extends Resource
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->creationRules('email')
+                ->updateRules('email,{{resourceId}}'),
 
             Textarea::make('Message')
                 ->sortable()
