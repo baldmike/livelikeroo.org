@@ -96,6 +96,7 @@ class FinReqsController extends Controller
                 'filename' => $medRecord1
             ]);
             
+            // trigger an event to send mail
             event(new FinRequestReceived($FinReq));
             
             return new FinReqResource($FinReq);

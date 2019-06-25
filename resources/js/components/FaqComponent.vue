@@ -29,7 +29,7 @@
                     <hr>
 
                     <div class="fa-q"><span class="faq-highlight">Q</span> Are you a rescue?</div>
-                    <div class="faq-answer"><span class="faq-highlight">A</span>  No, we are a 501-c3 charitable foundation (EIN: 47-4770782) who assist pets and their families through cancer diagnoses. However, we have now partnered with Lulu’s Locker Rescue to assist and home animals that are in danger of euthanasia, face major medical issues or are no longer able to be cared for by their owner. For more on The Hot Mess Express, click <a href="www.facebook.com/The-Hot-Mess-Express-285509102269571/" target="_blank">HERE.</a></div>
+                    <div class="faq-answer"><span class="faq-highlight">A</span>  No, we are a 501-c3 charitable foundation (EIN: 47-4770782) who assist pets and their families through cancer diagnoses. However, we have now partnered with Lulu’s Locker Rescue to assist and home animals that are in danger of euthanasia, face major medical issues or are no longer able to be cared for by their owner. For more on The Hot Mess Express, click <a href="https://www.facebook.com/thehotmessexpresschoochoo/" target="_blank">HERE.</a></div>
 
                     <hr>
 

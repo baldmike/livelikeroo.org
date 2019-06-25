@@ -62,7 +62,8 @@ export const router = new VueRouter({
                 {
                     path: '/privacy',
                     components: {default: PrivacyComponent, header: Navbar, footer: Footer},
-                    title: 'Privacy',   
+                    title: 'Privacy',
+                    
                 },
                 {
                     path: '/contact',

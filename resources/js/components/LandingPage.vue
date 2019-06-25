@@ -240,6 +240,10 @@
 </script>
 <style scoped>
     @media only screen and (max-width: 500px) {
+        .blockquote {
+            display: none;
+        }
+        
         .noPhone {
             display: none;
         }

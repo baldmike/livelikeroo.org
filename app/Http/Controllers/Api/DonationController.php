@@ -14,12 +14,13 @@ use Cartalyst\Stripe\Exception\CardErrorException;
 
 use Illuminate\Support\Str;
 
-
 use App\Models\Donation;
 use App\Models\User;
 
 use App\Mail\OneTimeDonation;
 use App\Mail\MonthlyDonation;
+
+use App\Events\OneTimeDonationMade;
 
 use Mail;
 use function Psy\debug;
@@ -43,7 +44,6 @@ class DonationController extends Controller
             Log::debug("[DonationController] --> creating user");
 
             $uuid = Str::uuid()->toString();
-            
 
             $user = User::create([
                 'first_name' => $request->firstName,
@@ -87,7 +87,9 @@ class DonationController extends Controller
                 
                 $d->save();
 
-                Mail::to($request->email)->send(new OneTimeDonation($d));
+                event(new OneTimeDonationMade($d));
+
+                Log::debug("DONATION CONTROLLER --> ONE TIME EVENT CALL JUST MADE");
 
                 return response()->json(null, Response::HTTP_CREATED);
 
@@ -100,7 +102,6 @@ class DonationController extends Controller
                 // return response()->json(null, Response::HTTP_BAD_REQUEST);
             }
         }
-
         return response()->json(null, Response::HTTP_BAD_REQUEST);
     }
 

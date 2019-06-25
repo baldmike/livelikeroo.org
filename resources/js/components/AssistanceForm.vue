@@ -560,7 +560,7 @@
     
     import { EventBus } from '../event-bus.js';
     
-    const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
+    // const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
 
     export default {
 
@@ -701,13 +701,13 @@
                 },
                 primaryClinicPhone: {
                     required,
-                    phone
+                    maxlength: 10
                 },
                 record1: {
                     required
                 }
             },
-                
+              
             dateObject: {
                 maxValue: maxValue(new Date()),
                 minValue: minValue(new Date().setFullYear(new Date().getFullYear() - 2))
