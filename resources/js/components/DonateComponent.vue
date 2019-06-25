@@ -7,7 +7,7 @@
             </div>
 
             <div class="row">
-                <div class="col-8 offset-2 col-md-3 offset-md-2">
+                <div class="col-8 offset-2 col-md-3 offset-md-2" style="margin-top: 100px;">
                     <h4 class="text">We have helped over 8200 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donation is tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
                     
                 </div>
