@@ -22,7 +22,7 @@ class MonthlyDonation extends Mailable
     public $donation;
 
     /**
-     * The donation instance.
+     * The user instance.
      *
      * @var User
      */

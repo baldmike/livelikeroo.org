@@ -145,7 +145,7 @@
                 </div>
 
                 <!-- if monthly -->
-                <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password below. Your email and password will allow you to log in, view and edit your account from the website.</div>
+                <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password, of at least 8 characters. This will allow future functionality and access to your donation.</div>
 
                 <div id="passwordLoginGroup" v-if="isMonthly">
                     
@@ -466,10 +466,10 @@
 
             isPersonal() {
                 
-                this.form.honoreeName = 'honoree';
-                this.form.recipientName = 'Recipient Name';
-                this.form.recipientEmail = 'recipient@example.com';
-                this.form.recipientMessage = 'Message to recipient';
+                this.form.honoreeName = '';
+                this.form.recipientName = '';
+                this.form.recipientEmail = '';
+                this.form.recipientMessage = '';
             
                 this.form.inMemory = 0;
             },
@@ -495,10 +495,10 @@
                 this.form.repeatPassword = 'password';
 
                 this.form.inMemory = 0;
-                this.form.honoreeName = 'honoree';
-                this.form.recipientName = 'Recipient Name';
-                this.form.recipientEmail = 'recipient@example.com';
-                this.form.recipientMessage = 'Message to recipient';
+                this.form.honoreeName = '';
+                this.form.recipientName = '';
+                this.form.recipientEmail = '';
+                this.form.recipientMessage = '';
                 
                 /* reset/clear native browser form validation state */
                 this.show = false;

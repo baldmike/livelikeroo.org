@@ -21,6 +21,7 @@ use App\Mail\OneTimeDonation;
 use App\Mail\MonthlyDonation;
 
 use App\Events\OneTimeDonationMade;
+use App\Events\InMemorySelected;
 
 use Mail;
 use function Psy\debug;
@@ -77,19 +78,25 @@ class DonationController extends Controller
                 $d->first_name = request('firstName');
                 $d->last_name = request('lastName');
                 $d->email = request('email');
-                $d->in_memory = request('inMemory');
-                $d->honoree = request('honoreeName');
                 $d->frequency = 'one-time';
+                $d->fund = request('fund');
+                $d->in_memory = request('inMemory');
+
+                $d->honoree = request('honoreeName');
                 $d->recipient_name = request('recipientName');
                 $d->recipient_email = request('recipientEmail');
                 $d->recipient_msg = request('recipientMessage');
-                $d->fund = request('fund');
-                
+
                 $d->save();
 
-                event(new OneTimeDonationMade($d));
+                // if donation is made "in memory" trigger the event that emails recipient
+                if (request('inMemory'))
+                {    
+                    event(new InMemorySelected($d));
+                }
 
-                Log::debug("DONATION CONTROLLER --> ONE TIME EVENT CALL JUST MADE");
+                // trigger donation event which sends email
+                event(new OneTimeDonationMade($d));
 
                 return response()->json(null, Response::HTTP_CREATED);
 
@@ -104,6 +111,7 @@ class DonationController extends Controller
         }
         return response()->json(null, Response::HTTP_BAD_REQUEST);
     }
+
 
     /**
      * set up monthly donations
@@ -169,10 +177,16 @@ class DonationController extends Controller
                 
                 if ($d->save())
                 {
+                    // if donation is made "in memory" trigger the event that emails recipient
+                    if (request('inMemory'))
+                    {    
+                        event(new InMemorySelected($d));
+                    }
+
+                    Mail::to($request->email)->send(new MonthlyDonation($d, $user));
+                
                     return response()->json(null, Response::HTTP_CREATED);
                 };
-
-                Mail::to($request->email)->send(new MonthlyDonation($d, $user));
 
                 
                 

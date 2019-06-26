@@ -54,6 +54,10 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\HandleMonthlyDonation',
         ],
 
+        'App\Events\InMemorySelected' => [
+            'App\Listeners\HandleInMemory',
+        ]
+
     ];
 
     /**

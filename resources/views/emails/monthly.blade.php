@@ -17,7 +17,7 @@
 
 @section('monthly')
     <p>
-        Your monthly donations will automatically be charged on this day each month, and will continue until you cancel. You may log in and view your account from the "login" link at the bottom of our website, using your email and the password you created.
+        Your monthly donations will automatically be charged on this day each month, and will continue until you cancel, which you may do by emailing livelikeroo@gmail.com.
     </p>
 @stop
 
