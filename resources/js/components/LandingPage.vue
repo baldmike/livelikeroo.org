@@ -16,12 +16,14 @@
                 </div> -->
                 <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4">
                     <div class="donate-box">
-                        <h3 style="color: #384666">
+                        <h4 style="color: #384666">
                             <p>DONATE</p> 
                             <p>TO</p> 
                             <p>LIVE LIKE ROO</p>
-                        </h3>
-                        <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>    
+                        </h4>
+                        <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>  
+                        
+                        <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="100"></a>
                     </div>  
                 </div>
                 <div class="col-md-6 ml-auto mr-auto phonely">
@@ -58,7 +60,7 @@
                                 <i class="now-ui-icons sport_user-run"></i>
                             </div>
                             <h4 class="info-title">Volunteer Run</h4>
-                            <p class="text-on-white">Our amazing volunteers tirelessly put in over <strong>500</strong> hours <em>per month</em> - from making care packages to planning events to coodinating medical care.. they do it ALL.</p>
+                            <p class="text-on-white">Our amazing volunteers tirelessly put in over <strong>500</strong> hours <em>per month</em> - from making care packages to planning events to coodinating medical care, they do it all.</p>
                         </div>
                     </div>
                     
@@ -280,7 +282,7 @@
     }
 
     .donate-box {
-        padding: 30px;
+        padding: 10px;
         text-align: center;
         background-color: white;
         color: #fd7e14;

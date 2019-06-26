@@ -92,6 +92,12 @@ export const router = new VueRouter({
                     title: 'Serenity',
                 },
                 {
+                    path: '/wishlist',
+                    beforeEnter(to, from, next) {
+                        window.location = "https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w"
+                    }
+                },
+                {
                     path: '/dashboard',
                     components: {default: DashboardComponent, header: Navbar, footer: Footer},
                     title: 'Dashboard',   
