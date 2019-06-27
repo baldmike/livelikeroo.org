@@ -6,7 +6,7 @@
     </p>
 @stop
 
-@section('content')
+@section('content_top')
     <p>Hello, {{ $user->first_name }},</p>
     <br>
     <p>
@@ -15,7 +15,7 @@
     
 @stop
 
-@section('monthly')
+@section('content_bottom')
     <p>
         Your monthly donations will automatically be charged on this day each month, and will continue until you cancel, which you may do by emailing livelikeroo@gmail.com.
     </p>

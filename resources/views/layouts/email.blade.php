@@ -44,7 +44,6 @@
 
         .banner {
             border: 10px solid #fd7e14;
-            text-align: center;
             padding: 20px;
             background-color: #fd7e14;
         }
@@ -77,10 +76,18 @@
         
         <div class="container">
             <div class="banner">
-
-                <div class="email-body">
                 
-                    <a href="http://www.livelikeroo.org"><img src="{{ $message->embed(public_path() . '/images/llr_logo.png') }}" /></a>
+                <div class="email-body">
+
+                    <div class="row">
+                        <div class="col-6" style="text-align: center;">
+                            <a href="http://www.livelikeroo.org"><img src="{{ $message->embed(public_path() . '/images/llr_logo.png') }}" /></a>
+                        </div>
+                        <div class="col-6" style="text-align: center;">
+                            <h4>"To know that even one life has breathed easier because you lived here. This is to have succeeded."</h4>
+                            <h5>Ralph Waldo Emerson</h5>
+                        </div>
+                    </div>
 
                     <br>
                     
@@ -88,11 +95,12 @@
 
                     <br>
 
-                    @yield('content')
+                    @section('content_top')
+                    @show
 
                     <br>
 
-                    @section('monthly')
+                    @section('content_bottom')
                     @show
                 
                     <br>
