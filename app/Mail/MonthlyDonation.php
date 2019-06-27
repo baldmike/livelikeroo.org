@@ -46,6 +46,7 @@ class MonthlyDonation extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.monthly');
+        return $this->view('emails.monthly')
+                    ->subject('Thank You!');
     }
 }

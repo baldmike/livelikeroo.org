@@ -187,6 +187,7 @@
                     <br>
 
                     <div class="form-group box">
+                        <label>Your Pet's Name</label>
                         <fg-input
                                 type="text"
                                 :class="{ 'has-danger': $v.form.petName.$invalid && $v.form.petName.$dirty, 'has-success': !$v.form.petName.$invalid }"

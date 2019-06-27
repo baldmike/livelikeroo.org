@@ -25,6 +25,7 @@
             margin:0;
             padding:0;
             font-size: .9rem;
+            text-align: center;
         }
         * { font-family: "Raleway", sans-serif; }
 
@@ -48,6 +49,11 @@
             background-color: #fd7e14;
         }
 
+        .headline {
+            padding: 20px;
+            margin: 10px;
+        }
+
         .email-body {
             border: 1px solid black;
             padding: 10px;
@@ -58,6 +64,10 @@
         .logo-box {
             background-color: white;
             width: 100%;
+        }
+
+        .email-content {
+            padding: 20px;
         }
 
         /* .receipt {
@@ -80,41 +90,52 @@
                 <div class="email-body">
 
                     <div class="row">
-                        <div class="col-6" style="text-align: center;">
+                        <div style="text-align: center;">
                             <a href="http://www.livelikeroo.org"><img src="{{ $message->embed(public_path() . '/images/llr_logo.png') }}" /></a>
                         </div>
-                        <div class="col-6" style="text-align: center;">
+                        <div style="text-align: center;">
                             <h4>"To know that even one life has breathed easier because you lived here. This is to have succeeded."</h4>
                             <h5>Ralph Waldo Emerson</h5>
                         </div>
                     </div>
 
                     <br>
+
+                    <div class="row">
+                        <div class="headline">
+                            @yield('headline')
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="email-content">
+                            @section('content')
+                            @show
+                        </div>
+                    </div>
                     
-                    @yield('headline')
-
                     <br>
 
-                    @section('content_top')
-                    @show
-
-                    <br>
-
-                    @section('content_bottom')
-                    @show
-                
-                    <br>
+                    <hr>
 
                     @section('receipt')
                     @show
                     
+                    <br>
+
+                    <hr>
+    
+                    <p>
+                        The Live Like Roo Foundation is an all-volunteer-run,  donation-based, 501C3 charitable organization that provides support and financial assistance to families whose pet faces a cancer diagnosis. Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist thousands of pets and their families through cancer diagnoses.</h4>
+                    </p>
                 </div>
             </div>
 
         </div>
 
-        @section('footer')
-        @show
+        <h6>&copy;2019 The Live Like Roo Foundation</h6>
                 
     </body>
 

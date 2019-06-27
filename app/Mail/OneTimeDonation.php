@@ -38,6 +38,7 @@ class OneTimeDonation extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.one_time');
+        return $this->view('emails.one_time')
+                    ->subject('Thank You!');
     }
 }

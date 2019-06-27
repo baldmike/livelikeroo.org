@@ -2,14 +2,13 @@
 
 @section('headline')
     <p>
-        Thank you for your donation of ${{ $donation->amount }}.00, {{ $donation->name_on_card }}! 
+        Thank you for your one-time donation of ${{ $donation->amount }}.00, {{ $donation->name_on_card }}! 
     </p>
 @stop
 
 @section('content')
-    <p>Hello, {{ $donation->name_on_card }},</p>
     <p>
-        Thank you for your donation! Your support of The Live Like Roo Foundation is how we're able to help as many pets as we do.
+        Thank you for your tax-deductable donation to The Live Like Roo Foundation! Your generous support is how we've been able to help almost 10,000 pets thru cancer diagnoses, sharing a bit of light and hope in an otherwise dark situation. A receipt, and our tax ID number is below for your records. From the bottom of our hearts, thank you!
     </p>
     
 @stop
@@ -20,8 +19,4 @@
     <p>{{ ($donation->created_at)->tz('America/Chicago')->toDayDateTimeString() }}</p>
 
     <p>Our Tax ID is EIN: 47-4770782</p>
-@stop
-
-@section('footer')
-  <h6>&copy;2019 The Live Like Roo Foundation</h6>
 @stop

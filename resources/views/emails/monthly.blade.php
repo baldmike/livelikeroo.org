@@ -29,7 +29,3 @@
 
     <p>Our Tax ID is EIN: 47-4770782</p>
 @stop
-
-@section('footer')
-  <h6>&copy;2019 The Live Like Roo Foundation</h6>
-@stop

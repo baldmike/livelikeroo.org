@@ -298,8 +298,7 @@
                     })
                 }
             },
-            onReset(evt) {
-                evt.preventDefault()
+            resetForm() {
                 /* Reset our form values */
                 this.form.firstName = ''
                 this.form.lastName = ''
@@ -312,6 +311,7 @@
                 this.form.petName = ''
                 this.form.about = '' 
                 this.form.diagnosis = ''
+                this.form.image = ''
 
                 /* reset/clear native browser form validation state */
                 this.show = false
@@ -321,7 +321,6 @@
                 })
             },
             hide() {
-
                 /* reset/clear native browser form validation state */
                 this.show = false
                 this.$nextTick(() => {
