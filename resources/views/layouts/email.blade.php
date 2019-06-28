@@ -23,7 +23,7 @@
         ------------------------------------- */
         * {
             margin:0;
-            padding:0;
+            padding: 0px;
             font-size: .9rem;
             text-align: center;
         }
@@ -45,12 +45,12 @@
 
         .banner {
             border: 10px solid #fd7e14;
-            padding: 20px;
+            padding: 10px;
             background-color: #fd7e14;
         }
 
         .headline {
-            padding: 20px;
+            padding: 10px;
             margin: 10px;
         }
 
@@ -67,7 +67,7 @@
         }
 
         .email-content {
-            padding: 20px;
+            padding: 10px;
         }
 
         /* .receipt {

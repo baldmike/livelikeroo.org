@@ -3,11 +3,13 @@
     <div class="container-fluid">
 
         <div class="loader" v-if="this.$store.state.loading"></div>
-        <notifications style="position: fixed; bottom: 0; z-index: 100;"></notifications>
+        
         <router-view name="header"/>
         <router-view/>
         <router-view name="footer"/>
 
+        <notifications style="position: fixed; bottom: 0; z-index: 100;"></notifications>
+        
         <!-- MODALS -->
         <modal :show.sync="this.$store.state.modals.dnForm" headerClasses="justify-content-center">
             <h4 slot="header" class="title title-up"></h4>

@@ -85,7 +85,7 @@
             EventBus.$emit('logout');
 
             let self = this;
-            setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
+            setTimeout(function(){ self.$store.dispatch('clearNotifications'); }, 3000);
         }
     },
     computed: mapGetters(['isAuthenticated', 'isMonthly', 'isOneTime']),

@@ -396,16 +396,16 @@
                         //append to form
                         this.$el.appendChild(hiddenInput);
 
-                        // build the FormData object - by using forEach, we won't miss any inputs
+                        // check which fund 
                         if (!this.form.fund) {
                             this.form.fund = this.$store.state.fund;
                         };
 
+                        // build the FormData object for each form key
                         let fd = new FormData();
                         Object.keys(this.form).forEach(key => {
                             fd.append(key, this.form[key])
                         })
-
                         
                         // append hidden input to FormData object
                         fd.append('stripeToken', result.token.id);

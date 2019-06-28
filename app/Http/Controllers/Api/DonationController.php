@@ -34,6 +34,7 @@ class DonationController extends Controller
      */
     public function oneTime(OneTimeDonationRequest $request)
     {
+        // validate the request
         $validated = $request->validated();
 
         // find or create the user
@@ -42,8 +43,6 @@ class DonationController extends Controller
         // if user doens't exist, make a user with the role 'donor'
         if (!$user)
         {
-            Log::debug("[DonationController] --> creating user");
-
             $uuid = Str::uuid()->toString();
 
             $user = User::create([
@@ -57,7 +56,9 @@ class DonationController extends Controller
 
         if($validated) 
         {
+            // use try/catch for the Stripe call
             try {
+                // create the charge with Stripe
                 $charge = Stripe::charges()->create([
                     'amount' => $request->amount,
                     'currency' => 'USD', 
@@ -71,24 +72,33 @@ class DonationController extends Controller
                     ],
                 ]);
 
-                // instantiate a new Donation
-                $d = New Donation();
-                $d->amount = request('amount');
-                $d->name_on_card = request('name_on_card');
-                $d->first_name = request('firstName');
-                $d->last_name = request('lastName');
-                $d->email = request('email');
-                $d->frequency = 'one-time';
-                $d->fund = request('fund');
-                $d->in_memory = request('inMemory');
+            } catch (CardErrorException $e) {
+                // handle exception 
+                Log::debug($e);
 
-                $d->honoree = request('honoreeName');
-                $d->recipient_name = request('recipientName');
-                $d->recipient_email = request('recipientEmail');
-                $d->recipient_msg = request('recipientMessage');
+                return back()->withErrors('Error! ' . $e->getMessage());
+            }
 
-                $d->save();
+            // Stripe call successful
+            // instantiate a new Donation
+            $d = New Donation();
+            $d->amount = request('amount');
+            $d->name_on_card = request('name_on_card');
+            $d->first_name = request('firstName');
+            $d->last_name = request('lastName');
+            $d->email = request('email');
+            $d->frequency = 'one-time';
+            $d->fund = request('fund');
+            $d->in_memory = request('inMemory');
 
+            $d->honoree = request('honoreeName');
+            $d->recipient_name = request('recipientName');
+            $d->recipient_email = request('recipientEmail');
+            $d->recipient_msg = request('recipientMessage');
+
+            // make sure new Donation is saved
+            if ($d->save())
+            {
                 // if donation is made "in memory" trigger the event that emails recipient
                 if (request('inMemory'))
                 {    
@@ -98,17 +108,15 @@ class DonationController extends Controller
                 // trigger donation event which sends email
                 event(new OneTimeDonationMade($d));
 
+                // everything went well, return 201
                 return response()->json(null, Response::HTTP_CREATED);
-
-            } catch (CardErrorException $e) {
-                // handle exception 
-                Log::debug($e);
-
-                return back()->withErrors('Error! ' . $e->getMessage());
-            
-                // return response()->json(null, Response::HTTP_BAD_REQUEST);
             }
+        
+            // Donation did not save, return error
+            return response()->json(null, Response::HTTP_BAD_REQUEST);
         }
+
+        // The resource is not validated, return error
         return response()->json(null, Response::HTTP_BAD_REQUEST);
     }
 

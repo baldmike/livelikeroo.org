@@ -7,7 +7,7 @@
                     <i class="now-ui-icons ui-2_like"></i>
                 </div>
                 <strong>Success!</strong> {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click.prevent="closeNotification">
                             <span aria-hidden="true">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </span>
@@ -20,7 +20,7 @@
                     <i class="now-ui-icons travel_info"></i>
                 </div>
                 <strong>Heads up!</strong> {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click.prevent="closeNotification">
                             <span aria-hidden="true">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </span>
@@ -33,7 +33,7 @@
                     <i class="now-ui-icons ui-1_bell-53"></i>
                 </div>
                 <strong>Warning!</strong> {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click.prevent="closeNotification">
                             <span aria-hidden="true">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </span>
@@ -46,7 +46,7 @@
                     <i class="now-ui-icons objects_support-17"></i>
                 </div>
                 <strong>Oh snap!</strong> {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click.prevent="closeNotification">
                             <span aria-hidden="true">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                             </span>
@@ -65,6 +65,11 @@
         computed: {
             message() {
                 return this.$store.state.message;
+            }
+        },
+        methods: {
+            closeNotification() {
+                this.$store.dispatch('clearNotifications');
             }
         }
     }
