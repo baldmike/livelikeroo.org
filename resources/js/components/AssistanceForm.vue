@@ -561,7 +561,7 @@
     
     import { EventBus } from '../event-bus.js';
     
-    // const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
+    const phone = helpers.regex('phone', /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/);
 
     export default {
 
@@ -702,7 +702,7 @@
                 },
                 primaryClinicPhone: {
                     required,
-                    maxlength: 10
+                    phone,
                 },
                 record1: {
                     required
