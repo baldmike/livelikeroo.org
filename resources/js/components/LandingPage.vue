@@ -4,7 +4,7 @@
             <parallax class="page-header-image"
                  style="background-image: url('images/banner1.jpg')">
             </parallax>
-            <div class="row">
+            <div class="row landing-block" style="min-height: 1000px;">
                 <div class="col-md-3 offset-md-1" style="position: absolute; bottom: 40%; text-align: right;">
                     <h4>"To know that even one life has breathed easier because you lived here. This is to have succeeded."</h4>
                     <small>Ralph Waldo Emerson</small>
@@ -265,6 +265,10 @@
         .title {
             margin-top: 42px;
         }
+    }
+
+    .landing-block {
+        min-height: 1000px;
     }
 
     .phonely {

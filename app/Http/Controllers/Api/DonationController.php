@@ -80,6 +80,7 @@ class DonationController extends Controller
             }
 
             // Stripe call successful
+
             // instantiate a new Donation
             $d = New Donation();
             $d->amount = request('amount');
@@ -112,11 +113,11 @@ class DonationController extends Controller
                 return response()->json(null, Response::HTTP_CREATED);
             }
         
-            // Donation did not save, return error
-            return response()->json(null, Response::HTTP_BAD_REQUEST);
+            // Donation did not save, return 417
+            return response()->json(null, Response::HTTP_EXPECTATION_FAILED);
         }
 
-        // The resource is not validated, return error
+        // The resource is not validated, return 400
         return response()->json(null, Response::HTTP_BAD_REQUEST);
     }
 
@@ -135,14 +136,13 @@ class DonationController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if($user) {
-            if($user->role = 'donor')
+            if($user->role === 'donor')
             {
                 $user->role = "monthly_donor";
                 $user->save();
             }
         }
         
-                
         // if user doens't exist, make a user with the role 'monthly_donor'
         if (!$user)
         {
