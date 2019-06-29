@@ -2,9 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\monthlyDonationMade;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+
+use App\Events\MonthlyDonationMade;
+use App\Mail\MonthlyDonation;
+use Mail;
 
 class HandleMonthlyDonation
 {
@@ -21,11 +24,11 @@ class HandleMonthlyDonation
     /**
      * Handle the event.
      *
-     * @param  monthlyDonationMade  $event
+     * @param  m\MonthlyDonationMade  $event
      * @return void
      */
-    public function handle(monthlyDonationMade $event)
+    public function handle(MonthlyDonationMade $event)
     {
-        //
+        Mail::to($event->donation->email)->send(new MonthlyDonation($event->donation, $event->user));
     }
 }

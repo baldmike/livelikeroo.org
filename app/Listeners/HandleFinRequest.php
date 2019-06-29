@@ -35,7 +35,6 @@ class HandleFinRequest
         // send confirmation email to applicant
         Mail::to($event->fin_req->email)->send(new FinReqReceivedEmail($event->fin_req));
 
-        Log::debug('FIN REQ HANDLER ---> MAIL SHOULD BE SENT');
 
     }
 }

@@ -50,12 +50,16 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\HandleOneTimeDonation',
         ],
 
-        'App\Events\monthlyDonationMade' => [
+        'App\Events\MonthlyDonationMade' => [
             'App\Listeners\HandleMonthlyDonation',
         ],
 
         'App\Events\InMemorySelected' => [
             'App\Listeners\HandleInMemory',
+        ],
+
+        'App\Events\CarePackageRequested' => [
+            'App\Listeners\HandleCarePackageRequest',
         ]
 
     ];

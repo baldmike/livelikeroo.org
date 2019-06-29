@@ -338,10 +338,10 @@
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
-                    <h5 class="description-box">Now, we'll need {{ form.petName }}'s medical information and records.</h5>
+                    <h5 class="description-box">What is {{ form.petName }}'s diagnosis and when did you receive it?</h5>
                 
                     <div class="form-group" id="diagnosisGroup">
-                        <label for="diagnosis">Medical Diagosis</label>
+                        <label for="diagnosis">Medical Diagnosis</label>
                         <fg-input
                                 id="diagnosis"
                                 type="text"

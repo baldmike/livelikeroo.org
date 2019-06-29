@@ -11,8 +11,9 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 use App\Models\Donation;
+use App\Models\User;
 
-class monthlyDonationMade
+class MonthlyDonationMade
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -21,9 +22,10 @@ class monthlyDonationMade
      *
      * @return void
      */
-    public function __construct(Donation $donation)
+    public function __construct(Donation $donation, User $user)
     {
         $this->donation = $donation;
+        $this->user = $user;
     }
 
     /**

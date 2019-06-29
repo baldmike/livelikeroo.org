@@ -37,6 +37,7 @@ class FinReqReceivedEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.fin_req');
+        return $this->view('emails.fin_req')
+                    ->subject('We\'ve received your request.');
     }
 }
