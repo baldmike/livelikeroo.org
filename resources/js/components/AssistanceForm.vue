@@ -183,7 +183,7 @@
                     <h4 class="description-box">
                         Now, please tell us all about your best friend. Let's start with their name, a picture and what makes them special to you.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
                     <br>
 
                     <div class="form-group box">
@@ -222,6 +222,9 @@
                         </b-col>
                     </b-form-group>
 
+                    <!-- form notice -->
+                    <h6 class="center red" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
+
                     <!-- form navigation -->
                     <form-navigation v-on:nextStep="step5" v-on:backStep="backStep"></form-navigation>
 
@@ -232,7 +235,7 @@
                     <h4 class="description-box">
                         What is {{ form.petName }}? If you know {{ form.petName }}'s breed, please list that as well.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">You must select a species.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">You must select a species.</h6>
                     <br>
 
                     <div class="form-group">    
@@ -271,7 +274,7 @@
                     <h4 class="description-box">
                         Is {{ form.petName }} a boy {{ form.species }}, or a girl {{ form.species }}? Select the gender, and use the arrow keys at the bottom to advance.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">You must select a gender.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">You must select a gender.</h6>
                     <br>
 
                     <div class="form-group">    
@@ -295,7 +298,7 @@
                     <h4 class="description-box">
                         Is {{ form.petName }} {{ procedure }}? Select below, and use the arrow keys at the bottom to advance.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
                     <br>
 
                     <div class="form-group">    
@@ -320,7 +323,7 @@
                         Rounded to the nearest year, how old is {{ form.petName }}?
                     </h4>
 
-                    <h6 class="center" v-if="$v.form.$dirty">Age must be between 1 and 25.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">Age must be between 1 and 25.</h6>
                     <br>
 
                     <div class="form-group col-6 ml-auto mr-auto">
@@ -686,6 +689,9 @@
                     required,
                     minLength: 10
                 },
+                diagnosis: {
+                    required
+                },
                 previousDiagnosis: {
                     required
                 },
@@ -858,7 +864,7 @@
             },
 
             step10() {
-                if(!this.$v.dateObject.$invalid) {
+                if(!this.$v.dateObject.$invalid || !this.$v.form.diagnosis.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
                     this.formStep += 1;
@@ -876,11 +882,11 @@
             },
 
             step12() {
-                // if(!this.$v.form.previousDiagnosis.$invalid) {
+                if(!$this.$v.form.primaryClinicPhone && !this.$v.form.primaryClinicName.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
                     this.formStep += 1;
-                // }
+                }
                 this.$v.form.$touch();
             },
 
@@ -1043,6 +1049,10 @@
         font-size: 1rem;
         text-align: center;
         font-weight: 500;
+    }
+
+    .red {
+        color: red;
     }
 
 </style>
