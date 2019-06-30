@@ -603,6 +603,8 @@
                     specialist: '',
                     otherHelp: '',
                     record1: null,
+                    record2: null,
+                    record3: null,
                     verify: false,
                 },
                 fileType: '',
