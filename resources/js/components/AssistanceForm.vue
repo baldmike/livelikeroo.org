@@ -349,6 +349,7 @@
                                 id="diagnosis"
                                 type="text"
                                 v-model="form.diagnosis"
+                                :class="{ 'has-danger': $v.diagnosis.$invalid, 'has-success': !$v.diagnosis.$invalid }"
                                 required
                                 placeholder="Diagnosis" />
                     </div>
@@ -393,10 +394,10 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===11">
                     <h4 class="description-box">
-                        Now we'll need {{ form.petName }}'s veterinarian information and records.
+                        Now we'll need {{ form.petName }}'s veterinarian information.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
-                    <br>
+
+                    <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
 
                     <div class="form-group" id="primaryVetFirstNameGroup">
                         <label for="primaryVetFirstName">Vet First Name</label>
@@ -474,6 +475,8 @@
                                 v-model="form.otherHelp"
                                 placeholder="If applicable, please list any grants that you have received and the amount." />
                     </div>
+
+                    <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
 
                     <form-navigation v-on:nextStep="step12" v-on:backStep="backStep"></form-navigation>
                 </div>
@@ -864,7 +867,7 @@
             },
 
             step10() {
-                if(!this.$v.dateObject.$invalid || !this.$v.form.diagnosis.$invalid) {
+                if(!this.$v.dateObject.$invalid && !this.$v.form.diagnosis.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
                     this.formStep += 1;
@@ -882,7 +885,7 @@
             },
 
             step12() {
-                if(!$this.$v.form.primaryClinicPhone && !this.$v.form.primaryClinicName.$invalid) {
+                if(!this.$v.form.primaryClinicPhone.$invalid && !this.$v.form.primaryClinicName.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
                     this.formStep += 1;
