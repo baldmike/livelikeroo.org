@@ -23,6 +23,6 @@ class ChangeFinreqsName extends Migration
      */
     public function down()
     {
-           
+        Schema::rename('fin-reqs', 'finreqs');   
     }
 }
