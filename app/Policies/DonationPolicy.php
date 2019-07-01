@@ -19,7 +19,7 @@ class DonationPolicy
      */
     public function view(User $user, Donation $donation)
     {
-        if ($user->role === 'admin' || $user->role === 'guest') 
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -47,7 +47,7 @@ class DonationPolicy
      */
     public function update(User $user, Donation $donation)
     {
-        if ($user->role === 'admin') 
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -64,6 +64,11 @@ class DonationPolicy
      */
     public function delete(User $user, Donation $donation)
     {
+        if ($user->role === 'superadmin')
+        {
+            return true;
+        }
+
         return false;
     }
 
@@ -76,7 +81,12 @@ class DonationPolicy
      */
     public function restore(User $user, Donation $donation)
     {
-        //
+        if ($user->role === 'superadmin')
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**

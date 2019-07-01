@@ -17,7 +17,7 @@ class UserPolicy
      */
     public function view(User $user)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -33,7 +33,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'superadmin') 
         {
             return true;
         }
@@ -50,7 +50,7 @@ class UserPolicy
      */
     public function update(User $user)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'superadmin') 
         {
             return true;
         }
@@ -67,7 +67,7 @@ class UserPolicy
      */
     public function delete(User $user)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'superadmin') 
         {
             return true;
         }
@@ -84,7 +84,7 @@ class UserPolicy
      */
     public function restore(User $user)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'superadmin') 
         {
             return true;
         }
@@ -101,7 +101,7 @@ class UserPolicy
      */
     public function forceDelete(User $user)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'superadmin') 
         {
             return true;
         }

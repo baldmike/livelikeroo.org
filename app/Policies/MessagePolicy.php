@@ -19,7 +19,7 @@ class MessagePolicy
      */
     public function view(User $user, Message $message)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -35,10 +35,10 @@ class MessagePolicy
      */
     public function create(User $user)
     {
-        // if ($user->role === 'admin')
-        // {
-        //     return true;
-        // }
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
+        {
+            return true;
+        }
 
         return false;
     }
@@ -52,7 +52,7 @@ class MessagePolicy
      */
     public function update(User $user, Message $message)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -69,7 +69,7 @@ class MessagePolicy
      */
     public function delete(User $user, Message $message)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -86,7 +86,7 @@ class MessagePolicy
      */
     public function restore(User $user, Message $message)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }

@@ -19,7 +19,7 @@ class CarePackagePolicy
      */
     public function view(User $user, CarePackage $CarePackage)
     {
-        if ($user->role === 'admin' || $user->role === 'guest')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -52,7 +52,7 @@ class CarePackagePolicy
      */
     public function update(User $user, CarePackage $CarePackage)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -69,7 +69,7 @@ class CarePackagePolicy
      */
     public function delete(User $user, CarePackage $CarePackage)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -86,7 +86,7 @@ class CarePackagePolicy
      */
     public function restore(User $user, CarePackage $CarePackage)
     {
-        if ($user->role === 'admin')
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
