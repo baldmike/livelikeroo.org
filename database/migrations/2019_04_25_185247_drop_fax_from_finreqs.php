@@ -13,7 +13,7 @@ class DropFaxFromFinreqs extends Migration
      */
     public function up()
     {
-        Schema::table('finreqs', function (Blueprint $table) {
+        Schema::table('fin_reqs', function (Blueprint $table) {
             $table->dropColumn('primary_clinic_fax');
         });
     }
@@ -25,7 +25,7 @@ class DropFaxFromFinreqs extends Migration
      */
     public function down()
     {
-        Schema::table('finreqs', function (Blueprint $table) {
+        Schema::table('fin_reqs', function (Blueprint $table) {
             $table->string('primary_clinic_fax');
         });
     }
