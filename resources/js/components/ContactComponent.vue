@@ -130,7 +130,6 @@
                 this.$v.form.$touch();
 
                 if (!this.$v.form.$invalid) {
-                    console.log('[contactComponent] - send message');
 
                     let fd = new FormData();
 

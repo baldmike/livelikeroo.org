@@ -59,12 +59,11 @@
         },
         methods: {
             init() {
-                console.log("[Privacy Comp -- init method");
+
             },
         },
         created() {
             this.init();
-            console.log('Privacy Component mounted.')
         }
     }
 </script>

@@ -17,9 +17,6 @@ export default new Vuex.Store({
 
         let currentUser = JSON.stringify(user);
 
-        console.log("[STORE.STATE] --> user: " + (currentUser));
-        console.log("[STORE.STATE] --> token: " + (userToken));
-
         return {
             token: userToken ? userToken : null,
             user: user ? user : null,
@@ -143,7 +140,6 @@ export default new Vuex.Store({
         refreshUserData(context) {
             axios.call("get", "/api/user").then((userData) => {
                 let user = userData.data.data
-                console.log("USER ----> " + user);
                 context.commit('setUser', user)
             })
         },
@@ -153,7 +149,7 @@ export default new Vuex.Store({
                 context.commit('setUsers', data);
             })
             .catch(error => {
-                console.log("API call error: " + error);
+                
             });
         },
 

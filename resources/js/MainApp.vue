@@ -89,7 +89,6 @@
         methods: {
             init() {
                 this.$store.dispatch('getAllUsers');
-                console.log("[MainApp] - init method");
             },
             
             hideModal() {
@@ -103,67 +102,54 @@
             if (this.$store.state.users.length === 0) {
                 this.init();
             }
-            console.log('[MainApp] Component CREATED.')
         },
         mounted() {
-            console.log('[MainApp] Component MOUNTED.')
             // if (window.auth.check()) {
             //     this.$router.push('dashboard');
             // }
             EventBus.$on('showDnForm', () => {
-                console.log("[MainApp] --> showDnForm - EventBus");
                 this.$store.dispatch('setOneTime');
             })
 
             EventBus.$on('showFnForm', () => {
-                console.log("[MainApp] --> showFnForm - EventBus");
                 this.$store.dispatch('showFnForm');
             })
 
             EventBus.$on('showCpForm', () => {
-                console.log("[MainApp] --> showCpForm - EventBus");
                 this.$store.dispatch('showCpForm');
             })
 
 
             EventBus.$on('setOneTime', () => {
-                console.log("[MainApp] --> setOneTime - EventBus");
                 this.$store.dispatch('setOneTime');
             })
 
             EventBus.$on('setMonthly', () => {
-                console.log("[MainApp] --> setMonthly - EventBus");
                 this.$store.dispatch('setMonthly');
             })
 
             
             EventBus.$on('dnFormSubmit', () => {
-                console.log("[MainApp] --> dnFormSubmit - EventBus");
                 this.$store.dispatch('hideModal');
             })
 
             EventBus.$on('showLogin', () => {
-                console.log("[MainApp] --> showLogin - EventBus");
                 this.$store.dispatch('showLogin');
             })
 
             EventBus.$on('hideModal', () => {
-                console.log("[MainApp] --> hideModal - EventBus");
                 this.$store.dispatch('hideModal');
             })
 
             EventBus.$on('startLoading', () => {
-                console.log("[MainApp] --> startLoading - EventBus");
                 this.$store.dispatch('startLoading');
             })
 
             EventBus.$on('endLoading', () => {
-                console.log("[MainApp] --> endLoading - EventBus");
                 this.$store.dispatch('endLoading');
             })
 
             EventBus.$on('logout', () => {
-                console.log("[MainApp] --> LOGOUT - EventBus");
                 this.$store.dispatch('logout');
             })
 
