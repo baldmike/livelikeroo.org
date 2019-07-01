@@ -150,14 +150,12 @@ export default new Vuex.Store({
 
         getAllUsers(context) {
             axios.call("get", "/api/users").then(({ data }) => {
-                // console.log("[API call to users]: " + JSON.stringify(data));
                 context.commit('setUsers', data);
             })
             .catch(error => {
                 console.log("API call error: " + error);
             });
         },
-
 
         setOneTime(context) {
             context.commit('setOneTime');

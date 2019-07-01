@@ -77,11 +77,9 @@
     },
     methods: {
         showLogin(){
-            console.log('LOGIN ATTEMPTED');
             EventBus.$emit('showLogin');
         },
         logout(){
-            console.log('[FooterComponent] - logout');
             EventBus.$emit('logout');
 
             let self = this;

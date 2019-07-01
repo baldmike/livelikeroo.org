@@ -70,7 +70,6 @@
     },
     methods: {
         oneTime() {
-            console.log("[DonateComponent] - ONE TIME")
             let payload = {
                 fund: 'roo',
                 freq: 'oneTime'
@@ -79,7 +78,6 @@
         },
 
         monthly() {
-            console.log("[DonateComponent] - MONTHLY")
             let payload = {
                 fund: 'roo',
                 freq: 'monthly'

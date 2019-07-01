@@ -167,8 +167,6 @@
                         self.$store.dispatch('notify', payload);
 
                         setTimeout(function(){ self.$store.dispatch('clearNotifications'); }, 5000);
-
-                        console.log("[ContactComponent] - api/contact call: " + error);
                     
                     });
                 }

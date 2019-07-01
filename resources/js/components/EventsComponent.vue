@@ -43,12 +43,11 @@
         computed: {},
         methods: {
             init() {
-                console.log("[Events Comp -- init method");
+                
             },
         },
         created() {
             this.init();
-            console.log('Events Component mounted.')
         }
     }
 </script>

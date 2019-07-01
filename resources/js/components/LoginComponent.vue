@@ -114,15 +114,12 @@ export default {
                 self.$store.dispatch('endLoading');
                 self.$store.dispatch('notify', payload);
 
-                setTimeout(function(){ self.$store.dispatch('clearNotifications'); }, 3000);
-
-                console.log("[LoginComponent] - api/login call: " + error);
-            
+                setTimeout(function(){ self.$store.dispatch('clearNotifications'); }, 3000);            
             });
         
         },
         register() {
-            console.log("[LoginComponent]->register")
+            
         }
     },
     computed: {
