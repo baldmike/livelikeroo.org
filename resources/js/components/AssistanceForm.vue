@@ -215,7 +215,7 @@
                                 accept="image/*"
                                 v-model="form.image"
                                 placeholder="Choose an image..."
-                                @change="onFileChange"/>
+                                @change="onImageChange"/>
 
                         <b-col cols="6" offset="3" style="margin-top: 1rem;">
                             <img v-if="url" :src="url" width="200" alt="uploaded image">
@@ -332,12 +332,12 @@
                                 class="age-box"
                                 :class="{ 'has-danger': $v.form.age.$invalid && $v.form.age.$dirty, 'has-success': !$v.form.age.$invalid }"
                                 type="number"
-                                max="30"
+                                max="25"
                                 v-model="form.age"
                                 required/>
                     </div>
 
-                    <form-navigation v-on:nextStep="step9" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
@@ -349,7 +349,7 @@
                                 id="diagnosis"
                                 type="text"
                                 v-model="form.diagnosis"
-                                :class="{ 'has-danger': $v.diagnosis.$invalid, 'has-success': !$v.diagnosis.$invalid }"
+                                :class="{ 'has-danger': $v.form.diagnosis.$invalid, 'has-success': !$v.form.diagnosis.$invalid }"
                                 required
                                 placeholder="Diagnosis" />
                     </div>
@@ -979,20 +979,18 @@
                 })
             },
 
-            onFileChange(e) {
+            onImageChange(e) {
                 const file = e.target.files[0];
-                console.log("ON FILE/IMAGE CHANGE --> FILE: " + file);
+                
                 this.url = URL.createObjectURL(file);
-                console.log("The URL: " + this.url)
-
+        
                 this.form.image = file;
             },
 
             onRecordChange(e) {
                 const record = e.target.files[0];
-                console.log("ON RECORD CHANGE --> FILE: " + record);
+                
                 this.recordUrl = URL.createObjectURL(record);
-                console.log("record url: " + this.recordUrl)
 
                 if (record.type == 'image/jpeg' || record.type == 'image/png') {
                     this.fileType = 'image'
