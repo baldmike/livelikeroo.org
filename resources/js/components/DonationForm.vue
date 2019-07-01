@@ -382,6 +382,7 @@
                     createToken(options).then(result => {
 
                         if(result.error) {
+                            console.log(result.error);
                             this.$store.dispatch('cardSubmitError');
                         }
                     
