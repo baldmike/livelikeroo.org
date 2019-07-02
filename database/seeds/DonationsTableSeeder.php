@@ -11,6 +11,6 @@ class DonationsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Donation::class, 100)->create();
+        factory(App\Models\Donation::class, 1)->create();
     }
 }

@@ -16,9 +16,9 @@ class CreateFinReqNotesTable extends Migration
         Schema::create('fin_req_notes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('fin_req_id')->unsigned();
-            $table->foreign('fin_req_id')->references('id')->on('fin_reqs');
+            $table->foreign('fin_req_id')->references('id')->on('fin_reqs')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('note');
             $table->timestamps();
         });

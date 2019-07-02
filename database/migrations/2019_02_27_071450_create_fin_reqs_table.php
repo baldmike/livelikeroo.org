@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFinreqsTable extends Migration
+class CreateFinReqsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFinreqsTable extends Migration
      */
     public function up()
     {
-        Schema::create('finreqs', function (Blueprint $table) {
+        Schema::create('fin_reqs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('first_name', 100);
             $table->string('last_name', 100);
@@ -54,6 +54,6 @@ class CreateFinreqsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('finreqs');
+        Schema::dropIfExists('fin_reqs');
     }
 }

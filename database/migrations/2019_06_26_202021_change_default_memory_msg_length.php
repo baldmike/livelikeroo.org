@@ -26,7 +26,7 @@ class ChangeDefaultMemoryMsgLength extends Migration
     public function down()
     {
         Schema::table('donations', function (Blueprint $table) {
-            //
+            $table->string('recipient_msg')->nullable()->default(null)->change();
         });
     }
 }

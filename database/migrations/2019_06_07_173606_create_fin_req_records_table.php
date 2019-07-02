@@ -16,7 +16,7 @@ class CreateFinReqRecordsTable extends Migration
         Schema::create('fin_req_records', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('fin_req_id')->unsigned();
-            $table->foreign('fin_req_id')->references('id')->on('fin_reqs');
+            $table->foreign('fin_req_id')->references('id')->on('fin_reqs')->onDelete('cascade');
             $table->string('filename');
             $table->timestamps();
         });

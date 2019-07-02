@@ -32,7 +32,7 @@ class ChangeDonationTypeToBoolean extends Migration
     public function down()
     {
         Schema::table('donations', function (Blueprint $table) {
-            
+            $table->string('donation_type')->nullable()->change();
         });
     }
 }
