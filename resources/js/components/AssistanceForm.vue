@@ -166,7 +166,7 @@
                             v-model="form.zip"
                             :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.zip.$dirty, 'has-success': !$v.form.zip.$invalid }"
                             placeholder="Zip Code"
-                            maxlength="5"
+                            minlength="5"
                             required/>
                     </div>
                     
@@ -568,6 +568,7 @@
     import { EventBus } from '../event-bus.js';
     
     const phone = helpers.regex('phone', /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/);
+    const zip = helpers.regex('zip', /(^\d{5}$)|(^\d{5}-\d{4}$)/);
 
     export default {
 
@@ -671,7 +672,7 @@
                 },
                 zip: {
                     required,
-                    between: between(10000, 99999)
+                    zip,
                 },
                 petName: {
                     required,

@@ -152,7 +152,6 @@
                             v-model="form.zip"
                             placeholder="Zip Code"
                             minLength="5"
-                            maxLength="5"
                             required/>
                     </div>
                     <div class="errors center" v-if="$v.form.$dirty">There are missing or incomplete fields.</div>
@@ -189,6 +188,9 @@
     import { Select, Option, DatePicker, TimeSelect } from 'element-ui'
     import { validationMixin } from "vuelidate";
     import { helpers, required, minLength, maxLength, email, between } from "vuelidate/lib/validators";
+
+    const zip = helpers.regex('zip', /(^\d{5}$)|(^\d{5}-\d{4}$)/);
+
     export default {
 
         data() {
@@ -252,8 +254,7 @@
                     required
                 },
                 zip: {
-                    minLength: 5,
-                    maxLength: 5,
+                    zip,
                     required,
                 },
                 petName: {
