@@ -151,6 +151,8 @@
                             :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.zip.$dirty, 'has-success': !$v.form.zip.$invalid }"
                             v-model="form.zip"
                             placeholder="Zip Code"
+                            minLength="5"
+                            maxLength="5"
                             required/>
                     </div>
                     <div class="errors center" v-if="$v.form.$dirty">There are missing or incomplete fields.</div>
@@ -250,8 +252,9 @@
                     required
                 },
                 zip: {
+                    minLength: 5,
+                    maxLength: 5,
                     required,
-                    between: between(10000, 99999)
                 },
                 petName: {
                     required,
