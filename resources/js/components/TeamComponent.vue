@@ -13,7 +13,7 @@
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <a href="#pablo">
+                                    <a href="#">
                                         <img class="img img-raised rounded" src="images/teamSarah.jpg"/>
                                     </a>
                                 </div>
@@ -48,7 +48,7 @@
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <a href="#pablo">
+                                    <a href="#">
                                         <img class="img img-raised rounded" src="images/teamLaura.jpg"/>
                                     </a>
                                 </div>
@@ -78,19 +78,10 @@
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <a href="#pablo">
+                                    <a href="#">
                                         <img class="img img-raised rounded" src="images/teamNicole.jpg"/>
                                     </a>
                                 </div>
-
-                                 <!-- <div class="card-footer">
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-youtube"><i
-                                            class="fab fa-youtube"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-twitter"><i
-                                            class="fab fa-twitter"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-instagram"><i
-                                            class="fab fa-instagram"></i></a>
-                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -116,7 +107,7 @@
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <a href="#pablo">
+                                    <a href="#">
                                         <img class="img img-raised rounded"
                                                 src="images/kathyBill.jpg"/>
                                     </a>
@@ -150,7 +141,7 @@
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <a href="#pablo">
+                                    <a href="#">
                                         <img class="img img-raised rounded"
                                                 src="images/teamSara.jpg"/>
                                     </a>
@@ -189,7 +180,7 @@
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <a href="#pablo">
+                                    <a href="#">
                                         <img class="img img-raised rounded"
                                                 src="images/teamDawn.png"/>
                                     </a>
@@ -227,20 +218,11 @@
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <a href="#pablo">
+                                    <a href="#">
                                         <img class="img img-raised rounded"
                                                 src="images/teamLindsay.jpg"/>
                                     </a>
                                 </div>
-
-                                <!-- <div class="card-footer">
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-linkedin"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-facebook"><i
-                                            class="fab fa-facebook-square"></i></a>
-                                    <a href="#pablo" class="btn btn-icon btn-neutral btn-google"><i
-                                            class="fab fa-google"></i></a>
-                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -266,7 +248,7 @@
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
-                                    <a href="#pablo">
+                                    <a href="#">
                                         <img class="img img-raised rounded"
                                                 src="images/bald_idiot2.jpg"/>
                                     </a>
