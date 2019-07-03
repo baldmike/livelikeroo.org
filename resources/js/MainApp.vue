@@ -168,6 +168,15 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
+    .credit {
+        font-size: .7rem;
+        color: white;
+        z-index: 100;
+        position: relative;
+        bottom: 0;
+        right: 10;
+    }
+
     .StripeElement {
         box-sizing: border-box;
 

@@ -1,26 +1,5 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/vendors~pdfjsWorker.js": "/vendors~pdfjsWorker.js",
-    "/js/app.14c5fa711ee19c06577e.hot-update.js": "/js/app.14c5fa711ee19c06577e.hot-update.js",
-    "/js/app.73e2e2eb0a97e3864bd5.hot-update.js": "/js/app.73e2e2eb0a97e3864bd5.hot-update.js",
-    "/js/app.37647e66aff61d5a7f6c.hot-update.js": "/js/app.37647e66aff61d5a7f6c.hot-update.js",
-    "/js/app.4452a50e4998b5d4447f.hot-update.js": "/js/app.4452a50e4998b5d4447f.hot-update.js",
-    "/js/app.799aca080161ada1a518.hot-update.js": "/js/app.799aca080161ada1a518.hot-update.js",
-    "/js/app.49a42c306fed4f934327.hot-update.js": "/js/app.49a42c306fed4f934327.hot-update.js",
-    "/js/app.ba0c67fafe113776e518.hot-update.js": "/js/app.ba0c67fafe113776e518.hot-update.js",
-    "/js/app.6349df0bbce44110c8a8.hot-update.js": "/js/app.6349df0bbce44110c8a8.hot-update.js",
-    "/js/app.5925c9aeaf42fc42ffe8.hot-update.js": "/js/app.5925c9aeaf42fc42ffe8.hot-update.js",
-    "/js/app.0a11be005341275aee67.hot-update.js": "/js/app.0a11be005341275aee67.hot-update.js",
-    "/js/app.998976da219e6ce62f50.hot-update.js": "/js/app.998976da219e6ce62f50.hot-update.js",
-    "/js/app.63c1a8d8d4bf95793cbb.hot-update.js": "/js/app.63c1a8d8d4bf95793cbb.hot-update.js",
-    "/js/app.798b4a1383e8c6782382.hot-update.js": "/js/app.798b4a1383e8c6782382.hot-update.js",
-    "/js/app.89511c7d5cdb962c7203.hot-update.js": "/js/app.89511c7d5cdb962c7203.hot-update.js",
-    "/js/app.e1efe7fac84f00772b9d.hot-update.js": "/js/app.e1efe7fac84f00772b9d.hot-update.js",
-    "/js/app.3065aed185e3fa3aa22d.hot-update.js": "/js/app.3065aed185e3fa3aa22d.hot-update.js",
-    "/js/app.25666ebfb0191d88b330.hot-update.js": "/js/app.25666ebfb0191d88b330.hot-update.js",
-    "/js/app.a62f25408f78be65c7ff.hot-update.js": "/js/app.a62f25408f78be65c7ff.hot-update.js",
-    "/js/app.be41fe115b171d6e6c54.hot-update.js": "/js/app.be41fe115b171d6e6c54.hot-update.js",
-    "/js/app.38b80dfca039877f5891.hot-update.js": "/js/app.38b80dfca039877f5891.hot-update.js",
-    "/js/app.551033c824f71c66747a.hot-update.js": "/js/app.551033c824f71c66747a.hot-update.js"
+    "/vendors~pdfjsWorker.js": "/vendors~pdfjsWorker.js"
 }
