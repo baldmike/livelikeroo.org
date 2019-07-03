@@ -134,7 +134,7 @@ class CarePackage extends Resource
     {
         return [
 
-            Button::make('Buy Label')
+            Button::make('Label')
                 ->event('App\Events\CarePackageBuyLabel')
                 ->style('primary')
                 ->visible(!$this->label_url)
@@ -167,6 +167,7 @@ class CarePackage extends Resource
             
             Text::make('First Name')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules('required', 'max:255'),
 
             Text::make('Last Name')
