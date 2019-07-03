@@ -172,7 +172,7 @@
         font-size: .7rem;
         color: white;
         z-index: 100;
-        position: relative;
+        position: absolute;
         bottom: 0;
         right: 10;
     }

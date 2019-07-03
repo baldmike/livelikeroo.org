@@ -48,13 +48,14 @@
                     <n-button @click.native="monthly" type="neutral" size="lg" round block>MONTHLY DONATION</n-button>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-3 offset-md-9 credit">
-                    <h6>Photo by <a href = "https://unsplash.com/@matthewhenry">Matthew Henry</a> via <a href = "https://unsplash.com">Unsplash</a></h6>
-                </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md-3 offset-md-9 credit">
+                <h6>Photo by <a href = "https://unsplash.com/@matthewhenry">Matthew Henry</a> via <a href = "https://unsplash.com">Unsplash</a></h6>
             </div>
-            
         </div>
     </div>
 </template>

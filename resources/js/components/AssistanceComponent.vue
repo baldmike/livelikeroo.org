@@ -25,6 +25,14 @@
             </div>
             
         </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-3 offset-md-9 credit">
+                <h6>Photo by <a href = "https://unsplash.com/@jamie452">Jamie Street</a> via <a href = "https://unsplash.com">Unsplash</a></h6>
+            </div>
+        </div>
     </div>
 </template>
 
