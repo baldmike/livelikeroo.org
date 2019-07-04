@@ -5,33 +5,20 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
-use Illuminate\Support\Facades\Log;
-
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-use App\Models\Message;
-
-class EmailMessage extends Mailable
+class DonationMade extends Mailable
 {
     use Queueable, SerializesModels;
-
-    /**
-     * The  instance.
-     *
-     * @var Message
-     */
-    public $message;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct()
     {
-        $this->message = $message;
-
+        //
     }
 
     /**
@@ -41,6 +28,6 @@ class EmailMessage extends Mailable
      */
     public function build()
     {
-        return $this->from($this->message->email)->markdown('emails.message');
+        return $this->markdown('emails.donation_made');
     }
 }

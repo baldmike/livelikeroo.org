@@ -30,6 +30,10 @@ class HandleOneTimeDonation
      */
     public function handle(OneTimeDonationMade $event)
     {
+        // send confirmation email to donor
         Mail::to($event->donation->email)->send(new OneTimeDonation($event->donation));
+
+        // send notification to Sarah
+        Mail::to('livelikeroo@gmail.com')->send(new )
     }
 }
