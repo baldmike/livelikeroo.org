@@ -226,7 +226,6 @@
         },
         methods: {
             showDnForm() {
-                console.log("[HomeComponent] - showDnForm");
                 
                 let payload = {
                     fund: 'roo',

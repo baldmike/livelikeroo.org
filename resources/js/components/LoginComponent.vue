@@ -74,7 +74,6 @@ export default {
     },
     methods: {
         login() {
-            console.log('[LoginComponent] - login');
 
             const formData = {
                 email: this.form.emailLogin,
@@ -84,14 +83,12 @@ export default {
             this.$store.dispatch('hideModal');
             this.$store.dispatch('startLoading');
 
-            console.log("[LoginComponent] - LOGIN - FORM DATA SET");
 
             // to access this inside .catch
             let self = this;
 
             axios.post("/api/login", formData).then(({data}) => {
 
-                console.log("login api hit: " + data.user);
                 this.$cookie.set('token', data.token);
                 this.$cookie.set('user', data.user.email);
                 
@@ -115,14 +112,12 @@ export default {
                 self.$store.dispatch('notify', payload);
 
                 setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
-
-                console.log("[LoginComponent] - api/login call: " + error);
             
             });
         
         },
         register() {
-            console.log("[LoginComponent]->register")
+            
         }
     },
     computed: {

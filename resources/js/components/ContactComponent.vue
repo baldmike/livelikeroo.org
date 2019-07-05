@@ -130,7 +130,6 @@
                 this.$v.form.$touch();
 
                 if (!this.$v.form.$invalid) {
-                    console.log('[contactComponent] - send message');
 
                     let fd = new FormData();
 
@@ -168,7 +167,6 @@
 
                         setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 5000);
 
-                        console.log("[ContactComponent] - api/contact call: " + error);
                     
                     });
                 }

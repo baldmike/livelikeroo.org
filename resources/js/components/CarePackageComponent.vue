@@ -61,10 +61,9 @@
         computed: {},
         methods: {
             init() {
-                console.log("[Assistance Comp -- init method");
+                
             },
             showCpForm() {
-                console.log("[CarePackageComponent] - showCpForm")
                 EventBus.$emit('showCpForm');
             },
             hideCpForm() {
@@ -79,7 +78,6 @@
         },
         created() {
             this.init();
-            console.log('Assistance Component mounted.')
         }
     }
 </script>

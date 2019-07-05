@@ -281,7 +281,7 @@
     },
     methods: {
         showBio() {
-            console.log("sarah pushed");
+        
         }
     },
     computed: {
