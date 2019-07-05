@@ -46,7 +46,7 @@
                     <h2 class="title">The Live Like Roo Foundation</h2>
                     <h4 class="description">We are an all-volunteer-run,  donation-based, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis.</h4> 
                     
-                    <h4 class="description">Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 2000 pets and their families through cancer diagnoses.</h4>
+                    <h4 class="description">Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 8200 pets and their families through cancer diagnoses.</h4>
                         
                     <h4 class="description">Having experienced this devastation first-hand with the loss of Roosevelt, The Live Like Roo Foundation strives to be a helping hand in a difficult and sometimes confusing time. We want to be a real life sounding board and support system for people that need guidance and hope, sharing compassion and strength along the way. Ultimately, our mission is that you and your pet will #LiveLikeRoo.</h4>
 
