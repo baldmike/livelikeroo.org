@@ -25,7 +25,7 @@
         computed: mapGetters(['isAuthenticated']),
         methods: {
             init() {
-                
+    
             },
         },
         created() {

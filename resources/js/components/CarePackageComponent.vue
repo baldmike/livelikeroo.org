@@ -65,7 +65,6 @@
                 
             },
             showCpForm() {
-                
                 EventBus.$emit('showCpForm');
             },
             hideCpForm() {

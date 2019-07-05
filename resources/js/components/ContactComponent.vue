@@ -165,7 +165,8 @@
                         this.$store.dispatch('endLoading');
                         self.$store.dispatch('notify', payload);
 
-                        setTimeout(function(){ self.$store.dispatch('clearNotifications'); }, 5000);
+                        setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 5000);
+
                     
                     });
                 }

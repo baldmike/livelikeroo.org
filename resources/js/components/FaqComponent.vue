@@ -59,11 +59,12 @@
         },
         methods: {
             init() {
-
+                
             },
         },
         created() {
             this.init();
+            
         }
     }
 </script>

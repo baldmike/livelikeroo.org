@@ -228,6 +228,7 @@
         },
         methods: {
             showDnForm() {
+                
                 let payload = {
                     fund: 'roo',
                     freq: 'oneTime'

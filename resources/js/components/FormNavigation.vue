@@ -1,12 +1,12 @@
 <template>
     <!-- form navigation -->
         <div class="row nav-box">
-                <div class="col-4 mr-auto ml-auto form-nav">
+                <div class="col-6 mr-auto ml-auto form-nav">
                     <n-button @click.prevent.native="$emit('backStep')" type="primary" round block><i class="fas fa-arrow-circle-left"></i></n-button>
                     <span style="font-size: 1rem">BACK</span>
                 </div>                    
                 
-                <div class="col-4 mr-auto ml-auto form-nav">
+                <div class="col-6 mr-auto ml-auto form-nav">
                     <n-button @click.prevent.native="$emit('nextStep')" type="primary" round block><i class="fas fa-arrow-circle-right"></i></n-button>
                     <span style="font-size: 1rem">NEXT</span>
                 </div>

@@ -60,7 +60,7 @@
         },
         methods: {
             init() {
-                
+        
             },
         },
         created() {

@@ -65,12 +65,10 @@
         },
         methods: {
             init() {
-                
             },
             wishlist() {
                 window.location.href = "https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w";
-            },
-            
+            },  
         },
 
 

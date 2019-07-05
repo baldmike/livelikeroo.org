@@ -281,7 +281,7 @@
     },
     methods: {
         showBio() {
-            
+        
         }
     },
     computed: {

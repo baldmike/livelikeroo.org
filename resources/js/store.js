@@ -149,7 +149,7 @@ export default new Vuex.Store({
                 context.commit('setUsers', data);
             })
             .catch(error => {
-                
+                console.log("GET ALL USERS ERROR: " + error);
             });
         },
 

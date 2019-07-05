@@ -110,7 +110,8 @@ export default {
                 self.$store.dispatch('endLoading');
                 self.$store.dispatch('notify', payload);
 
-                setTimeout(function(){ self.$store.dispatch('clearNotifications'); }, 3000);            
+                setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
+            
             });
         
         },

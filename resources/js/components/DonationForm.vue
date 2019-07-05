@@ -385,7 +385,7 @@
                             console.log(result.error);
                             this.$store.dispatch('cardSubmitError');
                         }
-                    
+                        
                         // create hidden input with stripe token to complete transaction
                         let hiddenInput = document.createElement('input');
                         
@@ -446,15 +446,17 @@
                 }
             },
             toggleNotify() {
+
                 this.notify = !this.notify;
+
             },
 
             donate(amt) {
                 this.form.amount = amt;
+
             }, 
 
             clearButtons() {
-
                 this.ten=false;
                 this.twentyFive=false;
                 this.fifty=false;

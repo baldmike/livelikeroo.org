@@ -292,8 +292,12 @@
 
                         this.$store.dispatch('cpFormSuccess')
 
-                    }).catch((error) => {                        
-                        this.$store.dispatch('cpFormError')
+                    }).catch((error) => {
+
+                            if (error.response.status === 400) {
+                
+                            }
+                            this.$store.dispatch('cpFormError')
                     })
                 }
             },
