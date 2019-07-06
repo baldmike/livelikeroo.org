@@ -5,33 +5,29 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
-use Illuminate\Support\Facades\Log;
-
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-use App\Models\Message;
+use App\Models\CarePackage;
 
-class EmailMessage extends Mailable
+class CarePackageReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * The  instance.
+     * make $care_package available to blade template
      *
-     * @var Message
+     * @var CarePackage
      */
-    public $message;
+    public $care_package;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct(CarePackage $care_package)
     {
-        $this->message = $message;
-
+        $this->care_package = $care_package;
     }
 
     /**
@@ -42,7 +38,7 @@ class EmailMessage extends Mailable
     public function build()
     {
         return $this
-            ->from($this->message->email)
-            ->markdown('emails.message');
+            ->subject('New Care Package Request')
+            ->markdown('emails.care_package_received');
     }
 }

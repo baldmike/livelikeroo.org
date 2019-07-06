@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\Events\CarePackageRequested;
 use App\Mail\CarePackageConfirmation;
+use App\Mail\CarePackageReceived;
+
 use Mail;
 
 class HandleCarePackageRequest
@@ -30,5 +32,8 @@ class HandleCarePackageRequest
     public function handle(CarePackageRequested $event)
     {
         Mail::to($event->care_package->email)->send(new CarePackageConfirmation($event->care_package));
+
+        Mail::to('baldmike312@gmail.com')->send(new CarePackageReceived($event->care_package));
+
     }
 }
