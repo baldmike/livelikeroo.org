@@ -76,8 +76,8 @@
                 </div>
 
                 <div class="form-group" id="recipientInfoGroup" v-if="form.inMemory">
-                    <n-button v-if="!notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
-                    <n-button v-if="notify" type="primary" @click.prevent.native="toggleNotify" block>Don't notify anyone</n-button>
+                    <n-button v-if="!form.notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
+                    <n-button v-if="form.notify" type="primary" @click.prevent.native="toggleNotify" block>Don't notify anyone</n-button>
                 </div>
 
                 <div class="form-group" id="recipientGroup" v-if="form.inMemory && isNotify" label="Recipient Name">
@@ -261,13 +261,14 @@
                     name_on_card: '',
                     inMemory: 0,
                     honoreeName: '',
+                    notify: false,
                     recipientName: '',
                     recipientEmail: '',
                     recipientMessage: '',
                     fund: this.$store.state.fund,
                 },
                 show: true,
-                notify: false,
+                
                 isShow: false,                
                 loading: false,
                 
@@ -307,8 +308,10 @@
                 },
                 name_on_card: {
                     required
+                },
+                recipientEmail: {
+                    email
                 }
-                
             }
         },
         components: {
@@ -345,7 +348,7 @@
                 return this.$store.state.oneTime;
             },
             isNotify() {
-                return this.notify;
+                return this.form.notify;
             },
             getFund() {
                 let selectedFund = this.$store.state.fund;
@@ -365,6 +368,12 @@
         },
         methods: {
             makeDonation() {
+
+                if(this.form.notify && !this.form.recipientEmail) {
+                    if(!confirm("You have selected to notify someone, but have not included an email address. Click 'Cancel' to go back to the form, or 'OK' to submit anyway.")){
+                        return false;
+                    };
+                }
 
                 this.$v.form.$touch();
 
@@ -446,9 +455,7 @@
                 }
             },
             toggleNotify() {
-
-                this.notify = !this.notify;
-
+                this.form.notify = !this.form.notify;
             },
 
             donate(amt) {

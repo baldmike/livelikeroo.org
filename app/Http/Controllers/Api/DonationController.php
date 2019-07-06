@@ -71,7 +71,9 @@ class DonationController extends Controller
                 return back()->withErrors('There was an error with Stripe: ' . $e->getMessage());
             }
 
-            // Stripe call successful
+            // Stripe call successful, carry on
+            
+            
 
             // instantiate a new Donation
             $d = New Donation();
@@ -84,15 +86,19 @@ class DonationController extends Controller
             $d->fund = request('fund');
             $d->in_memory = request('inMemory');
             $d->honoree = request('honoreeName');
-            $d->recipient_name = request('recipientName');
-            $d->recipient_email = request('recipientEmail');
-            $d->recipient_msg = request('recipientMessage');
+            
+            if (request('recipientEmail'))
+            {
+                $d->recipient_name = request('recipientName');
+                $d->recipient_email = request('recipientEmail');
+                $d->recipient_msg = request('recipientMessage');
+            }
 
             // make sure new Donation is saved
             if ($d->save())
             {
                 // if donation is made "in memory" trigger the event that emails recipient
-                if (request('inMemory'))
+                if (request('inMemory') && request('recipientEmail'))
                 {    
                     event(new InMemorySelected($d));
                 }
