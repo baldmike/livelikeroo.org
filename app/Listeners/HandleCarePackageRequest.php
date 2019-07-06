@@ -33,7 +33,7 @@ class HandleCarePackageRequest
     {
         Mail::to($event->care_package->email)->send(new CarePackageConfirmation($event->care_package));
 
-        Mail::to('baldmike312@gmail.com')->send(new CarePackageReceived($event->care_package));
+        Mail::to('livelikeroo@gmail.com')->send(new CarePackageReceived($event->care_package));
 
     }
 }
