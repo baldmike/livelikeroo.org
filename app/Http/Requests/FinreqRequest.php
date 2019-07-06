@@ -24,8 +24,6 @@ class FinReqRequest extends FormRequest
      */
     public function rules()
     {
-        Log::debug("INSIDE THE FIN REQ REQUEST");
-
         $rules = [
             'firstName' => 'required',
             'lastName' => 'required',

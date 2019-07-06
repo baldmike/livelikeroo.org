@@ -24,8 +24,6 @@ class UsersController extends Controller
     {
         
         $currentUser = Auth::user();
-        
-        Log::debug("[UsersController - currentUser]: ".$currentUser);
 
         return new UserResource($currentUser);
 
@@ -39,8 +37,6 @@ class UsersController extends Controller
      */
     public function index()
     {
-        Log::debug('[UsersController] - index');
-
         return UserResource::collection(User::orderBy('last_name', 'asc')->get());
     }
 }

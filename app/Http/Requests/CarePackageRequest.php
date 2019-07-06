@@ -26,8 +26,6 @@ class CarePackageRequest extends FormRequest
      */
     public function rules()
     {
-        Log::debug("INSIDE THE CARE PKG REQUEST RULES");
-
         return [
             'firstName' => 'required',
             'lastName' => 'required',

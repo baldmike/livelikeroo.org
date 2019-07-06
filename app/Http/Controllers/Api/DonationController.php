@@ -68,8 +68,6 @@ class DonationController extends Controller
 
             } catch (CardErrorException $e) {
                 // handle exception 
-                Log::debug($e);
-
                 return back()->withErrors('There was an error with Stripe: ' . $e->getMessage());
             }
 
@@ -107,10 +105,12 @@ class DonationController extends Controller
             }
         
             // Donation did not save, return 417
+            Log::debug(('[DONATION CONTROLLER] --> Donation did not save -- return 417'));
             return response()->json(null, Response::HTTP_EXPECTATION_FAILED);
         }
 
         // The resource is not validated, return 400
+        Log::debug(('[DONATION CONTROLLER] --> Resource not validated -- return 400'));
         return response()->json(null, Response::HTTP_BAD_REQUEST);
     }
 

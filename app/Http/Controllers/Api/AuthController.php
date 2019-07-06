@@ -63,8 +63,6 @@ class AuthController extends Controller
         // check if user exists
         $user = User::where('email', $request->email)->first();
         
-        Log::debug('[AuthController]-> user check: '.$user);
-        
         if (!$user)                  
         {
             return response()->json([
@@ -101,14 +99,11 @@ class AuthController extends Controller
 
         // Get access_token
         $request = Request::create('/oauth/token', 'POST', $data);
-        Log::debug("THIS IS THE REQUEST ----->      $request");
 
         $response = app()->handle($request);
-
-        Log::debug("[AuthController] -> THIS IS THE OAUTH/TOKEN RESPONSE: $response");
     
         if ($response->getStatusCode() != 200) {
-            Log::debug("AuthController - login failed");
+            Log::debug("AuthController - LOGIN FAILED");
 
             return response()->json([
                 'message' => 'Incorrect email or password - maybe both, but at least one(1).',
@@ -122,9 +117,6 @@ class AuthController extends Controller
 
         // set user
         $user = Auth::User();
-
-        Log::debug("logged in user: ");
-        Log::debug($user);
 
         // set the token cookie
         $token_cookie = cookie(

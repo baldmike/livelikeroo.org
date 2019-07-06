@@ -19,7 +19,6 @@ class SpaController extends Controller
 
     public function index()
     {
-        Log::debug('RETURNING VIEW (SPA) -- SpaController->index()');
         return view('spa');
     }
 }
