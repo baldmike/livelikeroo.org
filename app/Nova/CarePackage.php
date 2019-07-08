@@ -138,7 +138,6 @@ class CarePackage extends Resource
                 ->event('App\Events\CarePackageBuyLabel')
                 ->style('primary')
                 ->visible(!$this->label_url)
-                ->confirm('This action will purchase the label, are you sure?')
                 ->reload(),
 
             Button::make('Print')
