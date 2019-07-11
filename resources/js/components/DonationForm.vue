@@ -41,7 +41,7 @@
                                 :class="{ 'has-danger': $v.form.amount.$invalid && $v.form.amount.$dirty, 'has-success': !$v.form.amount.$invalid }"
                                 type="number"
                                 step="1"
-                                min="10"
+                                min="5"
                                 addon-left-icon="fa fa-dollar-sign"
                                 v-model="form.amount"
                                 required/>
@@ -304,7 +304,7 @@
                 },
                 amount: {
                     required,
-                    between: between(10, 10000)
+                    between: between(5, 10000)
                 },
                 name_on_card: {
                     required
