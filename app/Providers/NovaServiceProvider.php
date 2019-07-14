@@ -56,8 +56,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 'sarahlauch@gmail.com',
                 'baldmike312@gmail.com',
                 'roofinancials@gmail.com',
-
-                'guestuser@livelikeroo.org'
+                'vicki.liveslikeroo@gmail.com',
             ]);
         });
     }
