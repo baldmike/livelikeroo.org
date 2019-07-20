@@ -29,7 +29,6 @@ class MonthlyDonationRequest extends FormRequest
             'email' => 'required|email',
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
-            'password' => 'required|string|min:8',
             'name_on_card' => 'required|string|max:255',
             'stripeToken' => 'required'
         ];
