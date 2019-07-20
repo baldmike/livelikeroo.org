@@ -17,7 +17,7 @@ use App\Models\Donation;
 use App\Models\User;
 
 use App\Events\OneTimeDonationMade;
-use App\Events\InMemorySelected;
+use App\Events\NotifySelected;
 use App\Events\MonthlyDonationMade;
 
 class DonationController extends Controller
@@ -100,7 +100,7 @@ class DonationController extends Controller
                 // if donation is made "in memory" trigger the event that emails recipient
                 if (request('inMemory') && request('recipientEmail'))
                 {    
-                    event(new InMemorySelected($d));
+                    event(new NotifySelected($d));
                 }
 
                 // trigger donation event which sends email
@@ -192,7 +192,7 @@ class DonationController extends Controller
                 // trigger the event that emails recipient
                 if (request('recipientEmail'))
                 {    
-                    event(new InMemorySelected($d));
+                    event(new NotifySelected($d));
                 }
 
                 event(new MonthlyDonationMade($d, $user));
