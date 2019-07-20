@@ -164,7 +164,7 @@ class DonationController extends Controller
                 $donationAmount = $request->amount;
 
                 // Laravel Cashier
-                $user->newSubscription('LLR', 'plan_EekQCaDTMtweIE')->quantity($donationAmount)->create($stripeToken);
+                $user->newSubscription('LLR', 'plan_FTIkXJicqiWALx')->quantity($donationAmount)->create($stripeToken);
                 
                 } catch (CardErrorException $e) {
                 
