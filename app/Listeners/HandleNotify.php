@@ -5,13 +5,13 @@ namespace App\Listeners;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-use App\Events\InMemorySelected;
+use App\Events\NotifySelected;
 
-use App\Mail\InMemoryEmail;
+use App\Mail\NotifyEmail;
 
 use Mail;
 
-class HandleInMemory
+class HandleNotify
 {
     /**
      * Create the event listener.
@@ -20,17 +20,17 @@ class HandleInMemory
      */
     public function __construct()
     {
-        //
+        
     }
 
     /**
      * Handle the event.
      *
-     * @param  InMemorySelected  $event
+     * @param  NotifySelected  $event
      * @return void
      */
-    public function handle(InMemorySelected $event)
+    public function handle(NotifySelected $event)
     {
-        Mail::to($event->donation->recipient_email)->send(new InMemoryEmail($event->donation));
+        Mail::to($event->donation->recipient_email)->send(new NotifyEmail($event->donation));
     }
 }

@@ -190,7 +190,7 @@ class DonationController extends Controller
             if ($d->save())
             {
                 // trigger the event that emails recipient
-                if (request('notify'))
+                if (request('recipientEmail'))
                 {    
                     event(new InMemorySelected($d));
                 }

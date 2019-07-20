@@ -408,7 +408,7 @@
                         hiddenInput.setAttribute('name', 'stripeToken');
                         hiddenInput.setAttribute('value', result.token.id);
 
-                        //append stripe token to form
+                        //append stripe token noto form
                         this.$el.appendChild(hiddenInput);
 
                         // check which fund 

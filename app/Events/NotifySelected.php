@@ -12,7 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 use App\Models\Donation;
 
-class InMemorySelected
+class NotifySelected
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 

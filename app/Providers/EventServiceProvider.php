@@ -54,8 +54,8 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\HandleMonthlyDonation',
         ],
 
-        'App\Events\InMemorySelected' => [
-            'App\Listeners\HandleInMemory',
+        'App\Events\NotifySelected' => [
+            'App\Listeners\HandleNotify',
         ],
 
         'App\Events\CarePackageRequested' => [

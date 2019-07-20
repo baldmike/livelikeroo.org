@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\Models\Donation;
 
-class InMemoryEmail extends Mailable
+class NotifyEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
