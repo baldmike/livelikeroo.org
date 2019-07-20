@@ -272,12 +272,12 @@ export default new Vuex.Store({
 
             router.push({ path: '/' });
         },
-        dnFormError(context) {
+        dnFormError(context, error) {
             context.commit('endLoading');
 
             let payload = {
                 type: "danger",
-                message: "There was a problem processing your donation. Please check the form and re-submit."
+                message: error,
             }
 
             context.commit('notify', payload);
@@ -287,7 +287,7 @@ export default new Vuex.Store({
 
             let payload = {
                 type: "danger",
-                message: "There was an error with your card. Please open the form and try again - the form is as you left it. If the problem persists, contact the card issuer."
+                message: "There was an error WITH YOUR CARD. Please open the form and try again - the form is as you left it. If the problem persists, contact the card issuer." 
             }
 
             context.commit('notify', payload);

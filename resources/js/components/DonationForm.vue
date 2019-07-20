@@ -110,7 +110,7 @@
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
 
-                <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you. With your email and password, you'll be able to log in and view, update or cancel your donation at any time.</div>
+                <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you.</div>
 
                 <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required</h6>
                 
@@ -145,9 +145,9 @@
                 </div>
 
                 <!-- if monthly -->
-                <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password, of at least 8 characters. This will allow future functionality and access to your donation.</div>
+                <!-- <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password, of at least 8 characters. This will allow future functionality and access to your donation.</div> -->
 
-                <div id="passwordLoginGroup" v-if="isMonthly">
+                <!-- <div id="passwordLoginGroup" v-if="isMonthly">
                     
                     <div class="form-group">
                         <label for="passwordDnForm">Password</label>
@@ -167,7 +167,7 @@
                                 v-model="form.repeatPassword"
                                 required/>
                     </div>
-                </div>
+                </div> -->
             </div>
 
                         <!--  PAYMENT INFO  -->
@@ -254,8 +254,8 @@
                     fund: '',
                     amount: '25',
                     email: '',
-                    password: 'password',
-                    repeatPassword: 'password',
+                    // password: 'password',
+                    // repeatPassword: 'password',
                     firstName: '',
                     lastName: '',
                     name_on_card: '',
@@ -293,15 +293,15 @@
                     email,
                     required
                 },
-                password: {
-                    required,
-                    minLength:minLength(8),
-                },
-                repeatPassword: {
-                    required,
-                    minLength:minLength(8),
-                    sameAsPassword: sameAs('password')
-                },
+                // password: {
+                //     required,
+                //     minLength:minLength(8),
+                // },
+                // repeatPassword: {
+                //     required,
+                //     minLength:minLength(8),
+                //     sameAsPassword: sameAs('password')
+                // },
                 amount: {
                     required,
                     between: between(5, 10000)
@@ -371,6 +371,12 @@
 
                 if(this.form.notify && !this.form.recipientEmail) {
                     if(!confirm("You have selected to notify someone, but have not included an email address. Click 'Cancel' to go back to the form, or 'OK' to submit anyway.")){
+                        return false;
+                    };
+                }
+
+                if(this.form.inMemory && !this.form.honoreeName) {
+                    if(!confirm("You have selected to donate in memory of someone, but have not included their name. Click 'Cancel' to go back to the form, or 'OK' to submit anyway.")){
                         return false;
                     };
                 }
@@ -447,7 +453,7 @@
 
                             }).catch((error) => {
 
-                                this.$store.dispatch('dnFormError');
+                                this.$store.dispatch('dnFormError', error);
 
                             })
                         }
@@ -497,8 +503,8 @@
                 this.form.firstName = '';
                 this.form.lastName = '';
                 this.form.email = '';
-                this.form.password = 'password';
-                this.form.repeatPassword = 'password';
+                // this.form.password = 'password';
+                // this.form.repeatPassword = 'password';
 
                 this.form.inMemory = 0;
                 this.form.honoreeName = '';
@@ -517,15 +523,15 @@
 
             toggleMonthly() {
 
-                this.form.password = '';
-                this.form.repeatPassword = '';
+                // this.form.password = '';
+                // this.form.repeatPassword = '';
                 this.$store.dispatch('setMonthly');
             },
 
             toggleOneTime() {
 
-                this.form.password = 'password';
-                this.form.repeatPassword = 'password';
+                // this.form.password = 'password';
+                // this.form.repeatPassword = 'password';
                 this.$store.dispatch('setOneTime');
             },
 

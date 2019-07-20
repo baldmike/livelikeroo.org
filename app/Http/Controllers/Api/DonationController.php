@@ -130,6 +130,9 @@ class DonationController extends Controller
     {
         $validated = $request->validated();
 
+        // create string to use as un-guessable password
+        $uuid = Str::uuid()->toString();
+
         // find or create the user
         $user = User::where('email', $request->email)->first();
 
@@ -148,7 +151,7 @@ class DonationController extends Controller
                 'first_name' => $request->firstName,
                 'last_name' => $request->lastName,
                 'email' => $request->email,
-                'password' => Hash::make($request->password),
+                'password' => $uuid,
                 'role' => 'monthly_donor',
             ]);
         }

@@ -196,13 +196,13 @@
                                 required/>
                     </div>
 
-                    <div class="form-group box">
+                    <div class="form-group box" :class="{ 'has-danger': $v.form.about.$invalid && $v.form.about.$dirty, 'has-success': !$v.form.about.$invalid }">
                         <label>Tell us a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                         <textarea
                                 rows="6"
                                 class="form-control"
                                 v-model="form.about"
-                                :class="{ 'has-danger': $v.form.about.$invalid && $v.form.about.$dirty, 'has-success': !$v.form.about.$invalid }"
+                                
                                 minlength="30"
                                 required/>
                     </div>
@@ -280,11 +280,11 @@
                     <div class="form-group">    
                         <div class="row">
                             <div class="col-6 ml-auto mr-auto">
-                                <n-button @click.prevent.native="selectGender('m')" type="primary" block><span :class="{ selectedGender: isMale }"><i class="fa fa-mars"></i></span>
+                                <n-button @click.prevent.native="selectGender('m')" type="primary" block><span :class="{ black: isMale }"><i class="fa fa-mars"></i></span>
                                 <br><br>MALE</n-button>
                             </div>
                             <div class="col-6 ml-auto mr-auto">
-                                <n-button @click.prevent.native="selectGender('f')" type="primary" block><span :class="{ selectedGender: isFemale }"><i class="fa fa-venus"></i></span>
+                                <n-button @click.prevent.native="selectGender('f')" type="primary" block><span :class="{ black: isFemale }"><i class="fa fa-venus"></i></span>
                                 <br><br>FEMALE</n-button>
                             </div>
                         </div>
@@ -1060,6 +1060,11 @@
 
     .red {
         color: red;
+    }
+
+    .black { 
+        color: black;
+        font-size: 1.1rem;
     }
 
 </style>
