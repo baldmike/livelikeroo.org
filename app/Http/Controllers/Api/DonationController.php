@@ -175,8 +175,8 @@ class DonationController extends Controller
             $d = New Donation();
             $d->amount = request('amount');
             $d->name_on_card = request('name_on_card');
-            $d->first_name = request('first_name');
-            $d->last_name = request('last_name');
+            $d->first_name = request('firstName');
+            $d->last_name = request('lastName');
             $d->email = request('email');
             $d->in_memory = request('inMemory');
             $d->frequency = 'monthly';
