@@ -250,7 +250,7 @@
                                 <div class="card-image">
                                     <a href="#">
                                         <img class="img img-raised rounded"
-                                                src="images/bald_idiot2.jpg"/>
+                                                src="images/stairs2.jpg"/>
                                     </a>
                                 </div>
 
