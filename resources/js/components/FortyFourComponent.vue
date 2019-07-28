@@ -16,7 +16,7 @@
       </b-row>
 
       <b-col>
-          <n-button style="background-color: #fd7e14;  !important; color: white !important; margin-top: 100px" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>
+          <n-button style="background-color: #fd7e14;  !important; color: white !important;" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE!</n-button>
         </b-col>
 
 
