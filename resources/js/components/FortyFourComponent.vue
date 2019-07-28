@@ -4,15 +4,22 @@
         <b-col>
           <b-img src="/images/fortyFour.jpg" class="item"></b-img>
         </b-col>
+        </b-row>
+        
+        <b-row>
 
-        <b-col class="item">
-          <h3>To celebrate our incredibly old founder’s 44th birthday, we are trying to raise $4400 in 44 hours. As Sarah likes to say when she volunteers you for something:</h3>
-          <br><h3>"Come ON, it's for the DOGS!!"</h3>
+        <b-col>
+          <p style="text-align: center">Hey! To celebrate our incredibly old founder’s 44th birthday, we are trying to raise $4400 in 44 hours! As Sarah likes to say when she volunteers you for something:</p>
+          <br>
+          <p style="text-align: center">"Come ON, it's for the DOGS!!"</p>
+        </b-col>        
+      </b-row>
 
+      <b-col>
           <n-button style="background-color: #fd7e14;  !important; color: white !important; margin-top: 100px" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>
         </b-col>
 
-      </b-row>
+
     </b-container>
 </template>
 
@@ -38,6 +45,7 @@
           };
 
           this.$store.dispatch('showDnForm', payload);
+
       },
     }
   }
@@ -48,7 +56,6 @@
     .item {
 
         margin-top: 120px;
-        max-height: 50vh;
         text-align: center;
 
     }
