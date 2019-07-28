@@ -32,23 +32,25 @@
     methods: {
       showDnForm() {
                 
-                let payload = {
-                    fund: 'roo',
-                    freq: 'oneTime'
-                };
+          let payload = {
+              fund: 'roo',
+              freq: 'oneTime'
+          };
 
-                this.$store.dispatch('showDnForm', payload);
-            },
+          this.$store.dispatch('showDnForm', payload);
+      },
     }
   }
 </script>
 
 <style>
 
-.item {
-  margin-top: 120px;
-  max-height: 50vh;
-  text-align: center;
-}
+    .item {
+
+        margin-top: 120px;
+        max-height: 50vh;
+        text-align: center;
+
+    }
 
 </style>
