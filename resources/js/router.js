@@ -15,6 +15,7 @@ import BookerComponent from './components/BookerComponent.vue'
 import CappyComponent from './components/CappyComponent.vue'
 import MaggieComponent from './components/MaggieComponent.vue'
 import SerenityComponent from './components/SerenityComponent.vue'
+import FortyFourComponent from './components/FortyFourComponent.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -90,6 +91,11 @@ export const router = new VueRouter({
                     path: '/serenity',
                     components: {default: SerenityComponent, header: Navbar, footer: Footer},
                     title: 'Serenity',
+                },
+                {
+                    path: '/fortyfour',
+                    components: {default: FortyFourComponent, header: Navbar, footer: Footer},
+                    title: 'FortyFour',
                 },
                 {
                     path: '/wishlist',
