@@ -6,8 +6,8 @@
         </b-col>
 
         <b-col class="item">
-          <h3>To celebrate our amazing founder’s 44th birthday, we are trying to raise $4400 in 44 hours. As Sarah likes to say when she volunteers me for something:</h3>
-          <br><h3>"Come ON, it's for the DOGS."</h3>
+          <h3>To celebrate our incredibly old founder’s 44th birthday, we are trying to raise $4400 in 44 hours. As Sarah likes to say when she volunteers you for something:</h3>
+          <br><h3>"Come ON, it's for the DOGS!!"</h3>
 
           <n-button style="background-color: #fd7e14;  !important; color: white !important; margin-top: 100px" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>
         </b-col>
@@ -48,6 +48,7 @@
 .item {
   margin-top: 120px;
   max-height: 50vh;
+  text-align: center;
 }
 
 </style>
