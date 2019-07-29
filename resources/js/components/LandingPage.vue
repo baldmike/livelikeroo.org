@@ -21,7 +21,8 @@
                             <p>TO</p> 
                             <p>LIVE LIKE ROO</p> -->
 
-                            GET TO FORTY FOUR! 
+                            <router-link class="nav-link nav-slice" to="/forty_four"><i
+                            aria-hidden="true" style="font-size: 1.8rem;"></i><h3>$4400 for 44!</h3></router-link>
                         </h5>
                         <h5>${{ fortyFour }} so far!</h5>
                         <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>  

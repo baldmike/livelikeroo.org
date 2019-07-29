@@ -93,7 +93,7 @@ export const router = new VueRouter({
                     title: 'Serenity',
                 },
                 {
-                    path: '/fortyfour',
+                    path: '/forty_four',
                     components: {default: FortyFourComponent, header: Navbar, footer: Footer},
                     title: 'FortyFour',
                 },
