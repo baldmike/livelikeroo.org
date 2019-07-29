@@ -39,7 +39,7 @@ export default new Vuex.Store({
             loading: false,
             message: '',
             fund: '',
-            
+            fortyFour: ''
             
         }
     },
@@ -51,6 +51,7 @@ export default new Vuex.Store({
         currentUser: state => state.user,
         isOneTime: state => state.oneTime,
         isMonthly: state => state.Monthly,
+    
     },
     mutations: {
         // mutations are committed by actions, and are the ONLY way to manipulate state
@@ -60,6 +61,9 @@ export default new Vuex.Store({
             state.user = payload.user;
             state.isAuthenticated = true;
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + payload.token
+        },
+        setFortyFour(state, payload) {
+            state.fortyFour = payload;
         },
         setUser(state, user) {
             state.user = user;
@@ -116,7 +120,6 @@ export default new Vuex.Store({
             state.loading = false;
         },
 
-
         logout(state) {
             state.token = null;
             state.user = null;
@@ -131,7 +134,7 @@ export default new Vuex.Store({
 
 
     actions: {
-        // actions are dispatched in component, they commit mutations
+        // actions are dispatched in component, they commit mutations 
 
         // login/passport/oauth actions
         setLoginCred(context, payload) {
@@ -153,6 +156,16 @@ export default new Vuex.Store({
             });
         },
 
+        getFortyFour(context) {
+            axios.call("get", "/api/forty_four").then(({ data }) => {
+                context.commit('setFortyFour', data);
+                console.log("FORTY FOUR DATA: " + data);
+            })
+            .catch(error => {
+                console.log("GET FORTY FOUR ERROR: " + error);
+            });
+        },
+        
         setOneTime(context) {
             context.commit('setOneTime');
         },

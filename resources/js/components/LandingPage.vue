@@ -16,11 +16,14 @@
                 </div> -->
                 <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4">
                     <div class="donate-box">
-                        <h4 style="color: #384666">
-                            <p>DONATE</p> 
+                        <h5 style="color: #384666">
+                            <!-- <p>DONATE</p> 
                             <p>TO</p> 
-                            <p>LIVE LIKE ROO</p>
-                        </h4>
+                            <p>LIVE LIKE ROO</p> -->
+
+                            GET TO FORTY FOUR! 
+                        </h5>
+                        <h5>${{ fortyFour }} so far!</h5>
                         <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>  
                         
                         <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="100"></a>
@@ -236,7 +239,19 @@
 
                 this.$store.dispatch('showDnForm', payload);
             },
+        },
+
+        computed: {
+            fortyFour() {
+                return this.$store.state.fortyFour;
+            }
+        },
+
+        mounted() {
+            
+            this.$store.dispatch('getFortyFour')
         }
+
     }
 </script>
 <style scoped>

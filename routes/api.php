@@ -25,6 +25,7 @@ Route::resource('contact', 'Api\MessageController');
 // donations 
 Route::post('/make_donation', 'Api\DonationController@oneTime');
 Route::post('/monthly_donation', 'Api\DonationController@monthly');
+Route::get('/forty_four', 'Api\DonationController@fortyFour');
 
 Route::middleware('auth:api')->group(function () {
     

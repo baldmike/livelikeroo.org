@@ -12,6 +12,7 @@ use App\Http\Requests\OneTimeDonationRequest;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Donation;
 use App\Models\User;
@@ -22,6 +23,15 @@ use App\Events\MonthlyDonationMade;
 
 class DonationController extends Controller
 {
+    /**
+     * return forty four donations
+     *
+     */
+    public function fortyFour()
+    {
+        return DB::table('donations')->where('created_at', '>=', date('2019-07-29'))->sum('amount');
+
+    }
     /**
      * handle a one-time donation with Stripe
      *
@@ -73,8 +83,6 @@ class DonationController extends Controller
 
             // Stripe call successful, carry on
             
-            
-
             // instantiate a new Donation
             $d = New Donation();
             $d->amount = request('amount');
