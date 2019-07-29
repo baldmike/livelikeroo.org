@@ -1,6 +1,6 @@
 <template>
     <div class="cd-section" id="contactus">
-        <div class="section-image" style="background-image: url('images/unsplash-alaska-dog-jf-brou.jpg'); height: 100vh;">
+        <div class="section-image" style="background-image: url('images/llr_icSocial5.jpg'); height: 100vh; background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 ml-auto mr-auto contact-box">
