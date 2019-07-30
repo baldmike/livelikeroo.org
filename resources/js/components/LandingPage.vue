@@ -24,12 +24,19 @@
                             <router-link class="nav-link nav-slice" to="/forty_four"><i
                             aria-hidden="true" style="font-size: 1.8rem;"></i><h3>$4400 for 44!</h3></router-link>
                         </h5>
+                        <div class="row">
+                        <div class="left col-4">${{ fortyFour }}</div>
                         
-                        ${{ fortyFour }} of<div class="progress">
+                        <div class="progress col-4">
                             <div class="progress"
                             style="background-color: aqua; margin: 0;"
                             :style="{width: progress + '%'}"/>
-                        </div>$4400
+                        </div>
+                        <div class="col-4">
+                            of $4400
+                        </div>
+                        </div>
+                        
 
                         <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>  
                         
@@ -250,13 +257,14 @@
 
         computed: {
             fortyFour() {
-                // return this.$store.state.fortyFour;
-                return 543
+                return this.$store.state.fortyFour;
             },
 
             progress() {
                 
-                 return (Math.floor((543/4400) * 100));
+                let num = this.$store.state.fortyFour;
+
+                 return (Math.floor((num/4400) * 100));
 
             }
         },
