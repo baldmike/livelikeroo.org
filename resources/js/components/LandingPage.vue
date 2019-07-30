@@ -24,7 +24,13 @@
                             <router-link class="nav-link nav-slice" to="/forty_four"><i
                             aria-hidden="true" style="font-size: 1.8rem;"></i><h3>$4400 for 44!</h3></router-link>
                         </h5>
-                        <h5>${{ fortyFour }} so far!</h5>
+                        
+                        ${{ fortyFour }} of<div class="progress">
+                            <div class="progress"
+                            style="background-color: white; margin: 0;"
+                            :style="{width: progress + '%'}"/>
+                        </div>$4400
+
                         <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>  
                         
                         <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="100"></a>
@@ -245,6 +251,10 @@
         computed: {
             fortyFour() {
                 return this.$store.state.fortyFour;
+            },
+
+            progress() {
+                return (Math.floor(543/4400)*100);
             }
         },
 
@@ -306,6 +316,12 @@
         background-color: white;
         color: #fd7e14;
         position: absolute; top: 40%
+    }
+
+    .progress {
+        background-color: black;
+        height: 10px;
+        transition: width 500ms;
     }
 
 </style>
