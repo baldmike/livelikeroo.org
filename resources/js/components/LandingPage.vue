@@ -27,7 +27,7 @@
                         
                         ${{ fortyFour }} of<div class="progress">
                             <div class="progress"
-                            style="background-color: white; margin: 0;"
+                            style="background-color: aqua; margin: 0;"
                             :style="{width: progress + '%'}"/>
                         </div>$4400
 
@@ -250,11 +250,14 @@
 
         computed: {
             fortyFour() {
-                return this.$store.state.fortyFour;
+                // return this.$store.state.fortyFour;
+                return 543
             },
 
             progress() {
-                return (Math.floor(543/4400)*100);
+                
+                 return (Math.floor((543/4400) * 100));
+
             }
         },
 
@@ -319,7 +322,7 @@
     }
 
     .progress {
-        background-color: black;
+        background-color: #fd7e14;
         height: 10px;
         transition: width 500ms;
     }
