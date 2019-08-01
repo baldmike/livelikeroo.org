@@ -25,16 +25,16 @@
                             aria-hidden="true" style="font-size: 1.8rem;"></i><h3>$4400 for 44!</h3></router-link>
                         </h5>
                         <div class="row">
-                        <div class="left col-4">${{ fortyFour }}</div>
+                        <div class="col-12">${{ fortyFour }}!!</div>
                         
-                        <div class="progress col-4">
+                        <!-- <div class="progress col-4">
                             <div class="progress"
                             style="background-color: aqua; margin: 0;"
                             :style="{width: progress + '%'}"/>
-                        </div>
-                        <div class="col-4">
+                        </div> -->
+                        <!-- <div class="col-4">
                             of $4400
-                        </div>
+                        </div> -->
                         </div>
                         
 
@@ -57,9 +57,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
-                    <br><br><br><br>
                     <div class="separator-line separator-primary"></div>
-                    <br>
+                    
                     <h2 class="title">The Live Like Roo Foundation</h2>
                     <h4 class="description">We are an all-volunteer-run,  donation-based, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis.</h4> 
                     
@@ -331,7 +330,7 @@
 
     .progress {
         background-color: #fd7e14;
-        height: 10px;
+        height: 1rem;
         transition: width 500ms;
     }
 
