@@ -1,9 +1,5 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/vendors~pdfjsWorker.js": "/vendors~pdfjsWorker.js",
-    "/js/app.31026490a8ecdc17717c.hot-update.js": "/js/app.31026490a8ecdc17717c.hot-update.js",
-    "/js/app.4e610a66cbc8e03a4127.hot-update.js": "/js/app.4e610a66cbc8e03a4127.hot-update.js",
-    "/js/app.72d3365e8980f1d9ead5.hot-update.js": "/js/app.72d3365e8980f1d9ead5.hot-update.js",
-    "/js/app.e81b7c0b6ab268e7696f.hot-update.js": "/js/app.e81b7c0b6ab268e7696f.hot-update.js"
+    "/vendors~pdfjsWorker.js": "/vendors~pdfjsWorker.js"
 }

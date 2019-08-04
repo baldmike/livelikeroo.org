@@ -20,9 +20,7 @@
                             <p>DONATE</p> 
                             <p>TO</p> 
                             <p>LIVE LIKE ROO</p>
-
-                        </div>
-                        
+                        </h5>
 
                         <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>  
                         
