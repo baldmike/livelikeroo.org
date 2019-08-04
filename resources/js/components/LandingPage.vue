@@ -17,24 +17,10 @@
                 <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4">
                     <div class="donate-box">
                         <h5 style="color: #384666">
-                            <!-- <p>DONATE</p> 
+                            <p>DONATE</p> 
                             <p>TO</p> 
-                            <p>LIVE LIKE ROO</p> -->
+                            <p>LIVE LIKE ROO</p>
 
-                            <router-link class="nav-link nav-slice" to="/forty_four"><i
-                            aria-hidden="true" style="font-size: 1.8rem;"></i><h3>$4400 for 44!</h3></router-link>
-                        </h5>
-                        <div class="row">
-                        <div class="col-12">${{ fortyFour }}!!</div>
-                        
-                        <!-- <div class="progress col-4">
-                            <div class="progress"
-                            style="background-color: aqua; margin: 0;"
-                            :style="{width: progress + '%'}"/>
-                        </div> -->
-                        <!-- <div class="col-4">
-                            of $4400
-                        </div> -->
                         </div>
                         
 
