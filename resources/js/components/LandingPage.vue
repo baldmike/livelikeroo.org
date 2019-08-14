@@ -22,7 +22,7 @@
                             <p>LIVE LIKE ROO</p>
                         </h5>
 
-                        <n-button style="background-color: white;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round><img src="images/5Friday.png" alt="Five Dolller Fridays!" width="100"></n-button>  
+                        <n-button style="background-color: white;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round><img src="images/Friday.png" alt="Five Dolller Fridays!" width="100"></n-button>  
 
                         
 
