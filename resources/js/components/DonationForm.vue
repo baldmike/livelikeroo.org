@@ -24,7 +24,7 @@
 
                 <div class="row">
                     <div class="col-sm-6 offset-sm-3">
-                        <n-button :class="{ red: isFive }" style="background-color: white;  !important; color: white !important" @click.prevent.native="donate('5')"><img src="/images/friday.png" alt="Five Dollar Fridays" width="200"></n-button>
+                        <n-button style="background-color: white;  !important; color: white !important" @click.prevent.native="donate('5')"><img src="/images/friday.png" alt="Five Dollar Fridays" width="200"></n-button>
                     </div>
                     
                 </div>
