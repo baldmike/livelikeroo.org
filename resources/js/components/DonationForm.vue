@@ -23,6 +23,13 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-sm-6 offset-sm-3">
+                        <n-button :class="{ red: isFive }" style="background-color: white;  !important; color: white !important" @click.prevent.native="donate('5')"><img src="images/5friday.png" alt="Five Dollar Fridays" width="200"></n-button>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('25')"   block round type="primary"><span :class="{ red: isTwentyFive }"><i class="fa fa-heart"></i></span>$25</n-button></div>
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('50')"   block round type="primary"><span :class="{ red: isFifty }"><i class="fa fa-heart"></i></span>$50</n-button></div>
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('100')" block round type="primary"><span :class="{ red: isHundred }"><i class="fa fa-heart"></i></span>$100</n-button></div>
@@ -53,7 +60,7 @@
                 
             </div>
 
-            <div class="form-box">
+            <div class="form-box" v-if="bigD">
                 <!-- DONATION TYPE == IN HONOR/MEMORY -->
                 <div class="row">
                     <div class="col-md-12">
@@ -321,6 +328,15 @@
 
         },
         computed: {
+            bigD() {
+                if (this.form.amount > 5) {
+                    return true;
+                }
+            },
+
+            isFive() {
+                return !!(this.form.amount === '5');
+            },
             isTwentyFive() {
                 return !!(this.form.amount === '25');
             },

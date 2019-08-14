@@ -22,9 +22,14 @@
                             <p>LIVE LIKE ROO</p>
                         </h5>
 
-                        <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>  
+                        <n-button style="background-color: white;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round><img src="images/5Friday.png" alt="Five Dolller Fridays!" width="100"></n-button>  
+
                         
-                        <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="100"></a>
+
+                        <br>
+
+                        <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="120"></a>
+
                     </div>  
                 </div>
                 <div class="col-md-6 ml-auto mr-auto phonely">
