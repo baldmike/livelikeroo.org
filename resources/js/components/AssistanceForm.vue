@@ -484,7 +484,11 @@
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===12">
 
                     <h4 class="description-box">
-                        And finally(!), we'll need copies of your pet's current vet bills. If you have them already stored on this device, you may send them as they are. If you have physical copies, you may either scan them, or simply take pictures with your phone and send those. We can accept image and PDF files.
+                        And finally(!), we'll need copies of your pet's current vet bills.
+                    </h4>
+                         
+                         
+                    <h4 class="description-box"> PLEASE NOTE: YOU MAY ONLY UPLOAD ONE FILE, AND IT MUST BE UNDER 5MB.  You will likely have more than one file, so please email any additional records to roofinancials@gmail.com <em><strong>from the email you provided here</strong></em>, and we can attach them to your request. We can accept image and PDF files. 
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">You must send medical records.</h6>
                     <br>
@@ -716,9 +720,6 @@
                     required,
                     phone,
                 },
-                record1: {
-                    required
-                }
             },
               
             dateObject: {
@@ -809,7 +810,7 @@
                         this.resetForm();
 
                     }).catch((error) => {
-                        this.$store.dispatch('cpFormError')
+                        this.$store.dispatch('fnFormError')
                     })
                 }
             },
@@ -897,11 +898,11 @@
             },
 
             step13() {
-                if(!this.$v.form.record1.$invalid) {
+                // if(!this.$v.form.record1.$invalid) {
                     // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() });
-                    this.formStep += 1;
-                }
+                this.$nextTick(() => { this.$v.$reset() });
+                this.formStep += 1;
+                // }
                 this.$v.form.$touch();
             },
 

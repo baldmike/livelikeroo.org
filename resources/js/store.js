@@ -242,6 +242,19 @@ export default new Vuex.Store({
 
             router.push({ path: 'events' });
         },
+        
+        fnFormError(context) {
+            context.commit('endLoading');
+
+            let payload = {
+                type: "danger",
+                message: "There was an error processing your request. Please ensure that your medical record is less than 5mb - it has been saved for you."
+            }
+
+            context.commit('notify', payload);
+
+        },
+
         cpFormSubmit(context) {
             context.commit('hideModal');
             context.commit('startLoading');
