@@ -23,7 +23,9 @@
 
                         <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
 
-                        <!-- <n-button style="background-color: white;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round><img src="/images/friday.png" alt="Five Dolller Fridays!" width="100"></n-button>   -->
+                        <n-button v-if="friday" style="background-color: white;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round><img src="/images/friday.png" alt="Five Dolller Fridays!" width="100"></n-button>  
+
+                        
 
                         <br>
 
@@ -253,6 +255,9 @@
 
                  return (Math.floor((num/4400) * 100));
 
+            },
+            friday() {
+                return false;
             }
         },
 
