@@ -23,10 +23,7 @@
 
                         <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
 
-                        <n-button v-if="friday" style="background-color: white;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round><img src="/images/friday.png" alt="Five Dolller Fridays!" width="100"></n-button>  
-
                         
-
                         <br>
 
                         <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="120"></a>
