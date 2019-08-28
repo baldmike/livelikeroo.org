@@ -54,7 +54,7 @@
 
             <div class="copyright">
                 &copy; {{year}}, The <a href="/nova">Live Like Roo</a> Foundation - Designed and Developed with Love by 
-                <a href="https://github.com/baldmike" target="_blank">Bald Mike</a>
+                <a href="https://noproblemsonly.solutions" target="_blank">Bald Mike</a>
             </div>
         </div>
     </footer>
