@@ -18,7 +18,7 @@
                         <h5 style="color: #384666">
                             <p>DONATE</p> 
                             <p>TO</p> 
-                            <p>LIVE LIKE ROO</p>
+                            <p>- LIVE LIKE ROO -</p>
                         </h5>
 
                         <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
