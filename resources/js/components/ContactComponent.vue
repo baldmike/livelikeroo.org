@@ -163,7 +163,7 @@
                         };
 
                         this.$store.dispatch('endLoading');
-                        self.$store.dispatch('notify', payload);
+                        this.$store.dispatch('notify', payload);
 
                         setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 5000);
 
