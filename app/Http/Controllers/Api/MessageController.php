@@ -44,8 +44,8 @@ class MessageController extends Controller
         {
             $MSG = new Message();
 
-            $MSG->first_name = request('firstName');
-            $MSG->last_name = request('lastName');
+            $MSG->first_name = request('first_name');
+            $MSG->last_name = request('last_name');
             $MSG->email = request('email');
             $MSG->message = request('message');
         }
