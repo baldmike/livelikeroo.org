@@ -4,24 +4,30 @@
             <parallax class="page-header-image"
                  style="background-image: url('images/banner1.jpg')">
             </parallax>
-            <div class="row">
+            <div class="row landing-block" style="min-height: 1000px;">
                 <div class="col-md-3 offset-md-1" style="position: absolute; bottom: 40%; text-align: right;">
                     <h4>"To know that even one life has breathed easier because you lived here. This is to have succeeded."</h4>
                     <small>Ralph Waldo Emerson</small>
                 </div>
 
-                <!-- <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
+                <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
                     
-                    <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
-                </div> -->
+                </div>
                 <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4">
                     <div class="donate-box">
-                        <h3 style="color: #384666">
+                        <h5 style="color: #384666">
                             <p>DONATE</p> 
                             <p>TO</p> 
-                            <p>LIVE LIKE ROO</p>
-                        </h3>
-                        <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>    
+                            <p>- LIVE LIKE ROO -</p>
+                        </h5>
+
+                        <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
+
+                        
+                        <br>
+
+                        <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="120"></a>
+
                     </div>  
                 </div>
                 <div class="col-md-6 ml-auto mr-auto phonely">
@@ -38,13 +44,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
-                    <br><br><br><br>
                     <div class="separator-line separator-primary"></div>
-                    <br>
+                    
                     <h2 class="title">The Live Like Roo Foundation</h2>
                     <h4 class="description">We are an all-volunteer-run,  donation-based, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis.</h4> 
                     
-                    <h4 class="description">Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 2000 pets and their families through cancer diagnoses.</h4>
+                    <h4 class="description">Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 8200 pets and their families through cancer diagnoses.</h4>
                         
                     <h4 class="description">Having experienced this devastation first-hand with the loss of Roosevelt, The Live Like Roo Foundation strives to be a helping hand in a difficult and sometimes confusing time. We want to be a real life sounding board and support system for people that need guidance and hope, sharing compassion and strength along the way. Ultimately, our mission is that you and your pet will #LiveLikeRoo.</h4>
 
@@ -58,7 +63,7 @@
                                 <i class="now-ui-icons sport_user-run"></i>
                             </div>
                             <h4 class="info-title">Volunteer Run</h4>
-                            <p class="text-on-white">Our amazing volunteers tirelessly put in over <strong>500</strong> hours <em>per month</em> - from making care packages to planning events to coodinating medical care.. they do it ALL.</p>
+                            <p class="text-on-white">Our amazing volunteers tirelessly put in over <strong>500</strong> hours <em>per month</em> - from making care packages to planning events to coodinating medical care, they do it all.</p>
                         </div>
                     </div>
                     
@@ -226,7 +231,6 @@
         },
         methods: {
             showDnForm() {
-                console.log("[HomeComponent] - showDnForm");
                 
                 let payload = {
                     fund: 'roo',
@@ -235,11 +239,38 @@
 
                 this.$store.dispatch('showDnForm', payload);
             },
+        },
+
+        computed: {
+            fortyFour() {
+                return this.$store.state.fortyFour;
+            },
+
+            progress() {
+                
+                let num = this.$store.state.fortyFour;
+
+                 return (Math.floor((num/4400) * 100));
+
+            },
+            friday() {
+                return false;
+            }
+        },
+
+        mounted() {
+            
+            this.$store.dispatch('getFortyFour')
         }
+
     }
 </script>
 <style scoped>
     @media only screen and (max-width: 500px) {
+        .blockquote {
+            display: none;
+        }
+        
         .noPhone {
             display: none;
         }
@@ -261,6 +292,10 @@
         }
     }
 
+    .landing-block {
+        min-height: 1000px;
+    }
+
     .phonely {
         display: none;
     }
@@ -276,11 +311,17 @@
     }
 
     .donate-box {
-        padding: 30px;
+        padding: 10px;
         text-align: center;
         background-color: white;
         color: #fd7e14;
         position: absolute; top: 40%
+    }
+
+    .progress {
+        background-color: #fd7e14;
+        height: 1rem;
+        transition: width 500ms;
     }
 
 </style>

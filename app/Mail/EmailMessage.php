@@ -32,8 +32,6 @@ class EmailMessage extends Mailable
     {
         $this->message = $message;
 
-        Log::debug("THIS IS THE MESSAGE ---------------------------------->");
-        Log::debug($message);
     }
 
     /**
@@ -43,7 +41,8 @@ class EmailMessage extends Mailable
      */
     public function build()
     {
-        Log::debug($this->message->email);
-        return $this->from($this->message->email)->markdown('emails.message');
+        return $this
+            ->from($this->message->email)
+            ->markdown('emails.message');
     }
 }

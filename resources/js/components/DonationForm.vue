@@ -23,6 +23,13 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-sm-6 offset-sm-3">
+                        <n-button style="background-color: white;  !important; color: white !important" @click.prevent.native="donate('5')"><img src="/images/friday.png" alt="Five Dollar Fridays" width="200"></n-button>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('25')"   block round type="primary"><span :class="{ red: isTwentyFive }"><i class="fa fa-heart"></i></span>$25</n-button></div>
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('50')"   block round type="primary"><span :class="{ red: isFifty }"><i class="fa fa-heart"></i></span>$50</n-button></div>
                     <div class="col-md-3 ml-auto mr-auto"><n-button @click.prevent.native="donate('100')" block round type="primary"><span :class="{ red: isHundred }"><i class="fa fa-heart"></i></span>$100</n-button></div>
@@ -41,7 +48,7 @@
                                 :class="{ 'has-danger': $v.form.amount.$invalid && $v.form.amount.$dirty, 'has-success': !$v.form.amount.$invalid }"
                                 type="number"
                                 step="1"
-                                min="10"
+                                min="5"
                                 addon-left-icon="fa fa-dollar-sign"
                                 v-model="form.amount"
                                 required/>
@@ -53,7 +60,7 @@
                 
             </div>
 
-            <div class="form-box">
+            <div class="form-box" v-if="bigD">
                 <!-- DONATION TYPE == IN HONOR/MEMORY -->
                 <div class="row">
                     <div class="col-md-12">
@@ -76,8 +83,8 @@
                 </div>
 
                 <div class="form-group" id="recipientInfoGroup" v-if="form.inMemory">
-                    <n-button v-if="!notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
-                    <n-button v-if="notify" type="primary" @click.prevent.native="toggleNotify" block>Don't notify anyone</n-button>
+                    <n-button v-if="!form.notify" type="primary" @click.prevent.native="toggleNotify" block>I'd like to notify someone</n-button>
+                    <n-button v-if="form.notify" type="primary" @click.prevent.native="toggleNotify" block>Don't notify anyone</n-button>
                 </div>
 
                 <div class="form-group" id="recipientGroup" v-if="form.inMemory && isNotify" label="Recipient Name">
@@ -110,7 +117,7 @@
             <div class="form-box">
                 <h3 class="center">YOUR INFORMATION</h3>
 
-                <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you. With your email and password, you'll be able to log in and view, update or cancel your donation at any time.</div>
+                <div class="col-md-12" v-if="isMonthly">To begin automatic monthly donations, we'll need to create an account for you.</div>
 
                 <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required</h6>
                 
@@ -145,9 +152,9 @@
                 </div>
 
                 <!-- if monthly -->
-                <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password below. Your email and password will allow you to log in, view and edit your account from the website.</div>
+                <!-- <div class="col-md-12" style="margin: 20px 0; padding: 20px; border: 1px solid black; " v-if="isMonthly">Please choose a secure password, of at least 8 characters. This will allow future functionality and access to your donation.</div> -->
 
-                <div id="passwordLoginGroup" v-if="isMonthly">
+                <!-- <div id="passwordLoginGroup" v-if="isMonthly">
                     
                     <div class="form-group">
                         <label for="passwordDnForm">Password</label>
@@ -167,7 +174,7 @@
                                 v-model="form.repeatPassword"
                                 required/>
                     </div>
-                </div>
+                </div> -->
             </div>
 
                         <!--  PAYMENT INFO  -->
@@ -254,20 +261,21 @@
                     fund: '',
                     amount: '25',
                     email: '',
-                    password: 'password',
-                    repeatPassword: 'password',
+                    // password: 'password',
+                    // repeatPassword: 'password',
                     firstName: '',
                     lastName: '',
                     name_on_card: '',
                     inMemory: 0,
                     honoreeName: '',
+                    notify: false,
                     recipientName: '',
                     recipientEmail: '',
                     recipientMessage: '',
                     fund: this.$store.state.fund,
                 },
                 show: true,
-                notify: false,
+                
                 isShow: false,                
                 loading: false,
                 
@@ -292,23 +300,25 @@
                     email,
                     required
                 },
-                password: {
-                    required,
-                    minLength:minLength(8),
-                },
-                repeatPassword: {
-                    required,
-                    minLength:minLength(8),
-                    sameAsPassword: sameAs('password')
-                },
+                // password: {
+                //     required,
+                //     minLength:minLength(8),
+                // },
+                // repeatPassword: {
+                //     required,
+                //     minLength:minLength(8),
+                //     sameAsPassword: sameAs('password')
+                // },
                 amount: {
                     required,
-                    between: between(10, 10000)
+                    between: between(5, 10000)
                 },
                 name_on_card: {
                     required
+                },
+                recipientEmail: {
+                    email
                 }
-                
             }
         },
         components: {
@@ -318,6 +328,15 @@
 
         },
         computed: {
+            bigD() {
+                if (this.form.amount > 5) {
+                    return true;
+                }
+            },
+
+            isFive() {
+                return !!(this.form.amount === '5');
+            },
             isTwentyFive() {
                 return !!(this.form.amount === '25');
             },
@@ -345,7 +364,7 @@
                 return this.$store.state.oneTime;
             },
             isNotify() {
-                return this.notify;
+                return this.form.notify;
             },
             getFund() {
                 let selectedFund = this.$store.state.fund;
@@ -366,6 +385,18 @@
         methods: {
             makeDonation() {
 
+                if(this.form.notify && !this.form.recipientEmail) {
+                    if(!confirm("You have selected to notify someone, but have not included an email address. Click 'Cancel' to go back to the form, or 'OK' to submit anyway.")){
+                        return false;
+                    };
+                }
+
+                if(this.form.inMemory && !this.form.honoreeName) {
+                    if(!confirm("You have selected to donate in memory of someone, but have not included their name. Click 'Cancel' to go back to the form, or 'OK' to submit anyway.")){
+                        return false;
+                    };
+                }
+
                 this.$v.form.$touch();
 
                 if (!this.$v.form.$invalid) {
@@ -382,10 +413,10 @@
                     createToken(options).then(result => {
 
                         if(result.error) {
+                            console.log(result.error);
                             this.$store.dispatch('cardSubmitError');
                         }
                         
-                        console.log({result});
                         // create hidden input with stripe token to complete transaction
                         let hiddenInput = document.createElement('input');
                         
@@ -393,19 +424,19 @@
                         hiddenInput.setAttribute('name', 'stripeToken');
                         hiddenInput.setAttribute('value', result.token.id);
 
-                        //append to form
+                        //append stripe token noto form
                         this.$el.appendChild(hiddenInput);
 
-                        // build the FormData object - by using forEach, we won't miss any inputs
+                        // check which fund 
                         if (!this.form.fund) {
                             this.form.fund = this.$store.state.fund;
                         };
 
+                        // build the FormData object for each form key
                         let fd = new FormData();
                         Object.keys(this.form).forEach(key => {
                             fd.append(key, this.form[key])
                         })
-
                         
                         // append hidden input to FormData object
                         fd.append('stripeToken', result.token.id);
@@ -438,7 +469,7 @@
 
                             }).catch((error) => {
 
-                                this.$store.dispatch('dnFormError');
+                                this.$store.dispatch('dnFormError', error);
 
                             })
                         }
@@ -446,18 +477,15 @@
                 }
             },
             toggleNotify() {
-                this.notify = !this.notify;
+                this.form.notify = !this.form.notify;
             },
 
             donate(amt) {
-                
                 this.form.amount = amt;
 
-                console.log(this.amount);
             }, 
 
             clearButtons() {
-                console.log("clearButtons()");
                 this.ten=false;
                 this.twentyFive=false;
                 this.fifty=false;
@@ -466,10 +494,10 @@
 
             isPersonal() {
                 
-                this.form.honoreeName = 'honoree';
-                this.form.recipientName = 'Recipient Name';
-                this.form.recipientEmail = 'recipient@example.com';
-                this.form.recipientMessage = 'Message to recipient';
+                this.form.honoreeName = '';
+                this.form.recipientName = '';
+                this.form.recipientEmail = '';
+                this.form.recipientMessage = '';
             
                 this.form.inMemory = 0;
             },
@@ -491,14 +519,14 @@
                 this.form.firstName = '';
                 this.form.lastName = '';
                 this.form.email = '';
-                this.form.password = 'password';
-                this.form.repeatPassword = 'password';
+                // this.form.password = 'password';
+                // this.form.repeatPassword = 'password';
 
                 this.form.inMemory = 0;
-                this.form.honoreeName = 'honoree';
-                this.form.recipientName = 'Recipient Name';
-                this.form.recipientEmail = 'recipient@example.com';
-                this.form.recipientMessage = 'Message to recipient';
+                this.form.honoreeName = '';
+                this.form.recipientName = '';
+                this.form.recipientEmail = '';
+                this.form.recipientMessage = '';
                 
                 /* reset/clear native browser form validation state */
                 this.show = false;
@@ -511,15 +539,15 @@
 
             toggleMonthly() {
 
-                this.form.password = '';
-                this.form.repeatPassword = '';
+                // this.form.password = '';
+                // this.form.repeatPassword = '';
                 this.$store.dispatch('setMonthly');
             },
 
             toggleOneTime() {
 
-                this.form.password = 'password';
-                this.form.repeatPassword = 'password';
+                // this.form.password = 'password';
+                // this.form.repeatPassword = 'password';
                 this.$store.dispatch('setOneTime');
             },
 

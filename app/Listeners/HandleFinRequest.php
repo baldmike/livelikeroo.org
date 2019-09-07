@@ -4,10 +4,11 @@ namespace App\Listeners;
 
 use App\Events\FinRequestReceived;
 use App\Mail\FinReqReceivedEmail;
-use App\Mail\MedicalRecordEmail;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+
+use Illuminate\Support\Facades\Log;
 
 use Mail;
 
@@ -33,6 +34,7 @@ class HandleFinRequest
     {
         // send confirmation email to applicant
         Mail::to($event->fin_req->email)->send(new FinReqReceivedEmail($event->fin_req));
+
 
     }
 }

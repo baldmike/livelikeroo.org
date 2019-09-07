@@ -9,11 +9,11 @@
 
                     <h5 class="title">Financial Assistance</h5>
                     
-                    <h5 class="description-box">Cancer SUCKS. We've been in your shoes, and we'd like to help. Please read the following carefully, and we'll help determine if you're eligible and guide you through the process.</h5>
+                    <p>Cancer SUCKS. We've been in your shoes, and we'd like to help. Please read the following carefully, and we'll help determine if you're eligible and help guide you through the process.</p>
                     
-                    <h5 class="description-box">The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, ranging from $500 - $1500 per qualified applicant and are awarded on a monthly basis after a complete review of this application and the <em>accompanying medical records.</em></h5>
+                    <p>The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, ranging from $500 - $1500 per qualified applicant and are awarded on a monthly basis after a complete review of this application and the <em>accompanying medical records.</em></p>
                     
-                    <h5 class="description-box">Upon approval, grants will typically be paid directly to veterinary offices, but may be paid directly to the applicant on a case by case basis. When you're ready, click the button below to begin the application.</h5>
+                    <p>Click the button below to begin the application.</p>
 
                     <n-button 
                         type="primary"
@@ -25,7 +25,7 @@
                 </div>
 
                 <!-- FORM STEP 2 -->
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===2">
+                <div class="col-12 mr-auto ml-auto step-box" v-if="formStep===2">
                     
                     <h5 class="description-box">
                         To qualify and be considered for a grant, you must meet the following requirements.
@@ -69,8 +69,8 @@
                 </div>
                 
                 <!-- FORM STEP 3-->
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===3">
-                    <h4 class="description-box">
+                <div class="col-12 mr-auto ml-auto form-box" v-if="formStep===3">
+                    <h4 class="description-box description">
                         Great, let's get started on the grant application. First, we'll need some information about you.</h4>
 
                     <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
@@ -166,7 +166,7 @@
                             v-model="form.zip"
                             :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.zip.$dirty, 'has-success': !$v.form.zip.$invalid }"
                             placeholder="Zip Code"
-                            maxlength="5"
+                            minlength="5"
                             required/>
                     </div>
                     
@@ -183,10 +183,11 @@
                     <h4 class="description-box">
                         Now, please tell us all about your best friend. Let's start with their name, a picture and what makes them special to you.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
                     <br>
 
                     <div class="form-group box">
+                        <label>Your Pet's Name</label>
                         <fg-input
                                 type="text"
                                 :class="{ 'has-danger': $v.form.petName.$invalid && $v.form.petName.$dirty, 'has-success': !$v.form.petName.$invalid }"
@@ -195,30 +196,34 @@
                                 required/>
                     </div>
 
+                    <div class="form-group box" :class="{ 'has-danger': $v.form.about.$invalid && $v.form.about.$dirty, 'has-success': !$v.form.about.$invalid }">
+                        <label>Tell us a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
+                        <textarea
+                                rows="6"
+                                class="form-control"
+                                v-model="form.about"
+                                
+                                minlength="30"
+                                required/>
+                    </div>
+
                     <!-- we are using Bootstrap-Vue for image input -->
-                    <b-form-group id="imageGroup" label="Send us a Picture of Your Pet" label-for="imageFinReq" class="box">
+                    <b-form-group id="imageGroup" label-for="imageFinReq" class="box">
+                        <label>Send us a picture of <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
                         <b-form-file
                                 id="imageFinReq"
                                 accept="image/*"
                                 v-model="form.image"
                                 placeholder="Choose an image..."
-                                @change="onFileChange"/>
+                                @change="onImageChange"/>
 
                         <b-col cols="6" offset="3" style="margin-top: 1rem;">
                             <img v-if="url" :src="url" width="200" alt="uploaded image">
                         </b-col>
                     </b-form-group>
 
-                    <div class="form-group box">
-                        <label>Tell us a little bit about <span v-if="form.petName">{{ form.petName }}</span><span v-if="!form.petName">your pet</span>!</label>
-                        <textarea
-                                rows="6"
-                                class="form-control"
-                                v-model="form.about"
-                                :class="{ 'has-danger': $v.form.about.$invalid && $v.form.about.$dirty, 'has-success': !$v.form.about.$invalid }"
-                                minlength="30"
-                                required/>
-                    </div>
+                    <!-- form notice -->
+                    <h6 class="center red" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
 
                     <!-- form navigation -->
                     <form-navigation v-on:nextStep="step5" v-on:backStep="backStep"></form-navigation>
@@ -230,25 +235,25 @@
                     <h4 class="description-box">
                         What is {{ form.petName }}? If you know {{ form.petName }}'s breed, please list that as well.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">You must select a species.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">You must select a species.</h6>
                     <br>
 
                     <div class="form-group">    
                         <div class="row">
-                            <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('dog')" type="primary" block><span :class="{ selected: isDog }"><i class="fa fa-dog"></i></span>
+                            <div class="col-6 col-md-3 center">
+                                <n-button @click.prevent.native="selectSpecies('dog')" type="primary" block><span :class="{ black: isDog }"><i class="fa fa-dog"></i></span>
                                 <br><br>DOG</n-button>
                             </div>
-                            <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('cat')" type="primary" block><span :class="{ selected: isCat }"><i class="fa fa-cat"></i></span>
+                            <div class="col-6 col-md-3 center">
+                                <n-button @click.prevent.native="selectSpecies('cat')" type="primary" block><span :class="{ black: isCat }"><i class="fa fa-cat"></i></span>
                                 <br><br>CAT</n-button>
                             </div>
-                            <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('horse')" type="primary" block><span :class="{ selected: isHorse }"><i class="fa fa-horse"></i></span>
+                            <div class="col-6 col-md-3 center">
+                                <n-button @click.prevent.native="selectSpecies('horse')" type="primary" block><span :class="{ black: isHorse }"><i class="fa fa-horse"></i></span>
                                 <br><br>HORSE</n-button>
                             </div>
-                            <div class="col-3 center">
-                                <n-button @click.prevent.native="selectSpecies('other')" type="primary" block><span :class="{ selected: isOther }"><i class="fa fa-dragon"></i></span>
+                            <div class="col-6 col-md-3 center">
+                                <n-button @click.prevent.native="selectSpecies('other')" type="primary" block><span :class="{ black: isOther }"><i class="fa fa-dragon"></i></span>
                                 <br><br>OTHER</n-button>
                             </div>
                         </div>
@@ -269,17 +274,17 @@
                     <h4 class="description-box">
                         Is {{ form.petName }} a boy {{ form.species }}, or a girl {{ form.species }}? Select the gender, and use the arrow keys at the bottom to advance.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">You must select a gender.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">You must select a gender.</h6>
                     <br>
 
                     <div class="form-group">    
                         <div class="row">
-                            <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="selectGender('m')" type="primary" block><span :class="{ selected: isMale }"><i class="fa fa-mars"></i></span>
+                            <div class="col-6 ml-auto mr-auto">
+                                <n-button @click.prevent.native="selectGender('m')" type="primary" block><span :class="{ black: isMale }"><i class="fa fa-mars"></i></span>
                                 <br><br>MALE</n-button>
                             </div>
-                            <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="selectGender('f')" type="primary" block><span :class="{ selected: isFemale }"><i class="fa fa-venus"></i></span>
+                            <div class="col-6 ml-auto mr-auto">
+                                <n-button @click.prevent.native="selectGender('f')" type="primary" block><span :class="{ black: isFemale }"><i class="fa fa-venus"></i></span>
                                 <br><br>FEMALE</n-button>
                             </div>
                         </div>
@@ -291,19 +296,19 @@
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===7">
 
                     <h4 class="description-box">
-                        Is {{ form.petName }} spayed/neutered? Select below, and use the arrow keys at the bottom to advance.
+                        Is {{ form.petName }} {{ procedure }}? Select below, and use the arrow keys at the bottom to advance.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
                     <br>
 
                     <div class="form-group">    
                         <div class="row">
-                            <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="altered(0)" type="primary" block><span :class="{ selected: isUnaltered }"><i class="fa fa-times"></i></span>
+                            <div class="col-6 ml-auto mr-auto">
+                                <n-button @click.prevent.native="altered(0)" type="primary" block><span :class="{ black: isUnaltered }"><i class="fa fa-times"></i></span>
                                 <br><br>NOT {{ procedure }}</n-button>
                             </div>
-                            <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ selected: isAltered }"><i class="fa fa-check"></i></span>
+                            <div class="col-6 ml-auto mr-auto">
+                                <n-button @click.prevent.native="altered(1)" type="primary" block><span :class="{ black: isAltered }"><i class="fa fa-check"></i></span>
                                 <br><br>{{ procedure }}</n-button>
                             </div>
                         </div>
@@ -318,7 +323,7 @@
                         Rounded to the nearest year, how old is {{ form.petName }}?
                     </h4>
 
-                    <h6 class="center" v-if="$v.form.$dirty">Age must be between 1 and 25.</h6>
+                    <h6 class="center red" v-if="$v.form.$dirty">Age must be between 1 and 25.</h6>
                     <br>
 
                     <div class="form-group col-6 ml-auto mr-auto">
@@ -327,23 +332,24 @@
                                 class="age-box"
                                 :class="{ 'has-danger': $v.form.age.$invalid && $v.form.age.$dirty, 'has-success': !$v.form.age.$invalid }"
                                 type="number"
-                                max="30"
+                                max="25"
                                 v-model="form.age"
                                 required/>
                     </div>
 
-                    <form-navigation v-on:nextStep="step9" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
-                    <h5 class="description-box">Now, we'll need {{ form.petName }}'s medical information and records.</h5>
+                    <h5 class="description-box">What is {{ form.petName }}'s diagnosis and when did you receive it?</h5>
                 
                     <div class="form-group" id="diagnosisGroup">
-                        <label for="diagnosis">Medical Diagosis</label>
+                        <label for="diagnosis">Medical Diagnosis</label>
                         <fg-input
                                 id="diagnosis"
                                 type="text"
                                 v-model="form.diagnosis"
+                                :class="{ 'has-danger': $v.form.diagnosis.$invalid, 'has-success': !$v.form.diagnosis.$invalid }"
                                 required
                                 placeholder="Diagnosis" />
                     </div>
@@ -372,12 +378,12 @@
                     <div class="form-group" :class="{ 'has-danger': $v.form.previousDiagnosis.$invalid && $v.form.previousDiagnosis.$dirty }">
                         <h5 class="description-box">Has {{ form.petName }} previously been diagnosed with cancer?</h5>
                         <div class="row">
-                            <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ selected: noPriorDiag }"><i class="fa fa-times"></i></span>
+                            <div class="col-6 ml-auto mr-auto">
+                                <n-button @click.prevent.native="prevDiag(0)" type="primary" block><span :class="{ black: noPriorDiag }"><i class="fa fa-times"></i></span>
                                 <br><br>NO</n-button>
                             </div>
-                            <div class="col-4 ml-auto mr-auto">
-                                <n-button @click.prevent.native="prevDiag(1)" type="primary" block><span :class="{ selected: priorDiag }"><i class="fa fa-check"></i></span>
+                            <div class="col-6 ml-auto mr-auto">
+                                <n-button @click.prevent.native="prevDiag(1)" type="primary" block><span :class="{ black: priorDiag }"><i class="fa fa-check"></i></span>
                                 <br><br>YES</n-button>
                             </div>
                         </div>
@@ -388,10 +394,10 @@
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===11">
                     <h4 class="description-box">
-                        Now we'll need {{ form.petName }}'s veterinarian information and records.
+                        Now we'll need {{ form.petName }}'s veterinarian information.
                     </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">Please tell us if {{ form.petName }} is {{ procedure }}.</h6>
-                    <br>
+
+                    <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
 
                     <div class="form-group" id="primaryVetFirstNameGroup">
                         <label for="primaryVetFirstName">Vet First Name</label>
@@ -470,13 +476,19 @@
                                 placeholder="If applicable, please list any grants that you have received and the amount." />
                     </div>
 
+                    <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
+
                     <form-navigation v-on:nextStep="step12" v-on:backStep="backStep"></form-navigation>
                 </div>
 
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===12">
 
                     <h4 class="description-box">
-                        And finally(!), we'll need copies of your pet's current vet bills. If you have them already stored on this device, you may send them as they are. If you have physical copies, you may either scan them, or simply take pictures with your phone and send those. We can accept image and PDF files.
+                        And finally(!), we'll need copies of your pet's current vet bills.
+                    </h4>
+                         
+                         
+                    <h4 class="description-box"> PLEASE NOTE: YOU MAY ONLY UPLOAD ONE FILE, AND IT MUST BE UNDER 5MB.  You will likely have more than one file, so please email any additional records to roofinancials@gmail.com <em><strong>from the email you provided here</strong></em>, and we can attach them to your request. We can accept image and PDF files. 
                     </h4>
                     <h6 class="center" v-if="$v.form.$dirty">You must send medical records.</h6>
                     <br>
@@ -559,7 +571,8 @@
     
     import { EventBus } from '../event-bus.js';
     
-    const phone = helpers.regex('phone', /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/);
+    const phone = helpers.regex('phone', /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/);
+    const zip = helpers.regex('zip', /(^\d{5}$)|(^\d{5}-\d{4}$)/);
 
     export default {
 
@@ -595,6 +608,8 @@
                     specialist: '',
                     otherHelp: '',
                     record1: null,
+                    record2: null,
+                    record3: null,
                     verify: false,
                 },
                 fileType: '',
@@ -661,7 +676,7 @@
                 },
                 zip: {
                     required,
-                    between: between(10000, 99999)
+                    zip,
                 },
                 petName: {
                     required,
@@ -684,6 +699,9 @@
                     required,
                     minLength: 10
                 },
+                diagnosis: {
+                    required
+                },
                 previousDiagnosis: {
                     required
                 },
@@ -700,15 +718,13 @@
                 },
                 primaryClinicPhone: {
                     required,
-                    phone
+                    phone,
                 },
-                record1: {
-                    required
-                }
             },
-                
+              
             dateObject: {
-                maxValue: maxValue(new Date())
+                maxValue: maxValue(new Date()),
+                minValue: minValue(new Date().setFullYear(new Date().getFullYear() - 2))
             },
             
             robot: {
@@ -794,10 +810,12 @@
                         this.resetForm();
 
                     }).catch((error) => {
-                        this.$store.dispatch('cpFormError')
+                        this.$store.dispatch('fnFormError')
                     })
                 }
             },
+
+            // *TODO* refactor steps into single method
             step4() {
                 if(this.formValid1) {
                     // reset form validation for each new section
@@ -853,7 +871,7 @@
             },
 
             step10() {
-                if(!this.$v.dateObject.$invalid) {
+                if(!this.$v.dateObject.$invalid && !this.$v.form.diagnosis.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
                     this.formStep += 1;
@@ -871,20 +889,20 @@
             },
 
             step12() {
-                // if(!this.$v.form.previousDiagnosis.$invalid) {
-                    // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() });
-                    this.formStep += 1;
-                // }
-                this.$v.form.$touch();
-            },
-
-            step13() {
-                if(!this.$v.form.record1.$invalid) {
+                if(!this.$v.form.primaryClinicPhone.$invalid && !this.$v.form.primaryClinicName.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
                     this.formStep += 1;
                 }
+                this.$v.form.$touch();
+            },
+
+            step13() {
+                // if(!this.$v.form.record1.$invalid) {
+                    // reset the form for each new section
+                this.$nextTick(() => { this.$v.$reset() });
+                this.formStep += 1;
+                // }
                 this.$v.form.$touch();
             },
 
@@ -943,32 +961,38 @@
                 this.form.otherHelp = '',
                 this.form.record1 = '',
                 this.form.verify = false,
-                this.url = null,
                 this.formStep = 1,
-                this.sent = false;
+                this.fileType = '',
+                this.url = '',
+                this.recordUrl = '',
+                this.robot = false,
+                this.show = true,
+                this.formStep = 1,
+                this.requirement1 = false,
+                this.requirement2 = false,
+                this.show = true,
+                this.sent = false
 
                 /* reset/clear native browser form validation state */
                 this.show = false
-                
                 this.$nextTick(() => {
                     this.show = true;
                     this.$v.$reset();
                 })
             },
-            onFileChange(e) {
-                const file = e.target.files[0];
-                console.log("ON FILE/IMAGE CHANGE --> FILE: " + file);
-                this.url = URL.createObjectURL(file);
-                console.log("The URL: " + this.url)
 
+            onImageChange(e) {
+                const file = e.target.files[0];
+                
+                this.url = URL.createObjectURL(file);
+                
                 this.form.image = file;
             },
 
             onRecordChange(e) {
                 const record = e.target.files[0];
-                console.log("ON RECORD CHANGE --> FILE: " + record);
+                
                 this.recordUrl = URL.createObjectURL(record);
-                console.log("record url: " + this.recordUrl)
 
                 if (record.type == 'image/jpeg' || record.type == 'image/png') {
                     this.fileType = 'image'
@@ -997,11 +1021,14 @@
         border: 1px solid #fd7e14;
         border-radius: 6px;
         padding: 1rem;
+
     }
 
     .step-box {
         padding: 10px;
         text-align: center;
+        max-height: 80vh;
+        overflow: scroll;
     }
 
     .selected {
@@ -1030,6 +1057,15 @@
         font-size: 1rem;
         text-align: center;
         font-weight: 500;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .black { 
+        color: black;
+        font-size: 1.1rem;
     }
 
 </style>

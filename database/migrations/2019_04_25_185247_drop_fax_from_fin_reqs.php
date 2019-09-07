@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeFinreqsName extends Migration
+class DropFaxFromFinreqs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class ChangeFinreqsName extends Migration
      */
     public function up()
     {
-        Schema::rename('finreqs', 'fin_reqs');
+        Schema::table('fin_reqs', function (Blueprint $table) {
+            $table->dropColumn('primary_clinic_fax');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class ChangeFinreqsName extends Migration
      */
     public function down()
     {
-        Schema::rename('finreqs', 'fin_reqs');   
+        Schema::table('fin_reqs', function (Blueprint $table) {
+            $table->string('primary_clinic_fax');
+        });
     }
 }

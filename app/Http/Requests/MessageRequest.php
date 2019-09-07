@@ -24,8 +24,6 @@ class MessageRequest extends FormRequest
      */
     public function rules()
     {
-        Log::debug("INSIDE THE MESSAGE REQUEST RULES");
-
         return [
             'first_name' => 'required',
             'last_name' => 'required',

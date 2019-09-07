@@ -53,7 +53,3 @@
     <p>The Live Like Roo Foundation</p>
     
 @stop
-
-@section('footer')
-  <h6>&copy;2019 The Live Like Roo Foundation</h6>
-@stop

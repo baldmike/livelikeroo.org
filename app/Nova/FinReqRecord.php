@@ -73,15 +73,19 @@ class FinReqRecord extends Resource
 
             DateTime::make('Received', 'created_at')
                 ->format('MMMM DD YYYY h:mm a')
+                ->hideWhenCreating()
                 ->sortable(),
 
             File::make('Filename')
                 ->disk('public')
-                ->storeOriginalName('filename'),
+                ->path('records'),
 
             Button::make('View Medical Record')
                 ->link("/storage/" . $this->filename)
-                ->style('primary')
+                ->style('primary'),
+
+            BelongsTo::make('FinReq')
+                ->hideWhenCreating()
         ];
     }
 

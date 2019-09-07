@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropFaxFromFinreqs extends Migration
+class ChangeDefaultMemoryMsgLength extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class DropFaxFromFinreqs extends Migration
      */
     public function up()
     {
-        Schema::table('finreqs', function (Blueprint $table) {
-            $table->dropColumn('primary_clinic_fax');
+        Schema::table('donations', function (Blueprint $table) {
+            $table->string('recipient_msg', 500)->nullable()->default(null)->change();
         });
     }
 
@@ -25,8 +25,8 @@ class DropFaxFromFinreqs extends Migration
      */
     public function down()
     {
-        Schema::table('finreqs', function (Blueprint $table) {
-            $table->string('primary_clinic_fax');
+        Schema::table('donations', function (Blueprint $table) {
+            $table->string('recipient_msg')->nullable()->default(null)->change();
         });
     }
 }

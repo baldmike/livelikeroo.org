@@ -11,6 +11,6 @@ class CarePackagesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\CarePackage::class, 50)->create();
+        factory(App\Models\CarePackage::class, 1)->create();
     }
 }

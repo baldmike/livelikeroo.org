@@ -7,7 +7,7 @@
             </div>
 
             <div class="row">
-                <div class="col-8 offset-2 col-md-3 offset-md-2">
+                <div class="col-8 offset-2 col-md-3 offset-md-2" style="margin-top: 100px;">
                     <h4 class="text">We have helped over 8200 pets through cancer diagnoses, and are only able to do this thanks to your generosity. Your one-time or monthly donation is tax-deductable, and will directly help a pet #LiveLikeRoo!</h4>
                     
                 </div>
@@ -49,6 +49,14 @@
                 </div>
             </div>
         </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-3 offset-md-9 credit">
+                <h6>Photo by <a href = "https://unsplash.com/@matthewhenry">Matthew Henry</a> via <a href = "https://unsplash.com">Unsplash</a></h6>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -70,7 +78,6 @@
     },
     methods: {
         oneTime() {
-            console.log("[DonateComponent] - ONE TIME")
             let payload = {
                 fund: 'roo',
                 freq: 'oneTime'
@@ -79,7 +86,6 @@
         },
 
         monthly() {
-            console.log("[DonateComponent] - MONTHLY")
             let payload = {
                 fund: 'roo',
                 freq: 'monthly'

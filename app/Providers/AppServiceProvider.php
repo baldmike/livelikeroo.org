@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Models\FinReqNote;
+use App\Observers\FinReqNoteObserver;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Shippo::setApiKey($this->app['config']['services.shippo.key']);
+
+        FinReqNote::observe(FinReqNoteObserver::class);
     }
 }

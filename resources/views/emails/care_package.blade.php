@@ -8,7 +8,7 @@
 
 @section('content')
     <p>
-        We do our best to ship as quickly as possible, and you should receive the care package shortly! When you receive the care package, we would love to see photos of {{ $care_package->pet_name }} enjoying their new toys and blanket! You can send photos to livelikeroo@gmail.com, or post them on our Facebook page. 
+        We do our best to ship as quickly as possible, and you should receive the care package shortly! You'll receive another email when it ships to let you know it's on its way. When you receive the care package, we would love to see photos of {{ $care_package->pet_name }} enjoying their new toys and blanket! You can send photos to livelikeroo@gmail.com, or post them on our Facebook page. 
     </p>
     
     <p>
@@ -20,9 +20,4 @@
     <p>Founder</p>
     <p>The Live Like Roo Foundation</p>
     
-@stop
-
-
-@section('footer')
-  <h6>&copy;2019 The Live Like Roo Foundation</h6>
 @stop

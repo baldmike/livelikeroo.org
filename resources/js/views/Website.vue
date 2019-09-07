@@ -65,19 +65,15 @@
         },
         methods: {
             init() {
-                console.log("[Website.vue init()]")
             },
             wishlist() {
                 window.location.href = "https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w";
-            },
-            
+            },  
         },
 
 
         mounted() {
             this.init();
-            
-            console.log('Website Component created.');
         }
     }
 </script>

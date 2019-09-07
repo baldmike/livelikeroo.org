@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\HasMany;
 
@@ -72,10 +73,18 @@ class FinReq extends Resource
         return [
             DateTime::make('Received', 'created_at')
                 ->format('MMMM DD YYYY h:mm a')
-                ->sortable(),
+                ->sortable()
+                ->onlyOnIndex(),
 
             Text::make('Status')
-                ->sortable(),
+                ->sortable()
+                ->hideWhenUpdating(),
+
+            Currency::make('award_amount')
+                ->format('$%.2n')
+                ->sortable()
+                ->hideFromIndex(),
+                
 
             Text::make('Award Amount')
                 ->sortable(),
@@ -111,7 +120,7 @@ class FinReq extends Resource
                 ->creationRules('unique:users,email')
                 ->hideFromIndex()
                 ->updateRules('unique:users,email,{{resourceId}}'),
-
+          
             Text::make('Address 1')
                 ->sortable()
                 ->hideFromIndex()
@@ -151,42 +160,45 @@ class FinReq extends Resource
         return [
 
             Text::make('Pet Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
+                    ->sortable()
+                    ->rules('required', 'max:255'),
 
-            Select::make('Species')->options([
-                'dog' => 'Dog', 
-                'cat' => 'Cat', 
-                'rabbit' => 'Rabbit', 
-                'bird' => 'Bird', 
-                'other' => 'Other'
-            ])
-                ->sortable()
-                ->hideFromIndex(),
+            Select::make('Species')
+                    ->options([
+                        'dog' => 'Dog', 
+                        'cat' => 'Cat', 
+                        'rabbit' => 'Rabbit', 
+                        'bird' => 'Bird', 
+                        'other' => 'Other'
+                    ])
+                    ->sortable()
+                    ->hideFromIndex(),
             
             Text::make('Breed')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
             Number::make('Age')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
             Text::make('Gender')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
             Boolean::make('Altered')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
             Text::make('About')
-                ->sortable()
-                ->hideFromIndex(),
+                    ->sortable()
+                    ->hideFromIndex(),
 
-            Image::make('Image')->disk('local')
-                ->hideFromIndex()
-                ->maxWidth(50),
+            Image::make('Image')
+                    ->disk('local')
+                    ->path('images')
+                    ->hideFromIndex()
+                    ->maxWidth(50),
 
             ];
     }
@@ -240,7 +252,9 @@ class FinReq extends Resource
                 ->sortable()
                 ->hideFromIndex(),
 
-            HasMany::make('Medical Records', 'FinReqRecord', 'App\Nova\FinReqRecord')
+            HasMany::make('Medical Records', 'FinReqRecord', 'App\Nova\FinReqRecord'),
+
+            HasMany::make('Notes', 'FinReqNote', 'App\Nova\FinReqNote')
         ];
     }
 
@@ -263,6 +277,7 @@ class FinReq extends Resource
             Button::make('In Progess')
                 ->event('App\Events\FinReqInProgress')
                 ->style('primary')
+                
                 ->hideFromIndex()
                 ->reload(),
 

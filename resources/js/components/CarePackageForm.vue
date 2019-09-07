@@ -4,7 +4,7 @@
             <form>
 
                 <h3 class="center">CARE PACKAGES!</h3>
-                <img src="/images/headline4.jpg" fluid>
+                <img src="/images/care_package.jpg" fluid>
                 <br><br>
                 <h5 class="center text">Our Roo Cancer Care Packages include some of Roo’s favorite items, and are each made by hand by our volunteers. Get started by telling us about your your buddy!</h5>
 
@@ -27,21 +27,15 @@
                                 required/>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-danger': $v.form.species.$invalid && $v.form.species.$dirty, 'has-success': !$v.form.species.$invalid }">
-                        <label for="species">Species</label>
-                        <el-select
-                                class="select-primary"
-                                placeholder="Select Species"
+                    <div class="form-group">
+                        <label for="speciesCPForm">Species</label>
+                        <fg-input
+                                id="speciesCPForm"
+                                :class="{ 'has-danger': $v.form.species.$invalid && $v.form.species.$dirty, 'has-success': !$v.form.species.$invalid }"
                                 v-model="form.species"
-                                required>
-
-                                <el-option v-for="option in species"
-                                        class="select-primary"
-                                        :key="option.label"
-                                        :value="option.value"
-                                        :label="option.label"> 
-                                </el-option>
-                        </el-select>
+                                placeholder="Dog, cat, rabbit, horse, chicken, frog..."
+                                maxlength="40"
+                                required/>
                     </div>
 
 
@@ -138,21 +132,17 @@
                                 required/>
                     </div>
                     
-                    <div class="form-group" :class="{ 'has-danger': $v.form.state.$invalid && $v.form.state.$dirty, 'has-success': !$v.form.state.$invalid }">
-                        <label for="state">State</label>
-                        <el-select
-                                class="select-primary"
-                                placeholder="Select State"
+                    <div class="form-group" id="stateGroupFnForm">
+                        <label>State</label>
+                        <fg-input
+                                id="stateCpForm"
+                                type="text"
                                 v-model="form.state"
-                                required>
-
-                                <el-option v-for="option in states"
-                                        class="select-primary"
-                                        :key="option.label"
-                                        :value="option.value"
-                                        :label="option.label"> 
-                                </el-option>
-                        </el-select>
+                                :class="{ 'has-danger': $v.form.state.$invalid && $v.form.state.$dirty, 'has-success': !$v.form.state.$invalid }"
+                                placeholder="State"
+                                minlength="2"
+                                maxlength="2"
+                                required/>
                     </div>
 
                     <div class="form-group">
@@ -161,6 +151,7 @@
                             :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.zip.$dirty, 'has-success': !$v.form.zip.$invalid }"
                             v-model="form.zip"
                             placeholder="Zip Code"
+                            minLength="5"
                             required/>
                     </div>
                     <div class="errors center" v-if="$v.form.$dirty">There are missing or incomplete fields.</div>
@@ -197,6 +188,9 @@
     import { Select, Option, DatePicker, TimeSelect } from 'element-ui'
     import { validationMixin } from "vuelidate";
     import { helpers, required, minLength, maxLength, email, between } from "vuelidate/lib/validators";
+
+    const zip = helpers.regex('zip', /(^\d{5}$)|(^\d{5}-\d{4}$)/);
+
     export default {
 
         data() {
@@ -221,67 +215,6 @@
                     sent: false,
                 },
                 
-
-                states: [
-                    {value: "AK", label: "Alaska"},
-                    {value: "AL", label: "Alabama"},
-                    {value: "AR", label: "Arkansas"},
-                    {value: "AZ", label: "Arizona"},
-                    {value: "CA", label: "California"},
-                    {value: "CO", label: "Colorado"},
-                    {value: "CT", label: "Connecticut"},
-                    {value: "DC", label: "DC"},
-                    {value: "DE", label: "Deleware"},
-                    {value: "FL", label: "Florida"},
-                    {value: "GA", label: "Georgia"},
-                    {value: "HI", label: "Hawaii"},
-                    {value: "IA", label: "Iowa"},
-                    {value: "ID", label: "Idaho"},
-                    {value: "IL", label: "Illinois"},
-                    {value: "IN", label: "Indiana"},
-                    {value: "KS", label: "Kansas"},
-                    {value: "KY", label: "Kentucky"},
-                    {value: "LA", label: "Louisiana"},
-                    {value: "MA", label: "Massachusetts"},
-                    {value: "MD", label: "Maryland"},
-                    {value: "ME", label: "Maine"},
-                    {value: "MI", label: "Michigan"},
-                    {value: "MN", label: "Minnesota"},
-                    {value: "MO", label: "Missouri"},
-                    {value: "MS", label: "Mississippi"},
-                    {value: "MT", label: "Montana"},
-                    {value: "NC", label: "North Carolina"},
-                    {value: "ND", label: "North Dakota"},
-                    {value: "NE", label: "Nebraska"},
-                    {value: "NH", label: "New Hampshire"},
-                    {value: "NJ", label: "New Jersey"},
-                    {value: "NM", label: "New Mexico"},
-                    {value: "NV", label: "Nevada"},
-                    {value: "NY", label: "New York"},
-                    {value: "OH", label: "Ohio"},
-                    {value: "OK", label: "Oklahoma"},
-                    {value: "OR", label: "Oregon"},
-                    {value: "PA", label: "Pennsylvania"},
-                    {value: "RI", label: "Rhode Island"},
-                    {value: "SC", label: "South Carolina"},
-                    {value: "SD", label: "South Dakota"},
-                    {value: "TN", label: "Tennessee"},
-                    {value: "TX", label: "Texas"},
-                    {value: "UT", label: "Utah"},
-                    {value: "VA", label: "Virginia"},
-                    {value: "VT", label: "Vermont"},
-                    {value: "WA", label: "Washington"},
-                    {value: "WI", label: "Wisconson"},
-                    {value: "WV", label: "West Virginia"},
-                    {value: "WY", label: "Wyoming"},
-                ],
-                species: [ 
-                    { value: 'Dog', label: 'Dog' },
-                    { value: 'Cat', label: 'Cat' },
-                    { value: 'Rabbit', label: 'Rabbit' },
-                    { value: 'Horse', label: 'Horse' },
-                    { value: 'Other', label: 'Other' }
-                ],
                 show: true
             }
         },
@@ -321,8 +254,8 @@
                     required
                 },
                 zip: {
+                    zip,
                     required,
-                    between: between(10000, 99999)
                 },
                 petName: {
                     required,
@@ -362,15 +295,13 @@
                     }).catch((error) => {
 
                             if (error.response.status === 400) {
-                                console.log("WE HAVE OURSELVES A 400: " + error)
+                
                             }
-                            console.log("OUTSIDE THE STATUS CHECK IN CARE PACKAGES -----------------****")
                             this.$store.dispatch('cpFormError')
                     })
                 }
             },
-            onReset(evt) {
-                evt.preventDefault()
+            resetForm() {
                 /* Reset our form values */
                 this.form.firstName = ''
                 this.form.lastName = ''
@@ -383,6 +314,7 @@
                 this.form.petName = ''
                 this.form.about = '' 
                 this.form.diagnosis = ''
+                this.form.image = ''
 
                 /* reset/clear native browser form validation state */
                 this.show = false
@@ -392,7 +324,6 @@
                 })
             },
             hide() {
-
                 /* reset/clear native browser form validation state */
                 this.show = false
                 this.$nextTick(() => {

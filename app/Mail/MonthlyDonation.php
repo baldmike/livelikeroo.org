@@ -22,7 +22,7 @@ class MonthlyDonation extends Mailable
     public $donation;
 
     /**
-     * The donation instance.
+     * The user instance.
      *
      * @var User
      */
@@ -46,6 +46,7 @@ class MonthlyDonation extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.monthly');
+        return $this->view('emails.monthly')
+                    ->subject('Thank You!');
     }
 }

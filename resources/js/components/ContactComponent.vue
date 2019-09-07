@@ -1,6 +1,6 @@
 <template>
     <div class="cd-section" id="contactus">
-        <div class="section-image" style="background-image: url('images/unsplash-alaska-dog-jf-brou.jpg'); height: 100vh;">
+        <div class="section-image" style="background-image: url('images/llr_icSocial5.jpg'); height: 100vh; background-size: cover;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 ml-auto mr-auto contact-box">
@@ -130,7 +130,6 @@
                 this.$v.form.$touch();
 
                 if (!this.$v.form.$invalid) {
-                    console.log('[contactComponent] - send message');
 
                     let fd = new FormData();
 
@@ -154,7 +153,7 @@
 
                         this.$store.dispatch('notify', payload);
 
-                        setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 5000);
+                        setTimeout(function(){ self.$store.dispatch('clearNotifications'); }, 5000);
                     })
                     .catch(function (error) {
 
@@ -164,11 +163,10 @@
                         };
 
                         this.$store.dispatch('endLoading');
-                        self.$store.dispatch('notify', payload);
+                        this.$store.dispatch('notify', payload);
 
                         setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 5000);
 
-                        console.log("[ContactComponent] - api/contact call: " + error);
                     
                     });
                 }

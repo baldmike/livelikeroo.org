@@ -15,6 +15,7 @@ import BookerComponent from './components/BookerComponent.vue'
 import CappyComponent from './components/CappyComponent.vue'
 import MaggieComponent from './components/MaggieComponent.vue'
 import SerenityComponent from './components/SerenityComponent.vue'
+import FortyFourComponent from './components/FortyFourComponent.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -34,7 +35,7 @@ export const router = new VueRouter({
                     path: '/donate',
                     components: {default: DonateComponent, header: Navbar, footer: Footer},
                     title: 'Donate',
-                    props: {header: {colorOnScroll: 300}}
+                    props: {header: {colorOnScroll: 70}}
                 },
                 {
                     path: '/events',
@@ -62,7 +63,8 @@ export const router = new VueRouter({
                 {
                     path: '/privacy',
                     components: {default: PrivacyComponent, header: Navbar, footer: Footer},
-                    title: 'Privacy',   
+                    title: 'Privacy',
+                    
                 },
                 {
                     path: '/contact',
@@ -89,6 +91,17 @@ export const router = new VueRouter({
                     path: '/serenity',
                     components: {default: SerenityComponent, header: Navbar, footer: Footer},
                     title: 'Serenity',
+                },
+                {
+                    path: '/forty_four',
+                    components: {default: FortyFourComponent, header: Navbar, footer: Footer},
+                    title: 'FortyFour',
+                },
+                {
+                    path: '/wishlist',
+                    beforeEnter(to, from, next) {
+                        window.location = "https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w"
+                    }
                 },
                 {
                     path: '/dashboard',

@@ -65,8 +65,8 @@ class CarePackagesToSend extends Lens
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->creationRules('email')
+                ->updateRules('email,{{resourceId}}'),
 
             Boolean::make('Sent')
                 ->sortable(),

@@ -12,13 +12,13 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CarePackageRequest;
 use App\Http\Resources\CarePackageResource;
+use App\Events\CarePackageRequested;
 
 use App\Models\CarePackage;
 
-use App\Mail\CarePackageConfirmation;
 use Shippo_Address;
 use Shippo;
-use Mail;
+
 
 class CarePackageController extends Controller
 {
@@ -32,15 +32,16 @@ class CarePackageController extends Controller
         return CarePackageResource::collection(CarePackage::orderBy('created_at', 'asc')->get());
     }
 
+
     /**
-     * Store a newly created resource in storage.
+     * Store the care package request in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CarePackageRequest $request)
     {
-        // first, validate the address with Shippo
+        // Validate the address with Shippo
         Shippo::setApiKey(config('services.shippo.shippo_key'));
         $shippingName = request('firstName') . request('lastName');        
 
@@ -55,11 +56,6 @@ class CarePackageController extends Controller
             "email" => request('email'),
             "validate" => true
         ));
-
-        if(!$toAddress->validation_results->is_valid)
-        {
-                return response()->json(['message' => 'Invalid shipping address'], 400);
-        }
 
         if($toAddress->validation_results->is_valid)
         {
@@ -95,13 +91,16 @@ class CarePackageController extends Controller
 
             if ($cp->save()) 
             {
-                return response()->json(['message' => 'Care Package Request successfully made.'], 201);
-                Mail::to($request->email)->send(new CarePackageConfirmation($cp));
+                event(new CarePackageRequested($cp));
+
+                return response()->json(['message' => 'Care Package Request successfully made'], Response::HTTP_CREATED);
             };
+
+            // Care Package did not save, return 417
+            return response()->json(['message' => 'Care package did not save'], Response::HTTP_EXPECTATION_FAILED);
         }
 
-        return response()->json(['message' => 'General Server Error.'], 500);
-        
+        return response()->json(['message' => 'Invalid shipping address'], Response::HTTP_BAD_REQUEST);   
     }
 
     /**

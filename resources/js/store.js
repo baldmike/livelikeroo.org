@@ -17,9 +17,6 @@ export default new Vuex.Store({
 
         let currentUser = JSON.stringify(user);
 
-        console.log("[STORE.STATE] --> user: " + (currentUser));
-        console.log("[STORE.STATE] --> token: " + (userToken));
-
         return {
             token: userToken ? userToken : null,
             user: user ? user : null,
@@ -42,7 +39,7 @@ export default new Vuex.Store({
             loading: false,
             message: '',
             fund: '',
-            
+            fortyFour: ''
             
         }
     },
@@ -54,6 +51,7 @@ export default new Vuex.Store({
         currentUser: state => state.user,
         isOneTime: state => state.oneTime,
         isMonthly: state => state.Monthly,
+    
     },
     mutations: {
         // mutations are committed by actions, and are the ONLY way to manipulate state
@@ -63,6 +61,9 @@ export default new Vuex.Store({
             state.user = payload.user;
             state.isAuthenticated = true;
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + payload.token
+        },
+        setFortyFour(state, payload) {
+            state.fortyFour = payload;
         },
         setUser(state, user) {
             state.user = user;
@@ -79,7 +80,6 @@ export default new Vuex.Store({
             state.monthly = true;
         },
         notify(state, payload) {
-            console.log(payload);
             state.message = payload.message;
             state.alerts[payload.type] = true;
         },
@@ -120,7 +120,6 @@ export default new Vuex.Store({
             state.loading = false;
         },
 
-
         logout(state) {
             state.token = null;
             state.user = null;
@@ -135,7 +134,7 @@ export default new Vuex.Store({
 
 
     actions: {
-        // actions are dispatched in component, they commit mutations
+        // actions are dispatched in component, they commit mutations 
 
         // login/passport/oauth actions
         setLoginCred(context, payload) {
@@ -144,22 +143,29 @@ export default new Vuex.Store({
         refreshUserData(context) {
             axios.call("get", "/api/user").then((userData) => {
                 let user = userData.data.data
-                console.log("USER ----> " + user);
                 context.commit('setUser', user)
             })
         },
 
         getAllUsers(context) {
             axios.call("get", "/api/users").then(({ data }) => {
-                // console.log("[API call to users]: " + JSON.stringify(data));
                 context.commit('setUsers', data);
             })
             .catch(error => {
-                console.log("API call error: " + error);
+                console.log("GET ALL USERS ERROR: " + error);
             });
         },
 
-
+        getFortyFour(context) {
+            axios.call("get", "/api/forty_four").then(({ data }) => {
+                context.commit('setFortyFour', data);
+                console.log("FORTY FOUR DATA: " + data);
+            })
+            .catch(error => {
+                console.log("GET FORTY FOUR ERROR: " + error);
+            });
+        },
+        
         setOneTime(context) {
             context.commit('setOneTime');
         },
@@ -236,6 +242,19 @@ export default new Vuex.Store({
 
             router.push({ path: 'events' });
         },
+        
+        fnFormError(context) {
+            context.commit('endLoading');
+
+            let payload = {
+                type: "danger",
+                message: "There was an error processing your request. Please ensure that your medical record is less than 5mb - it has been saved for you."
+            }
+
+            context.commit('notify', payload);
+
+        },
+
         cpFormSubmit(context) {
             context.commit('hideModal');
             context.commit('startLoading');
@@ -279,24 +298,22 @@ export default new Vuex.Store({
 
             router.push({ path: '/' });
         },
-
-        dnFormError(context) {
+        dnFormError(context, error) {
             context.commit('endLoading');
 
             let payload = {
-                type: "error",
-                message: "There was a problem processing your donation. Please check the form and re-submit."
+                type: "danger",
+                message: error,
             }
 
             context.commit('notify', payload);
         },
-        
         cardSubmitError(context) {
             context.commit('endLoading');
 
             let payload = {
                 type: "danger",
-                message: "There was an error with your card. Please open the form and try again - the form is as you left it. If the problem persists, contact the card issuer."
+                message: "There was an error WITH YOUR CARD. Please open the form and try again - the form is as you left it. If the problem persists, contact the card issuer." 
             }
 
             context.commit('notify', payload);

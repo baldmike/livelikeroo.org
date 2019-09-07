@@ -12,9 +12,11 @@
 
             <div class="row social-footer">
                 <div class="col-12 ml-auto mr-auto">        
-                    <a href="https://www.facebook.com/LiveLikeRoo/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.facebook.com/LiveLikeRoo/" target="_blank" class="social-links"><i class="fab fa-facebook-square"></i></a>
                     
-                    <a href="https://www.instagram.com/livelikeroofoundation/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/livelikeroofoundation/?hl=en" target="_blank" class="social-links"><i class="fab fa-instagram"></i></a>
+
+                    <a href="https://www.twitter.com/livelikeroo/?hl=en" target="_blank" class="social-links"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             
@@ -29,13 +31,13 @@
                     <li>
                         <router-link to="contact">CONTACT</router-link>
                     </li>
-                    <li>
-                        <a href="/nova">LOGIN</a>
-                    </li>
-                    
                     <!-- <li>
+                        <a href="/nova">LOGIN</a>
+                    </li> -->
+                    
+                    <li>
                         <router-link to="" v-if='!isAuthenticated'>
-                            <span v-on:click="showLogin">LOGIN</span>
+                            <span v-on:click="showLogin">DONOR LOGIN</span>
                         </router-link>
                     </li>
                     <li>
@@ -46,13 +48,13 @@
                         <router-link to="/" v-if="isAuthenticated">
                             <span v-on:click="logout">LOGOUT</span>
                         </router-link>
-                    </li> -->
+                    </li>
                 </ul>
             </nav>
 
             <div class="copyright">
                 &copy; {{year}}, The <a href="/nova">Live Like Roo</a> Foundation - Designed and Developed with Love by 
-                <a href="https://github.com/baldmike" target="_blank">Bald Mike</a>
+                <a href="https://noproblemsonly.solutions" target="_blank">Bald Mike</a>
             </div>
         </div>
     </footer>
@@ -75,15 +77,13 @@
     },
     methods: {
         showLogin(){
-            console.log('LOGIN ATTEMPTED');
             EventBus.$emit('showLogin');
         },
         logout(){
-            console.log('[FooterComponent] - logout');
             EventBus.$emit('logout');
 
             let self = this;
-            setTimeout(function(){ self.$store.dispatch('clearNotifications');; }, 3000);
+            setTimeout(function(){ self.$store.dispatch('clearNotifications'); }, 3000);
         }
     },
     computed: mapGetters(['isAuthenticated', 'isMonthly', 'isOneTime']),
@@ -95,9 +95,13 @@
 
     .social-footer {
         height: 80px;
-        width: 100%;
         font-size: 3rem;
         margin-bottom: 50px;
-        color: $roo;
+        color: black;
+     
+    }
+
+    .social-links {
+        margin: 0 5vw;
     }
 </style>

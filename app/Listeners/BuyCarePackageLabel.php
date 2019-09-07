@@ -36,8 +36,6 @@ class BuyCarePackageLabel
         $toAddress = $event->carePackage->shippingAddress();
         $carrierAccount = config('services.shippo.carrier_account');
 
-        Log::debug("[BuyCarePackageLabel] -> BEFORE validation--> ");
-
         $fromAddress = Shippo_Address::create(array(
             'name' => 'Sarah Lauch',
             'company' => 'Live Like Roo',
@@ -49,8 +47,6 @@ class BuyCarePackageLabel
             'email' => 'sarah@livelikeroo.org',
             'validate' => true,
         ));
-
-        Log::debug("[BuyCarePackageLabel] -> AFTER validation--> ");
 
         $parcel = array(
             'length'=> '5',
@@ -78,10 +74,6 @@ class BuyCarePackageLabel
         if ($transaction["object_status"] === "ERROR") {
             return back()->withMessage($transaction["messages"]);
         }
-
-        // Shippo returns an object - object_id, tracking_number, tracking_url_provider, label_url
-        Log::debug("[TRANSACTION] ------>");
-        Log::debug($transaction);
 
         $url = $transaction->label_url;
         $tracking_number = $transaction->tracking_number;

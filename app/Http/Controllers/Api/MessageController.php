@@ -50,7 +50,7 @@ class MessageController extends Controller
             $MSG->message = request('message');
         }
 
-        Mail::to('sarahlauch@gmail.com')->send(new EmailMessage($MSG));
+        Mail::to('livelikeroo@gmail.com')->send(new EmailMessage($MSG));
 
         if ($MSG->save()) {
             return response()->json(null, Response::HTTP_CREATED);

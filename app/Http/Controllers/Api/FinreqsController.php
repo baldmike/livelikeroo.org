@@ -3,19 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 use App\Http\Controllers\Controller;
+
 use App\Http\Requests\FinReqRequest;
 use App\Http\Resources\FinReqResource;
 
 use App\Models\FinReq;
-
-use Mail;
 use App\Models\FinReqRecord;
+
 use App\Events\FinRequestReceived;
 
 class FinReqsController extends Controller
@@ -31,7 +32,7 @@ class FinReqsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store the financical asisstance request in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -40,12 +41,8 @@ class FinReqsController extends Controller
     {
         $validated = $request->validated();
 
-        Log::debug("FinReqsController - store()");
-
         if($validated) 
         {
-            Log::debug("[FINREQS CONTROLLER -- REQUEST IS VALIDATED");
-
             $FinReq = new FinReq();
 
             $FinReq->first_name = request('firstName');
@@ -82,36 +79,32 @@ class FinReqsController extends Controller
                 // $path includes 'public/', and we don't want that in our URL, so we we chop it right off:
                 $path = substr($path, 6);
 
-                Log::debug("[FinReqsController] - store - SUBSTRING path:");
-                Log::debug($path);
-
                 $FinReq->image = $path;
             }
     
-            $FinReq->save();
+            if($FinReq->save())
+            {
+                // Now save records to fin_req_records table
+                $medRecord1 = Storage::putFile('public/records', $request->file('record1'), 'public');
 
-            // Now save records to fin_req_records table
- 
-            $file = $request->file('record1');
-            
-            $medRecord1 = Storage::putFile('public/records', $file);
+                // $path includes 'public/', and we don't want that in our URL, so we we chop it right off:
+                $medRecord1 = substr($medRecord1, 6);
+                
+                FinReqRecord::create([
+                    'fin_req_id' => $FinReq->id,
+                    'filename' => $medRecord1
+                ]);
+                
+                // trigger an event to send mail
+                event(new FinRequestReceived($FinReq));
+                
+                return new FinReqResource($FinReq);
+            };
 
-            // $path includes 'public/', and we don't want that in our URL, so we we chop it right off:
-            $medRecord1 = substr($medRecord1, 6);
-            
-            FinReqRecord::create([
-                'fin_req_id' => $FinReq->id,
-                'filename' => $medRecord1
-            ]);
-            
-            event(new FinRequestReceived($FinReq));
+            // Financial assistance request did not save, return 417
+            return response()->json(['message' => 'Assistance request did not save'], Response::HTTP_EXPECTATION_FAILED);
 
-            // SEND CONFIRMATION EMAIL TO APPLICANT ---- TODO EMIT AN EVENT THAT SENDS MAIL
             
-            // SEND MED RECORDS TO LAURA
-            // Mail::to('roofinancials@gmail.com')->send(new MedRecordEmail($FinReq));
-            
-            return new FinReqResource($FinReq);
         }
     }
 

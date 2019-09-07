@@ -25,12 +25,11 @@
         computed: mapGetters(['isAuthenticated']),
         methods: {
             init() {
-                console.log("[Dashboard Comp -- init method");
+    
             },
         },
         created() {
             this.init();
-            console.log('Dashboard Component mounted.')
         }
     }
 </script>

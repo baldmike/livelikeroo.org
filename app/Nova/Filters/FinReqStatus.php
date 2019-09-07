@@ -14,6 +14,8 @@ class FinReqStatus extends Filter
      */
     public $component = 'select-filter';
 
+    public $name = 'Status';
+
     /**
      * The displayable name of the filter.
      *

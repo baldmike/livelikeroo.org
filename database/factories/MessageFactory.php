@@ -9,7 +9,7 @@ $factory->define(Message::class, function (Faker $faker) {
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
+        'email' => $faker->safeEmail,
         'message' => $faker->realText($maxNbChars = 200, $indexSize = 2)
     ];
 });

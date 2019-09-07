@@ -19,6 +19,8 @@ $factory->define(CarePackage::class, function (Faker $faker) {
         'species' => $faker->randomElement($array = array ('dog', 'cat', 'horse', 'squirrel',)),
         'about' => $faker->realText($maxNbChars = 200, $indexSize = 2),
         'diagnosis' => $faker->realText($maxNbChars = 100, $indexSize = 2),
+
+        'image' => '/images/7ErivG7yG0xWJg7WUtj8Otc12t3fwgilhuI7s9GJ.jpeg',
         
         'sent' => 0,
     ];

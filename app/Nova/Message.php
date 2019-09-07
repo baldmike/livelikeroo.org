@@ -53,21 +53,20 @@ class Message extends Resource
             
             Text::make('First Name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('Last Name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('Email')
                 ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->rules('email', 'max:254')
+                ->creationRules('email')
+                ->updateRules('email,{{resourceId}}'),
 
             Textarea::make('Message')
                 ->sortable()
-                ->rules('required')
                 ->hideWhenUpdating(),
         ];
     }

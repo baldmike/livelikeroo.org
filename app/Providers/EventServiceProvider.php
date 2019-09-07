@@ -46,6 +46,22 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\HandleFinReqFund',
         ],
 
+        'App\Events\OneTimeDonationMade' => [
+            'App\Listeners\HandleOneTimeDonation',
+        ],
+
+        'App\Events\MonthlyDonationMade' => [
+            'App\Listeners\HandleMonthlyDonation',
+        ],
+
+        'App\Events\NotifySelected' => [
+            'App\Listeners\HandleNotify',
+        ],
+
+        'App\Events\CarePackageRequested' => [
+            'App\Listeners\HandleCarePackageRequest',
+        ]
+
     ];
 
     /**

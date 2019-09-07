@@ -14,7 +14,7 @@
                     
                     <h2 class="header" style="margin-top: 100px;">Need some help?</h2>
 
-                    <h4 class="description" style="margin-top: 240px;">We understand, first-hand, how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to provide financial support. We accept financial assistance requests until 11:59 PM CST on the third Sunday of each month. To learn more, see if you qualify and get started, click Apply For Assistance.</h4>
+                    <h4 class="description" style="margin-top: 240px;">We understand first-hand how difficult it is to receive a cancer diagnosis for your best friend, and we hope to be able to provide financial support. We accept financial assistance requests until 11:59 PM CST on the third Sunday of each month. To learn more, see if you qualify and get started, click Apply For Assistance.</h4>
 
                     
                 </div>
@@ -24,6 +24,14 @@
                 </div>
             </div>
             
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-3 offset-md-9 credit">
+                <h6>Photo by <a href = "https://unsplash.com/@jamie452">Jamie Street</a> via <a href = "https://unsplash.com">Unsplash</a></h6>
+            </div>
         </div>
     </div>
 </template>

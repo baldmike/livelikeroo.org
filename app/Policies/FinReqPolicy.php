@@ -19,7 +19,7 @@ class FinReqPolicy
      */
     public function view(User $user, FinReq $finReq)
     {
-        if ($user->role === 'admin' || $user->role === 'guest') 
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -47,7 +47,7 @@ class FinReqPolicy
      */
     public function update(User $user, FinReq $finReq)
     {
-        if ($user->role === 'admin') 
+        if ($user->role === 'admin' || $user->role === 'superadmin') 
         {
             return true;
         }
@@ -64,7 +64,12 @@ class FinReqPolicy
      */
     public function delete(User $user, FinReq $finReq)
     {
-        //
+        if ($user->role === 'superadmin')
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -76,7 +81,13 @@ class FinReqPolicy
      */
     public function restore(User $user, FinReq $finReq)
     {
-        //
+        if ($user->role === 'superadmin')
+
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**

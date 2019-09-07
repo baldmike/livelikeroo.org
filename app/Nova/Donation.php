@@ -87,8 +87,7 @@ class Donation extends Resource
                 ->hideFromIndex()
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email'),
-                // ->updateRules('unique:users,email,{{resourceId}}'),
+                ->creationRules('email'),
         ];
     }
     /**
@@ -120,7 +119,8 @@ class Donation extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Currency::make('Amount')->format('$%.2n')
+            Currency::make('Amount')
+                ->format('$%.2n')
                 ->sortable(),
 
             Select::make('Frequency')

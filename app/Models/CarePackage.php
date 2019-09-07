@@ -15,16 +15,6 @@ class CarePackage extends Model
         'first_name', 'last_name', 'email', 'address_1', 'address_2', 'city', 'state', 'zip', 'pet_name', 'about', 'diagnosis', 'image', 'sent'
     ];
 
-    // public function sent($query)
-    // {
-    //     return $query->where('sent', 1);
-    // }
-
-    // public function unsent($query)
-    // {
-    //     return $query->where('sent', 0);
-    // }
-
     /**
      * Return the shipping data for a user
      * 

@@ -12,14 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, Billable;
 
-    // /**
-    //  * 
-    //  */
-    // public function donations()
-    // {
-    //     return $this->hasMany('App\Donation');
-    // }
-
     /**
      * The attributes that are mass assignable.
      *
@@ -47,4 +39,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'created_at' => 'datetime',
     ];
+
+    /**
+     * establish relationship to records
+     */
+    public function finReqNote()
+    {
+        return $this->hasMany('App\Models\FinReqNote');
+    }
+
+    public function id()
+    {
+        return $this->id;
+    }
 }
