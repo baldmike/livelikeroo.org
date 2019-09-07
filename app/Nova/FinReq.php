@@ -86,6 +86,9 @@ class FinReq extends Resource
                 ->hideFromIndex(),
                 
 
+            Text::make('Award Amount')
+                ->sortable(),
+
             new Panel('Requested By', $this->requestedByFields()),
             new Panel('For', $this->petFields()),
             new Panel('Medical Info', $this->medFields()),
@@ -114,9 +117,10 @@ class FinReq extends Resource
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('email'),
-                // ->updateRules('email,{{resourceId}}'),
-
+                ->creationRules('unique:users,email')
+                ->hideFromIndex()
+                ->updateRules('unique:users,email,{{resourceId}}'),
+          
             Text::make('Address 1')
                 ->sortable()
                 ->hideFromIndex()

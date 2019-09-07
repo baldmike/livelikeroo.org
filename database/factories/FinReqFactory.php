@@ -7,6 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(FinReq::class, function (Faker $faker) {
     return [
+
+        'status' => $faker->randomElement($array = array ('new', 'in progress', 'declined', 'approved', 'funded')),
+        'award_amount' => $faker->randomElement(($array = array('0', '500', '1000', '1500'))),
+
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
@@ -35,6 +39,8 @@ $factory->define(FinReq::class, function (Faker $faker) {
         'primary_clinic_email' => $faker->safeEmail,
         'specialist' => $faker->realText($maxNbChars = 200, $indexSize = 2),
         'other_help' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+
+
         
     ];
 });
