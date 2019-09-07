@@ -14,15 +14,13 @@ class FinReqStatus extends Filter
      */
     public $component = 'select-filter';
 
-    public $name = 'Status';
-
     /**
      * The displayable name of the filter.
      *
      * @var string
      */
     public $name = 'Status';
-    
+
     /**
      * Apply the filter to the given query.
      *
