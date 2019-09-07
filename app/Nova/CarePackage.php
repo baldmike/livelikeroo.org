@@ -204,9 +204,7 @@ class CarePackage extends Resource
             Text::make('Email')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('email', 'max:254')
-                ->creationRules('email')
-                ->updateRules('email,{{resourceId}}'),
+                
                 
         ];
 
