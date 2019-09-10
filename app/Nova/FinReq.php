@@ -80,14 +80,10 @@ class FinReq extends Resource
                 ->sortable()
                 ->hideWhenUpdating(),
 
-            Currency::make('award_amount')
+            Currency::make('Award Amount')
                 ->format('$%.2n')
                 ->sortable()
                 ->hideFromIndex(),
-                
-
-            Text::make('Award Amount')
-                ->sortable(),
 
             new Panel('Requested By', $this->requestedByFields()),
             new Panel('For', $this->petFields()),
