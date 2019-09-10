@@ -76,8 +76,14 @@ class FinReq extends Resource
                 ->sortable()
                 ->onlyOnIndex(),
 
-            Text::make('Status')
-                ->sortable(),
+            Select::make('Status')
+                ->options([
+                    'new' => 'New', 
+                    'in_progress' => 'In Progress', 
+                    'funded' => 'Funded', 
+                    'declined' => 'Declined', 
+                    'closed' => 'Closed'
+            ]),
 
             Currency::make('Award Amount')
                 ->format('$%.2n')
