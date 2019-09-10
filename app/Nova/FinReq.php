@@ -77,8 +77,7 @@ class FinReq extends Resource
                 ->onlyOnIndex(),
 
             Text::make('Status')
-                ->sortable()
-                ->hideWhenUpdating(),
+                ->sortable(),
 
             Currency::make('Award Amount')
                 ->format('$%.2n')
