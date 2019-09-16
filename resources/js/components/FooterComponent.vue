@@ -31,6 +31,11 @@
                     <li>
                         <router-link to="contact">CONTACT</router-link>
                     </li>
+
+                    <li>
+                        <router-link to="shop">SHOP</router-link>
+                    </li>
+                    
                     <!-- <li>
                         <a href="/nova">LOGIN</a>
                     </li> -->

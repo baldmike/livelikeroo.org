@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             MessagesTableSeeder::class,
             CarePackagesTableSeeder::class,
             FinReqsTableSeeder::class,
-            DonationsTableSeeder::class
+            DonationsTableSeeder::class,
+            ItemsTableSeeder::class
         ]);
     }
 }

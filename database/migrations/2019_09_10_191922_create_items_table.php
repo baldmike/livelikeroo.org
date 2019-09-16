@@ -15,6 +15,12 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
+            $table->text('description');
+            $table->float('price');
+            $table->string('size')->nullable()->default(null);
+            $table->string('color')->nullable()->default(null);
+            $table->string('image')->nullable()->default(null);
             $table->timestamps();
         });
     }

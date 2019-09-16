@@ -9,7 +9,7 @@ $factory->define(FinReq::class, function (Faker $faker) {
     return [
 
         'status' => $faker->randomElement($array = array ('new', 'in progress', 'declined', 'approved', 'funded')),
-        'award_amount' => $faker->randomElement(($array = array('0', '500', '1000', '1500'))),
+        // 'award_amount' => $faker->randomElement(($array = array('0', '500', '1000', '1500'))),
 
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,

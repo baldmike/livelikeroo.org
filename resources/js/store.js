@@ -159,10 +159,10 @@ export default new Vuex.Store({
         getFortyFour(context) {
             axios.call("get", "/api/forty_four").then(({ data }) => {
                 context.commit('setFortyFour', data);
-                console.log("FORTY FOUR DATA: " + data);
+                
             })
             .catch(error => {
-                console.log("GET FORTY FOUR ERROR: " + error);
+                console.log("GET FORTY FOUR - ERROR: " + error);
             });
         },
         

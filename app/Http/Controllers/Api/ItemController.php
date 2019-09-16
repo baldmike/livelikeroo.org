@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Http\Resources\ItemResource;
 
 use App\Http\Controllers\Controller;
 
@@ -17,7 +18,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return ItemResource::collection(Item::orderBy('created_at', 'asc')->get());
     }
 
     /**

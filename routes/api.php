@@ -27,6 +27,9 @@ Route::post('/make_donation', 'Api\DonationController@oneTime');
 Route::post('/monthly_donation', 'Api\DonationController@monthly');
 Route::get('/forty_four', 'Api\DonationController@fortyFour');
 
+// shop
+Route::resource('items', 'Api\ItemController');
+
 Route::middleware('auth:api')->group(function () {
     
     Route::get('/user', 'Api\UsersController@current');

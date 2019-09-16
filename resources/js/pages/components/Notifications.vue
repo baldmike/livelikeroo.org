@@ -45,7 +45,7 @@
                 <div class="alert-icon">
                     <i class="now-ui-icons objects_support-17"></i>
                 </div>
-                <strong>Oh snap!</strong> {{ message }}
+                <strong>Whoops!</strong> {{ message }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click.prevent="closeNotification">
                             <span aria-hidden="true">
                                 <i class="now-ui-icons ui-1_simple-remove"></i>

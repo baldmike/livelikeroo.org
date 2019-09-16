@@ -16,6 +16,7 @@ import CappyComponent from './components/CappyComponent.vue'
 import MaggieComponent from './components/MaggieComponent.vue'
 import SerenityComponent from './components/SerenityComponent.vue'
 import FortyFourComponent from './components/FortyFourComponent.vue'
+import ShopComponent from './components/ShopComponent.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -102,6 +103,11 @@ export const router = new VueRouter({
                     beforeEnter(to, from, next) {
                         window.location = "https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w"
                     }
+                },
+                {
+                    path: '/shop',
+                    components: {default: ShopComponent, header: Navbar, footer: Footer},
+                    title: 'Shop',
                 },
                 {
                     path: '/dashboard',
