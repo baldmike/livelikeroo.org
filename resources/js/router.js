@@ -17,6 +17,7 @@ import MaggieComponent from './components/MaggieComponent.vue'
 import SerenityComponent from './components/SerenityComponent.vue'
 import FortyFourComponent from './components/FortyFourComponent.vue'
 import ShopComponent from './components/ShopComponent.vue'
+import ShopCreateComponent from './components/ShopCreateComponent.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -106,8 +107,9 @@ export const router = new VueRouter({
                 },
                 {
                     path: '/shop',
-                    components: {default: ShopComponent, header: Navbar, footer: Footer},
+                    components: {default: ShopCreateComponent, header: Navbar, footer: Footer},
                     title: 'Shop',
+                    props: {header: {colorOnScroll: 10}}
                 },
                 {
                     path: '/dashboard',

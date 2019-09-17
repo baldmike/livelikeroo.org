@@ -21,6 +21,7 @@ class CreateItemsTable extends Migration
             $table->string('size')->nullable()->default(null);
             $table->string('color')->nullable()->default(null);
             $table->string('image')->nullable()->default(null);
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

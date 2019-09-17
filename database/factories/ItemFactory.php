@@ -12,6 +12,7 @@ $factory->define(Item::class, function (Faker $faker) {
         'price' => $faker->numberBetween($min = 10, $max = 100),
         'size' => $faker->randomElement($array = array('S', 'M', 'L', 'XL')),
         'color' => $faker->randomElement($array = array('Lavender', 'Yellow', 'Blue', 'Green')),
-        'image' => $faker->imageUrl($width = 320, $height = 240)
+        'image' => $faker->imageUrl($width = 320, $height = 240),
+        'quantity' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });

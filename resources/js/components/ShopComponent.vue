@@ -1,8 +1,13 @@
 <template>
-    <div>
-        <h1 style="margin-top: 200px;">ITEMS</h1>
-        <h1 v-for="(item, index) in items" :key="index">{{ item.title }}</h1>
-    </div>
+    <b-row style="margin-top: 200px;">
+        <b-col v-for="(item, index) in items" :key="index" cols="12" md="2">
+            <b-card v-if="item.quantity > 10" :img-src="item.image" img-alt="Shop Item">
+                <h6>{{ item.title }} ${{ item.price }}</h6>
+                <b-btn class="select-button">{{ item.description }}</b-btn>
+                <b-btn class="select-button">ADD TO CART</b-btn>
+            </b-card>
+        </b-col>
+    </b-row>
 </template>
  
 <script>
@@ -28,10 +33,10 @@
             .catch(function (error) {
                 console.log(error);
             });    
-        
         }
-        }
+    }
 </script>
 
 <style>
+
 </style>
