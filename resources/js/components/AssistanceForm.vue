@@ -484,38 +484,7 @@
                 <div class="col-12 mr-auto ml-auto" v-if="formStep===12">
 
                     <h4 class="description-box">
-                        And finally(!), we'll need copies of your pet's current vet bills.
-                    </h4>
-                         
-                         
-                    <h4 class="description-box"> PLEASE NOTE: YOU MAY ONLY UPLOAD ONE FILE, AND IT MUST BE UNDER 5MB.  You will likely have more than one file, so please email any additional records to roofinancials@gmail.com <em><strong>from the email you provided here</strong></em>, and we can attach them to your request. We can accept image and PDF files. 
-                    </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">You must send medical records.</h6>
-                    <br>
-
-                    <b-form-group id="recordsGroup" label="Please upload your pet's medical records" label-for="recordsFinReq" class="box">
-                        <b-form-file
-                                id="recordsFinReq"
-                                accept="application/pdf, image/*"
-                                v-model="form.record1"
-                                placeholder="Choose a file..."
-                                drop-placeholder="Drop file here..."
-                                @change="onRecordChange"/>
-                    </b-form-group>
-
-                    <b-col cols="6" offset="3" style="margin-top: 1rem;">
-                        <img v-if="fileType==='image'" :src="recordUrl" width="200" alt="uploaded image">
-
-                        <pdf v-if="fileType==='pdf'" :src="recordUrl" width="200" alt="uploaded record"></pdf>
-                    </b-col>
-
-                    <form-navigation v-on:nextStep="step13" v-on:backStep="backStep"></form-navigation>
-                </div>
-
-                <div class="col-12 mr-auto ml-auto" v-if="formStep>=13">
-
-                    <h4 class="description-box">
-                        That's it! If you need to check your submission, please use the back button or reset the form to start all over. You will receive an email from us with further information. 
+                        That's it! If you need to check your submission, please use the back button or reset the form to start all over. You will receive an email confirmation from us with further information about where to send vet records. 
                     </h4>
                     
                     <div class="col-12 ml-auto mr-auto">
@@ -898,11 +867,10 @@
             },
 
             step13() {
-                // if(!this.$v.form.record1.$invalid) {
-                    // reset the form for each new section
+                // reset the form for each new section
                 this.$nextTick(() => { this.$v.$reset() });
                 this.formStep += 1;
-                // }
+        
                 this.$v.form.$touch();
             },
 

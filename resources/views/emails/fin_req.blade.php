@@ -17,7 +17,7 @@
             Pets have a confirmed cancer diagnosis. (The board reserves the right to assist non confirmed cases, based on medical records and an established treatment plan, to confirm suspected diagnosis.)
         </li>
         <li>
-            Veterinary records, estimates, +/- treatment plans will be submitted by the applicant or applicant's veterinarian to roofinancials@gmail.com.
+            Veterinary records, estimates, +/- treatment plans will be submitted by the applicant or applicant's veterinarian to roofinancials@gmail.com. <strong>This MUST be done in order to proceed!</strong>
         </li>
         <li>
             Application review will open on the 1st day of every month. Necessary medical records and estimates need to be submitted by 11:59 p.m. CST, the third Sunday, of said month.
