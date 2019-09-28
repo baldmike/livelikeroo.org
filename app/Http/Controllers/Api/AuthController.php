@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
+
     public function register(Request $request)
     {
         // check if email is in use

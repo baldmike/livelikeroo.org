@@ -107,7 +107,7 @@ export const router = new VueRouter({
                 },
                 {
                     path: '/shop',
-                    components: {default: ShopCreateComponent, header: Navbar, footer: Footer},
+                    components: {default: ShopCreateComponent, header: Navbar},
                     title: 'Shop',
                     props: {header: {colorOnScroll: 10}}
                 },
