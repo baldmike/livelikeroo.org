@@ -9,9 +9,17 @@
 
                     <h5 class="title">Financial Assistance</h5>
                     
-                    <p>Cancer SUCKS. We've been in your shoes, and we'd like to help. Please read the following carefully, and we'll help determine if you're eligible and help guide you through the process.</p>
+                    <p>
+                        Cancer SUCKS. We've been in your shoes, and we'd like to help. Please read the following carefully, we'll help determine if you're eligible and help guide you through the process.
+                    </p>
                     
-                    <p>The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, ranging from $500 - $1500 per qualified applicant and are awarded on a monthly basis after a complete review of this application and the <em>accompanying medical records.</em></p>
+                    <p>
+                        The Live Like Roo Foundation provides financial assistance to help cover healthcare costs related to cancer treatment in the form of grants, ranging from $500 - $1500 per qualified applicant and are awarded on a monthly basis after a complete review of this application and the <em>relevant medical records.</em>
+                    <p>
+
+                    <p>
+                        To qualify and be considered for a grant, your pet must have a confirmed cancer diagnosis. (The board reserves the right to assist non confirmed cases, based on medical records and an established treatment plan, to confirm suspected diagnosis.) We will also need copies of all relavant medical records. Once you've completed this application, you will receive an email from roofinancials@gmail.com, and <em>you must respond to this email with your pet's medical records.</em>.
+                    </p>
                     
                     <p>Click the button below to begin the application.</p>
 
@@ -21,57 +29,12 @@
                         block
                         @click.prevent.native="nextStep">
                         Click here to get started</n-button>
-
-                </div>
-
-                <!-- FORM STEP 2 -->
-                <div class="col-12 mr-auto ml-auto step-box" v-if="formStep===2">
-                    
-                    <h5 class="description-box">
-                        To qualify and be considered for a grant, you must meet the following requirements.
-                    </h5> 
-                    
-                    <br>
-                    
-                    <h5 class="description-box">
-                        Please check each one off as they apply.
-                    </h5>
-                    
-                    <n-checkbox
-                            v-model="requirement1"
-                            required
-                            style="text-align: center;">
-                                <strong>Pet has a confirmed cancer diagnosis</strong>. (The board reserves the right to assist non confirmed cases, based on medical records and an established treatment plan, to confirm suspected diagnosis.)
-                    </n-checkbox>
-                        
-                    <n-checkbox
-                            v-model="requirement2"
-                            required
-                            style="text-align: center;">
-                                <strong>Veterinary records, estimates and treatment plans will be submitted by the applicant with this application</strong>, and <em>we cannot process an application without medical records.</em> We will need the documents in a digital format, preferably PDF, and cannot accept fax. Application submisison/review will open on the 1st day of every month, and will continue until 11:59 p.m. CST on the third Sunday of that month.
-                    </n-checkbox>
-
-                    <n-button
-                            type="primary"
-                            round
-                            block
-                            disabled
-                            v-if="!requirement1 || !requirement2">
-                            Please check off the requirements to continue.</n-button>
-                    
-                    <n-button 
-                            type="primary"
-                            v-if="requirement1 && requirement2"
-                            round 
-                            block
-                            @click.prevent.native="nextStep">
-                            I understand, let's move on!</n-button>
                 </div>
                 
-                <!-- FORM STEP 3-->
-                <div class="col-12 mr-auto ml-auto form-box" v-if="formStep===3">
-                    <h4 class="description-box description">
-                        Great, let's get started on the grant application. First, we'll need some information about you.</h4>
+                <!-- FORM STEP 2-->
+                <div class="col-12 mr-auto ml-auto form-box" v-if="formStep===2">
+                    <p class="description-box description">
+                        Ok, let's get started on the grant application. First, we'll need some information about you.</p>
 
                     <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
 
@@ -124,7 +87,6 @@
                     </div>
 
                     <div class="form-group" id="address2GroupFnForm">
-                        
                         <fg-input
                                 id="address2FnForm"
                                 type="text"
@@ -145,41 +107,43 @@
                                 required/>
                     </div>
 
-                    <div class="form-group" id="stateGroupFnForm">
-                        <label>State</label>
-                        <fg-input
-                                id="stateFnForm"
-                                type="text"
-                                v-model="form.state"
-                                :class="{ 'has-danger': $v.form.state.$invalid && $v.form.state.$dirty, 'has-success': !$v.form.state.$invalid }"
-                                placeholder="State"
-                                minlength="2"
-                                maxlength="2"
-                                required/>
-                    </div>
-
-                    <div class="form-group" id="zipGroupFnForm">
-                        <label for="zipFnForm">Zip Code</label>
-                        <fg-input
-                            id="zipFnForm"
-                            type="text"
-                            v-model="form.zip"
-                            :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.zip.$dirty, 'has-success': !$v.form.zip.$invalid }"
-                            placeholder="Zip Code"
-                            minlength="5"
-                            required/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>State</label>
+                            <fg-input
+                                    id="stateFnForm"
+                                    type="text"
+                                    v-model="form.state"
+                                    :class="{ 'has-danger': $v.form.state.$invalid && $v.form.state.$dirty, 'has-success': !$v.form.state.$invalid }"
+                                    placeholder="State"
+                                    minlength="2"
+                                    maxlength="2"
+                                    required/>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="zipFnForm">Zip Code</label>
+                            <fg-input
+                                    id="zipFnForm"
+                                    type="text"
+                                    v-model="form.zip"
+                                    :class="{ 'has-danger': $v.form.zip.$invalid && $v.form.zip.$dirty, 'has-success': !$v.form.zip.$invalid }"
+                                    placeholder="Zip Code"
+                                    minlength="5"
+                                    required/>
+                        </div>
                     </div>
                     
-                    <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
+                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
                     
-                    <form-navigation v-on:nextStep="step4" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step3" v-on:backStep="backStep"></form-navigation>
 
                 </div>
                         
                 <!-- PET INFORMATION -->
 
-                <!-- formStep 4 -->
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===4">
+                <!-- formStep 3 -->
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===3">
                     <h4 class="description-box">
                         Now, please tell us all about your best friend. Let's start with their name, a picture and what makes them special to you.
                     </h4>
@@ -202,7 +166,6 @@
                                 rows="6"
                                 class="form-control"
                                 v-model="form.about"
-                                
                                 minlength="30"
                                 required/>
                     </div>
@@ -226,12 +189,12 @@
                     <h6 class="center red" v-if="$v.form.$dirty">Please provide a name and tell us a little about them.</h6>
 
                     <!-- form navigation -->
-                    <form-navigation v-on:nextStep="step5" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step4" v-on:backStep="backStep"></form-navigation>
 
                 </div>
 
-                <!-- FORM STEP 5 -->
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===5">
+                <!-- FORM STEP 4 -->
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===4">
                     <h4 class="description-box">
                         What is {{ form.petName }}? If you know {{ form.petName }}'s breed, please list that as well.
                     </h4>
@@ -267,10 +230,10 @@
                     </div>
 
                     <!-- form navigation -->
-                    <form-navigation v-on:nextStep="step6" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step5" v-on:backStep="backStep"></form-navigation>
                 </div>
                     
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===6">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===5">
                     <h4 class="description-box">
                         Is {{ form.petName }} a boy {{ form.species }}, or a girl {{ form.species }}? Select the gender, and use the arrow keys at the bottom to advance.
                     </h4>
@@ -290,10 +253,10 @@
                         </div>
                     </div>
 
-                    <form-navigation v-on:nextStep="step7" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step6" v-on:backStep="backStep"></form-navigation>
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===7">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===6">
 
                     <h4 class="description-box">
                         Is {{ form.petName }} {{ procedure }}? Select below, and use the arrow keys at the bottom to advance.
@@ -314,10 +277,10 @@
                         </div>
                     </div>
 
-                    <form-navigation v-on:nextStep="step8" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step7" v-on:backStep="backStep"></form-navigation>
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===8">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===7">
 
                     <h4 class="description-box">
                         Rounded to the nearest year, how old is {{ form.petName }}?
@@ -340,7 +303,7 @@
                     <form-navigation v-on:nextStep="nextStep" v-on:backStep="backStep"></form-navigation>
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===8">
                     <h5 class="description-box">What is {{ form.petName }}'s diagnosis and when did you receive it?</h5>
                 
                     <div class="form-group" id="diagnosisGroup">
@@ -371,10 +334,10 @@
                                 placeholder="Diagnosis Date" />
                     </div>
 
-                    <form-navigation v-on:nextStep="step10" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step9" v-on:backStep="backStep"></form-navigation>
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===10">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===9">
                     <div class="form-group" :class="{ 'has-danger': $v.form.previousDiagnosis.$invalid && $v.form.previousDiagnosis.$dirty }">
                         <h5 class="description-box">Has {{ form.petName }} previously been diagnosed with cancer?</h5>
                         <div class="row">
@@ -389,10 +352,10 @@
                         </div>
                     </div>
 
-                    <form-navigation v-on:nextStep="step11" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step10" v-on:backStep="backStep"></form-navigation>
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===11">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===10">
                     <h4 class="description-box">
                         Now we'll need {{ form.petName }}'s veterinarian information.
                     </h4>
@@ -400,7 +363,7 @@
                     <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
 
                     <div class="form-group" id="primaryVetFirstNameGroup">
-                        <label for="primaryVetFirstName">Vet First Name</label>
+                        <label for="primaryVetFirstName">Vet Name</label>
                         <fg-input
                                 id="primaryVetFirstName"
                                 type="text"
@@ -408,10 +371,7 @@
                                 v-model="form.primaryVetFirstName"
                                 placeholder="Primary Vet First Name"
                                 required />
-                    </div>
-
-                    <div class="form-group" id="primaryVetLastNameGroup">
-                        <label for="primaryVetLastName">Vet Last Name</label>
+                    
                         <fg-input
                                 id="primaryVetLastName"
                                 type="text"
@@ -478,44 +438,13 @@
 
                     <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
 
-                    <form-navigation v-on:nextStep="step12" v-on:backStep="backStep"></form-navigation>
+                    <form-navigation v-on:nextStep="step11" v-on:backStep="backStep"></form-navigation>
                 </div>
 
-                <div class="col-12 mr-auto ml-auto" v-if="formStep===12">
+                <div class="col-12 mr-auto ml-auto" v-if="formStep===11">
 
                     <h4 class="description-box">
-                        And finally(!), we'll need copies of your pet's current vet bills.
-                    </h4>
-                         
-                         
-                    <h4 class="description-box"> PLEASE NOTE: YOU MAY ONLY UPLOAD ONE FILE, AND IT MUST BE UNDER 5MB.  You will likely have more than one file, so please email any additional records to roofinancials@gmail.com <em><strong>from the email you provided here</strong></em>, and we can attach them to your request. We can accept image and PDF files. 
-                    </h4>
-                    <h6 class="center" v-if="$v.form.$dirty">You must send medical records.</h6>
-                    <br>
-
-                    <b-form-group id="recordsGroup" label="Please upload your pet's medical records" label-for="recordsFinReq" class="box">
-                        <b-form-file
-                                id="recordsFinReq"
-                                accept="application/pdf, image/*"
-                                v-model="form.record1"
-                                placeholder="Choose a file..."
-                                drop-placeholder="Drop file here..."
-                                @change="onRecordChange"/>
-                    </b-form-group>
-
-                    <b-col cols="6" offset="3" style="margin-top: 1rem;">
-                        <img v-if="fileType==='image'" :src="recordUrl" width="200" alt="uploaded image">
-
-                        <pdf v-if="fileType==='pdf'" :src="recordUrl" width="200" alt="uploaded record"></pdf>
-                    </b-col>
-
-                    <form-navigation v-on:nextStep="step13" v-on:backStep="backStep"></form-navigation>
-                </div>
-
-                <div class="col-12 mr-auto ml-auto" v-if="formStep>=13">
-
-                    <h4 class="description-box">
-                        That's it! If you need to check your submission, please use the back button or reset the form to start all over. You will receive an email from us with further information. 
+                        That's it! If you need to check your submission, please use the back button or reset the form to start all over. You will receive an email confirmation from us where you can respond with the relevant medical records. 
                     </h4>
                     
                     <div class="col-12 ml-auto mr-auto">
@@ -523,7 +452,7 @@
                                 v-model="robot"
                                 required
                                 style="text-align: center;">
-                            By submitting this form, I certify that the information provided is true and accurate to the best of my knowledge.
+                            By submitting this form, I certify that the information provided is true and accurate to the best of my knowledge, and I will send all relevant medical records to roofinancials@gmail.com.
                         </n-checkbox>
                     </div>
                     <br>
@@ -735,13 +664,6 @@
             dateObject () {
                 return this.form.diagnosisDate ? new Date(this.form.diagnosisDate) : null
             },
-            formValid1() {
-                return !!(!this.$v.form.email.$invalid && !this.$v.form.firstName.$invalid && !this.$v.form.lastName.$invalid && !this.$v.form.address1.$invalid && !this.$v.form.city.$invalid && !this.$v.form.state.$invalid && !this.$v.form.zip.$invalid);
-            },
-
-            formValid2() {
-                return !!(!this.$v.form.about.$invalid && !this.$v.form.petName.$invalid);
-            },
 
             isDog() {
                 return !!(this.form.species === 'dog');
@@ -816,25 +738,22 @@
             },
 
             // *TODO* refactor steps into single method
+            step3() {
+                if(!this.$v.form.email.$invalid && !this.$v.form.firstName.$invalid && !this.$v.form.lastName.$invalid && !this.$v.form.address1.$invalid && !this.$v.form.city.$invalid && !this.$v.form.state.$invalid && !this.$v.form.zip.$invalid) {
+                    this.nextStep();
+                }
+                this.$v.form.$touch();
+            },
+
             step4() {
-                if(this.formValid1) {
-                    // reset form validation for each new section
-                    this.$nextTick(() => { this.$v.$reset() });
-                    this.formStep += 1;
+                if(!this.$v.form.about.$invalid && !this.$v.form.petName.$invalid) {
+                    // reset the form for each new section
+                    this.nextStep();
                 }
                 this.$v.form.$touch();
             },
 
             step5() {
-                if(this.formValid2) {
-                    // reset the form for each new section
-                    this.$nextTick(() => { this.$v.$reset() });
-                    this.formStep += 1;
-                }
-                this.$v.form.$touch();
-            },
-
-            step6() {
                 if(!this.$v.form.species.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
@@ -843,7 +762,7 @@
                 this.$v.form.$touch();
             },
 
-            step7() {
+            step6() {
                 if(!this.$v.form.gender.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
@@ -852,7 +771,7 @@
                 this.$v.form.$touch();
             },
 
-            step8() {
+            step7() {
                 if(this.form.altered != null) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
@@ -861,7 +780,7 @@
                 this.$v.form.$touch();
             },
 
-            step9() {
+            step8() {
                 if(!this.$v.form.age.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
@@ -870,7 +789,7 @@
                 this.$v.form.$touch();
             },
 
-            step10() {
+            step9() {
                 if(!this.$v.dateObject.$invalid && !this.$v.form.diagnosis.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
@@ -879,7 +798,7 @@
                 this.$v.form.$touch();
             },
 
-            step11() {
+            step10() {
                 if(!this.$v.form.previousDiagnosis.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
@@ -888,7 +807,7 @@
                 this.$v.form.$touch();
             },
 
-            step12() {
+            step11() {
                 if(!this.$v.form.primaryClinicPhone.$invalid && !this.$v.form.primaryClinicName.$invalid) {
                     // reset the form for each new section
                     this.$nextTick(() => { this.$v.$reset() });
@@ -897,18 +816,20 @@
                 this.$v.form.$touch();
             },
 
-            step13() {
-                // if(!this.$v.form.record1.$invalid) {
-                    // reset the form for each new section
+            step12() {
+                // reset the form for each new section
                 this.$nextTick(() => { this.$v.$reset() });
                 this.formStep += 1;
-                // }
+        
                 this.$v.form.$touch();
             },
 
             nextStep() {
+                
                 this.$nextTick(() => { this.$v.$reset() });
                 this.formStep += 1;
+
+                this.$v.form.$touch();
             },
 
             backStep() {
