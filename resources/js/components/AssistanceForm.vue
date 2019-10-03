@@ -363,7 +363,7 @@
                     <br><h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required.</h6><br>
 
                     <div class="form-group" id="primaryVetFirstNameGroup">
-                        <label for="primaryVetFirstName">Vet First Name</label>
+                        <label for="primaryVetFirstName">Vet Name</label>
                         <fg-input
                                 id="primaryVetFirstName"
                                 type="text"
@@ -371,10 +371,7 @@
                                 v-model="form.primaryVetFirstName"
                                 placeholder="Primary Vet First Name"
                                 required />
-                    </div>
-
-                    <div class="form-group" id="primaryVetLastNameGroup">
-                        <label for="primaryVetLastName">Vet Last Name</label>
+                    
                         <fg-input
                                 id="primaryVetLastName"
                                 type="text"
@@ -455,7 +452,7 @@
                                 v-model="robot"
                                 required
                                 style="text-align: center;">
-                            By submitting this form, I certify that the information provided is true and accurate to the best of my knowledge.
+                            By submitting this form, I certify that the information provided is true and accurate to the best of my knowledge, and I will send all relevant medical records to roofinancials@gmail.com.
                         </n-checkbox>
                     </div>
                     <br>
