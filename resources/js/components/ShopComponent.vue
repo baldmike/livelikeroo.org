@@ -2,8 +2,8 @@
     <b-row style="margin-top: 200px;">
         <b-col v-for="(item, index) in items" :key="index" cols="12" md="2">
             <b-card v-if="item.quantity > 10" :img-src="item.image" img-alt="Shop Item">
-                <h6>{{ item.title }} ${{ item.price }}</h6>
-                <b-btn class="select-button">{{ item.description }}</b-btn>
+                <h4>{{ item.title }} ${{ item.price }}</h4>
+                <h6>{{ item.description }} </h6>
                 <b-btn class="select-button">ADD TO CART</b-btn>
             </b-card>
         </b-col>
