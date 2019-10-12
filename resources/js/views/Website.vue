@@ -3,9 +3,13 @@
     <transition name="fade">
         <div>
 
+            
+            <cta-component/>
+            
             <landing-page/>
             
             
+
             <donate-component/>
             
             <care-package/>    
@@ -31,7 +35,7 @@
 
     import LandingPage from '../components/LandingPage'
     import DonateComponent from '../components/DonateComponent'
-    
+    import CtaComponent from '../components/CTAComponent'
     import CarePackage from '../components/CarePackageComponent'
     import AssistanceComponent from '../components/AssistanceComponent'
     import EventsComponent from '../components/EventsComponent'
@@ -58,7 +62,8 @@
             AssistanceComponent,
             PartnerComponent,
             TeamComponent,
-            Gallery
+            Gallery,
+            CtaComponent
         },
         computed: {
 
