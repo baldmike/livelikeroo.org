@@ -4,11 +4,9 @@
         <div>
 
             
-            <cta-component/>
-            
             <landing-page/>
             
-            
+            <cta-component/>
 
             <donate-component/>
             

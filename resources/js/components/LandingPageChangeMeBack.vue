@@ -1,8 +1,12 @@
 <template>
-    <div class="wrapper landing-page">
-            <div class="row landing-block">
-                <div class="col-md-3 offset-md-1" style="position: absolute; bottom: 40%; text-align: right; color: white;">
-                    <p class="quote">"To know that even one life has breathed easier because you lived here. This is to have succeeded."</p>
+    <div class="wrapper landing-page" style="z-index: 10;">
+        <div class="page-header header-filter">
+            <parallax class="page-header-image"
+                 style="background-image: url('images/banner1.jpg')">
+            </parallax>
+            <div class="row landing-block" style="min-height: 1000px;">
+                <div class="col-md-3 offset-md-1" style="position: absolute; bottom: 40%; text-align: right;">
+                    <h4>"To know that even one life has breathed easier because you lived here. This is to have succeeded."</h4>
                     <small>Ralph Waldo Emerson</small>
                 </div>
 
@@ -35,9 +39,10 @@
 
             <div class="row">
                 <h1 style="color: #fd7e14; position: absolute; bottom: 30px; left: 20vw; font-size: 10vw;">#LiveLikeRoo</h1>
+
             </div>
-        
-        <div class="container" style="background-color: white;">
+        </div>
+        <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
                     <div class="separator-line separator-primary"></div>
@@ -262,24 +267,7 @@
     }
 </script>
 <style scoped>
-    .wrapper {
-        background-image: url('/images/banner1.jpg');
-        background-size: cover;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-
-    }
     @media only screen and (max-width: 500px) {
-        .wrapper {
-            background-image: url('/images/llr_logo.png');
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        } 
-
-        .quote {
-            color: black;
-        }
         .blockquote {
             display: none;
         }
