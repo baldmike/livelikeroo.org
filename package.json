@@ -2,7 +2,7 @@
     "name": "livelikeroo.org",
     "private": true,
     "scripts": {
-        "live": "php artisan serve --host=127.0.0.1 --port=8000 & npm run hot",
+        "live": "php artisan serve --host=127.0.0.1 --port=8000 & npm run watch",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -21,7 +21,7 @@
         "bootstrap-vue": "^2.0.0-rc.22",
         "element-ui": "^2.9.1",
         "jquery": "^3.4.1",
-        "lodash": "^4.17.5",
+        "lodash": "^4.17.15",
         "moment": "^2.24.0",
         "nouislider": "^11.1.0",
         "popper.js": "^1.12",

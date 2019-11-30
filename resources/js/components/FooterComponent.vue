@@ -31,13 +31,13 @@
                     <li>
                         <router-link to="contact">CONTACT</router-link>
                     </li>
-                    <li>
-                        <a href="/nova">LOGIN</a>
-                    </li>
-                    
                     <!-- <li>
+                        <a href="/nova">LOGIN</a>
+                    </li> -->
+                    
+                    <li>
                         <router-link to="" v-if='!isAuthenticated'>
-                            <span v-on:click="showLogin">LOGIN</span>
+                            <span v-on:click="showLogin">DONOR LOGIN</span>
                         </router-link>
                     </li>
                     <li>
@@ -48,13 +48,13 @@
                         <router-link to="/" v-if="isAuthenticated">
                             <span v-on:click="logout">LOGOUT</span>
                         </router-link>
-                    </li> -->
+                    </li>
                 </ul>
             </nav>
 
             <div class="copyright">
                 &copy; {{year}}, The <a href="/nova">Live Like Roo</a> Foundation - Designed and Developed with Love by 
-                <a href="https://github.com/baldmike" target="_blank">Bald Mike</a>
+                <a href="https://noproblemsonly.solutions" target="_blank">Bald Mike</a>
             </div>
         </div>
     </footer>

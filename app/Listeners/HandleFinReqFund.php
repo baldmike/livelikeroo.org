@@ -26,7 +26,7 @@ class HandleFinReqFund
      */
     public function handle(FinReqFund $event)
     {
-        $event->fin_req->status = 'closed';
+        $event->fin_req->status = 'funded';
         $event->fin_req->save();
     }
 }

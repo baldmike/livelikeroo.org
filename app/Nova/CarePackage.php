@@ -107,7 +107,7 @@ class CarePackage extends Resource
 
             Text::make('Pet Name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('Species')
                 ->sortable()
@@ -116,7 +116,7 @@ class CarePackage extends Resource
             Text::make('About')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
                 
             Image::make('Image')->disk('local')
                 ->hideFromIndex()
@@ -167,16 +167,16 @@ class CarePackage extends Resource
             Text::make('First Name')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('Last Name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('Address 1')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('Address 2')
                 ->sortable()
@@ -186,17 +186,17 @@ class CarePackage extends Resource
             Text::make('city')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('state')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('zip')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'max:255'),
+                ->rules('max:255'),
 
             Text::make('label_url')
                 ->hideFromIndex(),
@@ -204,9 +204,7 @@ class CarePackage extends Resource
             Text::make('Email')
                 ->sortable()
                 ->hideFromIndex()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('email')
-                ->updateRules('email,{{resourceId}}'),
+                
                 
         ];
 

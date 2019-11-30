@@ -3,9 +3,11 @@
     <transition name="fade">
         <div>
 
+            
             <landing-page/>
             
-            
+            <cta-component/>
+
             <donate-component/>
             
             <care-package/>    
@@ -13,9 +15,15 @@
             <!-- <gallery/> -->
 
             <assistance-component/>
-            <team-component />
+            
+            <br><br>
+            <div class="separator-line separator-primary"></div>
+            <br><br>
+            
             <events-component />
             
+            <team-component />
+
             <br><br>
             <div class="separator-line separator-primary"></div>
             <br><br>
@@ -31,7 +39,7 @@
 
     import LandingPage from '../components/LandingPage'
     import DonateComponent from '../components/DonateComponent'
-    
+    import CtaComponent from '../components/CTAComponent'
     import CarePackage from '../components/CarePackageComponent'
     import AssistanceComponent from '../components/AssistanceComponent'
     import EventsComponent from '../components/EventsComponent'
@@ -58,7 +66,8 @@
             AssistanceComponent,
             PartnerComponent,
             TeamComponent,
-            Gallery
+            Gallery,
+            CtaComponent
         },
         computed: {
 

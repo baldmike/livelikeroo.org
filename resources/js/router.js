@@ -16,6 +16,8 @@ import CappyComponent from './components/CappyComponent.vue'
 import MaggieComponent from './components/MaggieComponent.vue'
 import SerenityComponent from './components/SerenityComponent.vue'
 import FortyFourComponent from './components/FortyFourComponent.vue'
+import ShopComponent from './components/ShopComponent.vue'
+import PurchaseForm from './components/PurchaseForm.vue'
 
 export const router = new VueRouter({ 
     mode: 'history',
@@ -29,7 +31,7 @@ export const router = new VueRouter({
                     path: '',
                     components: {default: Website, header: Navbar, footer: Footer},
                     title: 'Website',
-                    props: {header: {colorOnScroll: 400}}
+                    props: {header: {colorOnScroll: 100}}
                 },
                 {
                     path: '/donate',
@@ -119,9 +121,23 @@ export const router = new VueRouter({
                     },
                 }
                
-            ]
+            ],
+            
+        },
+        {
+            path: '/shop',
+            components: {default: ShopComponent, header: Navbar, footer: Footer},
+            title: 'Shop',
+            props: {header: {colorOnScroll: 5}}
+        },
+        {
+            path: '/coloring-book',
+            components: {default: PurchaseForm, header: Navbar, footer: Footer},
+            title: 'Shop',
+            props: {header: {colorOnScroll: 5}}
         },
     ],
+    
     scrollBehavior (to, from, savedPosition) {
         return { x: 0, y: 0 }
     },

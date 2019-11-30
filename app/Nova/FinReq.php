@@ -76,15 +76,19 @@ class FinReq extends Resource
                 ->sortable()
                 ->onlyOnIndex(),
 
-            Text::make('Status')
-                ->sortable()
-                ->hideWhenUpdating(),
+            Select::make('Status')
+                ->options([
+                    'new' => 'New', 
+                    'in_progress' => 'In Progress', 
+                    'funded' => 'Funded', 
+                    'declined' => 'Declined', 
+                    'closed' => 'Closed'
+            ]),
 
-            Currency::make('award_amount')
+            Currency::make('Award Amount')
                 ->format('$%.2n')
                 ->sortable()
                 ->hideFromIndex(),
-                
 
             new Panel('Requested By', $this->requestedByFields()),
             new Panel('For', $this->petFields()),
@@ -114,9 +118,10 @@ class FinReq extends Resource
             Text::make('Email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
-                ->creationRules('email'),
-                // ->updateRules('email,{{resourceId}}'),
-
+                ->creationRules('unique:users,email')
+                ->hideFromIndex()
+                ->updateRules('unique:users,email,{{resourceId}}'),
+          
             Text::make('Address 1')
                 ->sortable()
                 ->hideFromIndex()

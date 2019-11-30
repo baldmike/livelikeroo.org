@@ -28,7 +28,7 @@ export default new Vuex.Store({
                 cpForm: false,
                 fnForm: false,
                 login: false,
-                bios: false
+                bios: false,
             },
             alerts: {
                 info: false,
@@ -159,7 +159,6 @@ export default new Vuex.Store({
         getFortyFour(context) {
             axios.call("get", "/api/forty_four").then(({ data }) => {
                 context.commit('setFortyFour', data);
-                console.log("FORTY FOUR DATA: " + data);
             })
             .catch(error => {
                 console.log("GET FORTY FOUR ERROR: " + error);
@@ -242,6 +241,19 @@ export default new Vuex.Store({
 
             router.push({ path: 'events' });
         },
+        
+        fnFormError(context) {
+            context.commit('endLoading');
+
+            let payload = {
+                type: "danger",
+                message: "There was an error processing your request. Please ensure that your medical record is less than 5mb - it has been saved for you."
+            }
+
+            context.commit('notify', payload);
+
+        },
+
         cpFormSubmit(context) {
             context.commit('hideModal');
             context.commit('startLoading');
@@ -300,7 +312,7 @@ export default new Vuex.Store({
 
             let payload = {
                 type: "danger",
-                message: "There was an error WITH YOUR CARD. Please open the form and try again - the form is as you left it. If the problem persists, contact the card issuer." 
+                message: "There was an error with your card. Please open the form and try again - the form is as you left it. If the problem persists, contact the card issuer." 
             }
 
             context.commit('notify', payload);

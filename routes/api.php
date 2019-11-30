@@ -21,11 +21,16 @@ Route::post('/logout', 'Api\AuthController@logout');
 Route::resource('fin_reqs', 'Api\FinReqsController');
 Route::resource('care_pkgs', 'Api\CarePackageController');
 Route::resource('contact', 'Api\MessageController');
+Route::resource('order', 'Api\OrderController');
 
 // donations 
 Route::post('/make_donation', 'Api\DonationController@oneTime');
 Route::post('/monthly_donation', 'Api\DonationController@monthly');
 Route::get('/forty_four', 'Api\DonationController@fortyFour');
+
+// shop
+
+
 
 Route::middleware('auth:api')->group(function () {
     

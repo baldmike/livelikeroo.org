@@ -1,30 +1,30 @@
 <template>
-    <div class="wrapper landing-page" style="z-index: 10;">
-        <div class="page-header header-filter">
-            <parallax class="page-header-image"
-                 style="background-image: url('images/banner1.jpg')">
-            </parallax>
-            <div class="row landing-block" style="min-height: 1000px;">
-                <div class="col-md-3 offset-md-1" style="position: absolute; bottom: 40%; text-align: right;">
-                    <h4>"To know that even one life has breathed easier because you lived here. This is to have succeeded."</h4>
+    <div class="wrapper landing-page">
+            <div class="row landing-block">
+                <div class="col-md-3 offset-md-1" style="position: absolute; bottom: 40%; text-align: right; color: white;">
+                    <p class="quote">"To know that even one life has breathed easier because you lived here. This is to have succeeded."</p>
                     <small>Ralph Waldo Emerson</small>
                 </div>
 
-                <!-- <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
+                <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
                     
-                    <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
-                </div> -->
+                </div>
                 <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4">
                     <div class="donate-box">
                         <h5 style="color: #384666">
-                            <p>DONATE</p> 
-                            <p>TO</p> 
-                            <p>LIVE LIKE ROO</p>
+                            <p>DONATE TO</p> 
+                            <p>- LIVE LIKE ROO -</p>
                         </h5>
 
-                        <n-button style="background-color: #fd7e14;  !important; color: white !important" @click.prevent.native="showDnForm" type="neutral" size="lg" block round>CLICK TO DONATE TODAY!</n-button>  
                         
-                        <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="100"></a>
+
+                        <n-button type="primary" block @click.native="showDnForm" style="height: 100px;"><h6>Donate</h6><h6>to</h6><h3>Live Like Roo!</h3></n-button>
+
+                        
+                        <br>
+
+                        <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="120"></a>
+
                     </div>  
                 </div>
                 <div class="col-md-6 ml-auto mr-auto phonely">
@@ -35,10 +35,9 @@
 
             <div class="row">
                 <h1 style="color: #fd7e14; position: absolute; bottom: 30px; left: 20vw; font-size: 10vw;">#LiveLikeRoo</h1>
-
             </div>
-        </div>
-        <div class="container">
+        
+        <div class="container" style="background-color: white;">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
                     <div class="separator-line separator-primary"></div>
@@ -249,6 +248,9 @@
 
                  return (Math.floor((num/4400) * 100));
 
+            },
+            friday() {
+                return false;
             }
         },
 
@@ -260,7 +262,24 @@
     }
 </script>
 <style scoped>
+    .wrapper {
+        background-image: url('/images/banner1.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+
+    }
     @media only screen and (max-width: 500px) {
+        .wrapper {
+            background-image: url('/images/llr_logo.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        } 
+
+        .quote {
+            color: black;
+        }
         .blockquote {
             display: none;
         }
