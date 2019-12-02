@@ -33,6 +33,9 @@ class HandleOneTimeDonation
         // send confirmation email to donor
         Mail::to($event->donation->email)->send(new OneTimeDonation($event->donation));
 
+        // send confirmation email to Sarah
+        Mail::to('livelikeroo@gmail.com')->send(new OneTimeDonation($event->donation));
+
         // send notification to Sarah
         
     }

@@ -30,5 +30,7 @@ class HandleMonthlyDonation
     public function handle(MonthlyDonationMade $event)
     {
         Mail::to($event->donation->email)->send(new MonthlyDonation($event->donation, $event->user));
+
+        Mail::to('livelikeroo@gmail.com')->send(new MonthlyDonation($event->donation, $event->user));
     }
 }
