@@ -5,6 +5,10 @@
         <div class="loader" v-if="this.$store.state.loading"></div>
         
         <router-view name="header"/>
+
+        <button class="givegab-button" data-campaign-id="59614" data-host="https://www.givegab.com" data-org-id="475792" data-preview="" style="background-color: #FF8B22;">Donate Now</button>
+
+        
         <router-view/>
         <router-view name="footer"/>
 

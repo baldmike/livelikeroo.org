@@ -26,5 +26,11 @@
         <script src="https://js.stripe.com/v3/"></script>
         
         <script src="{{ asset('js/app.js') }}"></script>        
+        <script src="https://givegab.s3.amazonaws.com/donation-widget/givegab-button.js"></script>
     </body>
+
+    <div style="margin-left: 33%">
+        <button class="givegab-button" data-campaign-id="59614" data-host="https://www.givegab.com" data-org-id="475792" data-preview="" style="background-color: #FF8B22;">****  CLICK HERE TO DONATE FOR GIVING TUESDAY! ****</button>
+    </div>
+    <BR></BR>
 </html>

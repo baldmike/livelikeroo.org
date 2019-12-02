@@ -5,15 +5,14 @@
                     <p class="quote">"To know that even one life has breathed easier because you lived here. This is to have succeeded."</p>
                     <small>Ralph Waldo Emerson</small>
                 </div>
-
-                <div class="col-md-2 offset-md-8" style="position: absolute; top: 20%; color: #fd7e14; z-index: 4;">
-                    
-                </div>
                 <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4">
                     <div class="donate-box">
                         <h5 style="color: #384666">
-                            <p>DONATE TO</p> 
-                            <p>- LIVE LIKE ROO -</p>
+                            <!-- <p>DONATE TO</p> 
+                            <p>- LIVE LIKE ROO -</p> -->
+
+                            <h2>GIVING</h2>
+                            <h2>TUESDAY</h2>
                         </h5>
 
                         
@@ -27,6 +26,7 @@
 
                     </div>  
                 </div>
+                
                 <div class="col-md-6 ml-auto mr-auto phonely">
                     <n-button @click.prevent.native="showDnForm" type="primary" size="sm" block round>DONATE</n-button>
                 </div>
@@ -228,12 +228,14 @@
         methods: {
             showDnForm() {
                 
-                let payload = {
-                    fund: 'roo',
-                    freq: 'oneTime'
-                };
+                // let payload = {
+                //     fund: 'roo',
+                //     freq: 'oneTime'
+                // };
 
-                this.$store.dispatch('showDnForm', payload);
+                // this.$store.dispatch('showDnForm', payload);
+
+                window.scrollTo(0,document.body.scrollHeight);
             },
         },
 
