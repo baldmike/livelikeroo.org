@@ -12,7 +12,7 @@
                             <p>- LIVE LIKE ROO -</p> -->
 
                             <h2>GIVING</h2>
-                            <h2>TUESDAY</h2>
+                            <h2>TUESDAY!</h2>
                         </h5>
 
                         
@@ -22,7 +22,9 @@
                         
                         <br>
 
-                        <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="120"></a>
+                        <!-- <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="120"></a> -->
+
+                        <h6>please use the link at the very bottom of the page! Thank you!</h6>
 
                     </div>  
                 </div>

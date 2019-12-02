@@ -17,10 +17,10 @@
                 </el-popover> -->
         </template>
         <template slot="navbar-menu">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <router-link class="nav-link nav-slice" to="/donate"><i class="fas fa-donate roo"
                 aria-hidden="true" style="font-size: 1.8rem;"></i><h3>Donate</h3></router-link>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <router-link class="nav-link nav-slice" to="/care_package"><i class="fas fa-gift roo"
                 aria-hidden="true" style="font-size: 1.8rem;"></i><h3>Care Packages</h3></router-link>
