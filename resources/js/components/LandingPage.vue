@@ -8,11 +8,7 @@
                 <div class="col-md-3 offset-md-8" style="position: absolute; top: 20%; z-index: 4">
                     <div class="donate-box">
                         <h5 style="color: #384666">
-                            <!-- <p>DONATE TO</p> 
-                            <p>- LIVE LIKE ROO -</p> -->
-
-                            <h2>GIVING</h2>
-                            <h2>TUESDAY!</h2>
+                            <button><a href="https://livelikeroo.us17.list-manage.com/subscribe?u=f575bf61e2aa626cab5515697&id=9dbe1990e7" >JOIN OUR MAILING LIST!</a></button>
                         </h5>
 
                         
@@ -22,9 +18,8 @@
                         
                         <br>
 
-                        <!-- <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="120"></a> -->
+                        <a href="https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w" target="_blank"><img src="images/amazonWishlist.jpeg" alt="Amazon wishlist link" width="120"></a>
 
-                        <h6>please use the link at the very bottom of the page! Thank you!</h6>
 
                     </div>  
                 </div>
@@ -230,14 +225,12 @@
         methods: {
             showDnForm() {
                 
-                // let payload = {
-                //     fund: 'roo',
-                //     freq: 'oneTime'
-                // };
+                let payload = {
+                    fund: 'roo',
+                    freq: 'oneTime'
+                };
 
-                // this.$store.dispatch('showDnForm', payload);
-
-                window.scrollTo(0,document.body.scrollHeight);
+                this.$store.dispatch('showDnForm', payload);
             },
         },
 
