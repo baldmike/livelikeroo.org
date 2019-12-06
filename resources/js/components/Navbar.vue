@@ -33,9 +33,12 @@
                 <router-link class="nav-link nav-slice" to="/events"><i class="fas fa-calendar-alt roo"
                 aria-hidden="true" style="font-size: 1.2rem;"></i><h3>events</h3></router-link>
             </li>
-            <!-- <li class="nav-item">
-                <router-link class="nav-link nav-slice" to="/wishlist" _target="black"><img src = "/images/Amazon-Wish-List-Logo.png"></router-link>
-            </li> -->
+            <li class="nav-item">
+                <router-link class="nav-link nav-slice" to="/mailing-list"><i class="fas fa-envelope-alt roo"
+                aria-hidden="true" style="font-size: 1.2rem;"></i><h3>Join Our Mailing List</h3></router-link>
+                    
+                </p>
+            </li>
 
             <!-- <li class="nav-item">
                 <router-link class="nav-link" to="/shop"><i class="now-ui-icons shopping_basket roo"
@@ -77,6 +80,13 @@
       NavLink,
       [Popover.name]: Popover
     },
+
+    methods: {
+        mailingList() {
+            this.window.locaiton('https://livelikeroo.us17.list-manage.com/subscribe?u=f575bf61e2aa626cab5515697&id=9dbe1990e7');
+        }
+    }
+
   }
 </script>
 

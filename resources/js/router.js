@@ -100,6 +100,12 @@ export const router = new VueRouter({
                     title: 'FortyFour',
                 },
                 {
+                    path: '/mailing-list',
+                    beforeEnter(to, from, next) {
+                        window.location = "https://livelikeroo.us17.list-manage.com/subscribe?u=f575bf61e2aa626cab5515697&id=9dbe1990e7"
+                    }
+                },
+                {
                     path: '/wishlist',
                     beforeEnter(to, from, next) {
                         window.location = "https://www.amazon.com/gp/registry/wishlist/3AYP9KC33K3AU/ref=cm_sw_su_w"
