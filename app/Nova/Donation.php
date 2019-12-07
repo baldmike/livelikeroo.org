@@ -84,7 +84,6 @@ class Donation extends Resource
                 ->rules('required', 'max:255'),
 
             Text::make('Email')
-                ->hideFromIndex()
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('email'),
