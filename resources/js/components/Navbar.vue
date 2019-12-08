@@ -19,25 +19,23 @@
         <template slot="navbar-menu">
             <li class="nav-item">
                 <router-link class="nav-link nav-slice" to="/donate"><i class="fas fa-donate roo"
-                aria-hidden="true" style="font-size: 1.2rem;"></i><h3>Donate</h3></router-link>
+                aria-hidden="true" style="font-size: 1rem;"></i><h3>Donate</h3></router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link nav-slice" to="/care_package"><i class="fas fa-gift roo"
-                aria-hidden="true" style="font-size: 1.2rem;"></i><h3>Care Packages</h3></router-link>
+                aria-hidden="true" style="font-size: 1rem;"></i><h3>Care Packages</h3></router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link nav-slice" to="/assistance"><i class="fas fa-heart roo"
-                aria-hidden="true" style="font-size: 1.2rem;"></i><h3>Assistance</h3></router-link>
+                aria-hidden="true" style="font-size: 1rem;"></i><h3>Assistance</h3></router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link nav-slice" to="/events"><i class="fas fa-calendar-alt roo"
-                aria-hidden="true" style="font-size: 1.2rem;"></i><h3>events</h3></router-link>
+                aria-hidden="true" style="font-size: 1rem;"></i><h3>events</h3></router-link>
             </li>
             <li class="nav-item">
                 <router-link class="nav-link nav-slice" to="/mailing-list"><i class="fas fa-envelope-alt roo"
-                aria-hidden="true" style="font-size: 1.2rem;"></i><h3>Join Our Mailing List</h3></router-link>
-                    
-                </p>
+                aria-hidden="true" style="font-size: 1rem;"></i><h3>Join Our Mailing List</h3></router-link>
             </li>
 
             <!-- <li class="nav-item">
@@ -45,7 +43,7 @@
                 aria-hidden="true"></i><p>Shop</p></router-link>
             </li> -->
             
-            <drop-down style="font-size: 1.8rem;" tag="li" title="programs" class="nav-item nav-slice">
+            <!-- <drop-down style="font-size: 1.8rem;" tag="li" title="programs" class="nav-item nav-slice">
                 <nav-link class="dropdown-item" to="/booker">
                     <i class="now-ui-icons emoticons_satisfied" style="color: #fd7e14;"></i> Booker Fund
                 </nav-link>
@@ -58,7 +56,7 @@
                 <nav-link class="dropdown-item" to="/serenity">
                     <i class="now-ui-icons emoticons_satisfied" style="color: violet;"></i> Serenity's Wish
                 </nav-link>
-            </drop-down>
+            </drop-down> -->
 
         </template>
     </navbar>

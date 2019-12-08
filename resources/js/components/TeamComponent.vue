@@ -102,7 +102,7 @@
                         </div>
                     </card>
                 </div>
-                <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
+                <!-- <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
                     <card type="profile" plain>
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
@@ -134,7 +134,7 @@
                             
                         </div>
                     </card>
-                </div>
+                </div> -->
 
                 <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
                     <card type="profile" plain>
