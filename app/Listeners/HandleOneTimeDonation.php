@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 use App\Events\OneTimeDonationMade;
 use App\Mail\OneTimeDonation;
+use App\Mail\DonationMade;
+
 use Mail;
 
 
@@ -37,6 +39,6 @@ class HandleOneTimeDonation
         Mail::to('livelikeroo@gmail.com')->send(new OneTimeDonation($event->donation));
 
         // send notification to Sarah
-        
+        Mail::to('sarahlauch@gmail.com')->send(new DonationMade($event->donation));
     }
 }
