@@ -39,6 +39,6 @@ class HandleOneTimeDonation
         Mail::to('livelikeroo@gmail.com')->send(new OneTimeDonation($event->donation));
 
         // send notification to Sarah
-        Mail::to('sarahlauch@gmail.com')->send(new DonationMade($event->donation));
+        // Mail::to('sarahlauch@gmail.com')->send(new DonationMade($event->donation));
     }
 }

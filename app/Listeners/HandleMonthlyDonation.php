@@ -36,6 +36,6 @@ class HandleMonthlyDonation
         Mail::to('livelikeroo@gmail.com')->send(new MonthlyDonation($event->donation, $event->user));
 
         // send notification to Sarah
-        Mail::to('sarahlauch@gmail.com')->send(new DonationMade($event->donation));
+        // Mail::to('sarahlauch@gmail.com')->send(new DonationMade($event->donation));
     }
 }
