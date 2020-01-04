@@ -9,6 +9,13 @@
                     
                         <p class="body-text" style="color: white;">We are honored to announce our partnership with  River North. They always give back to the community and we feel so lucky to have them as part of our Foundation.  Thank you so much Boulevard. We love your amazing team! Just click the logo to visit their site!</p>
                     </div>
+
+                    <div class="col-md-4 ml-auto mr-auto">
+                        <a href="https://www.urbanpooch.com"><img src="images/urbanpooch_LOGO.png" fluid alt="Urban Pooch Logo"></a>
+
+                        <p class="body-text" style="color: white;">We are excited to announce our partnership with Urban Pooch! Just click the logo to visit their site!</p>
+                    
+                    </div>
             
                 
                     <div class="col-md-4 ml-auto mr-auto">
