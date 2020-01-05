@@ -35,7 +35,7 @@
                         <a href="/nova">LOGIN</a>
                     </li> -->
                     
-                    <li>
+                    <!-- <li>
                         <router-link to="" v-if='!isAuthenticated'>
                             <span v-on:click="showLogin">DONOR LOGIN</span>
                         </router-link>
@@ -48,13 +48,12 @@
                         <router-link to="/" v-if="isAuthenticated">
                             <span v-on:click="logout">LOGOUT</span>
                         </router-link>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
 
             <div class="copyright">
-                &copy; {{year}}, The <a href="/nova">Live Like Roo</a> Foundation - Designed and Developed with Love by 
-                <a href="https://noproblemsonly.solutions" target="_blank">Bald Mike</a>
+                &copy; {{year}} The <a href="/nova">Live Like Roo</a> Foundation - Designed and Developed with Love by Bald Mike
             </div>
         </div>
     </footer>

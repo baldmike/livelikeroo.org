@@ -1,12 +1,14 @@
 <template>
     <div class="about-team team-4">
         <div class="container">
+
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
                     <h2 class="title">Meet The Board!</h2>
                     <!-- <h4 class="description">Making moves by day, saving dogs by night. Here is our team.</h4> -->
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
                     <card type="profile" plain>
@@ -14,7 +16,7 @@
                             <div class="col-md-5">
                                 <div class="card-image">
                                     <a href="#">
-                                        <img class="img img-raised rounded" src="images/teamSarah.jpg"/>
+                                        <img class="img img-raised rounded" src="images/sarah_new.jpg"/>
                                     </a>
                                 </div>
 
@@ -43,36 +45,7 @@
                         </div>
                     </card>
                 </div>
-                <!-- <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
-                    <card type="profile" plain>
-                        <div slot="raw-content" class="row">
-                            <div class="col-md-5">
-                                <div class="card-image">
-                                    <a href="#">
-                                        <img class="img img-raised rounded" src="images/teamLaura.jpg"/>
-                                    </a>
-                                </div>
-
-                                
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h4 class="card-title">Laura Krill</h4>
-                                    <h6 class="category">VP/Medical Case Manager</h6>
-                                    <p class="card-description textOnWhite">
-                                        Laura grew up with pets and has always shared her home with dogs, cats, and even a rabbit. In 2014, Laura's dog
-                                    </p>
-                                        
-                                    <p v-if="laura">
-                                        Elmer and her foster dog, Herman, were each diagnosed with cancer. She adopted Herman and made him an official member of her pack (even though he already knew he was right where he belonged). In 2015 she sadly said goodbye to both boys, within 4 months of each other. After Roo's inception, when Laura was asked to serve on the board, she knew it was an obvious choice for her. Having worked the last 17 years in the veterinary field, both general practice and now rehabilitation, Laura serves by reviewing the medical records of our applicants, and helps with selecting recipients for our financial grants. Laura knows the financial burden that comes with a sick pet, but she prides herself on lending an ear and being a sounding board for our applicants. 'Emotional support and backing, with a cancer diagnosis in a pet, is as important, if not more then, the financial aspect,' says Laura. When not volunteering for Roo or working, you'll catch her with a glass of wine and watching something on Netflix.  Each shoulder, has a spot for cats, Fozzie and Frieda, and her lap is filled with her Chihuahuas, Henri and Suzy, and more then likely a foster dog.
-                                    </p>
-
-                                    <n-button type="primary" @click.prevent.native="showBioLaura"><span v-if="laura">Show Less</span><span v-if="!laura">...Read Full Bio</span></n-button>
-                                </div>
-                            </div>
-                        </div>
-                    </card>
-                </div> -->
+               
                 <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
                     <card type="profile" plain>
                         <div slot="raw-content" class="row">
@@ -174,44 +147,191 @@
                         </div>
                     </card>
                 </div>
+            </div>
 
-                <!-- <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
+
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                    <h2 class="title">Meet The Team!</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
+                    <card type="profile" plain>
+                        <div slot="raw-content" class="row">
+                            <div class="col-md-5">
+                                <div class="card-image">
+                                    <a href="#">
+                                        <img class="img img-raised rounded" src="images/teamLaura.jpg"/>
+                                    </a>
+                                </div>
+
+                                <!-- <div class="card-footer">
+                                    <a href="https://www.instagram.com/instasarah/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a href="https://www.twitter.com/sarahlauch" target="_blank" class="btn btn-icon btn-neutral btn-twitter"><i
+                                            class="fab fa-twitter"></i></a>
+                                </div> -->
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h4 class="card-title">Laura Krill</h4>
+                                    <h6 class="category">Medical Director</h6>
+                                    <p class="card-description textOnWhite">
+                                        Laura grew up with pets and has always shared her home with dogs, cats, and even a rabbit. In 2014, Laura's dog
+                                    </p>
+                                        
+                                    <p v-if="laura" class="card-description textOnWhite">
+                                        Elmer and her foster dog, Herman, were each diagnosed with cancer. She adopted Herman and made him an official member of her pack (even though he already knew he was right where he belonged). In 2015 she sadly said goodbye to both boys, within 4 months of each other. After Roo's inception, when Laura was asked to serve on the board, she knew it was an obvious choice for her. Having worked the last 17 years in the veterinary field, both general practice and now rehabilitation, Laura serves by reviewing the medical records of our applicants, and helps with selecting recipients for our financial grants. Laura knows the financial burden that comes with a sick pet, but she prides herself on lending an ear and being a sounding board for our applicants. 'Emotional support and backing, with a cancer diagnosis in a pet, is as important, if not more then, the financial aspect,' says Laura. When not volunteering for Roo or working, you'll catch her with a glass of wine and watching something on Netflix.  Each shoulder, has a spot for cats, Fozzie and Frieda, and her lap is filled with her Chihuahuas, Henri and Suzy, and more then likely a foster dog.
+                                    </p>
+                                    
+                                    <n-button type="primary" @click.prevent.native="showBioLaura"><span v-if="laura">Show Less</span><span v-if="!laura">...Read Full Bio</span></n-button>
+                                </div>
+                            </div>
+                        </div>
+                    </card>
+                </div>
+               
+                <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
+                    <card type="profile" plain>
+                        <div slot="raw-content" class="row">
+                            <div class="col-md-5">
+                                <div class="card-image">
+                                    <a href="#">
+                                        <img class="img img-raised rounded" src="images/vicki_ruf.jpg"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h4 class="card-title">Vicki Ruf</h4>
+                                    <h6 class="category">Care Package Director</h6>
+                                    <p class="card-description textOnWhite">
+                                        -- BIO COMING SOON --
+                                    </p>
+
+                                    <p v-if="vicki">
+                                         
+                                    </p>
+
+
+                                    <n-button type="primary" @click.prevent.native="showBioVicki"><span v-if="vicki">Show Less</span><span v-if="!vicki">...Read Full Bio</span></n-button>
+                                </div>
+                            </div>
+                        </div>
+                    </card>
+                </div>
+
+                <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
                     <card type="profile" plain>
                         <div slot="raw-content" class="row">
                             <div class="col-md-5">
                                 <div class="card-image">
                                     <a href="#">
                                         <img class="img img-raised rounded"
-                                                src="images/stairs2.jpg"/>
+                                                src="images/caragh_reilly.jpg"/>
                                     </a>
                                 </div>
 
-                                <div class="card-footer">
-                                    <a href="https://www.linkedin.com/in/baldmike/" target="_blank" class="btn btn-icon btn-neutral btn-linkedin"><i
+                                <!-- <div class="card-footer">
+                                    <a href="https://www.linkedin.com/in/sara-depasquale-99794710/" class="btn btn-icon btn-neutral btn-linkedin"><i
                                             class="fab fa-linkedin"></i></a>
-                                    <a href="https://www.instagram.com/baldmikesees/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                    <a href="https://www.instagram.com/sarafina85/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
                                             class="fab fa-instagram"></i></a>
-                                    <a href="https://www.twitter.com/baldmikesays/" target="_blank" class="btn btn-icon btn-neutral btn-twitter"><i
-                                            class="fab fa-twitter"></i></a>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
-                                    <h4 class="card-title">Bald Mike</h4>
-                                    <h6 class="category">Nerd</h6>
-                                    <p class="card-description textOnWhite">    
-                                        Bald Mike is a computer nerd who loves shelter dogs, roots for the underdogs and, despite being from Chicago, puts ketchup on his hot dogs. He is an Aries.
-                                    </p>
-                                    <p v-if="mike">
-                                        As a rescue/foster/adoption advocate, Bald Mike loves all dogs, but has a soft spot for the silly bully breeds, like his knucklehead, Chopper - who himself is a cancer survivor, with help from Live Like Roo. After fostering several dogs including Dog Mike (now Duke), Screwball (now Steel) and Mr. Bananas (still Mr. Bananas), he foster-failed with Chopper because you would have, too.  Professionally, Bald Mike is a software developer, working currently with PHP/Laravel and JavaScript/Vue.js. His goal is to assist as many rescues and shelters as he can with their technology. After years of involvement in the rescue community, he FINALLY got a date out of it, and Bald Mike and Chopper are now over the moon for Mia and Coco Louise. That's a person and a dog.
+                                    <h4 class="card-title">Caragh Reilly</h4>
+                                    <h6 class="category">Booker Fund Manager</h6>
+                                    <p class="card-description textOnWhite">
+                                        -- BIO COMING SOON --
+                                    </p>                            
+
+                                    <p v-if="caragh">  
+                                        
                                     </p>
 
-                                    <n-button type="primary" @click.prevent.native="showBioMike"><span v-if="mike">Show Less</span><span v-if="!mike">...Read Full Bio</span></n-button>
+                                    <n-button type="primary" @click.prevent.native="showBioCaragh"><span v-if="caragh">Show Less</span><span v-if="!caragh">...Read Full Bio</span></n-button>
                                 </div>
                             </div>
                         </div>
                     </card>
-                </div> -->
+                </div>
+
+                <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
+                    <card type="profile" plain>
+                        <div slot="raw-content" class="row">
+                            <div class="col-md-5">
+                                <div class="card-image">
+                                    <a href="#">
+                                        <img class="img img-raised rounded"
+                                                src="images/bianca_parra.jpg"/>
+                                    </a>
+                                </div>
+
+                                <!-- <div class="card-footer">
+                                    <a href="https://www.instagram.com/daebreyk/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                            class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/dawnmm/" target="_blank" class="btn btn-icon btn-neutral btn-linkedin"><i
+                                            class="fab fa-linkedin"></i></a>
+                                </div> -->
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h4 class="card-title">Bianca Parra</h4>
+                                    <h6 class="category">Event Director</h6>
+                                    <p class="card-description textOnWhite">
+                                        -- BIO COMING SOON --
+                                    </p>
+
+                                    <p v-if="bianca">
+                                          
+                                    </p>
+
+                                    <n-button type="primary" @click.prevent.native="showBioBianca"><span v-if="bianca">Show Less</span><span v-if="!bianca">...Read Full Bio</span></n-button>
+                                </div>
+                            </div>
+                        </div>
+                    </card>
+                </div>
+
+                <div class="col-xl-6 col-lg-7 ml-auto mr-auto">
+                    <card type="profile" plain>
+                        <div slot="raw-content" class="row">
+                            <div class="col-md-5">
+                                <div class="card-image">
+                                    <a href="#">
+                                        <img class="img img-raised rounded"
+                                                src="images/stephanie_thomas.jpg"/>
+                                    </a>
+                                </div>
+
+                                <!-- <div class="card-footer">
+                                    <a href="https://www.linkedin.com/in/sara-depasquale-99794710/" class="btn btn-icon btn-neutral btn-linkedin"><i
+                                            class="fab fa-linkedin"></i></a>
+                                    <a href="https://www.instagram.com/sarafina85/" target="_blank" class="btn btn-icon btn-neutral btn-instagram"><i
+                                            class="fab fa-instagram"></i></a>
+                                </div> -->
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h4 class="card-title">Stephanie Thomas</h4>
+                                    <h6 class="category">Event Coordinator</h6>
+                                    <p class="card-description textOnWhite">
+                                        -- BIO COMING SOON --
+                                    </p>                            
+
+                                    <p v-if="stephanie">  
+                                        
+                                    </p>
+
+                                    <n-button type="primary" @click.prevent.native="showBioStephanie"><span v-if="stephanie">Show Less</span><span v-if="!stephanie">...Read Full Bio</span></n-button>
+                                </div>
+                            </div>
+                        </div>
+                    </card>
+                </div>
             </div>
         </div>
     </div>
@@ -237,18 +357,19 @@
     data() {
         return {
             sarah: false,
-            laura: false,
             nicole: false,
             joe: false,
-            brandi: false
+            brandi: false,
+            laura: false,
+            vicki: false,
+            caragh: false,
+            bianca: false,
+            stephanie: false
         }
     },
     methods: {
         showBioSarah() {
             this.sarah = !this.sarah;
-        },
-        showBioLaura() {
-            this.laura = !this.laura;
         },
         showBioNicole() {
             this.nicole = !this.nicole;
@@ -258,6 +379,21 @@
         },
         showBioBrandi() {
             this.brandi = !this.brandi;
+        },
+        showBioLaura() {
+            this.laura = !this.laura;
+        },
+        showBioVicki() {
+            this.vicki = !this.vicki;
+        },
+        showBioCaragh() {
+            this.caragh = !this.caragh;
+        },
+        showBioBianca() {
+            this.bianca = !this.bianca;
+        },
+        showBioStephanie() {
+            this.stephanie = !this.stephanie;
         },
     }
   }
