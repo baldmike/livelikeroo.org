@@ -23,10 +23,6 @@
             <events-component />
             
             <team-component />
-
-            <br><br>
-            <div class="separator-line separator-primary"></div>
-            <br><br>
             
             <partner-component />
 

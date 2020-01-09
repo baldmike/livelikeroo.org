@@ -207,11 +207,11 @@
                                     <h4 class="card-title">Vicki Ruf</h4>
                                     <h6 class="category">Care Package Director</h6>
                                     <p class="card-description textOnWhite">
-                                        -- BIO COMING SOON --
+                                        Vicki, better known as Chunk’s mom, is also mom to Stitch, Penelope, Abraham and Juice. In addition to Vicki's full time 
                                     </p>
 
                                     <p v-if="vicki">
-                                         
+                                          job and Live Like Roo she fosters/volunteers for various Chicagoland pitbull rescues. It was over 5 years ago when she took in a litter of puppies. That was the beginning of her pitbull obsession. However rescuing dogs didn’t start there - she’s been taking in unwanted dogs and finding them new homes since she was a kid. Lucky for her she has a very supportive other half, Keith.
                                     </p>
 
 
@@ -334,6 +334,8 @@
                 </div>
             </div>
         </div>
+
+        <h2 class="title text-center">Meet Our Partners!</h2>
     </div>
 </template>
 
