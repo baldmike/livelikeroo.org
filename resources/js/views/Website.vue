@@ -6,7 +6,8 @@
             
             <landing-page/>
             
-            <cta-component/>
+            <!-- <cta-component/> -->
+            <br>
 
             <donate-component/>
             
