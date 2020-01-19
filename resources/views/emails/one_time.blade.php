@@ -8,7 +8,7 @@
 
 @section('content')
     <p>
-        Thank you for your tax-deductable donation to The Live Like Roo Foundation! Your generous support is how we've been able to help almost 10,000 pets thru cancer diagnoses, sharing a bit of light and hope in an otherwise dark situation. A receipt, and our tax ID number is below for your records. From the bottom of our hearts, thank you!
+        Thank you for your tax-deductable donation to The Live Like Roo Foundation! Your generous support is how we've been able to help over 15,000 pets thru cancer diagnoses, sharing a bit of light and hope in an otherwise dark situation. A receipt, and our tax ID number is below for your records. From the bottom of our hearts, thank you!
     </p>
     
 @stop
