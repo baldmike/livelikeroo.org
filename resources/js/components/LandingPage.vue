@@ -36,7 +36,7 @@
                     <div class="separator-line separator-primary"></div>
                     
                     <h2 class="title">The Live Like Roo Foundation</h2>
-                    <h4 class="description">We are an all-volunteer-run,  donation-based, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis.</h4> 
+                    <h4 class="description">We are a donation-based, 501C3 charitable organization who provides support and financial assistance to families whose pet faces a cancer diagnosis.</h4> 
                     
                     <h4 class="description">Through grants, care packages, special experiences and genuine human support and kindness, The Live Like Roo Foundation has been able to assist over 8200 pets and their families through cancer diagnoses.</h4>
                         
