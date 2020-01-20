@@ -117,6 +117,11 @@ class CarePackage extends Resource
                 ->sortable()
                 ->hideFromIndex()
                 ->rules('max:255'),
+
+            Text::make('Diagnosis')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules('max:255'),
                 
             Image::make('Image')->disk('local')
                 ->hideFromIndex()
