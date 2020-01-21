@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\Password;
+use App\Nova\Filters\UserType;
 
 class User extends Resource
 {
@@ -90,7 +91,9 @@ class User extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new UserType
+        ];
     }
 
     /**
