@@ -123,7 +123,8 @@ class CarePackage extends Resource
                 ->hideFromIndex()
                 ->rules('max:255'),
                 
-            Image::make('Image')->disk('public')
+            Image::make('Image')
+                ->disk('public')
                 ->hideFromIndex()
                 ->maxWidth(50),
 

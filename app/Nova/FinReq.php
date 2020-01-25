@@ -196,8 +196,7 @@ class FinReq extends Resource
                     ->hideFromIndex(),
 
             Image::make('Image')
-                    ->disk('local')
-                    ->path('images')
+                    ->disk('public')
                     ->hideFromIndex()
                     ->maxWidth(50),
 
