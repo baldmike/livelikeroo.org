@@ -22,6 +22,9 @@ class CarePackageTest extends TestCase
      */
     public function testRequestCarePackage()
     {
+
+        Mail::fake();
+
         // Create the Care Package instance using valid address
         $care_package = factory(CarePackage::class)->make();
 
@@ -53,6 +56,8 @@ class CarePackageTest extends TestCase
      */
     public function testRequestCarePackageInvalidAddress()
     {
+        Mail::fake();
+
         // Create the Care Package instance
         $care_package = factory(CarePackage::class)->make();
 
@@ -84,6 +89,9 @@ class CarePackageTest extends TestCase
      */
     public function testRequestCarePackageIncomplete()
     {
+
+        Mail::fake();
+        
         // Create the Care Package instance
         $care_package = factory(CarePackage::class)->make();
 
