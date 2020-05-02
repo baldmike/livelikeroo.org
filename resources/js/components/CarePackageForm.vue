@@ -171,9 +171,9 @@
 
                 
 
-                <div class="col-md-12 center">
+                <!-- <div class="col-md-12 center">
                     <n-button @click.prevent.native="resetForm" type="danger">RESET FORM</n-button>
-                </div>
+                </div> -->
 
                 <div style="text-align: center; margin: 2rem;">
                     <img src="/images/llr_logo.png">
