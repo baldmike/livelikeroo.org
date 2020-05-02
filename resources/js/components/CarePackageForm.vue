@@ -158,7 +158,7 @@
                     <div class="sent" v-if="form.sent">This Form Has been submitted.</div>
 
                     <!-- This is the submit button -->
-                    <div v-if="!form.sent" style="text-align: center; margin-top: 2rem;">
+                    <div style="text-align: center; margin-top: 2rem;">
                         <n-button 
                                 type="primary" 
                                 round 
