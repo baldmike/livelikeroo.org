@@ -157,7 +157,7 @@
                     <div class="errors center" v-if="$v.form.$dirty">There are missing or incomplete fields.</div>
                     <div class="sent" v-if="form.sent">This Form Has been submitted.</div>
 
-                    <!-- This is the submit button -->
+                    <!-- This is the submit button and used to submit -->
                     <div style="text-align: center; margin-top: 2rem;">
                         <n-button 
                                 type="primary" 
