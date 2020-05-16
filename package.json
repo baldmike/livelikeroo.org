@@ -20,7 +20,7 @@
         "bootstrap": "^4.3.1",
         "bootstrap-vue": "^2.0.0-rc.22",
         "element-ui": "^2.9.1",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.1",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
         "nouislider": "^11.1.0",
@@ -32,7 +32,7 @@
         "vue-cookie": "^1.1.4",
         "vue-flux": "^5.1.9",
         "vue-lazyload": "^1.2.6",
-        "vue-moment": "^4.0.0",
+        "vue-moment": "^4.1.0",
         "vue-pdf": "^4.0.7",
         "vue-router": "^3.0.6",
         "vue-stripe-elements-plus": "^0.2.10",
@@ -52,8 +52,8 @@
         "jest": "^24.8.0",
         "jest-serializer-vue": "^2.0.2",
         "laravel-mix": "^4.0.16",
-        "node-sass": "^4.12.0",
-        "sass": "^1.20.3",
+        "node-sass": "^4.14.1",
+        "sass": "^1.26.5",
         "vue-jest": "^3.0.4",
         "vue-template-compiler": "^2.6.4"
     }
