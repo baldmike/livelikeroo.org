@@ -11,7 +11,7 @@
 
             <donate-component/>
             
-            <care-package/>    
+            <!-- <care-package/>     -->
 
             <!-- <gallery/> -->
 
