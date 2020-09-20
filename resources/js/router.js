@@ -45,12 +45,12 @@ export const router = new VueRouter({
                     title: 'Events',
                     props: {header: {colorOnScroll: 200}}
                 },
-                {
-                    path: '/care_package',
-                    components: {default: CarePackageComponent, header: Navbar, footer: Footer},
-                    title: 'CarePackage',
-                    // props: {header: {colorOnScroll: 300}}
-                },
+                // {
+                //     path: '/care_package',
+                //     components: {default: CarePackageComponent, header: Navbar, footer: Footer},
+                //     title: 'CarePackage',
+                //     // props: {header: {colorOnScroll: 300}}
+                // },
                 {
                     path: '/assistance',
                     components: {default: AssistanceComponent, header: Navbar, footer: Footer},
