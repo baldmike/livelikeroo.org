@@ -41,6 +41,13 @@ class CarePackageController extends Controller
      */
     public function store(CarePackageRequest $request)
     {
+
+        //  THIS IS A TEMP FIX FOR THE CARE PACKAGE SPAM
+        return response()->json(['message' => 'Invalid shipping address'], Response::HTTP_BAD_REQUEST);   
+
+
+
+        
         // Validate the address with Shippo
         Shippo::setApiKey(config('services.shippo.shippo_key'));
         $shippingName = request('firstName') . request('lastName');        
